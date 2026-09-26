@@ -333,7 +333,7 @@ export function AboutPage() {
                   className="text-xs tracking-[0.3em] uppercase mb-6"
                   style={{
                     fontFamily: fontBody,
-                    color: "var(--brand-sage)",
+                    color: "var(--brand-gold)",
                   }}
                 >
                   {t(about.problem.eyebrow.en, about.problem.eyebrow.ar)}
@@ -518,7 +518,7 @@ export function AboutPage() {
                 className="text-xs tracking-[0.3em] uppercase mb-1"
                 style={{
                   fontFamily: fontBody,
-                  color: "var(--brand-sage)",
+                  color: "var(--brand-gold)",
                 }}
               >
                 {t(about.dimensions.eyebrow.en, about.dimensions.eyebrow.ar)}
@@ -595,7 +595,7 @@ export function AboutPage() {
                       style={{
                         whiteSpace: "pre-line",
                         fontFamily: fontBody,
-                        color: "var(--brand-sage-mid)",
+                        color: "var(--brand-sage-pale)",
                       }}
                     >
                       {dim.number}
@@ -617,7 +617,7 @@ export function AboutPage() {
                         style={{
                           whiteSpace: "pre-line",
                           fontFamily: "var(--font-arabic)",
-                          color: "var(--brand-sage-mid)",
+                          color: "var(--brand-sage-pale)",
                           fontWeight: 600,
                         }}
                       >
@@ -1156,7 +1156,7 @@ export function AboutPage() {
               style={{
                 whiteSpace: "pre-line",
                 fontFamily: fontBody,
-                color: "var(--brand-sage)",
+                color: "var(--brand-sage-pale)",
                 letterSpacing: "0.05em",
               }}
             >

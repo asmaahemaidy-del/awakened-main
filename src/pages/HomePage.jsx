@@ -789,8 +789,8 @@ export function HomePage() {
                     fontSize: isAr ? "0.82rem" : "0.62rem",
                     letterSpacing: isAr ? 0 : "0.32em",
                     textTransform: isAr ? "none" : "uppercase",
-                    color: "var(--brand-gold-dark)",
-                    fontWeight: isAr ? 600 : 400,
+                    color: "var(--brand-sage)",
+                    fontWeight: isAr ? 600 : 500,
                     marginBottom: 14,
                   }}
                 >
@@ -1270,7 +1270,7 @@ export function HomePage() {
                           style={{
                             fontFamily: fontHead,
                             fontSize: "1.8rem",
-                            color: "var(--brand-sage-mid)",
+                            color: "var(--brand-sage-light)",
                             marginBottom: 16,
                           }}
                         >
@@ -1685,7 +1685,7 @@ export function HomePage() {
                               fontSize: isAr ? "0.78rem" : "0.65rem",
                               letterSpacing: isAr ? 0 : "0.18em",
                               textTransform: isAr ? "none" : "uppercase",
-                              color: "var(--brand-sage-mid)",
+                              color: "var(--brand-sage-pale)",
                               fontWeight: isAr ? 500 : 400,
                             }}
                           >
@@ -1697,7 +1697,7 @@ export function HomePage() {
                               fontSize: isAr ? "0.78rem" : "0.65rem",
                               letterSpacing: isAr ? 0 : "0.18em",
                               textTransform: isAr ? "none" : "uppercase",
-                              color: "var(--brand-sage-mid)",
+                              color: "var(--brand-sage-pale)",
                               fontWeight: isAr ? 500 : 400,
                             }}
                           >
@@ -2249,7 +2249,7 @@ export function HomePage() {
                 style={{
                   fontFamily: fontBody,
                   fontSize: isAr ? "0.88rem" : "0.82rem",
-                  color: "var(--brand-sage-mid)",
+                  color: "var(--brand-sage-pale)",
                   fontStyle: isAr ? "normal" : "italic",
                   marginBottom: 36,
                 }}

@@ -715,7 +715,7 @@ export function CommunityPage() {
                             fontSize: isAr ? "0.72rem" : "0.6rem",
                             letterSpacing: isAr ? 0 : "0.18em",
                             textTransform: isAr ? "none" : "uppercase",
-                            color: "var(--brand-sage-mid)",
+                            color: "var(--brand-sage-pale)",
                             marginBottom: 6,
                           }}
                         >
@@ -739,7 +739,7 @@ export function CommunityPage() {
                           whiteSpace: "pre-line",
                           fontFamily: fontBody,
                           fontSize: "0.82rem",
-                          color: "var(--brand-sage-mid)",
+                          color: "var(--brand-sage-pale)",
                           marginBottom: 24,
                         }}
                       >

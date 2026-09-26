@@ -163,7 +163,7 @@ export function EventsPage() {
               className="text-[10px] tracking-[0.3em] uppercase hidden sm:block"
               style={{
                 fontFamily: fontBody,
-                color: "#A8C5A0",
+                color: "#3D5C42",
               }}
             >
               {t("Doha, Qatar — 2026", "الدوحة، قطر — ٢٠٢٦")}
@@ -245,7 +245,7 @@ export function EventsPage() {
                 className="mt-3 text-xs tracking-[0.15em] uppercase"
                 style={{
                   fontFamily: fontBody,
-                  color: "#A8C5A0",
+                  color: "#3D5C42",
                 }}
               >
                 {t("All spaces strictly limited", "جميع الأماكن محدودة للغاية")}
@@ -287,7 +287,7 @@ export function EventsPage() {
                   className="text-xs tracking-[0.12em] uppercase"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B9970",
+                    color: "#3D5C42",
                   }}
                 >
                   {stat.label}
@@ -311,7 +311,7 @@ export function EventsPage() {
               className="text-xs tracking-[0.3em] uppercase mb-4"
               style={{
                 fontFamily: fontBody,
-                color: "#6B9970",
+                color: "#2E4A32",
               }}
             >
               {t("Upcoming Events", "الفعاليات القادمة")}
@@ -319,7 +319,7 @@ export function EventsPage() {
             <div
               className="w-12 h-px"
               style={{
-                background: "#6B9970",
+                background: "#3D5C42",
               }}
             />
           </div>
@@ -358,7 +358,7 @@ export function EventsPage() {
                         className="text-lg"
                         style={{
                           fontFamily: fontHead,
-                          color: "#6B9970",
+                          color: dark ? "#A8C5A0" : "#3D5C42",
                         }}
                       >
                         {event.year}
@@ -371,7 +371,7 @@ export function EventsPage() {
                           style={{
                             fontFamily: fontBody,
                             background: dark ? "rgba(107,153,112,0.2)" : "#F0EBE3",
-                            color: dark ? "#A8C5A0" : "#6B9970",
+                            color: dark ? "#A8C5A0" : "#2E4A32",
                           }}
                         >
                           {t(event.type, event.typeAr)}
@@ -380,7 +380,7 @@ export function EventsPage() {
                           className="text-xs"
                           style={{
                             fontFamily: fontBody,
-                            color: dark ? "#4A6B4E" : "#A8C5A0",
+                            color: dark ? "#A8C5A0" : "#3D5C42",
                           }}
                         >
                           {"· "}
@@ -409,7 +409,7 @@ export function EventsPage() {
                         className="text-xs mt-3 italic"
                         style={{
                           fontFamily: fontBody,
-                          color: dark ? "#6B9970" : "#A8C5A0",
+                          color: dark ? "#8AB08E" : "#3D5C42",
                         }}
                       >
                         {t(event.capacity, event.capacityAr)}
@@ -421,7 +421,7 @@ export function EventsPage() {
                           className="text-xs mb-1"
                           style={{
                             fontFamily: fontBody,
-                            color: dark ? "#A8C5A0" : "#9B8E7E",
+                            color: dark ? "#A8C5A0" : "#3D5C42",
                           }}
                         >
                           {t("Per person", "للشخص")}
@@ -443,7 +443,7 @@ export function EventsPage() {
                         className="w-full py-3 rounded-xl text-sm tracking-[0.1em] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                         style={{
                           fontFamily: fontBody,
-                          background: dark ? "#6B9970" : "#1A2B1C",
+                          background: dark ? "#3D6B44" : "#1A2B1C",
                           color: "#FAF7F2",
                           border: "none",
                           cursor: "pointer",
@@ -475,7 +475,7 @@ export function EventsPage() {
               className="text-xs leading-relaxed"
               style={{
                 fontFamily: fontBody,
-                color: "#9B8E7E",
+                color: "#3D5C42",
               }}
             >
               {t(

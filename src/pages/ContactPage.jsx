@@ -121,7 +121,7 @@ function Field({
         {required && (
           <span
             style={{
-              color: "#6B9970",
+              color: "var(--brand-gold)",
             }}
           >
             {" *"}
@@ -498,7 +498,7 @@ export function ContactPage() {
                       >
                         <span
                           style={{
-                            color: "#6B9970",
+                            color: "#3D5C42",
                             marginTop: "0.2em",
                             flexShrink: 0,
                             lineHeight: 1,
@@ -546,7 +546,7 @@ export function ContactPage() {
                     style={{
                       fontFamily: fontBody,
                       fontSize: "0.75rem",
-                      color: "#6B9970",
+                      color: "#2E4A32",
                     }}
                   >
                     CR: 241070
@@ -629,7 +629,7 @@ export function ContactPage() {
                           fontSize: isAr ? "0.78rem" : "0.68rem",
                           letterSpacing: isAr ? "0.02em" : "0.25em",
                           textTransform: isAr ? "none" : "uppercase",
-                          color: "#6B9970",
+                          color: "#2E4A32",
                           fontWeight: isAr ? 600 : 500,
                         }}
                       >
@@ -667,7 +667,7 @@ export function ContactPage() {
                           fontSize: isAr ? "0.78rem" : "0.68rem",
                           letterSpacing: isAr ? "0.02em" : "0.25em",
                           textTransform: isAr ? "none" : "uppercase",
-                          color: "#6B9970",
+                          color: "#2E4A32",
                           fontWeight: isAr ? 600 : 500,
                         }}
                       >
@@ -706,7 +706,7 @@ export function ContactPage() {
                             style={{
                               fontFamily: fontBody,
                               background: "#FFFFFF",
-                              color: form.language ? "#1A2B1C" : "#8AAE8E",
+                              color: form.language ? "#1A2B1C" : "#4A7A50",
                               border: "1px solid #D6CFC4",
                               outline: "none",
                               fontSize: isAr ? "1rem" : "0.92rem",
@@ -738,7 +738,7 @@ export function ContactPage() {
                           fontSize: isAr ? "0.78rem" : "0.68rem",
                           letterSpacing: isAr ? "0.02em" : "0.25em",
                           textTransform: isAr ? "none" : "uppercase",
-                          color: "#6B9970",
+                          color: "#2E4A32",
                           fontWeight: isAr ? 600 : 500,
                         }}
                       >
@@ -767,7 +767,7 @@ export function ContactPage() {
                           style={{
                             fontFamily: fontBody,
                             background: "#FFFFFF",
-                            color: form.interest ? "#1A2B1C" : "#8AAE8E",
+                            color: form.interest ? "#1A2B1C" : "#4A7A50",
                             border: "1px solid #D6CFC4",
                             outline: "none",
                             fontSize: isAr ? "1rem" : "0.92rem",
@@ -800,7 +800,7 @@ export function ContactPage() {
                           fontSize: isAr ? "0.78rem" : "0.68rem",
                           letterSpacing: isAr ? "0.02em" : "0.25em",
                           textTransform: isAr ? "none" : "uppercase",
-                          color: "#6B9970",
+                          color: "#2E4A32",
                           fontWeight: isAr ? 600 : 500,
                         }}
                       >

@@ -13,7 +13,7 @@ export function Footer() {
         position: "relative",
         marginTop: "auto",
         background: "var(--brand-forest)",
-        borderTop: "2px solid var(--brand-gold-dark)",
+        borderTop: "2px solid var(--brand-gold)",
       }}
     >
       <div
@@ -73,7 +73,7 @@ export function Footer() {
               fontSize: isAr ? "0.8rem" : "0.62rem",
               letterSpacing: isAr ? "0.02em" : "0.22em",
               textTransform: isAr ? "none" : "uppercase",
-              color: "var(--brand-gold-dark)",
+              color: "var(--brand-gold)",
               fontWeight: isAr ? 500 : 400,
               textAlign: "center",
             }}
@@ -87,21 +87,21 @@ export function Footer() {
               fontStyle: isAr ? "normal" : "italic",
               color: "var(--brand-gold-light)",
               fontWeight: isAr ? 500 : 400,
-              lineHeight: isAr ? 2 : 1.7,
+              lineHeight: 2,
               textAlign: "center",
               marginTop: 4,
             }}
           >
             {t(
-              "Come back to yourself.  Move forward with intention.",
-              "عُد إلى ذاتك.  وامضِ قدمًا بوعي وهدف.",
+              "Come back to yourself.  Move forward with intention.",
+              "عُد إلى ذاتك.  وامضِ قدمًا بوعي وهدف.",
             )}
           </p>
           <p
             style={{
               fontFamily: fontBody,
-              fontSize: isAr ? "0.8rem" : "0.72rem",
-              color: "var(--brand-sage-mid)",
+              fontSize: isAr ? "0.82rem" : "0.74rem",
+              color: "var(--brand-sage-pale)",
               textAlign: "center",
               fontStyle: isAr ? "normal" : "italic",
               lineHeight: isAr ? 1.9 : 1.6,
@@ -118,7 +118,7 @@ export function Footer() {
               fontSize: isAr ? "0.78rem" : "0.62rem",
               letterSpacing: isAr ? "0.02em" : "0.22em",
               textTransform: isAr ? "none" : "uppercase",
-              color: "var(--brand-gold-dark)",
+              color: "var(--brand-gold)",
               fontWeight: isAr ? 500 : 400,
               textAlign: "center",
             }}
@@ -141,8 +141,8 @@ export function Footer() {
           <p
             style={{
               fontFamily: fontBody,
-              fontSize: isAr ? "0.8rem" : "0.69rem",
-              color: "var(--brand-sage-mid)",
+              fontSize: isAr ? "0.82rem" : "0.72rem",
+              color: "var(--brand-sage-pale)",
               lineHeight: isAr ? 1.95 : 1.75,
             }}
           >
@@ -173,7 +173,7 @@ export function Footer() {
               textDecoration: "none",
               transition: "color 0.3s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-dark)")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-light)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-gold)")}
           >
             info@gotawakened.com
@@ -184,22 +184,22 @@ export function Footer() {
               fontFamily: fontBody,
               fontSize: isAr ? "0.82rem" : "0.74rem",
               letterSpacing: "0.04em",
-              color: "var(--brand-gold-dark)",
+              color: "var(--brand-gold)",
               textDecoration: "none",
               transition: "color 0.3s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-gold-dark)")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-light)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-gold)")}
           >
             +974 7710 6177
           </a>
           <span
             style={{
               fontFamily: fontBody,
-              fontSize: isAr ? "0.8rem" : "0.68rem",
+              fontSize: isAr ? "0.82rem" : "0.72rem",
               letterSpacing: isAr ? "0.01em" : "0.1em",
               textTransform: isAr ? "none" : "uppercase",
-              color: "var(--brand-gold-dark)",
+              color: "var(--brand-sage-pale)",
               lineHeight: isAr ? 1.9 : 1.7,
               textAlign: "center",
             }}
@@ -224,9 +224,9 @@ export function Footer() {
           <p
             style={{
               fontFamily: fontBody,
-              fontSize: isAr ? "0.78rem" : "0.68rem",
+              fontSize: isAr ? "0.8rem" : "0.72rem",
               letterSpacing: isAr ? "0.01em" : "0.06em",
-              color: "var(--brand-gold-dark)",
+              color: "var(--brand-sage-pale)",
             }}
           >
             {"© "}
@@ -245,9 +245,9 @@ export function Footer() {
             <span
               style={{
                 fontFamily: fontBody,
-                fontSize: isAr ? "0.78rem" : "0.7rem",
+                fontSize: isAr ? "0.8rem" : "0.72rem",
                 letterSpacing: "0.04em",
-                color: "var(--brand-gold-dark)",
+                color: "var(--brand-sage-pale)",
               }}
             >
               CR: 241070
@@ -255,9 +255,9 @@ export function Footer() {
             <span
               style={{
                 fontFamily: fontBody,
-                fontSize: isAr ? "0.78rem" : "0.68rem",
+                fontSize: isAr ? "0.8rem" : "0.72rem",
                 letterSpacing: isAr ? "0.01em" : "0.06em",
-                color: "var(--brand-gold-dark)",
+                color: "var(--brand-sage-pale)",
               }}
             >
               {t(

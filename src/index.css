@@ -60,9 +60,11 @@
     --brand-gold: #C9A84C;
     --brand-gold-light: #DFC07A;
     --brand-gold-dark: #9E7E2E;
+    --brand-cream: #FAF7F2;
     --brand-cream-mid: #F5F0E8;
     --brand-cream-warm: #EAE3D6;
     --brand-overlay-card: rgba(255,255,255,0.03);
+    --brand-forest-overlay-card: rgba(255,255,255,0.04);
     --brand-border-subtle: rgba(168,197,160,0.15);
     --brand-border-mid: rgba(168,197,160,0.2);
     --brand-border-faint: rgba(168,197,160,0.12);
@@ -78,6 +80,16 @@
     --brand-forest-overlay: rgba(26,43,28,0.55);
     --brand-forest-overlay-dark: rgba(26,43,28,0.80);
     --brand-forest-overlay-deep: rgba(26,43,28,0.97);
+
+    /* Semantic Readability Tokens */
+    --color-text-primary-dark: #FAF7F2;
+    --color-text-secondary-dark: #B8D0BC;
+    --color-text-muted-dark: #8FB896;
+    --color-text-accent-dark: #C9A84C;
+    --color-text-primary-light: #141F15;
+    --color-text-secondary-light: #243828;
+    --color-text-muted-light: #3D6B44;
+    --color-text-accent-light: #9E7E2E;
 
     /* Border Radius */
     --radius: 0.5rem;
@@ -95,6 +107,19 @@
 
   * {
     @apply border-border;
+  }
+
+  /* Accessible Keyboard Focus Indicators */
+  :focus-visible {
+    outline: 2px solid var(--brand-gold) !important;
+    outline-offset: 3px !important;
+  }
+
+  /* High contrast accessible placeholder styles */
+  input::placeholder,
+  textarea::placeholder {
+    color: #4A6B4E;
+    opacity: 0.85;
   }
 
   body {

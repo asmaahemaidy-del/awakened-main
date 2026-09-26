@@ -27,7 +27,7 @@ export function CheckoutCancelPage() {
               height="28"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#9B8E7E"
+              stroke="#3D5C42"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -40,7 +40,7 @@ export function CheckoutCancelPage() {
             className="text-xs tracking-[0.25em] uppercase mb-4"
             style={{
               fontFamily: fontBody,
-              color: "#9B8E7E",
+              color: "#3D5C42",
             }}
           >
             {t("Checkout Cancelled", "تم إلغاء الدفع")}

@@ -211,9 +211,10 @@ function AdvisorCard({ advisor, index }) {
           style={{
             fontFamily: fontBody,
             fontSize: "0.72rem",
-            color: "#6B9970",
+            color: "#3D5C42",
             letterSpacing: lang === "ar" ? 0 : "0.1em",
             textTransform: lang === "ar" ? "none" : "uppercase",
+            fontWeight: 500,
           }}
         >
           {t(advisor.speciality, advisor.specialityAr)}
@@ -237,16 +238,18 @@ function AdvisorCard({ advisor, index }) {
             style={{
               fontFamily: fontBody,
               background: "transparent",
-              color: "#C9A84C",
+              color: "#1A2B1C",
               textDecoration: "none",
               display: "block",
-              border: "1px solid #C9A84C",
+              border: "1px solid #1A2B1C",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(201,168,76,0.08)";
+              e.currentTarget.style.background = "#1A2B1C";
+              e.currentTarget.style.color = "#FFFFFF";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "#1A2B1C";
             }}
           >
             {t("Book a Session", "احجز جلسة")}
@@ -304,7 +307,7 @@ export function ExpertsPage() {
                   className="text-xs tracking-[0.3em] uppercase mb-6"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B9970",
+                    color: "var(--brand-gold)",
                   }}
                 >
                   {t("Our Team", "فريقنا")}
@@ -553,7 +556,7 @@ export function ExpertsPage() {
             className="text-xs tracking-[0.3em] uppercase mb-4"
             style={{
               fontFamily: fontBody,
-              color: "#6B9970",
+              color: "var(--brand-gold)",
             }}
           >
             {t("Not sure where to start?", "لست متأكداً من أين تبدأ؟")}

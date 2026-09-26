@@ -315,7 +315,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                 className="text-xs tracking-[0.25em] uppercase mb-1"
                 style={{
                   fontFamily: fontBody,
-                  color: "#6B9970",
+                  color: "#2E4A32",
                 }}
               >
                 {t("Retreat Enquiry", "استفسار خلوة")}
@@ -334,7 +334,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
             <button
               onClick={onClose}
               style={{
-                color: "#9B8E7E",
+                color: "#4A7A50",
                 background: "none",
                 border: "none",
                 cursor: "pointer",
@@ -400,7 +400,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                     {t("Full Name", "الاسم الكامل")}{" "}
                     <span
                       style={{
-                        color: "#6B9970",
+                        color: "var(--brand-gold)",
                       }}
                     >
                       *
@@ -426,7 +426,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                     {t("Email", "البريد الإلكتروني")}{" "}
                     <span
                       style={{
-                        color: "#6B9970",
+                        color: "var(--brand-gold)",
                       }}
                     >
                       *
@@ -714,7 +714,7 @@ export function RetreatsPage() {
                       className="text-xs tracking-[0.2em]"
                       style={{
                         fontFamily: fontBody,
-                        color: "#A8C5A0",
+                        color: "#3D6B44",
                       }}
                     >
                       {r.number}
@@ -949,7 +949,7 @@ export function RetreatsPage() {
                   className="text-[10px] tracking-[0.3em] uppercase mb-2"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B9970",
+                    color: "#2E4A32",
                   }}
                 >
                   {t("Also from Awakened", "أيضاً من أوايكند")}
@@ -1045,8 +1045,8 @@ export function RetreatsPage() {
               en="Looking for private wellness consultations? Our one-to-one consultancy programmes are available separately."
               ar="هل تبحث عن استشارات عافية خاصة؟ برامج الاستشارات الفردية متاحة بشكل منفصل."
               size="0.92rem"
-              enColor="#4A7A50"
-              arColor="#6B9970"
+              enColor="#2E4A32"
+              arColor="#2E4A32"
               lineHeight={1.75}
               className="mb-10"
             />

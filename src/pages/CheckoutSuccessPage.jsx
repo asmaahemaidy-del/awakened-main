@@ -29,7 +29,7 @@ export function CheckoutSuccessPage() {
               height="28"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#6B9970"
+              stroke="#2E4A32"
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -41,7 +41,7 @@ export function CheckoutSuccessPage() {
             className="text-xs tracking-[0.25em] uppercase mb-4"
             style={{
               fontFamily: fontBody,
-              color: "#6B9970",
+              color: "#2E4A32",
             }}
           >
             {t("Confirmed", "تم التأكيد")}
@@ -79,7 +79,7 @@ export function CheckoutSuccessPage() {
                 className="text-xs"
                 style={{
                   fontFamily: fontBody,
-                  color: "#9B8E7E",
+                  color: "#3D5C42",
                 }}
               >
                 {t("Order reference", "رقم الطلب")}

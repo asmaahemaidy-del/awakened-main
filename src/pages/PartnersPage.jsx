@@ -142,7 +142,7 @@ function Field({
         {required && (
           <span
             style={{
-              color: "#6B9970",
+              color: "var(--brand-gold)",
             }}
           >
             {" *"}
@@ -306,7 +306,7 @@ function PartnerCard({ number, en, ar, descEn, descAr, qualities, delay = 0 }) {
               className="text-xs tracking-[0.2em]"
               style={{
                 fontFamily: fontBody,
-                color: "#A8C5A0",
+                color: "#3D6B44",
               }}
             >
               {number}
@@ -445,7 +445,7 @@ export function PartnersPage() {
               className="text-xs tracking-[0.3em] uppercase mb-6"
               style={{
                 fontFamily: fontBody,
-                color: "#6B9970",
+                color: "#2E4A32",
               }}
             >
               {t("Our Network", "شبكتنا")}
@@ -552,7 +552,7 @@ export function PartnersPage() {
               className="text-xs tracking-[0.3em] uppercase text-center mb-8"
               style={{
                 fontFamily: fontBody,
-                color: "#6B9970",
+                color: "#2E4A32",
               }}
             >
               {t("Our Partners", "شركاؤنا")}
@@ -582,7 +582,7 @@ export function PartnersPage() {
                     className="text-xs tracking-[0.15em] uppercase text-center px-3"
                     style={{
                       fontFamily: "var(--font-sans)",
-                      color: "#C0B8A8",
+                      color: "#4A7A50",
                     }}
                   >
                     Partner Logo
@@ -635,7 +635,7 @@ export function PartnersPage() {
                 className="text-xs tracking-[0.25em] uppercase mb-4"
                 style={{
                   fontFamily: fontBody,
-                  color: "#6B9970",
+                  color: "#2E4A32",
                 }}
               >
                 {t("Partner With Us", "انضم إلى شبكتنا")}
@@ -670,7 +670,7 @@ export function PartnersPage() {
                   className="text-xs tracking-[0.2em] uppercase"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B9970",
+                    color: "#2E4A32",
                   }}
                 >
                   {t("What We Look For", "ما نبحث عنه")}
@@ -822,7 +822,7 @@ export function PartnersPage() {
                       {t("Partnership Category", "فئة الشراكة")}{" "}
                       <span
                         style={{
-                          color: "#6B9970",
+                          color: "var(--brand-gold)",
                         }}
                       >
                         *
@@ -836,7 +836,7 @@ export function PartnersPage() {
                       style={{
                         fontFamily: fontBody,
                         background: "#FDFAF5",
-                        color: form.type ? "#1A2B1C" : "#8AAE8E",
+                        color: form.type ? "#1A2B1C" : "#4A7A50",
                         border: "1px solid #C0B8A8",
                         outline: "none",
                         fontSize: "0.92rem",

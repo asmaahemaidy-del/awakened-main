@@ -465,7 +465,7 @@ export function IndividualsPage() {
                           style={{
                             fontFamily: fontBody,
                             fontSize: isAr ? "0.95rem" : "0.88rem",
-                            color: "var(--brand-sage-mid)",
+                            color: "var(--brand-sage-pale)",
                             lineHeight: isAr ? 2 : 1.75,
                             margin: 0,
                           }}

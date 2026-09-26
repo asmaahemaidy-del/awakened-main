@@ -17,8 +17,8 @@ function LangSwitcher({ dark = true }) {
     transition: "color 0.3s",
   };
   const activeColor = dark ? "#C9A84C" : "#1A2B1C";
-  const inactiveColor = dark ? "#7A9E7E" : "#9B8E7E";
-  const dividerColor = dark ? "#4A6B4E" : "#C0B8A8";
+  const inactiveColor = dark ? "var(--brand-sage-pale)" : "#3D5C42";
+  const dividerColor = dark ? "var(--brand-sage-mid)" : "#8A8070";
   return (
     <div
       className="flex items-center gap-0"

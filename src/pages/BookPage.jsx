@@ -702,14 +702,14 @@ export function BookPage() {
             <div
               className="w-10 h-px"
               style={{
-                background: "#6B9970",
+                background: "#3D5C42",
               }}
             />
             <p
               className="text-[10px] tracking-[0.35em] uppercase"
               style={{
                 fontFamily: fontBody,
-                color: "#6B9970",
+                color: "#2E4A32",
               }}
             >
               {t("Section 01", "القسم ٠١")}
@@ -787,7 +787,7 @@ export function BookPage() {
                       className="text-sm mt-1"
                       style={{
                         fontFamily: fontBody,
-                        color: pkg.highlight ? "#A8C5A0" : "#9B8E7E",
+                        color: pkg.highlight ? "var(--brand-sage-pale)" : "#3D5C42",
                       }}
                     >
                       {toUSD(pkg.price)}
@@ -799,7 +799,7 @@ export function BookPage() {
                       <li key={i} className="flex items-start gap-2">
                         <span
                           style={{
-                            color: "#6B9970",
+                            color: pkg.highlight ? "var(--brand-sage-pale)" : "#3D5C42",
                             marginTop: 2,
                           }}
                         >
@@ -991,7 +991,7 @@ export function BookPage() {
                 className="text-xs tracking-[0.1em]"
                 style={{
                   fontFamily: fontBody,
-                  color: "#9B8E7E",
+                  color: "#3D5C42",
                 }}
               >
                 {t("/ session", "/ جلسة")}
@@ -1134,7 +1134,7 @@ export function BookPage() {
                       className="text-xs"
                       style={{
                         fontFamily: fontBody,
-                        color: "#7A9E7E",
+                        color: "var(--brand-sage-pale)",
                       }}
                     >
                       {t(tier.rangeEn, tier.rangeAr)}
@@ -1144,7 +1144,7 @@ export function BookPage() {
                     className="text-xs mb-1"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-mid)",
+                      color: "var(--brand-sage-pale)",
                     }}
                   >
                     {t("Planning deposit from", "وديعة التخطيط من")}
@@ -1163,7 +1163,7 @@ export function BookPage() {
                     className="text-sm mb-1"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-mid)",
+                      color: "var(--brand-sage-pale)",
                     }}
                   >
                     {toUSD(tier.deposit)}
@@ -1173,7 +1173,7 @@ export function BookPage() {
                     className="text-xs mb-6"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-mid)",
+                      color: "var(--brand-sage-pale)",
                     }}
                   >
                     {t(
@@ -1196,7 +1196,7 @@ export function BookPage() {
                       <li key={i} className="flex items-start gap-2">
                         <span
                           style={{
-                            color: "#6B9970",
+                            color: "var(--brand-sage-pale)",
                             marginTop: 2,
                             flexShrink: 0,
                           }}
@@ -1327,7 +1327,7 @@ export function BookPage() {
                         className="text-xs tracking-[0.2em]"
                         style={{
                           fontFamily: fontBody,
-                          color: "#6B9970",
+                          color: retreat.dark ? "#A8C5A0" : "#3D5C42",
                         }}
                       >
                         {retreat.number}
@@ -1337,7 +1337,7 @@ export function BookPage() {
                         style={{
                           fontFamily: fontBody,
                           background: retreat.dark ? "rgba(107,153,112,0.2)" : "#F0EBE3",
-                          color: retreat.dark ? "#A8C5A0" : "#6B9970",
+                          color: retreat.dark ? "#A8C5A0" : "#2E4A32",
                         }}
                       >
                         {t(retreat.tagEn, retreat.tagAr)}
@@ -1357,7 +1357,7 @@ export function BookPage() {
                         <li key={i} className="flex items-start gap-2">
                           <span
                             style={{
-                              color: "#6B9970",
+                              color: retreat.dark ? "#A8C5A0" : "#3D5C42",
                               marginTop: 2,
                             }}
                           >
@@ -1401,7 +1401,7 @@ export function BookPage() {
                         className="text-sm mb-1"
                         style={{
                           fontFamily: fontBody,
-                          color: retreat.dark ? "#7A9E7E" : "#9B8E7E",
+                          color: retreat.dark ? "#A8C5A0" : "#3D5C42",
                         }}
                       >
                         {toUSD(retreat.price)}
@@ -1411,7 +1411,7 @@ export function BookPage() {
                         className="text-xs leading-relaxed mb-6"
                         style={{
                           fontFamily: fontBody,
-                          color: retreat.dark ? "#7A9E7E" : "#9B8E7E",
+                          color: retreat.dark ? "#A8C5A0" : "#3D5C42",
                         }}
                       >
                         {t(retreat.depositNote, retreat.depositNoteAr)}
@@ -1441,7 +1441,7 @@ export function BookPage() {
               className="text-xs leading-relaxed"
               style={{
                 fontFamily: fontBody,
-                color: "#9B8E7E",
+                color: "#3D5C42",
               }}
             >
               {t(
@@ -1462,14 +1462,14 @@ export function BookPage() {
             <div
               className="w-8 h-px mb-6"
               style={{
-                background: "#6B9970",
+                background: "#3D5C42",
               }}
             />
             <p
               className="text-xs tracking-[0.3em] uppercase mb-3"
               style={{
                 fontFamily: fontBody,
-                color: "#6B9970",
+                color: "#2E4A32",
               }}
             >
               {t("Cancellation & Refund Policy", "سياسة الإلغاء والاسترداد")}
@@ -1491,14 +1491,14 @@ export function BookPage() {
                 className="p-6"
                 style={{
                   background: "#FAF7F2",
-                  borderLeft: "2px solid #6B9970",
+                  borderLeft: "2px solid #3D5C42",
                 }}
               >
                 <p
                   className="text-xs tracking-[0.2em] uppercase mb-3"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B9970",
+                    color: "#2E4A32",
                   }}
                 >
                   {t("Group Retreats", "الخلوات الجماعية")}
@@ -1521,14 +1521,14 @@ export function BookPage() {
                 className="p-6"
                 style={{
                   background: "#FAF7F2",
-                  borderLeft: "2px solid #A8C5A0",
+                  borderLeft: "2px solid #3D5C42",
                 }}
               >
                 <p
                   className="text-xs tracking-[0.2em] uppercase mb-3"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B9970",
+                    color: "#2E4A32",
                   }}
                 >
                   {t("Private & Corporate Retreats", "الخلوات الخاصة والمؤسسية")}
@@ -1588,14 +1588,14 @@ export function BookPage() {
             <div
               className="w-10 h-px"
               style={{
-                background: "#A8C5A0",
+                background: "#3D5C42",
               }}
             />
             <p
               className="text-[10px] tracking-[0.35em] uppercase"
               style={{
                 fontFamily: fontBody,
-                color: "#A8C5A0",
+                color: "#2E4A32",
               }}
             >
               {t("Section 04", "القسم ٠٤")}
@@ -1642,7 +1642,7 @@ export function BookPage() {
                       className="text-xs"
                       style={{
                         fontFamily: fontBody,
-                        color: "#9B8E7E",
+                        color: "#3D5C42",
                       }}
                     >
                       {t(ev.date, ev.dateAr)}
@@ -1664,7 +1664,7 @@ export function BookPage() {
                       height="11"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#6B9970"
+                      stroke="#3D5C42"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -1676,7 +1676,7 @@ export function BookPage() {
                       className="text-xs"
                       style={{
                         fontFamily: fontBody,
-                        color: "#6B9970",
+                        color: "#3D5C42",
                       }}
                     >
                       {t(ev.location, ev.locationAr)}
@@ -1697,7 +1697,7 @@ export function BookPage() {
                       className="text-xs"
                       style={{
                         fontFamily: fontBody,
-                        color: "#9B8E7E",
+                        color: "#3D5C42",
                       }}
                     >
                       {t("per person", "للشخص")}
@@ -1707,7 +1707,7 @@ export function BookPage() {
                     className="text-xs mb-5"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-mid)",
+                      color: "#3D5C42",
                     }}
                   >
                     {toUSD(ev.price)}
@@ -1742,7 +1742,7 @@ export function BookPage() {
               className="text-xs mb-4"
               style={{
                 fontFamily: fontBody,
-                color: "#9B8E7E",
+                color: "#3D5C42",
               }}
             >
               {t(
@@ -1953,7 +1953,7 @@ export function BookPage() {
                         fontSize: isAr ? "0.75rem" : "0.62rem",
                         letterSpacing: isAr ? 0 : "0.18em",
                         textTransform: isAr ? "none" : "uppercase",
-                        color: "var(--brand-sage-mid)",
+                        color: "var(--brand-sage-pale)",
                         marginBottom: 6,
                       }}
                     >
@@ -1977,7 +1977,7 @@ export function BookPage() {
                       whiteSpace: "pre-line",
                       fontFamily: fontBody,
                       fontSize: "0.85rem",
-                      color: "var(--brand-sage-mid)",
+                      color: "var(--brand-sage-pale)",
                       marginBottom: 24,
                     }}
                   >
@@ -2026,7 +2026,7 @@ export function BookPage() {
             className="text-center mt-10 text-xs"
             style={{
               fontFamily: fontBody,
-              color: "var(--brand-sage-mid)",
+              color: "var(--brand-sage-pale)",
             }}
           >
             {t(book.membership.footnote.en, book.membership.footnote.ar)}
