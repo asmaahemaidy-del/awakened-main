@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 138 20% 97%;
+    --card-foreground: 0 0% 4%;
+    --popover: 38 44% 96%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 130 20% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 127 18% 51%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 40 25% 91%;
+    --muted-foreground: 128 15% 42%;
+    --accent: 107 24% 70%;
+    --accent-foreground: 0 0% 29%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 37 18% 80%;
+    --input: 37 18% 80%;
+    --ring: 130 20% 30%;
+
+    /* Extended Colors */
+    --chart-1: 130 21% 60%;
+    --chart-2: 129 20% 45%;
+    --chart-3: 130 20% 30%;
+    --chart-4: 131 21% 15%;
+    --chart-5: 0 0% 0%;
+
+    /* Sidebar Colors */
+    --sidebar: 40 25% 91%;
+    --sidebar-foreground: 0 0% 4%;
+    --sidebar-primary: 130 20% 30%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 107 24% 70%;
+    --sidebar-accent-foreground: 0 0% 29%;
+    --sidebar-border: 37 18% 80%;
+    --sidebar-ring: 130 20% 30%;
+
+    /* Typography */
+    --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: "Cormorant Garamond", Georgia, serif;
+    --font-arabic: "Scheherazade New", "IBM Plex Sans Arabic", "Arial", serif;
+    --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+
+    /* Brand palette (Awakened) */
+    --brand-forest: #141F15;
+    --brand-forest-mid: #243828;
+    --brand-forest-light: #344F38;
+    --brand-sage: #3D6B44;
+    --brand-sage-mid: #5C8A62;
+    --brand-sage-light: #8FB896;
+    --brand-sage-pale: #B8D0BC;
+    --brand-gold: #C9A84C;
+    --brand-gold-light: #DFC07A;
+    --brand-gold-dark: #9E7E2E;
+    --brand-cream-mid: #F5F0E8;
+    --brand-cream-warm: #EAE3D6;
+    --brand-overlay-card: rgba(255,255,255,0.03);
+    --brand-border-subtle: rgba(168,197,160,0.15);
+    --brand-border-mid: rgba(168,197,160,0.2);
+    --brand-border-faint: rgba(168,197,160,0.12);
+    --brand-forest-input: rgba(255,255,255,0.06);
+    --brand-error: #e07070;
+    --brand-gold-bg: rgba(201,168,76,0.12);
+    --brand-gold-border: rgba(201,168,76,0.25);
+    --brand-sage-glow: radial-gradient(ellipse at 50% 50%, rgba(107,153,112,0.08) 0%, transparent 65%);
+    --brand-cream-glow: radial-gradient(ellipse 60% 55% at 50% -5%, rgba(201,168,76,0.06) 0%, rgba(168,197,160,0.04) 40%, transparent 70%);
+    --brand-forest-orb-a: radial-gradient(circle at 40% 40%, #C9A84C 0%, #6B9970 60%, transparent 70%);
+    --brand-forest-orb-b: radial-gradient(circle at 60% 60%, #A8C5A0 0%, #3D5C42 60%, transparent 70%);
+    --brand-sage-hover-bg: rgba(168,197,160,0.08);
+    --brand-forest-overlay: rgba(26,43,28,0.55);
+    --brand-forest-overlay-dark: rgba(26,43,28,0.80);
+    --brand-forest-overlay-deep: rgba(26,43,28,0.97);
+
+    /* Border Radius */
+    --radius: 0.5rem;
+
+    /* Shadows */
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ── Header dropdown shadow (uses brand forest colour, not raw black) ── */
+.nav-dropdown-shadow {
+  box-shadow: 0 8px 32px var(--brand-forest);
+}
+
+/* Custom utility classes */
+
+/* Unless told otherwise, keep it for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ARABIC / RTL TYPOGRAPHY SYSTEM
+   Triggered by <html dir="rtl"> (set by applyLang() in language.tsx).
+
+   Architecture:
+   • direction: inherit on every element so <html dir="rtl"> cascades down
+   • text-align: start  →  means "right" in RTL, "left" in LTR automatically
+   • IBM Plex Sans Arabic replaces all fonts
+   • Generous line-height, zero letter-spacing, normal text-transform
+   • Logical CSS properties (border-inline-start, padding-inline-start…)
+     used in components so borders/padding flip automatically
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 1 ── Cascade direction from <html dir="rtl"> to every element */
+*, *::before, *::after {
+  direction: inherit;
+}
+
+/* 2 ── Root RTL: font + alignment */
+[dir="rtl"],
+[dir="rtl"] body {
+  font-family: var(--font-arabic) !important;
+  text-align: start;
+}
+
+/* 3 ── All text elements: Arabic font, weight, spacing, line-height */
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] li,
+[dir="rtl"] label,
+[dir="rtl"] a,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select,
+[dir="rtl"] td,
+[dir="rtl"] th {
+  font-family: var(--font-arabic) !important;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+  line-height: 1.85;
+  font-size: 1.08em;
+  text-align: start;
+}
+
+/* Buttons always centre their label */
+[dir="rtl"] button {
+  font-family: var(--font-arabic) !important;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+  line-height: 1.85;
+  text-align: center;
+}
+
+/* 4 ── Headings: Arabic font, heavier weight, tighter line-height */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6 {
+  font-family: var(--font-arabic) !important;
+  font-weight: 600;
+  letter-spacing: 0 !important;
+  line-height: 1.4;
+  font-style: normal !important;
+  text-align: start;
+}
+
+/* 5 ── Block containers: inherit start alignment */
+[dir="rtl"] div,
+[dir="rtl"] section,
+[dir="rtl"] article,
+[dir="rtl"] aside,
+[dir="rtl"] main,
+[dir="rtl"] nav,
+[dir="rtl"] header,
+[dir="rtl"] footer {
+  text-align: start;
+}
+
+/* 6 ── text-center stays centred (hero titles, CTA sections) */
+[dir="rtl"] .text-center,
+[dir="rtl"] .text-center * {
+  text-align: center !important;
+}
+
+/* 7 ── Scale up Arabic text — glyphs appear ~10% smaller at same px */
+[dir="rtl"] h1 { font-size: calc(1em * 1.15); }
+[dir="rtl"] h2 { font-size: calc(1em * 1.15); }
+[dir="rtl"] h3 { font-size: calc(1em * 1.12); }
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] li  { font-size: calc(1em * 1.08); }
+
+/* 8 ── Tracking / uppercase labels: reset letter-spacing, drop uppercase */
+[dir="rtl"] .uppercase                    { text-transform: none !important; }
+[dir="rtl"] .tracking-widest,
+[dir="rtl"] [class*="tracking-["]         { letter-spacing: 0 !important; }
+
+/* 8b ── Force-reset ALL letter-spacing and text-transform in RTL
+         Inline styles can't be overridden by CSS, but we cover every
+         element so Arabic glyphs are never spaced apart unnaturally.
+         Inline letterSpacing on individual elements should use
+         isAr ? 0 : value — this rule is a safety net for any missed cases. */
+[dir="rtl"] *,
+[dir="rtl"] *::before,
+[dir="rtl"] *::after {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* 9 ── Number labels (01, 02…) stay LTR inside RTL layout */
+[dir="rtl"] [data-number] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+}
+
+/* 10 ── Logical-property helpers for Tailwind physical classes */
+/*       Use borderInlineStart / paddingInlineStart in new components instead */
+[dir="rtl"] .border-l { border-left: none !important; border-right-width: 1px !important; }
+[dir="rtl"] .border-r { border-right: none !important; border-left-width: 1px !important; }
+[dir="rtl"] .rounded-l-full { border-radius: 0 9999px 9999px 0 !important; }
+[dir="rtl"] .rounded-r-full { border-radius: 9999px 0 0 9999px !important; }
+[dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+[dir="rtl"] .mr-auto { margin-right: 0 !important; margin-left: auto !important; }
