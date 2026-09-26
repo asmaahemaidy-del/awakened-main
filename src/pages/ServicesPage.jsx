@@ -256,6 +256,7 @@ export function ServicesPage() {
                         letterSpacing: isAr ? 0 : "0.2em",
                         color: "var(--brand-sage)",
                         fontWeight: 400,
+                        textAlign: isAr ? "right" : "left",
                       }}
                     >
                       {s.number}
@@ -268,6 +269,7 @@ export function ServicesPage() {
                         fontWeight: 400,
                         lineHeight: 1.25,
                         fontStyle: isAr ? "normal" : "italic",
+                        textAlign: isAr ? "right" : "left",
                       }}
                     >
                       {t(s.en, s.ar)}
@@ -355,7 +357,7 @@ export function ServicesPage() {
                         color: "var(--brand-forest-mid)",
                         lineHeight: isAr ? 2 : 1.85,
                         fontWeight: isAr ? 500 : 400,
-                        textAlign: "start",
+                        textAlign: isAr ? "right" : "left",
                       }}
                     >
                       {t(s.descEn, s.descAr)}
@@ -370,7 +372,7 @@ export function ServicesPage() {
                             gap: "0.75rem",
                             padding: "0.85rem 0",
                             borderTop: "1px solid var(--brand-sage-pale)",
-                            flexDirection: isAr ? "row-reverse" : "row",
+                            flexDirection: "row",
                             direction: isAr ? "rtl" : "ltr",
                           }}
                         >
@@ -391,7 +393,7 @@ export function ServicesPage() {
                               color: "var(--brand-forest)",
                               lineHeight: isAr ? 1.9 : 1.75,
                               fontWeight: isAr ? 500 : 400,
-                              textAlign: "start",
+                              textAlign: isAr ? "right" : "left",
                             }}
                           >
                             {t(f.en, f.ar)}
@@ -424,7 +426,7 @@ export function ServicesPage() {
                 borderInlineStart: "3px solid var(--brand-sage)",
                 display: "flex",
                 gap: "1rem",
-                flexDirection: isAr ? "row-reverse" : "row",
+                flexDirection: "row",
                 alignItems: "flex-start",
               }}
             >
@@ -459,6 +461,7 @@ export function ServicesPage() {
                     color: "var(--brand-sage)",
                     fontWeight: isAr ? 600 : 500,
                     marginBottom: "0.5rem",
+                    textAlign: isAr ? "right" : "left",
                   }}
                 >
                   {t("Advisory Services Notice", "إشعار الخدمات الاستشارية")}
@@ -470,6 +473,7 @@ export function ServicesPage() {
                     color: "var(--brand-forest-mid)",
                     lineHeight: isAr ? 1.95 : 1.8,
                     fontWeight: isAr ? 500 : 400,
+                    textAlign: isAr ? "right" : "left",
                   }}
                 >
                   {t(
