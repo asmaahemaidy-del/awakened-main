@@ -624,7 +624,7 @@ export function HomePage() {
                 fontFamily: fontHead,
                 fontSize: isAr ? "clamp(2.2rem,6vw,4rem)" : "clamp(2.6rem,6vw,4.4rem)",
                 fontWeight: 400,
-                color: "var(--brand-cream)",
+                color: "#FFFFFF",
                 lineHeight: isAr ? 1.45 : 1.1,
                 marginBottom: 28,
                 whiteSpace: "pre-line",
