@@ -543,10 +543,13 @@ export function ContactPage() {
                   </p>
                   <p
                     className="mt-1"
+                    dir="ltr"
                     style={{
                       fontFamily: fontBody,
                       fontSize: "0.75rem",
                       color: "#2E4A32",
+                      direction: "ltr",
+                      display: "inline-block",
                     }}
                   >
                     CR: 241070

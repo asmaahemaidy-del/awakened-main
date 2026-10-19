@@ -180,6 +180,7 @@ export function Footer() {
           </a>
           <a
             href="tel:+97477106177"
+            dir="ltr"
             style={{
               fontFamily: fontBody,
               fontSize: isAr ? "0.82rem" : "0.74rem",
@@ -187,11 +188,14 @@ export function Footer() {
               color: "var(--brand-gold)",
               textDecoration: "none",
               transition: "color 0.3s",
+              direction: "ltr",
+              unicodeBidi: "isolate",
+              display: "inline-block",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-light)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-gold)")}
           >
-            +974 7710 6177
+            <bdi dir="ltr">+974 7710 6177</bdi>
           </a>
           <span
             style={{
@@ -243,11 +247,14 @@ export function Footer() {
             }}
           >
             <span
+              dir="ltr"
               style={{
                 fontFamily: fontBody,
                 fontSize: isAr ? "0.8rem" : "0.72rem",
                 letterSpacing: "0.04em",
                 color: "var(--brand-sage-pale)",
+                direction: "ltr",
+                display: "inline-block",
               }}
             >
               CR: 241070
