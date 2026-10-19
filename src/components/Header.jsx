@@ -241,6 +241,10 @@ export function Header() {
         .drop-item:hover span { color: #FFFFFF !important; }
         .mob-sub-label { white-space: normal; word-break: break-word; text-align: start; line-height: 1.4; }
         .mob-svc-sub:hover { background: var(--brand-forest-light) !important; }
+        html[lang="ar"] #hdr-mobile,
+        html[dir="rtl"] #hdr-mobile {
+          direction: ltr !important;
+        }
       `}</style>
       <header
         style={{
@@ -616,80 +620,158 @@ export function Header() {
             style={{
               height: 64,
               alignItems: "center",
-              flexDirection: lang === "ar" ? "row-reverse" : "row",
+              justifyContent: "space-between",
+              direction: "ltr",
               position: "relative",
             }}
           >
-            <Link
-              to="/"
-              aria-label="Awakened — Home"
-              style={{
-                flexShrink: 0,
-                zIndex: 1,
-              }}
-            >
-              <img
-                src="/images/logo-160.webp"
-                srcSet="/images/logo-160.webp 160w, /images/logo-320.webp 320w"
-                sizes="72px"
-                width={1536}
-                height={1024}
-                decoding="async"
-                alt="Awakened"
-                style={{
-                  height: 42,
-                  width: "auto",
-                  objectFit: "contain",
-                  filter:
-                    "brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(1.1)",
-                  transition: "filter 0.5s ease",
-                }}
-              />
-            </Link>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                marginInlineStart: "auto",
-                zIndex: 1,
-              }}
-            >
-              <LangSwitcher dark={headerIsDark} />
-              <button
-                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMobileMenuOpen}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 42,
-                  height: 42,
-                  borderRadius: 6,
-                  flexShrink: 0,
-                  background: "var(--brand-gold-bg)",
-                  border: "1px solid var(--brand-gold-border)",
-                  color: "var(--brand-gold)",
-                  cursor: "pointer",
-                  transition: "background 0.2s, border-color 0.2s",
-                }}
-              >
-                {isMobileMenuOpen ? (
-                  <X size={20} strokeWidth={1.8} />
-                ) : (
-                  <span
+            {lang === "ar" ? (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    zIndex: 1,
+                  }}
+                >
+                  <button
+                    onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                    aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                    aria-expanded={isMobileMenuOpen}
+                    className="hamburger-btn"
                     style={{
-                      fontSize: "1.35rem",
-                      lineHeight: 1,
-                      fontFamily: "sans-serif",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: 42,
+                      height: 42,
+                      borderRadius: 6,
+                      flexShrink: 0,
+                      background: "var(--brand-gold-bg)",
+                      border: "1px solid var(--brand-gold-border)",
+                      color: "var(--brand-gold)",
+                      cursor: "pointer",
+                      transition: "background 0.2s, border-color 0.2s",
                     }}
                   >
-                    ☰
-                  </span>
-                )}
-              </button>
-            </div>
+                    {isMobileMenuOpen ? (
+                      <X size={20} strokeWidth={1.8} />
+                    ) : (
+                      <span
+                        style={{
+                          fontSize: "1.35rem",
+                          lineHeight: 1,
+                          fontFamily: "sans-serif",
+                        }}
+                      >
+                        ☰
+                      </span>
+                    )}
+                  </button>
+                  <LangSwitcher dark={headerIsDark} />
+                </div>
+                <Link
+                  to="/"
+                  aria-label="Awakened — Home"
+                  style={{
+                    flexShrink: 0,
+                    zIndex: 1,
+                  }}
+                >
+                  <img
+                    src="/images/logo-160.webp"
+                    srcSet="/images/logo-160.webp 160w, /images/logo-320.webp 320w"
+                    sizes="72px"
+                    width={1536}
+                    height={1024}
+                    decoding="async"
+                    alt="Awakened"
+                    style={{
+                      height: 42,
+                      width: "auto",
+                      objectFit: "contain",
+                      filter:
+                        "brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(1.1)",
+                      transition: "filter 0.5s ease",
+                    }}
+                  />
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/"
+                  aria-label="Awakened — Home"
+                  style={{
+                    flexShrink: 0,
+                    zIndex: 1,
+                  }}
+                >
+                  <img
+                    src="/images/logo-160.webp"
+                    srcSet="/images/logo-160.webp 160w, /images/logo-320.webp 320w"
+                    sizes="72px"
+                    width={1536}
+                    height={1024}
+                    decoding="async"
+                    alt="Awakened"
+                    style={{
+                      height: 42,
+                      width: "auto",
+                      objectFit: "contain",
+                      filter:
+                        "brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg) brightness(1.1)",
+                      transition: "filter 0.5s ease",
+                    }}
+                  />
+                </Link>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    zIndex: 1,
+                  }}
+                >
+                  <LangSwitcher dark={headerIsDark} />
+                  <button
+                    onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                    aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                    aria-expanded={isMobileMenuOpen}
+                    className="hamburger-btn"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: 42,
+                      height: 42,
+                      borderRadius: 6,
+                      flexShrink: 0,
+                      background: "var(--brand-gold-bg)",
+                      border: "1px solid var(--brand-gold-border)",
+                      color: "var(--brand-gold)",
+                      cursor: "pointer",
+                      transition: "background 0.2s, border-color 0.2s",
+                    }}
+                  >
+                    {isMobileMenuOpen ? (
+                      <X size={20} strokeWidth={1.8} />
+                    ) : (
+                      <span
+                        style={{
+                          fontSize: "1.35rem",
+                          lineHeight: 1,
+                          fontFamily: "sans-serif",
+                        }}
+                      >
+                        ☰
+                      </span>
+                    )}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
           {isMobileMenuOpen && (
             <div
