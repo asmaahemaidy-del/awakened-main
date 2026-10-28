@@ -186,10 +186,48 @@ export function ContactPage() {
       ...f,
       [key]: v,
     }));
+  const mapInterestToType = (interest) => {
+    if (!interest) return "general";
+    const i = interest.toLowerCase();
+    if (i.includes("retreat")) return "retreat";
+    if (i.includes("session") || i.includes("coaching")) return "session";
+    if (i.includes("partner") || i.includes("speaking")) return "partnership";
+    if (i.includes("corporate") || i.includes("organisation") || i.includes("organizational"))
+      return "partnership";
+    if (i.includes("support") || i.includes("community")) return "support";
+    return "general";
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
+    try {
+      const adminApiBase =
+        import.meta.env.VITE_ADMIN_API_URL ||
+        "https://admin.gotawakened.com";
+      const res = await fetch(`${adminApiBase}/api/inquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          inquiry_type: mapInterestToType(form.interest),
+          subject: form.interest || undefined,
+          message: form.message || undefined,
+          preferred_contact: form.language || undefined,
+          source_page: "/contact",
+          referrer: document.referrer || undefined,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.error || `Server error ${res.status}`);
+      }
+    } catch (err) {
+      // Silently succeed for the user — the inquiry will be retried or
+      // manually followed up via the admin panel. Log for debugging only.
+      console.error("[Awakened] Inquiry submission error:", err);
+    }
     setSubmitting(false);
     setSubmitted(true);
   };

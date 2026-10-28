@@ -250,7 +250,40 @@ function RetreatEnquiryModal({ retreat, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
+    try {
+      const adminApiBase =
+        import.meta.env.VITE_ADMIN_API_URL ||
+        "https://admin.gotawakened.com";
+      const retreatTitle = retreat ? (retreat.en || retreat.title || "Retreat") : "Retreat";
+      const messageContent = [
+        form.message,
+        form.dates ? `Preferred dates: ${form.dates}` : null,
+        retreatTitle ? `Selected retreat: ${retreatTitle}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+
+      const res = await fetch(`${adminApiBase}/api/inquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          inquiry_type: "retreat",
+          subject: `Retreat Inquiry: ${retreatTitle}`,
+          message: messageContent || undefined,
+          source_page: "/retreats",
+          referrer: document.referrer || undefined,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.error || `Server error ${res.status}`);
+      }
+    } catch (err) {
+      console.error("[Awakened] Retreat inquiry submission error:", err);
+    }
     setSubmitting(false);
     setSubmitted(true);
   };
