@@ -253,7 +253,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
     try {
       const adminApiBase =
         import.meta.env.VITE_ADMIN_API_URL ||
-        "https://admin.gotawakened.com";
+        "https://awakened-admin.vercel.app";
       const retreatTitle = retreat ? (retreat.en || retreat.title || "Retreat") : "Retreat";
       const messageContent = [
         form.message,

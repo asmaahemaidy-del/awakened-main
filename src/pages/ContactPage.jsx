@@ -203,7 +203,7 @@ export function ContactPage() {
     try {
       const adminApiBase =
         import.meta.env.VITE_ADMIN_API_URL ||
-        "https://admin.gotawakened.com";
+        "https://awakened-admin.vercel.app";
       const res = await fetch(`${adminApiBase}/api/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
