@@ -19,8 +19,8 @@ export function WhatsAppButton() {
 
   const topics = [
     { en: "Executive Consultation", ar: "استشارة تنفيذية" },
-    { en: "Sanctuary Retreat", ar: "ملاذ أوايكند" },
-    { en: "Discovery Session", ar: "جلسة اكتشاف" },
+    { en: "Wellness & Wellbeing Retreat", ar: "رحلات العافية والرفاهية" },
+    { en: "Private Sessions & Events", ar: "الجلسات الخاصة والفعاليات" },
     { en: "General Inquiry", ar: "استفسار عام" },
   ];
 
@@ -225,8 +225,8 @@ export function WhatsAppButton() {
                 }}
               >
                 {t(
-                  "Welcome to Awakened. Connect directly with our private advisory circle in Doha via WhatsApp for discreet executive guidance and retreat reservations.",
-                  "مرحباً بكم في أوايكند. تواصلوا مباشرة مع دائرتنا الاستشارية في الدوحة عبر واتساب لطلب الاستشارات التنفيذية وحجز الملاذات بكل خصوصية.",
+                  "Welcome to Awakened. Connect directly with our private advisory circle in Doha via WhatsApp for private sessions, events, and wellness retreats.",
+                  "مرحباً بكم في أوايكند. تواصلوا مباشرة مع دائرتنا الاستشارية في الدوحة عبر واتساب لطلب الجلسات الخاصة والفعاليات وحجز رحلات العافية والرفاهية بكل خصوصية.",
                 )}
               </p>
             </div>

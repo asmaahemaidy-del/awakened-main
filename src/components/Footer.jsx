@@ -6,6 +6,7 @@ export const SOCIAL_LINKS = {
   instagram: "#",
   linkedin: "#",
   twitter: "#",
+  tiktok: "#",
   whatsapp: "https://wa.me/97477106177",
   youtube: "#",
 };
@@ -263,8 +264,8 @@ export function Footer() {
             }}
           >
             {t(
-              "Follow Awakened for transformative insights, reflections, private salon updates, and sanctuary announcements.",
-              "تابعوا أوايكند للاطلاع على الرؤى التحولية، إعلانات الجلسات الخاصة، ومواعيد الملاذات الحصرية.",
+              "Follow Awakened for transformative insights, reflections, private sessions, private events, and wellness retreats.",
+              "تابعوا أوايكند للاطلاع على الرؤى التحولية، وإعلانات الجلسات الخاصة والفعاليات الحصرية، ومواعيد رحلات العافية والرفاهية.",
             )}
           </p>
           <div
@@ -395,6 +396,45 @@ export function Footer() {
             >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+            {/* TikTok */}
+            <a
+              href={SOCIAL_LINKS.tiktok}
+              target={SOCIAL_LINKS.tiktok !== "#" ? "_blank" : undefined}
+              rel={SOCIAL_LINKS.tiktok !== "#" ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (SOCIAL_LINKS.tiktok === "#") e.preventDefault();
+              }}
+              aria-label="Awakened on TikTok"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                backgroundColor: "var(--brand-forest)",
+                border: "1px solid var(--brand-gold)",
+                color: "var(--brand-gold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                textDecoration: "none",
+                cursor: SOCIAL_LINKS.tiktok !== "#" ? "pointer" : "default",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(201, 168, 76, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "var(--brand-gold-light)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--brand-forest)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--brand-gold)";
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .591.045.87.132V9.38a6.33 6.33 0 0 0-.87-.06A6.34 6.34 0 0 0 3.14 15.66a6.34 6.34 0 0 0 10.82 4.48c.038-.038.074-.078.11-.118a6.29 6.29 0 0 0 1.76-4.36V8.69a8.18 8.18 0 0 0 4.76 1.52v-3.45a4.85 4.85 0 0 1-1-.07z"/>
               </svg>
             </a>
 
