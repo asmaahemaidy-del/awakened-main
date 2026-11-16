@@ -1,6 +1,15 @@
 import { Link } from "react-router";
 import { useLanguage } from "../i18n/LanguageContext";
 
+// Social media URLs — easily updated once official profiles are provided
+export const SOCIAL_LINKS = {
+  instagram: "#",
+  linkedin: "#",
+  twitter: "#",
+  whatsapp: "https://wa.me/97477106177",
+  youtube: "#",
+};
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const { lang, t } = useLanguage();
@@ -214,6 +223,257 @@ export function Footer() {
             )}
           </span>
         </address>
+
+        {/* Social Media & Follow Section */}
+        <div
+          style={{
+            marginBottom: 32,
+            padding: "20px 16px",
+            background: "rgba(36, 56, 40, 0.45)",
+            border: "1px solid rgba(201, 168, 76, 0.25)",
+            borderRadius: 12,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 12,
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: fontBody,
+              fontSize: isAr ? "0.86rem" : "0.72rem",
+              letterSpacing: isAr ? "0.02em" : "0.2em",
+              textTransform: isAr ? "none" : "uppercase",
+              color: "var(--brand-gold)",
+              fontWeight: 600,
+              margin: 0,
+            }}
+          >
+            {t("Connect & Follow Awakened", "تواصل وتابع أوايكند")}
+          </p>
+          <p
+            style={{
+              fontFamily: fontBody,
+              fontSize: isAr ? "0.82rem" : "0.74rem",
+              color: "var(--brand-sage-pale)",
+              margin: 0,
+              maxWidth: 520,
+              lineHeight: isAr ? 1.9 : 1.6,
+            }}
+          >
+            {t(
+              "Follow Awakened for transformative insights, reflections, private salon updates, and sanctuary announcements.",
+              "تابعوا أوايكند للاطلاع على الرؤى التحولية، إعلانات الجلسات الخاصة، ومواعيد الملاذات الحصرية.",
+            )}
+          </p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 12,
+              flexWrap: "wrap",
+              marginTop: 4,
+            }}
+          >
+            {/* Instagram */}
+            <a
+              href={SOCIAL_LINKS.instagram}
+              target={SOCIAL_LINKS.instagram !== "#" ? "_blank" : undefined}
+              rel={SOCIAL_LINKS.instagram !== "#" ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (SOCIAL_LINKS.instagram === "#") e.preventDefault();
+              }}
+              aria-label="Awakened on Instagram"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                backgroundColor: "var(--brand-forest)",
+                border: "1px solid var(--brand-gold)",
+                color: "var(--brand-gold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                textDecoration: "none",
+                cursor: SOCIAL_LINKS.instagram !== "#" ? "pointer" : "default",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(201, 168, 76, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "var(--brand-gold-light)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--brand-forest)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--brand-gold)";
+              }}
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </a>
+
+            {/* LinkedIn */}
+            <a
+              href={SOCIAL_LINKS.linkedin}
+              target={SOCIAL_LINKS.linkedin !== "#" ? "_blank" : undefined}
+              rel={SOCIAL_LINKS.linkedin !== "#" ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (SOCIAL_LINKS.linkedin === "#") e.preventDefault();
+              }}
+              aria-label="Awakened on LinkedIn"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                backgroundColor: "var(--brand-forest)",
+                border: "1px solid var(--brand-gold)",
+                color: "var(--brand-gold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                textDecoration: "none",
+                cursor: SOCIAL_LINKS.linkedin !== "#" ? "pointer" : "default",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(201, 168, 76, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "var(--brand-gold-light)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--brand-forest)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--brand-gold)";
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+
+            {/* X (Twitter) */}
+            <a
+              href={SOCIAL_LINKS.twitter}
+              target={SOCIAL_LINKS.twitter !== "#" ? "_blank" : undefined}
+              rel={SOCIAL_LINKS.twitter !== "#" ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (SOCIAL_LINKS.twitter === "#") e.preventDefault();
+              }}
+              aria-label="Awakened on X"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                backgroundColor: "var(--brand-forest)",
+                border: "1px solid var(--brand-gold)",
+                color: "var(--brand-gold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                textDecoration: "none",
+                cursor: SOCIAL_LINKS.twitter !== "#" ? "pointer" : "default",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(201, 168, 76, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "var(--brand-gold-light)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--brand-forest)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--brand-gold)";
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+
+            {/* WhatsApp Business */}
+            <a
+              href={SOCIAL_LINKS.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Awakened on WhatsApp Business"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                backgroundColor: "var(--brand-forest)",
+                border: "1px solid var(--brand-gold)",
+                color: "#25D366",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                textDecoration: "none",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(37, 211, 102, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "#25D366";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--brand-forest)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--brand-gold)";
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.072-.496-1.763-.73-2.887-2.518-2.975-2.635-.088-.117-.714-.949-.714-1.808 0-.859.45-1.282.61-1.458.161-.177.351-.221.468-.221.117 0 .234.001.336.006.107.005.251-.041.393.298.144.347.491 1.2.535 1.287.043.088.072.19.014.307-.058.118-.088.19-.175.293-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.236.782 1.411.869.175.088.278.073.38-.044.103-.117.438-.511.555-.686.118-.175.234-.146.395-.088.16.059 1.017.479 1.192.566.175.088.292.132.336.205.044.074.044.428-.1.833z"/>
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.891.528 3.66 1.447 5.176L2 22l4.981-1.408A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.062c-1.637 0-3.153-.483-4.432-1.314l-.318-.206-2.96.837.844-2.885-.224-.326A8.04 8.04 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8.062-8 8.062z"/>
+              </svg>
+            </a>
+
+            {/* YouTube */}
+            <a
+              href={SOCIAL_LINKS.youtube}
+              target={SOCIAL_LINKS.youtube !== "#" ? "_blank" : undefined}
+              rel={SOCIAL_LINKS.youtube !== "#" ? "noopener noreferrer" : undefined}
+              onClick={(e) => {
+                if (SOCIAL_LINKS.youtube === "#") e.preventDefault();
+              }}
+              aria-label="Awakened on YouTube"
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: "50%",
+                backgroundColor: "var(--brand-forest)",
+                border: "1px solid var(--brand-gold)",
+                color: "var(--brand-gold)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.25s ease",
+                textDecoration: "none",
+                cursor: SOCIAL_LINKS.youtube !== "#" ? "pointer" : "default",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(201, 168, 76, 0.2)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "var(--brand-gold-light)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--brand-forest)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "var(--brand-gold)";
+              }}
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
         <div
           style={{
             borderTop: "1px solid var(--brand-forest-mid)",

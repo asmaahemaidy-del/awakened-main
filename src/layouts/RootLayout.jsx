@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { ScrollToTop } from "../components/ScrollToTop";
 import { Spinner } from "../components/Spinner";
 import { Website } from "../components/Website";
+import { WhatsAppButton } from "../components/WhatsAppButton";
 
 const PageFallback = () => (
   <div className="flex justify-center py-8 h-screen items-center">
@@ -25,6 +26,7 @@ export function RootLayout({ children }) {
       <main id="main-content">
         <Suspense fallback={<PageFallback />}>{children}</Suspense>
       </main>
+      <WhatsAppButton />
       <Footer />
     </Website>
   );
