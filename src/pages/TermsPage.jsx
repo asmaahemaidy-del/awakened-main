@@ -217,11 +217,11 @@ export function TermsPage() {
                 color: "var(--brand-forest)",
                 fontWeight: "bold",
                 direction: "ltr",
-                unicodeBidi: "isolate",
+                unicodeBidi: "bidi-override",
                 display: "inline-block",
               }}
             >
-              <bdi dir="ltr">+974 7710 6177</bdi>
+              {"\u202A+974 7710 6177\u202C"}
             </a>
           </p>
         </div>
