@@ -958,23 +958,92 @@ export function BookPage() {
         </div>
         <div className="max-w-7xl mx-auto px-8 pb-20">
           <div
-            className="max-w-2xl mx-auto px-10 py-10 text-center"
+            className="max-w-2xl mx-auto px-8 md:px-12 py-10 text-center"
             style={{
               background: "#F0EBE3",
               border: "1px solid #D8D0C4",
             }}
           >
-            <p
+            <span
+              className="inline-block text-[10px] tracking-[0.25em] uppercase px-3 py-1 mb-3"
               style={{
-                fontFamily: fontHead,
-                fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
-                color: "#1A2B1C",
-                lineHeight: 1.2,
+                fontFamily: fontBody,
+                background: "rgba(61,92,66,0.12)",
+                color: "#2E4A32",
+                fontWeight: 600,
               }}
             >
-              {t("Book a Primary Session", "احجز جلسة استشارية أولى")}
+              {t("Diagnostic & Alignment", "جلسة التشخيص والمواءمة")}
+            </span>
+            <h3
+              style={{
+                fontFamily: fontHead,
+                fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)",
+                color: "#1A2B1C",
+                lineHeight: 1.25,
+                marginBottom: "0.75rem",
+              }}
+            >
+              {t(
+                "Primary Session: Coach Needs Assessment & Matching",
+                "الجلسة الاستشارية الأولى: تحديد الاحتياجات والمواءمة مع المستشار",
+              )}
+            </h3>
+            <p
+              className="text-xs md:text-sm max-w-lg mx-auto leading-relaxed mb-6"
+              style={{
+                fontFamily: fontBody,
+                color: "#3D5C42",
+                lineHeight: isAr ? 2 : 1.8,
+              }}
+            >
+              {t(
+                "A comprehensive one-on-one diagnostic assessment designed to understand your personal, executive, and wellbeing goals. During this session, we evaluate your core needs and pair you with the ideal coach or specialist advisor from the Awakened circle best suited to your journey.",
+                "جلسة تشخيصية فردية معمقة للتعرف على أهدافكم وتطلعاتكم الشخصية والقيادية. نعمل من خلالها على تقييم احتياجاتكم بدقة ومواءمتكم مع الموجه أو المستشار الأنسب من الدائرة الاستشارية لـ أوايكند لتوجيه مسيرتكم بأعلى معايير الخصوصية.",
+              )}
             </p>
-            <div className="flex items-baseline justify-center gap-2 mt-4 mb-8">
+
+            {/* Key matching features */}
+            <div
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-left"
+              style={{
+                direction: isAr ? "rtl" : "ltr",
+              }}
+            >
+              {[
+                {
+                  en: "Holistic needs diagnostic & life assessment",
+                  ar: "تشخيص شامل للاحتياجات ونمط الحياة",
+                },
+                {
+                  en: "Direct matching with your ideal specialist coach",
+                  ar: "المواءمة المباشرة واختيار الموجه الأنسب لك",
+                },
+                {
+                  en: "Personalized roadmap prior to package enrolment",
+                  ar: "خارطة طريق مخصصة قبل بدء البرامج الممتدة",
+                },
+              ].map((feat, fi) => (
+                <div
+                  key={fi}
+                  className="p-3 bg-white/70 border border-[#D8D0C4] flex items-start gap-2"
+                >
+                  <span style={{ color: "#3D5C42", fontWeight: 700, fontSize: "11px" }}>✓</span>
+                  <span
+                    className="text-[11px]"
+                    style={{
+                      fontFamily: fontBody,
+                      color: "#1A2B1C",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {t(feat.en, feat.ar)}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-baseline justify-center gap-2 mb-1">
               <span
                 style={{
                   fontFamily: fontHead,
@@ -998,7 +1067,7 @@ export function BookPage() {
               </span>
             </div>
             <p
-              className="text-sm mt-1 mb-0"
+              className="text-xs mt-0 mb-6"
               style={{
                 fontFamily: fontBody,
                 color: "var(--brand-sage)",
@@ -1007,6 +1076,7 @@ export function BookPage() {
               ~${SINGLE_SESSION_USD.toLocaleString("en-US")}
               {" USD"}
             </p>
+
             <button
               onClick={() => handleCheckout(PRIMARY_SESSION_SKU)}
               disabled={loadingSkuId === PRIMARY_SESSION_SKU}
@@ -1030,12 +1100,26 @@ export function BookPage() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              <span className="text-xs tracking-[0.2em] uppercase">
+              <span className="text-xs tracking-[0.2em] uppercase font-semibold">
                 {loadingSkuId === PRIMARY_SESSION_SKU
                   ? t("Preparing checkout…", "جارٍ التحضير…")
-                  : t("Book Now", "احجز الآن")}
+                  : t("Book Matching Session", "احجز جلسة المواءمة")}
               </span>
             </button>
+
+            <p
+              className="text-[11px] mt-4 mb-0 text-center"
+              style={{
+                fontFamily: fontBody,
+                color: "#5A7E5E",
+                fontStyle: "italic",
+              }}
+            >
+              {t(
+                "Conducted via secure virtual video link or in-person in Doha. Credited toward any Core or Immersive package if you continue your journey.",
+                "تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. يُحتسب المبلغ كاملاً كرصيد عند اشتراكك في الباقات الاستشارية لاحقاً.",
+              )}
+            </p>
           </div>
         </div>
       </section>
