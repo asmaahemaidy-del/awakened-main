@@ -210,8 +210,18 @@ export function TermsPage() {
               info@gotawakened.com
             </a>
             <br />
-            <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>
-              +974 7710 6177
+            <a
+              href="tel:+97477106177"
+              dir="ltr"
+              style={{
+                color: "var(--brand-forest)",
+                fontWeight: "bold",
+                direction: "ltr",
+                unicodeBidi: "isolate",
+                display: "inline-block",
+              }}
+            >
+              <bdi dir="ltr">+974 7710 6177</bdi>
             </a>
           </p>
         </div>

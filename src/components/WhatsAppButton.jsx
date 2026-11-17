@@ -345,7 +345,10 @@ export function WhatsAppButton() {
                 textAlign: "center",
               }}
             >
-              {t("Direct line: +974 7710 6177 · Doha, Qatar", "الخط المباشر: 6177 7710 974+ · الدوحة، قطر")}
+              {t(
+                <>Direct line: <bdi dir="ltr">+974 7710 6177</bdi> · Doha, Qatar</>,
+                <>الخط المباشر: <bdi dir="ltr">+974 7710 6177</bdi> · الدوحة، قطر</>
+              )}
             </p>
           </div>
         </div>

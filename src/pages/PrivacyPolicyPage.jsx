@@ -99,11 +99,11 @@ export function PrivacyPolicyPage() {
             {t(
               <>
                 Contact: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> ·{" "}
-                <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> (Data Protection & General Inquiries).
+                <a href="tel:+97477106177" dir="ltr" style={{ color: "var(--brand-forest)", fontWeight: "bold", direction: "ltr", unicodeBidi: "isolate" }}><bdi dir="ltr">+974 7710 6177</bdi></a> (Data Protection & General Inquiries).
               </>,
               <>
                 للتواصل: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> ·{" "}
-                <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> (حماية البيانات والاستفسارات العامة).
+                <a href="tel:+97477106177" dir="ltr" style={{ color: "var(--brand-forest)", fontWeight: "bold", direction: "ltr", unicodeBidi: "isolate" }}><bdi dir="ltr">+974 7710 6177</bdi></a> (حماية البيانات والاستفسارات العامة).
               </>
             )}
           </p>
