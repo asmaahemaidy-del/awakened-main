@@ -6,7 +6,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "https://gotawakened.com/(.*)", "destination": "https://www.gotawakened.com/$1", "permanent": true },
     { "source": "/reserve", "destination": "/events", "permanent": true }
   ],
   "rewrites": [{ "source": "/checkout/:path*", "destination": "/_app" }],
