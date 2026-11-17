@@ -492,7 +492,7 @@ export function HomePage() {
         path="/"
         title={"Awakened | Whole-Person Coaching & Luxury Wellness Retreats | Qatar & Worldwide"}
         description={
-          "Private whole-person coaching and curated luxury retreats in Qatar and worldwide destinations, plus corporate wellness experiences. Book a confidential discovery call."
+          "Private whole-person coaching and curated luxury retreats in Qatar and worldwide destinations, plus corporate wellness experiences. Book your coaching needs assessment and advisor matching session."
         }
         jsonLd={jsonLd}
       />
@@ -699,7 +699,7 @@ export function HomePage() {
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
-                {t("Book a Free Discovery Call", "احجز مكالمة اكتشاف مجانية")}
+                {t("Book Primary Session", "احجز الجلسة الأولى")}
               </Link>
               <Link
                 to="/retreats"
@@ -1550,8 +1550,8 @@ export function HomePage() {
                     ar: "كيف تسير عملية الاستشارة الخاصة، من أول تواصل وحتى التدريب المستمر؟",
                   },
                   a: {
-                    en: "It begins with a complimentary discovery call — a private, no-obligation conversation to understand where you are and what you are looking for. From there, your advisor designs a personalised programme tailored to your goals, pace, and preferences. Sessions are conducted with complete discretion, and your programme evolves as you do — with ongoing support between sessions as needed.",
-                    ar: "تبدأ العملية بمكالمة اكتشاف مجانية — محادثة خاصة وغير مُلزِمة لفهم وضعك الحالي وما تبحث عنه. بعد ذلك، يصمم مستشارك برنامجًا شخصيًا مخصصًا لأهدافك وإيقاعك وتفضيلاتك. تُجرى الجلسات بسرية تامة، ويتطور برنامجك بتطورك — مع دعم مستمر بين الجلسات عند الحاجة",
+                    en: "It begins with a dedicated Coaching Needs & Matching Session — a focused one-on-one paid consultation to clarify your goals, evaluate coaching requirements, and match you with the ideal advisor. From there, your advisor designs a personalised programme tailored to your pace and aspirations. Sessions are conducted with complete discretion, and your programme evolves as you do — with ongoing support between sessions as needed.",
+                    ar: "تبدأ العملية بجلسة تحديد الاحتياجات التدريبية والمواءمة — استشارة فردية مدفوعة ومركزة لتوضيح أهدافكم وفهم متطلباتكم بدقة ومواءمتكم مع المستشار الأنسب. بعد ذلك، يصمم مستشارك برنامجاً شخصياً مخصصاً لأهدافكم وإيقاعكم وتفضيلاتكم. تُجرى الجلسات بسرية تامة، ويتطور برنامجك بتطورك — مع دعم مستمر بين الجلسات عند الحاجة.",
                   },
                 },
               ].map((item, i, arr) => (
@@ -2284,7 +2284,7 @@ export function HomePage() {
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
-                {t("Book a Free Discovery Call", "احجز مكالمة اكتشاف مجانية")}
+                {t("Book Primary Session", "احجز الجلسة الأولى")}
               </Link>
             </Reveal>
           </div>

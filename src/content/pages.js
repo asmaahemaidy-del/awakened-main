@@ -121,7 +121,7 @@ const pages = {
             ar: "أسعار شفافة",
           },
           body: {
-            en: "Session costs are listed clearly before you book. No discovery calls that turn into sales pitches. No packages you have to commit to upfront. You see the price, you decide.",
+            en: "Session costs are listed clearly before you book. Transparent pricing with no sales pressure. No packages you have to commit to upfront. You see the price, you decide.",
             ar: "تكاليف الجلسات معلنة بوضوح قبل الحجز. لا مكالمات استكشافية تتحول إلى عروض بيع. لا باقات تُلزمك مسبقاً. ترى السعر وتقرر",
           },
         },
@@ -465,9 +465,9 @@ const pages = {
       },
       anchors: [
         {
-          id: "discovery",
-          en: "Discovery Call",
-          ar: "مكالمة الاكتشاف",
+          id: "matching",
+          en: "Coaching Needs & Matching",
+          ar: "تحديد الاحتياجات والمواءمة",
         },
         {
           id: "sessions",
@@ -498,28 +498,28 @@ const pages = {
     },
     discovery: {
       eyebrow: {
-        en: "Start Here",
-        ar: "ابدأ من هنا",
+        en: "Primary Consultation · Paid Session",
+        ar: "الجلسة الأولى · استشارة فردية مدفوعة",
       },
       heading: {
-        en: "Book a Free Discovery Call",
-        ar: "احجز مكالمة اكتشاف مجانية",
+        en: "Coaching Needs Assessment & Advisor Matching",
+        ar: "تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
       },
       body: {
-        en: "Before committing to any programme, we recommend starting with a free 30-minute discovery call. We listen, you ask questions, and together we figure out whether Awakened is the right fit — and if so, which pathway makes sense for you.",
-        ar: "قبل الالتزام بأي برنامج، نوصي بالبدء بمكالمة اكتشاف مجانية مدتها 30 دقيقة. نستمع إليك، وتطرح أسئلتك، ونحدد معًا ما إذا كانت أوايكند هي الخيار المناسب — وإن كانت كذلك، أي مسار يناسبك.",
+        en: "Every coaching journey begins with a dedicated one-on-one paid consultation (QAR 1,747 / ~$480 USD). In this session, we deeply understand what you need from coaching, evaluate your goals, and match you directly with the best-fit advisor from the Awakened circle. Please note: this is strictly a coaching evaluation and advisor alignment session — it is not a medical or clinical diagnosis.",
+        ar: "تبدأ كل رحلة تدريبية بجلسة استشارية فردية مخصصة ومدفوعة (١٬٧٤٧ ر.ق / ~$480 دولار). نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونفهم أهدافكم ونقوم بمواءمتكم واختيار المستشار أو الموجه الأنسب لكم من دائرة أوايكند. يُرجى ملاحظة أن هذه الجلسة مخصصة لتقييم الاحتياجات التدريبية والتوافق الاستشاري وليست تشخيصاً طبياً أو علاجياً.",
       },
       note: {
-        en: "No commitment required. No sales pressure.",
-        ar: "لا يُشترط أي التزام. بلا ضغط للبيع.",
+        en: "Paid 1:1 session · 60 minutes · Virtual worldwide or in-person in Doha. Full fee is credited toward any multi-session package if you choose to enrol.",
+        ar: "جلسة فردية مدفوعة · ٦٠ دقيقة · عبر رابط مرئي حول العالم أو حضورياً في الدوحة. يُحتسب كامل المبلغ كرصيد يُخصم عند اشتراككم في أي من الباقات متعددة الجلسات.",
       },
       cta: {
-        en: "Request a Discovery Call",
-        ar: "اطلب مكالمة اكتشاف",
+        en: "Book Primary Session (QAR 1,747)",
+        ar: "احجز الجلسة الأولى (١٬٧٤٧ ر.ق)",
       },
       emailNote: {
-        en: "Or email us directly: info@gotawakened.com",
-        ar: "أو راسلنا مباشرة: info@gotawakened.com",
+        en: "Conducted with complete discretion. Questions? Contact us at info@gotawakened.com",
+        ar: "تُدار كافة الجلسات بسرية تامة ومطلقة. للاستفسار: info@gotawakened.com",
       },
     },
     membership: {

@@ -184,7 +184,7 @@ export function IndividualsPage() {
                   e.currentTarget.style.color = "var(--brand-gold)";
                 }}
               >
-                {t("Book a Free Discovery Call", "احجز مكالمة اكتشاف مجانية")}
+                {t("Book Primary Session", "احجز الجلسة الأولى")}
               </Link>
             </Reveal>
           </div>
@@ -556,7 +556,7 @@ export function IndividualsPage() {
               onMouseEnter={(e) => (e.currentTarget.style.background = "var(--brand-forest-mid)")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "var(--brand-forest)")}
             >
-              {t("Book a Free Discovery Call", "احجز مكالمة اكتشاف مجانية")}
+              {t("Book Primary Session", "احجز الجلسة الأولى")}
             </Link>
           </Reveal>
         </section>

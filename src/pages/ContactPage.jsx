@@ -172,8 +172,8 @@ export function ContactPage() {
   });
   // Applied after mount so the prerendered HTML (no query string) matches the first client render.
   useEffect(() => {
-    if (searchParams.get("interest") === "discovery")
-      setForm((f) => ({ ...f, interest: "Discovery Call (Free)" }));
+    if (searchParams.get("interest") === "discovery" || searchParams.get("interest") === "matching")
+      setForm((f) => ({ ...f, interest: "Primary Session: Needs & Matching (Paid)" }));
   }, [searchParams]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -237,8 +237,8 @@ export function ContactPage() {
   };
   const interests = [
     {
-      en: "Discovery Call (Free)",
-      ar: "مكالمة اكتشاف (مجانية)",
+      en: "Primary Session: Needs & Matching (Paid — QAR 1,747)",
+      ar: "الجلسة الأولى: الاحتياجات والمواءمة (مدفوعة — ١٬٧٤٧ ر.ق)",
     },
     {
       en: "Personal Coaching & Sessions",

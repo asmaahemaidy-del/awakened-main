@@ -453,12 +453,12 @@ export function BookPage() {
       <Seo
         path="/book"
         title={t(
-          "Book — Awakened | Start with a Discovery Call",
-          "الحجز — أوايكند | ابدأ بمكالمة اكتشاف",
+          "Book — Awakened | Coaching Needs Assessment & Advisor Matching",
+          "الحجز — أوايكند | تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
         )}
         description={t(
-          "Book a free discovery call, advisory sessions, wellness retreats, or corporate programmes with Awakened. Based in Qatar, serving clients worldwide.",
-          "احجز مكالمة اكتشاف مجانية أو جلسات استشارية أو رحلات العافية والرفاهية أو برامج مؤسسية مع أوايكند. مقرنا قطر ونخدم عملاء حول العالم.",
+          "Book your primary coaching needs assessment and advisor matching session (paid consultation), bespoke advisory packages, wellness retreats, or corporate programmes with Awakened. Based in Qatar, serving clients worldwide.",
+          "احجز جلستك الأولى لتحديد الاحتياجات التدريبية والمواءمة مع المستشار (جلسة استشارية مدفوعة)، أو الباقات الاستشارية، أو رحلات العافية والرفاهية، أو البرامج المؤسسية مع أوايكند. مقرنا قطر ونخدم عملاء حول العالم.",
         )}
       />
       <section
@@ -533,9 +533,9 @@ export function BookPage() {
           <div className="flex flex-wrap gap-3">
             {[
               {
-                href: "#discovery",
-                en: "Discovery Call",
-                ar: "مكالمة الاكتشاف",
+                href: "#matching",
+                en: "Coaching Needs & Matching",
+                ar: "تحديد الاحتياجات والمواءمة",
               },
               {
                 href: "#sessions",
@@ -596,7 +596,7 @@ export function BookPage() {
         />
       </section>
       <section
-        id="discovery"
+        id="matching"
         style={{
           background: "var(--brand-cream)",
           padding: "72px 24px",
@@ -658,26 +658,42 @@ export function BookPage() {
           >
             {t(book.discovery.note.en, book.discovery.note.ar)}
           </p>
-          <Link
-            to="/contact?interest=discovery"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              background: "var(--brand-forest)",
-              padding: "14px 40px",
-              fontFamily: fontBody,
-              fontSize: isAr ? "0.9rem" : "0.7rem",
-              letterSpacing: isAr ? 0 : "0.18em",
-              textTransform: isAr ? "none" : "uppercase",
-              color: "var(--brand-gold)",
-              textDecoration: "none",
-              transition: "background 0.4s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--brand-forest-mid)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--brand-forest)")}
-          >
-            {t(book.discovery.cta.en, book.discovery.cta.ar)}
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+            <button
+              onClick={() => handleCheckout(PRIMARY_SESSION_SKU)}
+              disabled={loadingSkuId === PRIMARY_SESSION_SKU}
+              className="inline-flex items-center justify-center px-8 py-3.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+              style={{
+                fontFamily: fontBody,
+                fontSize: isAr ? "0.9rem" : "0.75rem",
+                letterSpacing: isAr ? 0 : "0.15em",
+                textTransform: isAr ? "none" : "uppercase",
+                color: "#FFFFFF",
+                background: "var(--brand-forest)",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: 600,
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--brand-forest-mid)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--brand-forest)")}
+            >
+              {loadingSkuId === PRIMARY_SESSION_SKU
+                ? t("Preparing checkout…", "جارٍ التحضير…")
+                : t("Book Primary Session — QAR 1,747", "حجز الجلسة الأولى — ١٬٧٤٧ ر.ق")}
+            </button>
+            <a
+              href="#sessions"
+              className="inline-flex items-center justify-center px-6 py-3.5 transition-all duration-300 text-xs uppercase tracking-wider"
+              style={{
+                fontFamily: fontBody,
+                color: "var(--brand-forest)",
+                border: "1px solid rgba(46,74,50,0.3)",
+                textDecoration: "none",
+              }}
+            >
+              {t("Explore Advisory Packages", "استعراض باقات الاستشارات")}
+            </a>
+          </div>
           <p
             style={{
               fontFamily: fontBody,
@@ -1116,8 +1132,8 @@ export function BookPage() {
               }}
             >
               {t(
-                "This is a paid consultation (not a free discovery call). Conducted virtually worldwide or in-person in Doha. If you later enrol in a Core or Immersive programme, the cost is credited toward your package.",
-                "هذه جلسة استشارية مدفوعة (تختلف عن مكالمة الاكتشاف المجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في الباقات الاستشارية لاحقاً.",
+                "This is a paid consultation (not a medical diagnosis, and not a free call). Conducted virtually worldwide or in-person in Doha. If you later enrol in a Core or Immersive programme, the cost is credited toward your package.",
+                "هذه جلسة استشارية فردية مدفوعة لتحديد الاحتياجات والمواءمة (وليست تشخيصاً طبياً أو مكالمة مجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في الباقات الاستشارية لاحقاً.",
               )}
             </p>
           </div>

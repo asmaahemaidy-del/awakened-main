@@ -81,9 +81,9 @@ export function Header() {
   const { lang, t } = useLanguage();
   const bookSections = [
     {
-      id: "discovery",
-      en: "Discovery Call",
-      ar: "مكالمة الاكتشاف",
+      id: "matching",
+      en: "Coaching Needs & Matching",
+      ar: "تحديد الاحتياجات والمواءمة",
     },
     {
       id: "sessions",
@@ -1065,7 +1065,7 @@ export function Header() {
                   }}
                 >
                   <Link
-                    to="/book#discovery"
+                    to="/book#matching"
                     onClick={() => setIsMobileMenuOpen(false)}
                     style={{
                       display: "block",

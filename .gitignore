@@ -8,3 +8,5 @@ dist-server
 .env.local
 .env.*.local
 *.env
+
+.vercel

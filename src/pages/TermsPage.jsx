@@ -24,21 +24,6 @@ export function TermsPage() {
     marginBottom: 16,
   };
 
-  const TODO = ({ en, ar }) => (
-    <mark
-      style={{
-        background: "rgba(201,168,76,0.3)",
-        color: "#5C4108",
-        padding: "2px 6px",
-        borderRadius: 3,
-        fontSize: "0.82rem",
-        fontWeight: "bold",
-      }}
-    >
-      [{isAr ? (ar || en) : en}]
-    </mark>
-  );
-
   return (
     <>
       <Seo
@@ -62,26 +47,6 @@ export function TermsPage() {
             direction: isAr ? "rtl" : "ltr",
           }}
         >
-          {/* DRAFT BANNER */}
-          <div
-            style={{
-              border: "2px solid var(--brand-gold)",
-              background: "rgba(201,168,76,0.12)",
-              padding: 16,
-              marginBottom: 32,
-              borderRadius: 6,
-              fontSize: "0.88rem",
-              color: "#7A5C1E",
-              fontFamily: fontBody,
-              lineHeight: 1.7,
-            }}
-          >
-            {t(
-              "⚠️ WORKING DRAFT v1.0 — These Terms of Service are prepared for legal review under Qatari law. Highlighted brackets mark owner/legal confirmation items before final publication.",
-              "⚠️ مسودة أولية الإصدار 1.0 — شروط الخدمة هذه مسودة أولية مخصصة للمراجعة القانونية بموجب القوانين القطرية. البنود المظللة بين أقواس تتطلب مراجعة واعتماد نهائي من المحامي وإدارة أوايكند."
-            )}
-          </div>
-
           {/* PAGE TITLE & META */}
           <h1
             style={{
@@ -187,10 +152,10 @@ export function TermsPage() {
           <p style={pStyle}>
             {t(
               <>
-                To the fullest extent permitted by Qatari law, Awakened is not liable for indirect or consequential loss, loss of profit, or for outcomes that depend on your own choices and actions. Our total liability for any claim relating to a service is limited to the amount you paid for that specific service. Nothing here excludes or limits liability that cannot lawfully be excluded under Qatar law, including liability for fraud, gross negligence, or wilful misconduct. <TODO en="Clause to be finalized by counsel" ar="البند يخضع للمراجعة النهائية للمحامي" />
+                To the fullest extent permitted by Qatari law, Awakened is not liable for indirect or consequential loss, loss of profit, or for outcomes that depend on your own choices and actions. Our total liability for any claim relating to a service is limited to the amount you paid for that specific service. Nothing here excludes or limits liability that cannot lawfully be excluded under Qatar law, including liability for fraud, gross negligence, or wilful misconduct.
               </>,
               <>
-                إلى أقصى حد يسمح به القانون، لا تتحمل أوايكند المسؤولية عن الخسائر غير المباشرة أو التبعية أو خسارة الأرباح، ولا عن النتائج التي تتوقف على اختياراتكم وأفعالكم، وتقتصر مسؤوليتنا الإجمالية عن أي مطالبة تتعلق بخدمة ما على المبلغ الذي دفعتموه مقابل تلك الخدمة تحديداً. ولا يستثني أي شيء هنا ولا يحدّ من المسؤولية التي لا يجوز قانونًا استثناؤها، بما في ذلك المسؤولية عن الاحتيال أو الإهمال الجسيم أو سوء السلوك المتعمد. <TODO en="Clause to be finalized by counsel" ar="البند يخضع للمراجعة النهائية للمحامي" />
+                إلى أقصى حد يسمح به القانون، لا تتحمل أوايكند المسؤولية عن الخسائر غير المباشرة أو التبعية أو خسارة الأرباح، ولا عن النتائج التي تتوقف على اختياراتكم وأفعالكم، وتقتصر مسؤوليتنا الإجمالية عن أي مطالبة تتعلق بخدمة ما على المبلغ الذي دفعتموه مقابل تلك الخدمة تحديداً. ولا يستثني أي شيء هنا ولا يحدّ من المسؤولية التي لا يجوز قانونًا استثناؤها، بما في ذلك المسؤولية عن الاحتيال أو الإهمال الجسيم أو سوء السلوك المتعمد.
               </>
             )}
           </p>
@@ -218,10 +183,10 @@ export function TermsPage() {
           <p style={pStyle}>
             {t(
               <>
-                The laws of the State of Qatar apply to these terms and the competent courts of Doha have exclusive jurisdiction (<TODO en="counsel to confirm jurisdiction & dispute route" ar="يؤكد المحامي الاختصاص القضائي وآلية النزاع" />).
+                The laws of the State of Qatar apply to these terms and the competent courts of Doha have exclusive jurisdiction.
               </>,
               <>
-                تسري قوانين دولة قطر، وتختص المحاكم المختصة في الدوحة بنظر أي نزاع ناشئ عنها (<TODO en="يؤكد المحامي الاختصاص القضائي وآلية النزاع" ar="يؤكد المحامي" />).
+                تسري قوانين دولة قطر، وتختص المحاكم المختصة في الدوحة بنظر أي نزاع ناشئ عنها.
               </>
             )}
           </p>

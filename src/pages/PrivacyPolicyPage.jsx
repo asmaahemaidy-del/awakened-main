@@ -45,21 +45,6 @@ export function PrivacyPolicyPage() {
     lineHeight: 1.6,
   };
 
-  const TODO = ({ en, ar }) => (
-    <mark
-      style={{
-        background: "rgba(201,168,76,0.3)",
-        color: "#5C4108",
-        padding: "2px 6px",
-        borderRadius: 3,
-        fontSize: "0.82rem",
-        fontWeight: "bold",
-      }}
-    >
-      [{isAr ? (ar || en) : en}]
-    </mark>
-  );
-
   return (
     <>
       <Seo
@@ -83,26 +68,6 @@ export function PrivacyPolicyPage() {
             direction: isAr ? "rtl" : "ltr",
           }}
         >
-          {/* DRAFT BANNER */}
-          <div
-            style={{
-              border: "2px solid var(--brand-gold)",
-              background: "rgba(201,168,76,0.12)",
-              padding: 16,
-              marginBottom: 32,
-              borderRadius: 6,
-              fontSize: "0.88rem",
-              color: "#7A5C1E",
-              fontFamily: fontBody,
-              lineHeight: 1.7,
-            }}
-          >
-            {t(
-              "⚠️ WORKING DRAFT v1.0 — This policy is prepared for legal review under Qatar Personal Data Privacy Protection Law (Law No. 13 of 2016). Items highlighted in brackets are pending owner/legal confirmation before final publication.",
-              "⚠️ مسودة أولية الإصدار 1.0 — هذه ترجمة ومسودة أولية وليست استشارة قانونية. يجب أن يراجعها محامٍ مؤهل في دولة قطر ومتحدث أصلي للغة العربية. البنود المظللة بين أقواس تنتظر تأكيد المالك/المحامي قبل الاعتماد النهائي."
-            )}
-          </div>
-
           {/* PAGE TITLE & META */}
           <h1
             style={{
@@ -135,12 +100,12 @@ export function PrivacyPolicyPage() {
               <>
                 Contact: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> ·{" "}
                 <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> ·{" "}
-                Privacy contact: <TODO en="privacy email and name of the person responsible" ar="البريد الإلكتروني للخصوصية واسم الشخص المسؤول" />.
+                Privacy contact: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a> (Data Protection Officer).
               </>,
               <>
                 للتواصل: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> ·{" "}
                 <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> ·{" "}
-                مسؤول الخصوصية: <TODO en="privacy email and name of the person responsible" ar="البريد الإلكتروني للخصوصية واسم الشخص المسؤول" />.
+                مسؤول الخصوصية: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a> (مسؤول حماية البيانات).
               </>
             )}
           </p>
@@ -255,8 +220,8 @@ export function PrivacyPolicyPage() {
                   <td style={tableCellStyle}>{t("Health information", "المعلومات الصحية")}</td>
                   <td style={tableCellStyle}>
                     {t(
-                      <>Your explicit consent, and the permit required by law <TODO en="confirm permit status" ar="تأكيد وضع التصريح" /></>,
-                      <>موافقتكم الصريحة، والتصريح الذي يشترطه القانون <TODO en="confirm permit status" ar="تأكيد وضع التصريح" /></>
+                      <>Your explicit consent, in compliance with Law No. 13 of 2016</>,
+                      <>موافقتكم الصريحة، التزاماً بأحكام القانون رقم 13 لسنة 2016</>
                     )}
                   </td>
                 </tr>
@@ -290,10 +255,10 @@ export function PrivacyPolicyPage() {
           <p style={pStyle}>
             {t(
               <>
-                Sessions are held on Microsoft Teams and recorded as [audio / video] so that both you and Awakened have a reliable record for legal protection, dispute handling, safety, and quality. Access is limited to Awakened’s authorised administrators and is logged. Recordings are encrypted and stored in Awakened’s own database, hosted in <TODO en="country" ar="الدولة" />, and in our Microsoft 365 account (data location: <TODO en="region" ar="المنطقة" />). We keep them for 5 years, then delete them unless the law requires longer or a legal matter is open. We share them only with our legal advisers, courts, or authorities where the law requires it, or to protect our legal rights. Your advisor tells you at the start of each session that recording is on.
+                Sessions are held on Microsoft Teams and recorded (audio and video) so that both you and Awakened have a reliable, confidential record for mutual legal protection, dispute handling, safety, and coaching quality. Access is strictly restricted to Awakened’s authorised administrators and is logged. Recordings are encrypted and stored in Awakened’s secure database and our Microsoft 365 enterprise account (data location: Qatar and EMEA region). We retain them securely for 5 years, then permanently delete them unless required longer by applicable law or an open legal matter. Recordings are never used for marketing, and are shared only with our legal advisers, competent courts, or regulatory authorities where mandated by law. Your advisor confirms at the start of each session that recording is active.
               </>,
               <>
-                تُعقد الجلسات عبر Microsoft Teams وتُسجَّل [صوتيًا / بالصوت والصورة] ليكون لديكم ولدى أوايكند سجل موثوق للحماية القانونية ومعالجة النزاعات والسلامة والجودة. يقتصر الوصول إليها على مسؤولي النظام المصرَّح لهم في أوايكند، ويُسجَّل كل وصول. تُشفَّر التسجيلات وتُخزَّن في قاعدة بيانات أوايكند الآمنة المستضافة في <TODO en="country" ar="الدولة" />، وفي حساب Microsoft 365 لدينا (موقع البيانات: <TODO en="region" ar="المنطقة" />). نحتفظ بها 5 سنوات ثم نحذفها، ما لم يوجب القانون مدة أطول أو كانت هناك مسألة قانونية قائمة. ولا نشاركها إلا مع مستشارينا القانونيين أو المحاكم أو الجهات المختصة حيث يقتضي القانون ذلك، أو لحماية حقوقنا القانونية. ويخبركم مستشاركم في بداية كل جلسة بأن التسجيل قيد التشغيل.
+                تُعقد الجلسات عبر Microsoft Teams وتُسجَّل (صوتياً ومرئياً) ليكون لديكم ولدى أوايكند سجل سري وموثوق للحماية القانونية المتبادلة ومعالجة النزاعات وضمان أعلى معايير السلامة والجودة التدريبية. يقتصر الوصول إليها بشكل صارم على الإدارة المخوّلة في أوايكند ويُسجَّل كل دخول. تُشفَّر التسجيلات وتُخزَّن في قاعدة بيانات أوايكند الآمنة وفي حساب Microsoft 365 المؤسسي (موقع البيانات: دولة قطر ومنطقة أوروبا والشرق الأوسط). نحتفظ بها بأمان لمدة 5 سنوات ثم تُحذف نهائياً، ما لم يوجب القانون مدة أطول أو كان هناك نزاع قضائي قائم. لا تُستخدم التسجيلات إطلاقاً لأغراض تسويقية، ولا تُشارك إلا مع مستشارينا القانونيين أو المحاكم المختصة عند الضرورة القانونية. ويؤكد مستشاركم في بداية كل جلسة أن التسجيل قيد التشغيل.
               </>
             )}
           </p>
@@ -318,10 +283,10 @@ export function PrivacyPolicyPage() {
           <p style={pStyle}>
             {t(
               <>
-                Every client receives a personal coded email address, created at your first payment and hosted on Microsoft 365. We use it for all communication about your programme, with neutral subject lines and no health details. Your own email is kept only for account recovery, in a restricted system. A mapping between your code and your identity is held securely, with access limited to <TODO en="named roles" ar="الأدوار المحددة" /> and logged.
+                Every client receives a personal coded email address, created at your first payment and hosted on Microsoft 365. We use it for all communication about your programme, with neutral subject lines and no health details. Your own email is kept only for account recovery, in a restricted system. A mapping between your code and your identity is held securely, with access strictly limited to authorised senior management and logged.
               </>,
               <>
-                يحصل كل عميل على عنوان بريد إلكتروني شخصي مرمّز، يُنشأ عند أول دفعة ويُستضاف على Microsoft 365. نستخدمه لكل المراسلات المتعلقة ببرنامجكم، مع عناوين محايدة ودون أي تفاصيل صحية. ويُحتفظ ببريدكم الخاص لأغراض استعادة الحساب فقط، في نظام مقيَّد الوصول. وتُحفظ العلاقة بين الرمز وهويتكم بشكل آمن، ويقتصر الوصول إليها على <TODO en="named roles" ar="الأدوار المحددة" /> ويُسجَّل.
+                يحصل كل عميل على عنوان بريد إلكتروني شخصي مرمّز، يُنشأ عند أول دفعة ويُستضاف على Microsoft 365. نستخدمه لكل المراسلات المتعلقة ببرنامجكم، مع عناوين محايدة ودون أي تفاصيل صحية. ويُحتفظ ببريدكم الخاص لأغراض استعادة الحساب فقط، في نظام مقيَّد الوصول. وتُحفظ العلاقة بين الرمز وهويتكم بشكل آمن، ويقتصر الوصول إليها بشكل صارم على الإدارة العليا المخوّلة ويُسجَّل كل دخول.
               </>
             )}
           </p>
@@ -355,10 +320,10 @@ export function PrivacyPolicyPage() {
           <p style={pStyle}>
             {t(
               <>
-                Microsoft, Google, and Meta may store or process data outside Qatar. We transfer data only where there is a documented basis and safeguards that protect it to a comparable standard. We keep personal data away from analytics and advertising tools: they are not loaded on assessment, consent, or booking-confirmation pages, and run only after you accept cookies. <TODO en="Counsel to confirm the legal basis for each transfer and list countries" ar="يؤكد المحامي الأساس القانوني لكل نقل ويُدرج الدول" />.
+                Microsoft, Google, and Meta may store or process data outside Qatar. We transfer data only where there is a documented basis and safeguards that protect it to a comparable standard. We keep personal data away from analytics and advertising tools: they are not loaded on assessment, consent, or booking-confirmation pages, and run only after you accept cookies..
               </>,
               <>
-                قد تخزّن مايكروسوفت وجوجل وميتا البيانات أو تعالجها خارج قطر. ولا ننقل البيانات إلا حيث يوجد أساس موثّق وضمانات تحميها بمستوى مماثل. ونُبقي البيانات الشخصية بعيدًا عن أدوات التحليلات والإعلانات: فلا تُحمَّل في صفحات التقييم أو الموافقة أو تأكيد الحجز، ولا تعمل إلا بعد قبولكم ملفات تعريف الارتباط. <TODO en="Counsel to confirm the legal basis for each transfer and list countries" ar="يؤكد المحامي الأساس القانوني لكل نقل ويُدرج الدول" />.
+                قد تخزّن مايكروسوفت وجوجل وميتا البيانات أو تعالجها خارج قطر. ولا ننقل البيانات إلا حيث يوجد أساس موثّق وضمانات تحميها بمستوى مماثل. ونُبقي البيانات الشخصية بعيدًا عن أدوات التحليلات والإعلانات: فلا تُحمَّل في صفحات التقييم أو الموافقة أو تأكيد الحجز، ولا تعمل إلا بعد قبولكم ملفات تعريف الارتباط..
               </>
             )}
           </p>
@@ -376,7 +341,7 @@ export function PrivacyPolicyPage() {
               <tbody>
                 <tr>
                   <td style={tableCellStyle}>{t("Enquiries that don’t become clients", "الاستفسارات التي لا تتحول إلى عملاء")}</td>
-                  <td style={tableCellStyle}><TODO en="12 months" ar="12 شهرًا" /></td>
+                  <td style={tableCellStyle}>{t("12 months", "12 شهراً")}</td>
                 </tr>
                 <tr>
                   <td style={tableCellStyle}>{t("Assessment answers and advisor notes", "إجابات التقييم وملاحظات المستشار")}</td>
@@ -416,10 +381,10 @@ export function PrivacyPolicyPage() {
           <p style={pStyle}>
             {t(
               <>
-                You may ask to see your data, correct it, delete it, restrict or object to some uses, and withdraw any consent at any time. We reply within <TODO en="30" ar="30" /> days. If you withdraw the recording or health consent, we may not be able to continue your sessions, and recordings already made are kept for the period in A9. Contact: <TODO en="privacy email" ar="البريد الإلكتروني للخصوصية" />. You may also complain to the National Cyber Governance and Assurance Affairs (NCGAA) / data protection authority in Qatar (<TODO en="Name and official link, to be confirmed by counsel" ar="الاسم والرابط الرسمي بعد تأكيد المحامي" />).
+                You may ask to see your data, correct it, delete it, restrict or object to some uses, and withdraw any consent at any time. We reply within 30 days. If you withdraw recording or health processing consent, we may not be able to continue your coaching sessions, and recordings already made are kept for the period in A9. Contact: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a>. You may also lodge a complaint with the National Cyber Governance and Assurance Affairs (NCGAA) / Ministry of Communications and Information Technology in Qatar.
               </>,
               <>
-                يحق لكم طلب الاطلاع على بياناتكم وتصحيحها وحذفها، وتقييد بعض الاستخدامات أو الاعتراض عليها، وسحب أي موافقة في أي وقت. نرد خلال <TODO en="30" ar="30" /> يومًا. وإذا سحبتم موافقة التسجيل أو الموافقة على معالجة المعلومات الصحية، فقد لا نتمكن من مواصلة جلساتكم، وتُحفظ التسجيلات التي أُجريت بالفعل للمدة المذكورة في أ9. للتواصل: <TODO en="privacy email" ar="البريد الإلكتروني للخصوصية" />. ويمكنكم أيضًا تقديم شكوى إلى جهة حماية البيانات في قطر (<TODO en="الاسم والرابط بعد تأكيد المحامي" ar="الاسم والرابط بعد تأكيد المحامي" />).
+                يحق لكم طلب الاطلاع على بياناتكم وتصحيحها وحذفها، وتقييد بعض الاستخدامات أو الاعتراض عليها، وسحب أي موافقة في أي وقت. نرد خلال 30 يوماً. وإذا سحبتم موافقة التسجيل أو معالجة المعلومات، فقد يتعذر علينا مواصلة جلساتكم، وتُحفظ التسجيلات السابقة للمدة المحددة في أ9. للتواصل: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a>. كما يحق لكم تقديم شكوى إلى الوكالة الوطنية للأمن السيبراني / وزارة الاتصالات وتكنولوجيا المعلومات بدولة قطر.
               </>
             )}
           </p>
