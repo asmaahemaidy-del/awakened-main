@@ -705,6 +705,32 @@ export function BookPage() {
           <p
             style={{
               fontFamily: fontBody,
+              fontSize: isAr ? "0.9rem" : "0.82rem",
+              color: "var(--brand-forest-mid)",
+              marginTop: 16,
+              marginBottom: 4,
+            }}
+          >
+            {t(
+              "Unsure where to begin or which programme is right for you?",
+              "غير متأكد من أين تبدأ أو أي برنامج يناسبك؟",
+            )}
+            {" "}
+            <Link
+              to="/contact?interest=discovery"
+              style={{
+                color: "var(--brand-forest)",
+                fontWeight: 600,
+                textDecoration: "underline",
+                textUnderlineOffset: "3px",
+              }}
+            >
+              {t("Book a Free Discovery Call →", "احجز مكالمة استكشافية مجانية ←")}
+            </Link>
+          </p>
+          <p
+            style={{
+              fontFamily: fontBody,
               fontSize: isAr ? "0.82rem" : "0.72rem",
               color: "var(--brand-sage-mid)",
               marginTop: 16,
@@ -1144,6 +1170,33 @@ export function BookPage() {
                 "هذه جلسة استشارية فردية مدفوعة لتحديد الاحتياجات والمواءمة (وليست تشخيصاً طبياً أو مكالمة مجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. الجلسة الأولى مشمولة في جميع الباقات الاستشارية — يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في أي باقة.",
               )}
             </p>
+
+            <div className="mt-6 pt-5 border-t border-[#D8D0C4]">
+              <p
+                className="text-xs"
+                style={{
+                  fontFamily: fontBody,
+                  color: "#3D5C42",
+                }}
+              >
+                {t(
+                  "Not sure if this is the right starting point?",
+                  "هل لست متأكداً إن كانت هذه نقطة البداية المناسبة؟",
+                )}
+                {" "}
+                <Link
+                  to="/contact?interest=discovery"
+                  style={{
+                    color: "#1A2B1C",
+                    fontWeight: 600,
+                    textDecoration: "underline",
+                    textUnderlineOffset: "3px",
+                  }}
+                >
+                  {t("Book a Free Discovery Call", "احجز مكالمة استكشافية مجانية")}
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </section>

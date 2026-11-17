@@ -172,8 +172,10 @@ export function ContactPage() {
   });
   // Applied after mount so the prerendered HTML (no query string) matches the first client render.
   useEffect(() => {
-    if (searchParams.get("interest") === "discovery" || searchParams.get("interest") === "matching")
-      setForm((f) => ({ ...f, interest: "Primary Session: Needs & Matching (Paid)" }));
+    if (searchParams.get("interest") === "discovery")
+      setForm((f) => ({ ...f, interest: "Free Discovery Call (Unsure where to begin)" }));
+    else if (searchParams.get("interest") === "matching")
+      setForm((f) => ({ ...f, interest: "Primary Session: Needs & Matching (Paid — QAR 1,747)" }));
   }, [searchParams]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -236,6 +238,10 @@ export function ContactPage() {
     setSubmitted(true);
   };
   const interests = [
+    {
+      en: "Free Discovery Call (Unsure where to begin)",
+      ar: "مكالمة استكشافية مجانية (غير متأكد من أين تبدأ)",
+    },
     {
       en: "Primary Session: Needs & Matching (Paid — QAR 1,747)",
       ar: "الجلسة الأولى: الاحتياجات والمواءمة (مدفوعة — ١٬٧٤٧ ر.ق)",

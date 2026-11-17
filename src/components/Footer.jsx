@@ -135,13 +135,14 @@ export function Footer() {
   };
 
   const navLinks = [
-    { to: "/about",        en: "About",           ar: "من نحن" },
-    { to: "/services",     en: "Services",        ar: "الخدمات" },
-    { to: "/individuals",  en: "Coaching",        ar: "التوجيه الفردي" },
-    { to: "/retreats",     en: "Retreats",        ar: "رحلات العافية والرفاهية" },
-    { to: "/events",       en: "Events",          ar: "الفعاليات" },
-    { to: "/community",    en: "Community",       ar: "المجتمع" },
-    { to: "/contact",      en: "Contact",         ar: "تواصل معنا" },
+    { to: "/about",          en: "About",              ar: "من نحن" },
+    { to: "/services",       en: "Services",           ar: "الخدمات" },
+    { to: "/individuals",    en: "Coaching",           ar: "التوجيه الفردي" },
+    { to: "/organizations",  en: "Corporate Wellness", ar: "العافية المؤسسية" },
+    { to: "/retreats",       en: "Retreats",           ar: "رحلات العافية والرفاهية" },
+    { to: "/events",         en: "Events",             ar: "الفعاليات" },
+    { to: "/community",      en: "Community",          ar: "المجتمع" },
+    { to: "/contact",        en: "Contact",            ar: "تواصل معنا" },
   ];
 
   return (
@@ -234,6 +235,34 @@ export function Footer() {
                 {t(l.en, l.ar)}
               </Link>
             ))}
+            <Link
+              to="/partners"
+              style={{
+                display: "inline-block",
+                marginTop: 10,
+                padding: "7px 16px",
+                border: "1px solid var(--brand-gold)",
+                borderRadius: 4,
+                fontFamily: fBody,
+                fontSize: ar ? "0.78rem" : "0.68rem",
+                letterSpacing: ar ? "0.02em" : "0.14em",
+                textTransform: ar ? "none" : "uppercase",
+                color: "var(--brand-gold)",
+                textDecoration: "none",
+                fontWeight: 600,
+                transition: "all 0.25s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--brand-gold)";
+                e.currentTarget.style.color = "var(--brand-forest)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "var(--brand-gold)";
+              }}
+            >
+              {t("Partner With Us", "شراكة معنا")}
+            </Link>
           </div>
 
           {/* Col 3 — Contact + Socials */}
