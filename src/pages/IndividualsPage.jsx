@@ -73,7 +73,7 @@ export function IndividualsPage() {
               "@type": "HowToStep",
               position: 2,
               name: "Assess",
-              text: "The first paid session is a proper assessment. We go deeper — mapping your needs, your patterns, and the areas of your life that need the most attention right now.",
+              text: "The Primary Session is a dedicated coach needs assessment and matching consultation. We evaluate your core goals, personal patterns, and pair you with the ideal advisor.",
             },
             {
               "@type": "HowToStep",
@@ -384,9 +384,9 @@ export function IndividualsPage() {
                   en: "Assess",
                   ar: "التقييم",
                   enDesc:
-                    "The first paid session is a proper assessment. We go deeper — mapping your needs, your patterns, and the areas of your life that need the most attention right now.",
+                    "The Primary Session is a dedicated coach needs assessment and matching consultation. We evaluate your core needs and pair you with the ideal advisor from our circle.",
                   arDesc:
-                    "الجلسة الأولى المدفوعة تقييم حقيقي. نتعمق أكثر — نرسم احتياجاتك وأنماطك ومجالات حياتك التي تحتاج أكبر قدر من الاهتمام الآن",
+                    "الجلسة الأولى هي جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار المناسب. نقيّم من خلالها احتياجاتكم بدقة ونقوم بمواءمتكم مع الموجه أو المستشار الأنسب من فريقنا الاستشاري.",
                 },
                 {
                   step: "03",
