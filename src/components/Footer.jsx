@@ -1,14 +1,15 @@
 import { Link } from "react-router";
 import { useLanguage } from "../i18n/LanguageContext";
 
-// Social media URLs — update when official profiles are live
+// Social media URLs
 export const SOCIAL_LINKS = {
-  instagram: "#",
-  linkedin: "#",
-  twitter: "#",
-  tiktok: "#",
-  whatsapp: "https://wa.me/97477106177",
-  youtube: "#",
+  instagram: "https://www.instagram.com/awakenedconsultations",
+  tiktok:    "https://www.tiktok.com/@gotawakened",
+  snapchat:  "https://www.snapchat.com/@gotawakened",
+  facebook:  "https://www.facebook.com/p/Awakened-Consultations-61591527042471/",
+  threads:   "https://www.threads.com/@awakenedconsultations",
+  whatsapp:  "https://wa.me/97477106177",
+  // linkedin, twitter, youtube — add URLs when profiles are created
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -68,32 +69,30 @@ const IgIcon = () => (
     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
   </svg>
 );
-const LiIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect width="4" height="12" x="2" y="9"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
-const XIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-  </svg>
-);
 const TkIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .591.045.87.132V9.38a6.33 6.33 0 0 0-.87-.06A6.34 6.34 0 0 0 3.14 15.66a6.34 6.34 0 0 0 10.82 4.48c.038-.038.074-.078.11-.118a6.29 6.29 0 0 0 1.76-4.36V8.69a8.18 8.18 0 0 0 4.76 1.52v-3.45a4.85 4.85 0 0 1-1-.07z"/>
+  </svg>
+);
+const ScIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.37 2 11.67c0 2.85 1.3 5.4 3.35 7.17l-.35 2.16 2.1-1.1A10.1 10.1 0 0 0 12 21.33c5.52 0 10-4.37 10-9.66C22 6.37 17.52 2 12 2zm0 17.33c-.9 0-1.77-.13-2.6-.38l-.18-.06-1.84.97.3-1.9-.16-.14A7.63 7.63 0 0 1 4.4 11.67C4.4 7.6 7.77 4.3 12 4.3s7.6 3.3 7.6 7.37c0 4.07-3.37 7.66-7.6 7.66zm3.5-5.8c-.19-.1-1.13-.56-1.3-.62-.18-.06-.3-.1-.43.1-.13.19-.5.62-.61.75-.11.13-.23.14-.42.05-.19-.1-.8-.3-1.52-.95a5.7 5.7 0 0 1-1.05-1.32c-.11-.19-.01-.29.08-.38.08-.08.19-.22.28-.32.1-.11.13-.19.19-.32.06-.13.03-.24-.02-.34-.05-.1-.43-1.04-.59-1.42-.16-.37-.32-.32-.43-.33h-.37c-.13 0-.34.05-.52.24-.18.19-.68.67-.68 1.63s.7 1.89.8 2.02c.1.13 1.37 2.1 3.32 2.95.46.2.82.32 1.1.41.46.14.88.12 1.21.07.37-.05 1.14-.47 1.3-.92.16-.45.16-.84.11-.92-.05-.09-.18-.14-.37-.23z"/>
+  </svg>
+);
+const FbIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+  </svg>
+);
+const ThIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.028-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-.505-1.858-1.396-3.308-2.65-4.312-1.351-1.044-3.19-1.598-5.4-1.614-2.935.02-5.166.826-6.627 2.395-1.498 1.61-2.254 4.012-2.277 7.141.023 3.13.78 5.532 2.277 7.141 1.46 1.569 3.692 2.376 6.627 2.395 1.498-.012 2.78-.25 3.814-.707 1.11-.49 1.956-1.233 2.516-2.207.682-1.192 1.028-2.747 1.028-4.618v-.29H12.18v-2.26H23.6v2.065c0 2.512-.459 4.629-1.363 6.293-.895 1.645-2.19 2.906-3.85 3.748-1.59.81-3.46 1.228-5.56 1.258l-.64.003z"/>
   </svg>
 );
 const WaIcon = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.072-.496-1.763-.73-2.887-2.518-2.975-2.635-.088-.117-.714-.949-.714-1.808 0-.859.45-1.282.61-1.458.161-.177.351-.221.468-.221.117 0 .234.001.336.006.107.005.251-.041.393.298.144.347.491 1.2.535 1.287.043.088.072.19.014.307-.058.118-.088.19-.175.293-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.236.782 1.411.869.175.088.278.073.38-.044.103-.117.438-.511.555-.686.118-.175.234-.146.395-.088.16.059 1.017.479 1.192.566.175.088.292.132.336.205.044.074.044.428-.1.833z"/>
     <path d="M12 2C6.477 2 2 6.477 2 12c0 1.891.528 3.66 1.447 5.176L2 22l4.981-1.408A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18.062c-1.637 0-3.153-.483-4.432-1.314l-.318-.206-2.96.837.844-2.885-.224-.326A8.04 8.04 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8.062-8 8.062z"/>
-  </svg>
-);
-const YtIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
   </svg>
 );
 
@@ -258,12 +257,13 @@ export function Footer() {
               <bdi dir="ltr">+974 7710 6177</bdi>
             </a>
 
-            {/* Social icons */}
+            {/* Social icons — only platforms with confirmed profiles */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
               <SocialIcon href={SOCIAL_LINKS.instagram} label="Awakened on Instagram"><IgIcon /></SocialIcon>
-              <SocialIcon href={SOCIAL_LINKS.linkedin}  label="Awakened on LinkedIn"><LiIcon /></SocialIcon>
-              <SocialIcon href={SOCIAL_LINKS.twitter}   label="Awakened on X"><XIcon /></SocialIcon>
               <SocialIcon href={SOCIAL_LINKS.tiktok}    label="Awakened on TikTok"><TkIcon /></SocialIcon>
+              <SocialIcon href={SOCIAL_LINKS.snapchat}  label="Awakened on Snapchat"><ScIcon /></SocialIcon>
+              <SocialIcon href={SOCIAL_LINKS.facebook}  label="Awakened on Facebook"><FbIcon /></SocialIcon>
+              <SocialIcon href={SOCIAL_LINKS.threads}   label="Awakened on Threads"><ThIcon /></SocialIcon>
               <SocialIcon
                 href={SOCIAL_LINKS.whatsapp}
                 label="Awakened on WhatsApp"
@@ -275,7 +275,6 @@ export function Footer() {
               >
                 <WaIcon />
               </SocialIcon>
-              <SocialIcon href={SOCIAL_LINKS.youtube}   label="Awakened on YouTube"><YtIcon /></SocialIcon>
             </div>
           </div>
         </div>
