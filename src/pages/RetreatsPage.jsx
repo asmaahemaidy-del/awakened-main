@@ -361,7 +361,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                   fontStyle: lang === "ar" ? "normal" : "italic",
                 }}
               >
-                {t(retreat.en, retreat.ar)}
+                {retreat ? t(retreat.en, retreat.ar) : t("Master Retreat Enquiry", "استفسار رحلات العافية والرفاهية")}
               </h3>
             </div>
             <button
@@ -1112,9 +1112,10 @@ export function RetreatsPage() {
           </Reveal>
           <Reveal delay={0.3}>
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="/book#retreats"
-                className="inline-flex items-center justify-center text-center px-12 py-4 transition-all duration-500"
+              <button
+                type="button"
+                onClick={() => openEnquiry({ en: "Master Retreat Enquiry", ar: "استفسار رحلات العافية الشامل" })}
+                className="inline-flex items-center justify-center text-center px-10 py-4 transition-all duration-500 cursor-pointer border-none"
                 style={{
                   fontFamily: fontBody,
                   color: "#FFFFFF",
@@ -1129,13 +1130,35 @@ export function RetreatsPage() {
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                <span className="text-xs tracking-[0.2em] uppercase">
-                  {t("Enquire About a Retreat", "الاستفسار عن رحلات العافية والرفاهية")}
+                <span className="text-xs tracking-[0.2em] uppercase font-semibold">
+                  {t("Enquire About a Retreat", "الاستفسار عن رحلات العافية")}
+                </span>
+              </button>
+              <Link
+                to="/book#retreats"
+                className="inline-flex items-center justify-center text-center px-10 py-4 transition-all duration-500"
+                style={{
+                  fontFamily: fontBody,
+                  color: "#FFFFFF",
+                  background: "var(--brand-forest)",
+                  border: "1px solid var(--brand-gold)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "var(--brand-gold)";
+                  e.currentTarget.style.color = "var(--brand-forest)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "var(--brand-forest)";
+                  e.currentTarget.style.color = "#FFFFFF";
+                }}
+              >
+                <span className="text-xs tracking-[0.2em] uppercase font-semibold">
+                  {t("Book a Retreat", "حجز رحلة عافية")}
                 </span>
               </Link>
               <Link
                 to="/services#top"
-                className="inline-flex items-center justify-center text-center px-12 py-4 transition-all duration-500"
+                className="inline-flex items-center justify-center text-center px-8 py-4 transition-all duration-500"
                 style={{
                   fontFamily: fontBody,
                   color: "#4A7A50",
