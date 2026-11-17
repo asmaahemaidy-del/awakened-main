@@ -99,13 +99,11 @@ export function PrivacyPolicyPage() {
             {t(
               <>
                 Contact: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> ·{" "}
-                <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> ·{" "}
-                Privacy contact: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a> (Data Protection Officer).
+                <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> (Data Protection & General Inquiries).
               </>,
               <>
                 للتواصل: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> ·{" "}
-                <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> ·{" "}
-                مسؤول الخصوصية: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a> (مسؤول حماية البيانات).
+                <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>+974 7710 6177</a> (حماية البيانات والاستفسارات العامة).
               </>
             )}
           </p>
@@ -381,10 +379,10 @@ export function PrivacyPolicyPage() {
           <p style={pStyle}>
             {t(
               <>
-                You may ask to see your data, correct it, delete it, restrict or object to some uses, and withdraw any consent at any time. We reply within 30 days. If you withdraw recording or health processing consent, we may not be able to continue your coaching sessions, and recordings already made are kept for the period in A9. Contact: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a>. You may also lodge a complaint with the National Cyber Governance and Assurance Affairs (NCGAA) / Ministry of Communications and Information Technology in Qatar.
+                You may ask to see your data, correct it, delete it, restrict or object to some uses, and withdraw any consent at any time. We reply within 30 days. If you withdraw recording or health processing consent, we may not be able to continue your coaching sessions, and recordings already made are kept for the period in A9. Contact: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a>. You may also lodge a complaint with the National Cyber Governance and Assurance Affairs (NCGAA) / Ministry of Communications and Information Technology in Qatar.
               </>,
               <>
-                يحق لكم طلب الاطلاع على بياناتكم وتصحيحها وحذفها، وتقييد بعض الاستخدامات أو الاعتراض عليها، وسحب أي موافقة في أي وقت. نرد خلال 30 يوماً. وإذا سحبتم موافقة التسجيل أو معالجة المعلومات، فقد يتعذر علينا مواصلة جلساتكم، وتُحفظ التسجيلات السابقة للمدة المحددة في أ9. للتواصل: <a href="mailto:privacy@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>privacy@gotawakened.com</a>. كما يحق لكم تقديم شكوى إلى الوكالة الوطنية للأمن السيبراني / وزارة الاتصالات وتكنولوجيا المعلومات بدولة قطر.
+                يحق لكم طلب الاطلاع على بياناتكم وتصحيحها وحذفها، وتقييد بعض الاستخدامات أو الاعتراض عليها، وسحب أي موافقة في أي وقت. نرد خلال 30 يوماً. وإذا سحبتم موافقة التسجيل أو معالجة المعلومات، فقد يتعذر علينا مواصلة جلساتكم، وتُحفظ التسجيلات السابقة للمدة المحددة في أ9. للتواصل: <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a>. كما يحق لكم تقديم شكوى إلى الوكالة الوطنية للأمن السيبراني / وزارة الاتصالات وتكنولوجيا المعلومات بدولة قطر.
               </>
             )}
           </p>
