@@ -1947,6 +1947,8 @@ export function HomePage() {
             </Reveal>
           </div>
         </section>
+        {/* OUR TEAM: Hidden for now. Remove {false &&} to show. */}
+        {false && (
         <section
           style={{
             background: "var(--brand-cream-mid)",
@@ -2137,6 +2139,7 @@ export function HomePage() {
             </Reveal>
           </div>
         </section>
+        )}
         {/* PARTNERS: Hidden until real partner logos/names confirmed. Remove {false &&} to show. */}
         {false && (
         <section
