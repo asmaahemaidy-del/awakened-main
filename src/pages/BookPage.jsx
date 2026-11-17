@@ -973,7 +973,7 @@ export function BookPage() {
                 fontWeight: 600,
               }}
             >
-              {t("Diagnostic & Alignment", "جلسة التشخيص والمواءمة")}
+              {t("Paid 1:1 Consultation", "جلسة استشارية فردية مدفوعة")}
             </span>
             <h3
               style={{
@@ -985,8 +985,8 @@ export function BookPage() {
               }}
             >
               {t(
-                "Primary Session: Coach Needs Assessment & Matching",
-                "الجلسة الاستشارية الأولى: تحديد الاحتياجات والمواءمة مع المستشار",
+                "Primary Session: Coaching Needs & Advisor Matching",
+                "الجلسة الأولى: تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
               )}
             </h3>
             <p
@@ -998,8 +998,8 @@ export function BookPage() {
               }}
             >
               {t(
-                "A comprehensive one-on-one diagnostic assessment designed to understand your personal, executive, and wellbeing goals. During this session, we evaluate your core needs and pair you with the ideal coach or specialist advisor from the Awakened circle best suited to your journey.",
-                "جلسة تشخيصية فردية معمقة للتعرف على أهدافكم وتطلعاتكم الشخصية والقيادية. نعمل من خلالها على تقييم احتياجاتكم بدقة ومواءمتكم مع الموجه أو المستشار الأنسب من الدائرة الاستشارية لـ أوايكند لتوجيه مسيرتكم بأعلى معايير الخصوصية.",
+                "A dedicated one-on-one paid consultation to clarify your personal, executive, and wellbeing goals. In this session, we deeply understand what you need from coaching and match you directly with the best-fit advisor from the Awakened circle for your journey.",
+                "جلسة استشارية فردية مدفوعة ومخصصة لتحديد أهدافكم وتطلعاتكم الشخصية والقيادية. نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونقوم بمواءمتكم واختيار الموجه أو المستشار الأنسب لكم من الدائرة الاستشارية لـ أوايكند.",
               )}
             </p>
 
@@ -1012,16 +1012,16 @@ export function BookPage() {
             >
               {[
                 {
-                  en: "Holistic needs diagnostic & life assessment",
-                  ar: "تشخيص شامل للاحتياجات ونمط الحياة",
+                  en: "Comprehensive coaching needs assessment",
+                  ar: "تحديد شامل للاحتياجات والأهداف التدريبية",
                 },
                 {
                   en: "Direct matching with your ideal specialist coach",
                   ar: "المواءمة المباشرة واختيار الموجه الأنسب لك",
                 },
                 {
-                  en: "Personalized roadmap prior to package enrolment",
-                  ar: "خارطة طريق مخصصة قبل بدء البرامج الممتدة",
+                  en: "Clear roadmap guidance prior to package enrolment",
+                  ar: "إرشادات وخارطة طريق واضحة قبل الاشتراك في الباقات",
                 },
               ].map((feat, fi) => (
                 <div
@@ -1103,7 +1103,7 @@ export function BookPage() {
               <span className="text-xs tracking-[0.2em] uppercase font-semibold">
                 {loadingSkuId === PRIMARY_SESSION_SKU
                   ? t("Preparing checkout…", "جارٍ التحضير…")
-                  : t("Book Matching Session", "احجز جلسة المواءمة")}
+                  : t("Book & Pay for Primary Session", "حجز ودفع قيمة الجلسة الأولى")}
               </span>
             </button>
 
@@ -1116,8 +1116,8 @@ export function BookPage() {
               }}
             >
               {t(
-                "Conducted via secure virtual video link or in-person in Doha. Credited toward any Core or Immersive package if you continue your journey.",
-                "تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. يُحتسب المبلغ كاملاً كرصيد عند اشتراكك في الباقات الاستشارية لاحقاً.",
+                "This is a paid consultation (not a free discovery call). Conducted virtually worldwide or in-person in Doha. If you later enrol in a Core or Immersive programme, the cost is credited toward your package.",
+                "هذه جلسة استشارية مدفوعة (تختلف عن مكالمة الاكتشاف المجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في الباقات الاستشارية لاحقاً.",
               )}
             </p>
           </div>

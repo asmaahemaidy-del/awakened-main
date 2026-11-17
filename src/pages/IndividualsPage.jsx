@@ -73,7 +73,7 @@ export function IndividualsPage() {
               "@type": "HowToStep",
               position: 2,
               name: "Assess",
-              text: "The Primary Session is a dedicated coach needs assessment and matching consultation. We evaluate your core goals, personal patterns, and pair you with the ideal advisor.",
+              text: "The Primary Session is a dedicated paid consultation for coaching needs assessment and matching. We clarify your core goals, evaluate your coaching needs, and pair you with the ideal advisor.",
             },
             {
               "@type": "HowToStep",
@@ -384,9 +384,9 @@ export function IndividualsPage() {
                   en: "Assess",
                   ar: "التقييم",
                   enDesc:
-                    "The Primary Session is a dedicated coach needs assessment and matching consultation. We evaluate your core needs and pair you with the ideal advisor from our circle.",
+                    "The Primary Session is a dedicated paid consultation for coaching needs assessment and matching. We understand what you need from coaching and pair you with the ideal advisor from our circle.",
                   arDesc:
-                    "الجلسة الأولى هي جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار المناسب. نقيّم من خلالها احتياجاتكم بدقة ونقوم بمواءمتكم مع الموجه أو المستشار الأنسب من فريقنا الاستشاري.",
+                    "الجلسة الأولى هي جلسة استشارية مدفوعة مخصصة لتحديد الاحتياجات التدريبية والمواءمة الدقيقة مع المستشار الأنسب من فريقنا الاستشاري.",
                 },
                 {
                   step: "03",
