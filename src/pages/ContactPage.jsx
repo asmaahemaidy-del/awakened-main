@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
 
@@ -199,6 +199,10 @@ export function ContactPage() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.website?.value) {
+      setSubmitted(true);
+      return;
+    }
     setSubmitting(true);
     try {
       const adminApiBase =
@@ -662,6 +666,15 @@ export function ContactPage() {
                     direction: isAr ? "rtl" : "ltr",
                   }}
                 >
+                  {/* Honeypot — spam prevention */}
+                  <input
+                    type="text"
+                    name="website"
+                    autoComplete="off"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                  />
                   <Reveal delay={0.05}>
                     <div className="flex flex-col gap-5">
                       <p
@@ -884,6 +897,50 @@ export function ContactPage() {
                             "استفسارك يُعامَل بسرية تامة. لن نشارك معلوماتك مع أي طرف ثالث.",
                           )}
                         </p>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 16 }}>
+                        <input
+                          type="checkbox"
+                          id="contact-consent"
+                          required
+                          style={{ marginTop: 4, accentColor: "var(--brand-sage)", flexShrink: 0, cursor: "pointer" }}
+                        />
+                        <label
+                          htmlFor="contact-consent"
+                          style={{
+                            fontFamily: fontBody,
+                            fontSize: isAr ? "0.8rem" : "0.74rem",
+                            color: "var(--brand-sage-pale)",
+                            lineHeight: 1.6,
+                            cursor: "pointer",
+                          }}
+                        >
+                          {isAr ? (
+                            <>
+                              لقد قرأت وأوافق على{" "}
+                              <Link to="/privacy" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                                سياسة الخصوصية
+                              </Link>{" "}
+                              و{" "}
+                              <Link to="/terms" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                                الشروط والأحكام
+                              </Link>
+                              .
+                            </>
+                          ) : (
+                            <>
+                              I have read and agree to the{" "}
+                              <Link to="/privacy" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                                Privacy Policy
+                              </Link>{" "}
+                              and{" "}
+                              <Link to="/terms" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                                Terms & Conditions
+                              </Link>
+                              .
+                            </>
+                          )}
+                        </label>
                       </div>
                       <div>
                         <button

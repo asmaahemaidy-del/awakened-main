@@ -763,6 +763,8 @@ export function HomePage() {
             </motion.div>
           </div>
         </section>
+        {/* TESTIMONIALS: Hidden until real client quotes are confirmed by owner. Remove {false &&} to show. */}
+        {false && (
         <section
           style={{
             background: "var(--brand-cream)",
@@ -1013,6 +1015,7 @@ export function HomePage() {
             </div>
           </div>
         </section>
+        )}
         <section
           style={{
             background: "var(--brand-cream-warm)",
@@ -2134,6 +2137,8 @@ export function HomePage() {
             </Reveal>
           </div>
         </section>
+        {/* PARTNERS: Hidden until real partner logos/names confirmed. Remove {false &&} to show. */}
+        {false && (
         <section
           style={{
             background: "var(--brand-cream-warm)",
@@ -2201,6 +2206,7 @@ export function HomePage() {
             </div>
           </div>
         </section>
+        )}
         <section
           style={{
             background: "var(--brand-forest)",
