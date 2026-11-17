@@ -182,7 +182,7 @@ const partners = [
     descEn:
       "Our retreat and event experiences are hosted exclusively at properties that share our commitment to privacy, excellence, and intentional design. Each venue is personally vetted by the Awakened team.",
     descAr:
-      "تُقام خلواتنا وفعالياتنا حصريًا في أماكن تشاركنا التزامنا بالخصوصية والتميز والتصميم المدروس. يتم التحقق من كل مكان شخصيًا من قِبَل فريق أوايكند",
+      "تُقام رحلات العافية والرفاهية وفعالياتنا حصريًا في أماكن تشاركنا التزامنا بالخصوصية والتميز والتصميم المدروس. يتم التحقق من كل مكان شخصيًا من قِبَل فريق أوايكند",
     qualities: [
       {
         en: "Five-star resorts in Qatar and internationally",
@@ -251,7 +251,7 @@ const partners = [
     descEn:
       "We partner with forward-thinking organisations in Qatar and globally to deliver bespoke corporate wellbeing programmes, leadership retreats, and long-term wellness strategies for their teams.",
     descAr:
-      "نتشارك مع مؤسسات رائدة في قطر وعالمياً لتقديم برامج عافية مؤسسية مخصصة، وخلوات قيادية، واستراتيجيات عافية طويلة الأمد لفرقهم",
+      "نتشارك مع مؤسسات رائدة في قطر وعالمياً لتقديم برامج عافية مؤسسية مخصصة، ورحلات عافية ورفاهية قيادية، واستراتيجيات عافية طويلة الأمد لفرقهم",
     qualities: [
       {
         en: "Tailored wellbeing programmes for leadership teams",

@@ -98,7 +98,7 @@ export function Header() {
     {
       id: "retreats",
       en: "Wellness Retreats",
-      ar: "خلوات العافية",
+      ar: "رحلات العافية والرفاهية",
     },
     {
       id: "events",
@@ -130,7 +130,7 @@ export function Header() {
     {
       href: "/retreats",
       en: "Retreats",
-      ar: "الخلوات",
+      ar: "رحلات العافية والرفاهية",
     },
     {
       href: "/events",

@@ -146,7 +146,7 @@ const retreats = [
     skuId: "019dce10-f342-70af-8712-c61979038e28",
     number: "01",
     en: "Private Wellness Retreat",
-    ar: "خلوة العافية الخاصة",
+    ar: "رحلة العافية والرفاهية الخاصة",
     tagEn: "Fully Bespoke",
     tagAr: "مخصص بالكامل",
     price: 755e3,
@@ -155,11 +155,11 @@ const retreats = [
     descEn:
       "A completely private retreat designed entirely around you. Held at luxury resorts in Qatar and internationally. Your itinerary, your pace, your transformation.",
     descAr:
-      "خلوة خاصة تماماً، مصممة بالكامل حولك. تُعقد في منتجعات راقية داخل قطر وخارجها. برنامجك، إيقاعك، تحولك",
+      "رحلة عافية ورفاهية خاصة تماماً، مصممة بالكامل حول احتياجاتك الشخصية والقيادية. تُقام في منتجعات راقية داخل قطر وخارجها. برنامجك، إيقاعك، تحولك الحقيقي",
     features: [
       {
         en: "Fully bespoke itinerary — no two retreats are the same",
-        ar: "برنامج مخصص بالكامل — لا خلوتان متشابهتان",
+        ar: "برنامج مخصص بالكامل — تجارب رحلات عافية متفردة",
       },
       {
         en: "Luxury resort partnerships in Qatar and internationally",
@@ -180,7 +180,7 @@ const retreats = [
     skuId: "019dce10-fdbb-74cb-a2fb-99c738dc0d5e",
     number: "02",
     en: "Group Wellness Retreat",
-    ar: "خلوة العافية الجماعية",
+    ar: "رحلة العافية والرفاهية الجماعية",
     tagEn: "Limited Spaces",
     tagAr: "أماكن محدودة",
     price: 35e4,
@@ -214,7 +214,7 @@ const retreats = [
     skuId: "019dce11-0687-736f-91e7-73f13ccc783c",
     number: "03",
     en: "Corporate Retreat",
-    ar: "الخلوة المؤسسية",
+    ar: "رحلة العافية والرفاهية المؤسسية",
     tagEn: "Teams & Organisations",
     tagAr: "الفرق والمؤسسات",
     price: 15e5,
@@ -267,7 +267,7 @@ const events = [
     en: "Stillness in Motion",
     ar: "السكون في الحركة",
     typeEn: "Weekend Retreat",
-    typeAr: "خلوة نهاية الأسبوع",
+    typeAr: "رحلة نهاية الأسبوع للعافية والرفاهية",
     date: "November 2026",
     dateAr: "نوفمبر ٢٠٢٦",
     price: 22e4,
@@ -339,11 +339,11 @@ const corporateTiers = [
     deposit: 1497e3,
     descEn:
       "A structured multi-day retreat combining wellbeing programming, team connection sessions, and individual advisory touchpoints.",
-    descAr: "خلوة متعددة الأيام تجمع بين برامج العافية وجلسات تواصل الفريق ونقاط استشارية فردية",
+    descAr: "برنامج رحلة عافية ورفاهية متعدد الأيام يجمع بين برامج العافية وجلسات تواصل الفريق والاستشارات الفردية",
     features: [
       {
         en: "Multi-day structured retreat programme",
-        ar: "برنامج خلوة متعدد الأيام",
+        ar: "برنامج رحلة عافية متعدد الأيام",
       },
       {
         en: "Group & individual wellbeing sessions",
@@ -374,7 +374,7 @@ const corporateTiers = [
     descEn:
       "A fully bespoke enterprise wellness retreat. Designed from the ground up for large organisations with complex needs and high standards.",
     descAr:
-      "خلوة عافية مؤسسية مخصصة بالكامل. مصممة من الصفر للمؤسسات الكبيرة ذات الاحتياجات المعقدة والمعايير الرفيعة",
+      "رحلة عافية ورفاهية مؤسسية مخصصة بالكامل. مصممة بمعايير تنفيذية رفيعة للمؤسسات الكبرى",
     features: [
       {
         en: "Fully bespoke multi-day enterprise programme",
@@ -394,7 +394,7 @@ const corporateTiers = [
       },
       {
         en: "Post-retreat follow-up & reporting",
-        ar: "متابعة وتقارير ما بعد الخلوة",
+        ar: "متابعة وتقارير ما بعد رحلة العافية",
       },
       {
         en: "Full confidentiality & end-to-end planning",
@@ -458,7 +458,7 @@ export function BookPage() {
         )}
         description={t(
           "Book a free discovery call, advisory sessions, wellness retreats, or corporate programmes with Awakened. Based in Qatar, serving clients worldwide.",
-          "احجز مكالمة اكتشاف مجانية أو جلسات استشارية أو خلوات عافية أو برامج مؤسسية مع أوايكند. مقرنا قطر ونخدم عملاء حول العالم.",
+          "احجز مكالمة اكتشاف مجانية أو جلسات استشارية أو رحلات العافية والرفاهية أو برامج مؤسسية مع أوايكند. مقرنا قطر ونخدم عملاء حول العالم.",
         )}
       />
       <section
@@ -550,7 +550,7 @@ export function BookPage() {
               {
                 href: "#retreats",
                 en: "Wellness Retreats",
-                ar: "خلوات العافية",
+                ar: "رحلات العافية والرفاهية",
               },
               {
                 href: "#events",
@@ -1092,7 +1092,7 @@ export function BookPage() {
           >
             {t(
               "Bespoke wellness retreats and programmes designed for teams and organisations. Every engagement is built around your people, your culture, and your goals. A planning deposit secures your dates — the full programme is priced upon consultation.",
-              "خلوات وبرامج عافية مخصصة مصممة للفرق والمؤسسات. كل مشاركة تُبنى حول موظفيك وثقافتك وأهدافك. تضمن وديعة التخطيط تواريخك — ويُحدد سعر البرنامج الكامل عند الاستشارة",
+              "رحلات وبرامج عافية ورفاهية مخصصة للفرق والمؤسسات. كل مشاركة تُبنى حول موظفيكم وثقافتكم وأهدافكم. تضمن وديعة التخطيط تواريخكم — ويُحدد سعر البرنامج الكامل عند الاستشارة.",
             )}
           </p>
         </div>
@@ -1301,7 +1301,7 @@ export function BookPage() {
               letterSpacing: isAr ? 0 : "-0.01em",
             }}
           >
-            {t("Wellness Retreats", "خلوات العافية")}
+            {t("Wellness Retreats", "رحلات العافية والرفاهية")}
           </h2>
         </div>
         <div className="max-w-7xl mx-auto px-8 pb-10">
@@ -1446,7 +1446,7 @@ export function BookPage() {
             >
               {t(
                 "All retreat reservations are handled with complete confidentiality. Deposits are applied toward your final programme cost",
-                "تُعالج جميع حجوزات الخلوات بسرية تامة. تُطبَّق الودائع على تكلفة برنامجك النهائي.",
+                "تُعالج جميع حجوزات رحلات العافية والرفاهية بسرية تامة. تُطبَّق الودائع على تكلفة برنامجك النهائي.",
               )}
             </p>
           </div>
@@ -1484,7 +1484,7 @@ export function BookPage() {
                 fontStyle: lang === "ar" ? "normal" : "italic",
               }}
             >
-              {t("Retreat Refund Policy", "سياسة استرداد الخلوات")}
+              {t("Retreat Refund Policy", "سياسة استرداد رحلات العافية والرفاهية")}
             </h3>
             <div className="flex flex-col gap-4">
               <div
@@ -1501,7 +1501,7 @@ export function BookPage() {
                     color: "#2E4A32",
                   }}
                 >
-                  {t("Group Retreats", "الخلوات الجماعية")}
+                  {t("Group Retreats", "رحلات العافية والرفاهية الجماعية")}
                 </p>
                 <p
                   className="text-sm leading-relaxed"
@@ -1513,7 +1513,7 @@ export function BookPage() {
                 >
                   {t(
                     "A full 100% refund will be issued for group retreat bookings cancelled no less than 40 days prior to the retreat start date. Cancellations received after this period are non-refundable",
-                    "يحق للمشاركين في الخلوات الجماعية الحصول على استرداد كامل بنسبة 100% في حال الإلغاء قبل 40 يوماً على الأقل من تاريخ بدء الخلوة. لا يحق الاسترداد في حالات الإلغاء بعد هذه المدة",
+                    "يحق للمشاركين في رحلات العافية والرفاهية الجماعية الحصول على استرداد كامل بنسبة 100% في حال الإلغاء قبل 40 يوماً على الأقل من تاريخ بدء البرنامج. لا يحق الاسترداد في حالات الإلغاء بعد هذه المدة.",
                   )}
                 </p>
               </div>
@@ -1531,7 +1531,7 @@ export function BookPage() {
                     color: "#2E4A32",
                   }}
                 >
-                  {t("Private & Corporate Retreats", "الخلوات الخاصة والمؤسسية")}
+                  {t("Private & Corporate Retreats", "رحلات العافية والرفاهية الخاصة والمؤسسية")}
                 </p>
                 <p
                   className="text-sm leading-relaxed"
@@ -1543,7 +1543,7 @@ export function BookPage() {
                 >
                   {t(
                     "Due to the bespoke nature of private and corporate retreats — which involve significant advance planning, venue reservations, practitioner coordination, and logistical arrangements — refunds are assessed on a case-by-case basis",
-                    "نظراً للطابع المخصص للخلوات الخاصة والمؤسسية — التي تتضمن تخطيطاً مسبقاً مكثفاً وحجوزات أماكن وتنسيقاً مع الممارسين — يُقيَّم الاسترداد في كل حالة على حدة",
+                    "نظراً للطابع المخصص لرحلات العافية والرفاهية الخاصة والمؤسسية — التي تتضمن تخطيطاً مسبقاً مكثفاً وحجوزات أماكن وتنسيقاً مع الممارسين — يُقيَّم الاسترداد في كل حالة على حدة.",
                   )}
                 </p>
               </div>

@@ -61,7 +61,7 @@ export function ServicesPage() {
         )}
         description={t(
           "Holistic consultancy, transformational coaching, wellness experiences, retreats, and corporate wellbeing — thoughtfully designed around the whole person.",
-          "استشارات شاملة وتدريب تحويلي وتجارب عافية وخلوات ورفاهية مؤسسية — مصمَّمة بعناية حول الإنسان بأكمله",
+          "استشارات شاملة وتدريب تحويلي وتجارب عافية ورحلات العافية والرفاهية والبرامج المؤسسية — مصمَّمة بعناية حول الإنسان بأكمله",
         )}
       />
       <section

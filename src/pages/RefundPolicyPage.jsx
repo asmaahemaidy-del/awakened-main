@@ -213,7 +213,7 @@ export function RefundPolicyPage() {
           </ul>
 
           {/* B5 */}
-          <h2 style={h2Style}>{t("B5. Retreats and Events", "ب5. الخلوات والفعاليات")}</h2>
+          <h2 style={h2Style}>{t("B5. Retreats and Events", "ب5. رحلات العافية والرفاهية والفعاليات")}</h2>
           <div style={{ overflowX: "auto", marginBottom: 20 }}>
             <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid rgba(35, 62, 49, 0.12)", borderRadius: 4 }}>
               <thead>
@@ -227,7 +227,7 @@ export function RefundPolicyPage() {
                   <td style={tableCellStyle}>
                     {t(
                       <>More than <TODO en="60" ar="60" /> days before the start</>,
-                      <>قبل بدء الخلوة بأكثر من <TODO en="60" ar="60" /> يومًا</>
+                      <>قبل بدء رحلة العافية والرفاهية بأكثر من <TODO en="60" ar="60" /> يومًا</>
                     )}
                   </td>
                   <td style={tableCellStyle}>
@@ -241,7 +241,7 @@ export function RefundPolicyPage() {
                   <td style={tableCellStyle}>
                     {t(
                       <>Between <TODO en="30–60" ar="30–60" /> days before start</>,
-                      <>قبل موعد الخلوة بـ <TODO en="30–60" ar="30–60" /> يومًا</>
+                      <>قبل موعد رحلة العافية والرفاهية بـ <TODO en="30–60" ar="30–60" /> يومًا</>
                     )}
                   </td>
                   <td style={tableCellStyle}>
@@ -274,7 +274,7 @@ export function RefundPolicyPage() {
                 If Awakened cancels or changes the date, you may transfer to the new date or receive a full refund. If an event cannot go ahead for reasons outside our control (for example weather or authority restrictions), we offer a transfer or credit, or a refund of what you paid less costs already paid to third parties (<TODO en="counsel to confirm" ar="يؤكد المحامي" />). Leaving a retreat early does not entitle you to a refund.
               </>,
               <>
-                إذا ألغت أوايكند الفعالية أو غيّرت موعدها، يمكنكم الانتقال إلى الموعد الجديد أو استرداد كامل المبلغ. وإذا تعذّرت إقامة فعالية لأسباب خارجة عن إرادتنا (مثل الطقس أو قيود الجهات المختصة)، فنعرض نقل الحجز أو رصيدًا، أو استرداد ما دفعتموه بعد خصم التكاليف التي دُفعت بالفعل لأطراف ثالثة (<TODO en="counsel to confirm" ar="يؤكد المحامي" />). ومغادرة الخلوة مبكرًا لا تمنح الحق في الاسترداد.
+                إذا ألغت أوايكند الفعالية أو غيّرت موعدها، يمكنكم الانتقال إلى الموعد الجديد أو استرداد كامل المبلغ. وإذا تعذّرت إقامة فعالية لأسباب خارجة عن إرادتنا (مثل الطقس أو قيود الجهات المختصة)، فنعرض نقل الحجز أو رصيدًا، أو استرداد ما دفعتموه بعد خصم التكاليف التي دُفعت بالفعل لأطراف ثالثة (<TODO en="counsel to confirm" ar="يؤكد المحامي" />). ومغادرة رحلة العافية مبكرًا لا تمنح الحق في الاسترداد.
               </>
             )}
           </p>
@@ -297,7 +297,7 @@ export function RefundPolicyPage() {
           <p style={pStyle}>
             {t(
               "Corporate programmes follow the written agreement with the organisation. If it is silent, B5 applies to retreats and B3 to sessions.",
-              "تخضع البرامج المؤسسية للاتفاقية المكتوبة مع المؤسسة. وإذا خلت الاتفاقية من حكم خاص، تسري أحكام ب5 على الخلوات وأحكام ب3 على الجلسات."
+              "تخضع البرامج المؤسسية للاتفاقية المكتوبة مع المؤسسة. وإذا خلت الاتفاقية من حكم خاص، تسري أحكام ب5 على رحلات العافية والرفاهية وأحكام ب3 على الجلسات."
             )}
           </p>
 

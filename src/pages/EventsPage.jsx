@@ -29,7 +29,7 @@ const events = [
     monthAr: "يونيو",
     year: "2026",
     type: "Weekend Retreat",
-    typeAr: "خلوة نهاية الأسبوع",
+    typeAr: "رحلة نهاية الأسبوع للعافية والرفاهية",
     en: "Stillness in Motion",
     ar: "السكون في الحركة",
     price: 162e3,

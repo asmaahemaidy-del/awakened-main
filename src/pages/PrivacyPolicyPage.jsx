@@ -147,7 +147,7 @@ export function PrivacyPolicyPage() {
           <p style={pStyle}>
             {t(
               "This policy applies to our website gotawakened.com, our booking and assessment forms, our sessions, retreats and events, and our social media accounts. It follows Qatar’s Personal Data Privacy Protection Law (Law No. 13 of 2016). If you are not in Qatar, local rules that apply to you may add to your rights.",
-              "تسري هذه السياسة على موقعنا gotawakened.com ونماذج الحجز والتقييم والجلسات والخلوات والفعاليات وحساباتنا على وسائل التواصل الاجتماعي. وهي تتبع قانون حماية خصوصية البيانات الشخصية القطري (القانون رقم 13 لسنة 2016). وإذا كنتم خارج قطر، فقد تمنحكم القواعد المحلية المطبقة عليكم حقوقًا إضافية."
+              "تسري هذه السياسة على موقعنا gotawakened.com ونماذج الحجز والتقييم والجلسات الاستشارية ورحلات العافية والرفاهية والفعاليات وحساباتنا على وسائل التواصل الاجتماعي. وهي تتبع قانون حماية خصوصية البيانات الشخصية القطري (القانون رقم 13 لسنة 2016). وإذا كنتم خارج قطر، فقد تمنحكم القواعد المحلية المطبقة عليكم حقوقًا إضافية."
             )}
           </p>
 

@@ -115,7 +115,7 @@ export function TermsPage() {
           <p style={pStyle}>
             {t(
               "Coaching, wellbeing advisory, retreats, and corporate programmes aimed at personal development and lifestyle goals. We are not a medical, psychological, or psychiatric service and do not diagnose or treat conditions. Please keep seeing your doctor and do not stop or change medical treatment because of a session. In an emergency, please call 999.",
-              "التدريب والإرشاد في مجال العافية، والخلوات، والبرامج المؤسسية، بهدف التطوير الشخصي وتحقيق أهداف نمط الحياة. لسنا جهة تقدّم خدمات طبية أو علاجًا نفسيًا أو طبًّا نفسيًا، ولا نشخّص الحالات ولا نعالجها. يرجى مواصلة استشارة طبيبكم وعدم إيقاف العلاج الطبي أو تغييره بسبب أي جلسة. وفي حالات الطوارئ اتصلوا على 999."
+              "التدريب والإرشاد في مجال العافية، ورحلات العافية والرفاهية، والبرامج المؤسسية، بهدف التطوير الشخصي وتحقيق أهداف نمط الحياة. لسنا جهة تقدّم خدمات طبية أو علاجًا نفسيًا أو طبًّا نفسيًا، ولا نشخّص الحالات ولا نعالجها. يرجى مواصلة استشارة طبيبكم وعدم إيقاف العلاج الطبي أو تغييره بسبب أي جلسة. وفي حالات الطوارئ اتصلوا على 999."
             )}
           </p>
 

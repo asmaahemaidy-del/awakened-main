@@ -51,7 +51,7 @@ const pages = {
       },
       body1: {
         en: "We work across five areas for individuals — self, health, career, family, and movement — and with organisations on leadership wellbeing, team wellness, and corporate retreats. Not as separate services, but as one integrated practice.",
-        ar: "نعمل عبر خمسة مجالات للأفراد — الذات والصحة والمسار المهني والأسرة والحركة — ومع المؤسسات على رفاهية القيادة ورفاهية الفريق والخلوات المؤسسية. ليس كخدمات منفصلة، بل كممارسة متكاملة واحدة.",
+        ar: "نعمل عبر خمسة مجالات للأفراد — الذات والصحة والمسار المهني والأسرة والحركة — ومع المؤسسات على رفاهية القيادة ورفاهية الفريق ورحلات العافية والرفاهية المؤسسية. ليس كخدمات منفصلة، بل كممارسة متكاملة واحدة.",
       },
       body2: {
         en: "Because the person who shows up at work is the same person who goes home to their family, who carries their health, who holds their sense of purpose. We see all of it.",
@@ -307,7 +307,7 @@ const pages = {
           descEn:
             "Every programme, every retreat, every session is built from scratch around the individual. We listen first, design second — always.",
           descAr:
-            "كل برنامج، كل خلوة، كل جلسة — تُبنى من الصفر حول الفرد. نستمع أولاً، ثم نصمم — دائماً",
+            "كل برنامج، كل رحلة عافية ورفاهية، كل جلسة — تُبنى من الصفر حول الفرد. نستمع أولاً، ثم نصمم — دائماً",
         },
         {
           id: "v4",
@@ -477,7 +477,7 @@ const pages = {
         {
           id: "retreats",
           en: "Wellness Retreats",
-          ar: "خلوات العافية",
+          ar: "رحلات العافية والرفاهية",
         },
         {
           id: "events",
@@ -604,7 +604,7 @@ const pages = {
           },
           desc: {
             en: "Full access to all events, retreats, and exclusive member gatherings. Includes one complimentary advisory session and a personal wellness check-in.",
-            ar: "وصول كامل إلى جميع الفعاليات والخلوات والتجمعات الحصرية للأعضاء. يشمل جلسة استشارية مجانية واحدة ومتابعة شخصية للعافية.",
+            ar: "وصول كامل إلى جميع الفعاليات ورحلات العافية والرفاهية والتجمعات الحصرية للأعضاء. يشمل جلسة استشارية مجانية واحدة ومتابعة شخصية للعافية.",
           },
           features: [
             {
@@ -629,7 +629,7 @@ const pages = {
             },
             {
               en: "Early access to retreat bookings",
-              ar: "الوصول المبكر لحجوزات الخلوات",
+              ar: "الوصول المبكر لحجوزات رحلات العافية والرفاهية",
               id: "XF02N5vuEQBdfbGZIlCXC",
             },
             {
@@ -740,7 +740,7 @@ const pages = {
         icon: "◈",
         title: {
           en: "Retreats",
-          ar: "الخلوات",
+          ar: "رحلات العافية والرفاهية",
         },
         desc: {
           en: "Deeper immersive experiences for small groups. A chance to step away, reset, and return with clarity.",
@@ -814,7 +814,7 @@ const pages = {
           },
           desc: {
             en: "Everything in Essential, plus exclusive quarterly gatherings, one complimentary advisory session, personal mid-year wellness check-in, early retreat access, and a dedicated member concierge.",
-            ar: "كل ما في الأساسية، بالإضافة إلى تجمعات ربع سنوية حصرية وجلسة استشارية مجانية ومتابعة شخصية منتصف العام والوصول المبكر للخلوات وخدمة كونسيرج مخصصة.",
+            ar: "كل ما في الأساسية، بالإضافة إلى تجمعات ربع سنوية حصرية وجلسة استشارية مجانية ومتابعة شخصية منتصف العام والوصول المبكر لرحلات العافية والرفاهية وخدمة كونسيرج مخصصة.",
           },
           priceQAR: "QAR 5,500",
           priceUSD: "~$1,511 USD / year",
@@ -937,7 +937,7 @@ const pages = {
         ar: {
           label: "المؤسسات",
           title: "فرق وقادة يريدون بناء شيء دائم",
-          desc: "رفاهية مكان العمل وتوجيه القيادة والخلوات المؤسسية.",
+          desc: "رفاهية بيئة العمل، والتوجيه القيادي، ورحلات العافية والرفاهية المؤسسية.",
         },
         href: "/organizations",
         icon: "◈",
@@ -952,7 +952,7 @@ const pages = {
         ar: {
           label: "المجتمع",
           title: "كل من يتطلع إلى حياة أعمق",
-          desc: "فعاليات وورش عمل وخلوات ونادي كتاب — مفتوح للجميع.",
+          desc: "فعاليات، ورش عمل، ورحلات العافية والرفاهية، ونادي قراءة — مفتوحة للجميع.",
         },
         href: "/community",
         icon: "◉",
@@ -1004,7 +1004,7 @@ const pages = {
       },
       {
         en: "Retreats & Experiences",
-        ar: "الخلوات والتجارب",
+        ar: "رحلات العافية والرفاهية والتجارب",
         href: "/retreats",
         id: "asB3HrBuoJizS7eeVHygb",
       },
@@ -1019,7 +1019,7 @@ const pages = {
           desc: "Two days of guided stillness, movement, and reflection. A rare chance to step away from the pace of daily life and return with clarity.",
         },
         ar: {
-          name: 'خلوة نهاية الأسبوع "السكون في الحركة"',
+          name: 'رحلة نهاية الأسبوع للعافية والرفاهية "السكون في الحركة"',
           location: "قطر",
           date: "نوفمبر 2026",
           spots: "بحد أقصى 8 مشاركين",
@@ -1134,8 +1134,8 @@ const pages = {
           a: "A team wellness programme is typically an ongoing or recurring engagement — workshops, group sessions, or advisory support woven into the rhythm of work. A corporate retreat is a single immersive experience, held off-site, designed to create a meaningful break from the day-to-day and return people with a different perspective. Both serve distinct purposes, and some organisations choose to combine them.",
         },
         ar: {
-          q: "كيف تختلف الخلوة المؤسسية عن برنامج رفاهية الفريق؟",
-          a: "برنامج رفاهية الفريق هو عادةً مشاركة مستمرة أو متكررة — ورش عمل وجلسات جماعية ودعم استشاري يُدمج في إيقاع العمل. أما الخلوة المؤسسية فهي تجربة مكثفة واحدة خارج المكتب، مصممة لخلق استراحة حقيقية من الروتين اليومي وإعادة الناس بمنظور مختلف. كلاهما يخدم أغراضًا مميزة، وبعض المؤسسات تختار الجمع بينهما.",
+          q: "كيف تختلف رحلة العافية والرفاهية المؤسسية عن برنامج رفاهية الفريق؟",
+          a: "برنامج رفاهية الفريق هو عادةً مشاركة مستمرة أو متكررة — ورش عمل وجلسات جماعية ودعم استشاري يُدمج في إيقاع العمل. أما رحلة العافية والرفاهية المؤسسية فهي تجربة متكاملة واحدة خارج المكتب، مصممة لخلق استراحة حقيقية من الروتين اليومي وإعادة الناس بمنظور مختلف. كلاهما يخدم أغراضًا مميزة، وبعض المؤسسات تختار الجمع بينهما.",
         },
       },
       {
@@ -1146,7 +1146,7 @@ const pages = {
         },
         ar: {
           q: "هل تعملون مع مؤسسات خارج قطر؟",
-          a: "نعم. رغم أن مقرنا في الدوحة، نعمل مع مؤسسات في منطقة الخليج وعلى المستوى الدولي. يمكن تصميم المشاركات الافتراضية وبرامج الخلوات لفرق في أي مكان في العالم. إذا كنت خارج قطر وتريد استكشاف شكل الشراكة المحتملة، فنحن نرحب بالمحادثة.",
+          a: "نعم. رغم أن مقرنا في الدوحة، نعمل مع مؤسسات في منطقة الخليج وعلى المستوى الدولي. يمكن تصميم المشاركات الافتراضية وبرامج رحلات العافية والرفاهية لفرق في أي مكان في العالم. إذا كنت خارج قطر وتريد استكشاف شكل الشراكة المحتملة، فنحن نرحب بالمحادثة.",
         },
       },
       {
@@ -1192,8 +1192,8 @@ const pages = {
           desc: "Immersive off-site experiences that reset perspective, deepen connection, and return teams with renewed clarity and purpose. Designed for leadership groups, cross-functional teams, or organisations marking a significant transition, retreats are held in carefully chosen settings that support genuine rest and reflection. Participants consistently describe a shift in how they relate to their work and to each other — one that carries forward long after the retreat ends.",
         },
         ar: {
-          title: "خلوات مؤسسية",
-          desc: "تجارب مكثفة خارج المكتب تُعيد ضبط المنظور وتعمّق الروابط وتُعيد الفرق بوضوح وهدف متجدد. صُمِّمت لمجموعات القيادة والفرق متعددة التخصصات أو المؤسسات التي تمر بمرحلة تحول مهمة، وتُعقد في بيئات مختارة بعناية تدعم الراحة الحقيقية والتأمل. يصف المشاركون باستمرار تحولًا في علاقتهم بعملهم وببعضهم — يمتد أثره طويلًا بعد انتهاء الخلوة.",
+          title: "رحلات العافية والرفاهية المؤسسية",
+          desc: "تجارب مكثفة خارج المكتب تُعيد ضبط المنظور وتعمّق الروابط وتُعيد الفرق بوضوح وهدف متجدد. صُمِّمت لمجموعات القيادة والفرق متعددة التخصصات أو المؤسسات التي تمر بمرحلة تحول مهمة، وتُعقد في بيئات مختارة بعناية تدعم الراحة الحقيقية والتأمل. يصف المشاركون باستمرار تحولًا في علاقتهم بعملهم وببعضهم — يمتد أثره طويلًا بعد انتهاء رحلة العافية والرفاهية.",
         },
         icon: "◇",
         id: "DabRdApfBukBNqpfhey3q",
@@ -1317,7 +1317,7 @@ const pages = {
           },
           {
             en: "Optional: curated corporate retreats at luxury venues",
-            ar: "اختياري: خلوات مؤسسية مختارة في أماكن راقية",
+            ar: "اختياري: رحلات عافية ورفاهية مؤسسية مختارة في منتجعات راقية",
             id: "kxB4xzPmZ-Z4pEONpO-J9",
           },
         ],
@@ -1332,11 +1332,11 @@ const pages = {
         number: "04",
         id: "luxury-retreats",
         en: "Luxury Wellness Retreats",
-        ar: "خلوات العافية الراقية",
+        ar: "رحلات العافية والرفاهية الراقية",
         descEn:
           "Curated retreat experiences at premium venues in Qatar and internationally. Each retreat combines lifestyle advisory sessions, restorative practices, and expert-led programming — designed to help you reset, reflect, and return with greater clarity.",
         descAr:
-          "تجارب خلوات مختارة بعناية في أماكن راقية داخل قطر وخارجها. تجمع كل خلوة بين جلسات استشارة نمط الحياة والممارسات التصالحية والبرامج بإشراف خبراء — مصممة لمساعدتك على إعادة الضبط والتأمل والعودة بوضوح أعمق",
+          "تجارب رحلات عافية ورفاهية مختارة بعناية في أرقى المنتجعات داخل قطر وخارجها. تجمع كل رحلة عافية بين جلسات الاستشارة والممارسات التصالحية والبرامج بإشراف خبراء — مصممة لمساعدتك على إعادة الضبط والتأمل والعودة بوضوح أعمق",
         features: [
           {
             en: "Exclusive partnerships with luxury venues in Qatar and internationally",
@@ -1345,7 +1345,7 @@ const pages = {
           },
           {
             en: "Fully bespoke retreat itinerary — designed around each guest",
-            ar: "برنامج خلوة مخصص بالكامل — مصمم حول كل ضيف",
+            ar: "برنامج رحلة عافية مخصص بالكامل — مصمم حول كل ضيف",
             id: "-V-3k3GJuOPY0FoQsjqKJ",
           },
           {
@@ -1361,7 +1361,7 @@ const pages = {
         ],
         bookingLink: "/book#retreats",
         bookingEn: "View Retreats",
-        bookingAr: "استعرض الخلوات",
+        bookingAr: "استعرض رحلات العافية والرفاهية",
         learnMoreLink: "/retreats",
         learnMoreEn: "Learn More",
         learnMoreAr: "اعرف المزيد",

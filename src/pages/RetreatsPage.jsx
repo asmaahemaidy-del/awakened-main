@@ -149,11 +149,11 @@ const retreatTypes = [
   {
     number: "01",
     en: "Private Wellness Retreats",
-    ar: "خلوات العافية الخاصة",
+    ar: "رحلات العافية والرفاهية الخاصة",
     descEn:
       "Exclusively curated for individuals or couples seeking deep rest, renewal, and transformation. Held at the finest luxury resorts in Qatar and select international destinations — each retreat is designed entirely around you, your intentions, and your pace. Every retreat we design is unique. Because every person is.",
     descAr:
-      "مصممة حصرياً للأفراد أو الأزواج الباحثين عن الراحة العميقة والتجديد والتحول. تُعقد في أرقى المنتجعات الفاخرة داخل قطر ووجهات دولية مختارة — كل خلوة مصممة بالكامل حولك وحول نواياك وإيقاعك. كل خلوة نصممها فريدة من نوعها. لأن كل شخص فريد",
+      "مصممة حصرياً للأفراد أو الأزواج الباحثين عن الراحة العميقة والتجديد والتحول. تُعقد في أرقى المنتجعات الفاخرة داخل قطر ووجهات دولية مختارة — كل رحلة عافية مصممة بالكامل حولك وحول نواياك وإيقاعك. كل رحلة عافية نصممها متفردة بذاتها. لأن كل شخص فريد",
     features: [
       {
         en: "Luxury resort partnerships in Qatar and internationally",
@@ -161,7 +161,7 @@ const retreatTypes = [
       },
       {
         en: "Fully bespoke itinerary — no two retreats are the same",
-        ar: "برنامج مخصص بالكامل — لا خلوتان متشابهتان",
+        ar: "برنامج مخصص بالكامل — تجارب رحلات عافية متفردة",
       },
       {
         en: "Integration of holistic therapies and personal consultancy sessions",
@@ -176,11 +176,11 @@ const retreatTypes = [
   {
     number: "02",
     en: "Group Wellness Retreats",
-    ar: "خلوات العافية الجماعية",
+    ar: "رحلات العافية والرفاهية الجماعية",
     descEn:
       "Open to individuals from all walks of life — the only shared requirement is a genuine desire for wellness. Our group retreats bring together people of different backgrounds, cultures, and stories in a curated, supportive environment. Strangers arrive; a community leaves.",
     descAr:
-      "مفتوحة للأفراد من جميع مناحي الحياة — الشرط الوحيد المشترك هو الرغبة الحقيقية في العافية. تجمع خلواتنا الجماعية أشخاصاً من خلفيات وثقافات وقصص مختلفة في بيئة مختارة وداعمة. يصلون غرباء ويغادرون مجتمعاً",
+      "مفتوحة للأفراد من جميع مناحي الحياة — الشرط الوحيد المشترك هو الرغبة الحقيقية في العافية. تجمع رحلاتنا الجماعية للعافية والرفاهية نخبة من المشاركين من خلفيات وثقافات وقصص مختلفة في بيئة مختارة وداعمة. يصلون غرباء ويغادرون مجتمعاً",
     features: [
       {
         en: "Open to all — no prior wellness experience required",
@@ -203,11 +203,11 @@ const retreatTypes = [
   {
     number: "03",
     en: "Corporate Retreats",
-    ar: "الخلوات المؤسسية",
+    ar: "رحلات العافية والرفاهية المؤسسية",
     descEn:
       "A powerful extension of corporate wellness — taking teams out of the office and into an environment designed for genuine reset. Corporate retreats are curated at luxury venues in Qatar and internationally, combining structured wellbeing programming with space for reflection, connection, and renewal.",
     descAr:
-      "امتداد قوي لبرامج العافية المؤسسية — يأخذ الفرق خارج المكتب إلى بيئة مصممة لإعادة الضبط الحقيقية. تُنظَّم الخلوات المؤسسية في أماكن فاخرة داخل قطر وخارجها، تجمع بين برامج عافية منظمة ومساحة للتأمل والتواصل والتجديد",
+      "امتداد قوي لبرامج العافية المؤسسية — يأخذ الفرق خارج المكتب إلى بيئة مصممة لإعادة الضبط الحقيقية. تُنظَّم رحلات العافية والرفاهية المؤسسية في أماكن فاخرة داخل قطر وخارجها، تجمع بين برامج عافية منظمة ومساحة للتأمل والتواصل والتجديد",
     features: [
       {
         en: "Curated at luxury resorts in Qatar and internationally",
@@ -351,7 +351,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                   color: "#2E4A32",
                 }}
               >
-                {t("Retreat Enquiry", "استفسار خلوة")}
+                {t("Retreat Enquiry", "استفسار رحلة عافية")}
               </p>
               <h3
                 style={{
@@ -531,7 +531,7 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                   onChange={set("message")}
                   placeholder={t(
                     "What are you hoping to experience or achieve through this retreat?",
-                    "ما الذي تأمل في تجربته أو تحقيقه من خلال هذه الخلوة؟",
+                    "ما الذي تتطلع إلى تجربته أو تحقيقه من خلال رحلة العافية والرفاهية هذه؟",
                   )}
                   style={{
                     ...inputStyle,
@@ -599,11 +599,11 @@ export function RetreatsPage() {
         path="/retreats"
         title={t(
           "Wellness Retreats — Awakened | Worldwide",
-          "خلوات العافية — أوايكند | حول العالم",
+          "رحلات العافية والرفاهية — أوايكند | حول العالم",
         )}
         description={t(
           "Awakened curates private luxury wellness retreats and group experiences at the finest resorts worldwide — founded in Qatar, available globally",
-          "تختار أوايكند خلوات عافية فاخرة خاصة وتجارب جماعية في أرقى المنتجعات حول العالم — تأسست في قطر ومتاحة عالمياً.",
+          "تنظم أوايكند رحلات عافية ورفاهية فاخرة خاصة وتجارب جماعية في أرقى المنتجعات حول العالم — انطلاقاً من قطر ومتاحة عالمياً.",
         )}
       />
       <section
@@ -633,7 +633,7 @@ export function RetreatsPage() {
         />
         <div className="relative z-10 max-w-7xl mx-auto px-8">
           <Reveal>
-            <BiLabel en="Wellness Retreats" ar="خلوات العافية" />
+            <BiLabel en="Wellness Retreats" ar="رحلات العافية والرفاهية" />
           </Reveal>
           <Reveal delay={0.1}>
             <div className="flex flex-col items-center text-center gap-3 mt-5 mb-8">
@@ -688,7 +688,7 @@ export function RetreatsPage() {
           <Reveal delay={0.26}>
             <BiBlock
               en="Private luxury retreats and curated group experiences — held at the finest resorts worldwide. Every detail is considered. Every experience is personal."
-              ar="خلوات فاخرة خاصة وتجارب جماعية مختارة — تُعقد في أرقى المنتجعات داخل قطر وخارجها. كل تفصيل مدروس. كل تجربة شخصية."
+              ar="رحلات عافية ورفاهية فاخرة وتجارب جماعية مختارة — تُقام في أرقى المنتجعات داخل قطر وخارجها. كل تفصيل مدروس. كل تجربة مصممة بعناية."
               size="1rem"
               enColor="#2E4A32"
               arColor="#4A6B4E"
@@ -708,7 +708,7 @@ export function RetreatsPage() {
       >
         <div className="max-w-7xl mx-auto px-8">
           <Reveal>
-            <BiLabel en="Retreat Experiences" ar="تجارب الخلوات" />
+            <BiLabel en="Retreat Experiences" ar="تجارب رحلات العافية والرفاهية" />
           </Reveal>
           <Reveal delay={0.08}>
             <div className="flex flex-col items-center gap-1 mt-4 mb-4 text-center">
@@ -721,7 +721,7 @@ export function RetreatsPage() {
                   lineHeight: 1.1,
                 }}
               >
-                {t("Choose your retreat", "اختر خلوتك")}
+                {t("Choose your retreat", "اختر رحلة العافية المناسبة لك")}
               </h2>
             </div>
           </Reveal>
@@ -1009,7 +1009,7 @@ export function RetreatsPage() {
                 >
                   {t(
                     "Workshops, masterclasses, and curated experiences — separate from our retreats programme",
-                    "ورش عمل ودروس رئيسية وتجارب مختارة — منفصلة عن برنامج خلواتنا.",
+                    "ورش عمل ودروس رئيسية وتجارب مختارة — منفصلة عن برنامج رحلات العافية والرفاهية.",
                   )}
                 </p>
               </div>
@@ -1068,7 +1068,7 @@ export function RetreatsPage() {
               >
                 {t(
                   '"Every retreat we design is unique. Because every person is."',
-                  '"كل خلوة نصممها فريدة من نوعها. لأن كل شخص فريد."',
+                  '"كل رحلة عافية ورفاهية نصممها متفردة بذاتها. لأن كل إنسان حالة خاصة."',
                 )}
               </blockquote>
             </div>
@@ -1104,7 +1104,7 @@ export function RetreatsPage() {
                 }}
               >
                 <span className="text-xs tracking-[0.2em] uppercase">
-                  {t("Enquire About a Retreat", "الاستفسار عن خلوة")}
+                  {t("Enquire About a Retreat", "الاستفسار عن رحلات العافية والرفاهية")}
                 </span>
               </Link>
               <Link

@@ -138,7 +138,7 @@ export function Footer() {
     { to: "/about",        en: "About",           ar: "من نحن" },
     { to: "/services",     en: "Services",        ar: "الخدمات" },
     { to: "/individuals",  en: "Coaching",        ar: "التوجيه الفردي" },
-    { to: "/retreats",     en: "Retreats",        ar: "الخلوات" },
+    { to: "/retreats",     en: "Retreats",        ar: "رحلات العافية والرفاهية" },
     { to: "/events",       en: "Events",          ar: "الفعاليات" },
     { to: "/community",    en: "Community",       ar: "المجتمع" },
     { to: "/contact",      en: "Contact",         ar: "تواصل معنا" },

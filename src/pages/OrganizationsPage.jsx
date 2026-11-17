@@ -66,7 +66,7 @@ export function OrganizationsPage() {
         )}
         description={t(
           "Leadership coaching, team wellness programmes, corporate retreats, and wellbeing strategy for organizations in Qatar and worldwide. Enquire about corporate programmes.",
-          "توجيه قيادي وبرامج عافية للفرق وخلوات مؤسسية واستراتيجية رفاهية للمنظمات في قطر وحول العالم. استفسر عن البرامج المؤسسية.",
+          "توجيه قيادي وبرامج عافية للفرق ورحلات العافية والرفاهية المؤسسية واستراتيجيات الرفاهية للمنظمات في قطر وحول العالم. استفسر عن البرامج المؤسسية.",
         )}
         jsonLd={{
           "@context": "https://schema.org",

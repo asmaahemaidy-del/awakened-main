@@ -254,7 +254,7 @@ export function ContactPage() {
     },
     {
       en: "Retreats",
-      ar: "الخلوات",
+      ar: "رحلات العافية والرفاهية",
     },
     {
       en: "Events & Workshops",
@@ -292,7 +292,7 @@ export function ContactPage() {
         title={t("Contact — Awakened", "تواصل معنا — أوايكند")}
         description={t(
           "Reach out to Awakened — founded in Qatar, serving clients worldwide virtually and through international retreats",
-          "تواصل مع أوايكند — تأسسنا في قطر ونخدم العملاء حول العالم افتراضياً وعبر الخلوات الدولية.",
+          "تواصل مع أوايكند — تأسسنا في قطر ونخدم العملاء حول العالم افتراضياً وعبر رحلات العافية والرفاهية حول العالم.",
         )}
       />
       <section
@@ -416,12 +416,12 @@ export function ContactPage() {
               },
               {
                 labelEn: "Retreats",
-                labelAr: "الخلوات",
+                labelAr: "رحلات العافية والرفاهية",
                 headEn: "Qatar & International",
                 headAr: "قطر والعالم",
                 bodyEn:
                   "Wellness retreats held at luxury venues in Qatar and internationally — we travel to you",
-                bodyAr: "خلوات العافية في أماكن فاخرة داخل قطر وخارجها — نحن نصل إليك",
+                bodyAr: "رحلات العافية والرفاهية في منتجعات فاخرة داخل قطر وحول العالم — نحن نصل إليك",
               },
               {
                 labelEn: "Response Time",

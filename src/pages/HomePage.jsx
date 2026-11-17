@@ -177,7 +177,7 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
                   marginBottom: 4,
                 }}
               >
-                {t("Retreat Enquiry", "استفسار خلوة")}
+                {t("Retreat Enquiry", "استفسار رحلة عافية")}
               </p>
               <h3
                 style={{
@@ -657,7 +657,7 @@ export function HomePage() {
             >
               {t(
                 "Holistic consultancy, transformational coaching, wellness experiences, retreats, and corporate wellbeing — thoughtfully designed around the whole person.",
-                "استشارات شاملة، وتدريب تحويلي، وتجارب عافية، وخلوات، وبرامج رفاهية مؤسسية — مصمَّمة بعناية حول الإنسان بأكمله.",
+                "استشارات شاملة، وتدريب تحويلي، وتجارب عافية، ورحلات العافية والرفاهية، والبرامج المؤسسية — مصمَّمة بعناية حول الإنسان بأكمله.",
               )}
             </motion.p>
             <motion.div
@@ -725,7 +725,7 @@ export function HomePage() {
                   e.currentTarget.style.color = "var(--brand-sage-pale)";
                 }}
               >
-                {t("Explore Our Retreats", "استكشف خلواتنا")}
+                {t("Explore Our Retreats", "استكشف رحلات العافية والرفاهية")}
               </Link>
             </motion.div>
             <motion.div
@@ -924,7 +924,7 @@ export function HomePage() {
                   >
                     {t(
                       "[PLACEHOLDER] The retreat was unlike anything I'd experienced before. Every detail was considered, the privacy was absolute, and I returned home with a renewed sense of purpose. I've recommended Awakened to several close friends.",
-                      "[نص مؤقت] كانت الخلوة على عكس أي شيء مررت به من قبل. كل تفصيل كان مدروساً، والخصوصية كانت مطلقة، وعدت إلى المنزل بإحساس متجدد بالهدف. لقد أوصيت بأوايكند لعدد من أصدقائي المقربين",
+                      "[نص مؤقت] كانت رحلة العافية والرفاهية تجربة فارقة على عكس أي شيء مررت به من قبل. كل تفصيل كان مدروساً، والخصوصية كانت مطلقة، وعدت إلى المنزل بإحساس متجدد بالهدف. لقد أوصيت بأوايكند لعدد من أصدقائي المقربين",
                     )}
                   </p>
                   <div
@@ -943,7 +943,7 @@ export function HomePage() {
                         fontWeight: isAr ? 600 : 400,
                       }}
                     >
-                      {t("Private Client, London", "عميل خاص، لندن")}
+                      {t("Private Advisory Client", "عميل خاص، استشارات قيادية")}
                     </p>
                   </div>
                 </div>
@@ -1183,7 +1183,7 @@ export function HomePage() {
               >
                 {t(
                   "Awakened brings personalized coaching, guidance, wellbeing, personal growth, career support, family guidance, movement, retreats, and transformational experiences into one connected approach — helping you understand where you are, discover what you need, and move forward with greater clarity and intention.",
-                  "تجمع أوايكند بين التوجيه الشخصي والإرشاد والعافية والنمو الشخصي ودعم المسار المهني وتوجيه الأسرة والحركة والخلوات والتجارب التحويلية في نهج متكامل واحد — يساعدك على فهم وضعك الحالي، واكتشاف ما تحتاجه، والمضي قدمًا بوضوح أكبر وهدف أعمق.",
+                  "تجمع أوايكند بين التوجيه الشخصي والإرشاد والعافية والنمو الشخصي ودعم المسار المهني وتوجيه الأسرة والحركة ورحلات العافية والرفاهية والتجارب الاستشارية في نهج متكامل واحد — يساعدك على فهم وضعك الحالي، واكتشاف ما تحتاجه، والمضي قدمًا بوضوح أكبر وهدف أعمق.",
                 )}
               </p>
             </Reveal>
@@ -1527,7 +1527,7 @@ export function HomePage() {
                 {
                   q: {
                     en: "Who are Awakened's retreats and coaching for?",
-                    ar: "لمن تُوجَّه خلوات أوايكند وجلسات التدريب؟",
+                    ar: "لمن تُوجَّه رحلات العافية والرفاهية وجلسات أوايكند الاستشارية؟",
                   },
                   a: {
                     en: "Awakened works with individuals, couples, and senior professionals who are ready for a more intentional approach to their health, clarity, and quality of life. Our clients come from across the Gulf and internationally — many are high-achieving people who have found that conventional approaches no longer meet the depth of change they are seeking.",
@@ -1633,7 +1633,7 @@ export function HomePage() {
                   fontStyle: isAr ? "normal" : "italic",
                 }}
               >
-                {t("Upcoming Retreats", "الخلوات القادمة")}
+                {t("Upcoming Retreats", "رحلات العافية والرفاهية القادمة")}
               </h2>
             </Reveal>
             {home.RETREAT_SLIDES.map((r, i) => {
@@ -1776,7 +1776,7 @@ export function HomePage() {
                             textAlign: "center",
                           }}
                         >
-                          {t("All retreats", "جميع الخلوات")}
+                          {t("All retreats", "جميع رحلات العافية والرفاهية")}
                         </Link>
                       </div>
                     </div>
