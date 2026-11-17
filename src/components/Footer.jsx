@@ -178,7 +178,7 @@ export function Footer() {
           }}
         >
           {/* Col 1 — Brand */}
-          <div>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Link to="/" aria-label="Awakened — Home" style={{ display: "inline-block", marginBottom: 16 }}>
               <img
                 src="/images/logo-320.webp"
@@ -205,6 +205,8 @@ export function Footer() {
                 color: "var(--brand-gold-light)",
                 lineHeight: 1.75,
                 marginBottom: 10,
+                textAlign: "center",
+                maxWidth: 320,
               }}
             >
               {t(
@@ -220,6 +222,7 @@ export function Footer() {
                 textTransform: ar ? "none" : "uppercase",
                 color: "var(--brand-gold)",
                 fontWeight: 500,
+                textAlign: "center",
               }}
             >
               {t("Founded in Qatar · Worldwide", "تأسست في قطر · نخدم العالم")}
@@ -227,13 +230,13 @@ export function Footer() {
           </div>
 
           {/* Col 2 — Navigation */}
-          <div>
-            <span style={colLabel}>{t("Explore", "تصفّح")}</span>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <span style={{ ...colLabel, textAlign: "center" }}>{t("Explore", "تصفّح")}</span>
             {navLinks.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                style={linkStyle}
+                style={{ ...linkStyle, textAlign: "center" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-light)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-sage-pale)")}
               >
@@ -255,6 +258,7 @@ export function Footer() {
                 color: "var(--brand-gold)",
                 textDecoration: "none",
                 fontWeight: 600,
+                textAlign: "center",
                 transition: "all 0.25s ease",
               }}
               onMouseEnter={(e) => {
@@ -271,11 +275,11 @@ export function Footer() {
           </div>
 
           {/* Col 3 — Contact + Socials */}
-          <div>
-            <span style={colLabel}>{t("Connect", "تواصل")}</span>
+          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <span style={{ ...colLabel, textAlign: "center" }}>{t("Connect", "تواصل")}</span>
             <a
               href="mailto:info@gotawakened.com"
-              style={{ ...linkStyle, letterSpacing: "0.03em" }}
+              style={{ ...linkStyle, letterSpacing: "0.03em", textAlign: "center" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-light)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-sage-pale)")}
             >
@@ -284,7 +288,7 @@ export function Footer() {
             <a
               href="tel:+97477106177"
               dir="ltr"
-              style={{ ...linkStyle, direction: "ltr", unicodeBidi: "isolate", display: "inline-block", marginBottom: 20 }}
+              style={{ ...linkStyle, direction: "ltr", unicodeBidi: "isolate", display: "inline-block", marginBottom: 20, textAlign: "center" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--brand-gold-light)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--brand-sage-pale)")}
             >
@@ -292,7 +296,7 @@ export function Footer() {
             </a>
 
             {/* Social icons — only platforms with confirmed profiles */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "center" }}>
               <SocialIcon href={SOCIAL_LINKS.instagram} label="Awakened on Instagram"><IgIcon /></SocialIcon>
               <SocialIcon href={SOCIAL_LINKS.tiktok}    label="Awakened on TikTok"><TkIcon /></SocialIcon>
               <SocialIcon href={SOCIAL_LINKS.snapchat}  label="Awakened on Snapchat"><ScIcon /></SocialIcon>
