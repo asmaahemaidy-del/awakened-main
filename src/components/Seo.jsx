@@ -37,6 +37,13 @@ export function buildHead({ title, description, path, noindex = false, jsonLd, t
       ["name", "twitter:image", OG_IMAGE],
     ],
     canonical: noindex ? null : url,
+    hreflang: noindex
+      ? []
+      : [
+          { lang: "en", url },
+          { lang: "ar", url },
+          { lang: "x-default", url },
+        ],
     jsonLd: [jsonLd].flat().filter(Boolean),
   };
 }
@@ -50,6 +57,10 @@ export function renderHeadTags(head) {
   for (const [attr, key, content] of head.meta)
     tags.push(`<meta ${attr}="${key}" content="${esc(content)}" data-seo>`);
   if (head.canonical) tags.push(`<link rel="canonical" href="${esc(head.canonical)}" data-seo>`);
+  if (head.hreflang) {
+    for (const h of head.hreflang)
+      tags.push(`<link rel="alternate" hreflang="${esc(h.lang)}" href="${esc(h.url)}" data-seo>`);
+  }
   for (const data of head.jsonLd)
     tags.push(
       `<script type="application/ld+json" data-seo>${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`,
@@ -75,6 +86,16 @@ function applyHead(head) {
     link.href = head.canonical;
     link.setAttribute("data-seo", "");
     frag.appendChild(link);
+  }
+  if (head.hreflang) {
+    for (const h of head.hreflang) {
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.setAttribute("hreflang", h.lang);
+      link.href = h.url;
+      link.setAttribute("data-seo", "");
+      frag.appendChild(link);
+    }
   }
   for (const data of head.jsonLd) {
     const script = document.createElement("script");

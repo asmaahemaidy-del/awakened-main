@@ -1084,6 +1084,32 @@ export function RetreatsPage() {
               className="mb-10"
             />
           </Reveal>
+          {/* Concise Medical Disclaimer Banner */}
+          <Reveal delay={0.25}>
+            <div
+              className="max-w-2xl mx-auto mb-10 p-4 text-center rounded border"
+              style={{
+                background: "rgba(74, 122, 80, 0.08)",
+                borderColor: "#A8C5A0",
+                direction: isAr ? "rtl" : "ltr",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: fontBody,
+                  fontSize: isAr ? "0.85rem" : "0.78rem",
+                  color: "#2E4A32",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                {t(
+                  "ℹ️ Medical Disclaimer: Our retreats are designed for personal renewal, lifestyle wellbeing, and mindful leadership. They do not constitute clinical treatment or medical therapies. For medical emergencies, call 999.",
+                  "ℹ️ إخلاء مسؤولية طبي: صُممت رحلاتنا للعافية والتجدد والقيادة الواعية. لا تعد برامجنا بديلاً عن العلاج السريري أو الرعاية الطبية. في حالات الطوارئ يرجى الاتصال بالرقم 999.",
+                )}
+              </p>
+            </div>
+          </Reveal>
           <Reveal delay={0.3}>
             <div className="flex flex-wrap gap-4">
               <Link

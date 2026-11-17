@@ -763,6 +763,115 @@ export function HomePage() {
             </motion.div>
           </div>
         </section>
+        {/* TRUTHFUL METRICS / SOCIAL PROOF ALTERNATIVE */}
+        <section
+          style={{
+            background: "var(--brand-cream)",
+            padding: "56px 24px",
+            borderBottom: "1px solid var(--brand-cream-warm)",
+            direction: isAr ? "rtl" : "ltr",
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 1080,
+              margin: "0 auto",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "20px",
+                textAlign: "center",
+              }}
+            >
+              {[
+                {
+                  metricEn: "Max 8",
+                  metricAr: "حد أقصى ٨",
+                  labelEn: "Participants Per Retreat",
+                  labelAr: "مشاركين في كل رحلة",
+                  subEn: "Intimate, uncrowded, curated settings",
+                  subAr: "تجارب خاصة وغير مزدحمة مصممة بعناية",
+                },
+                {
+                  metricEn: "100%",
+                  metricAr: "١٠٠٪",
+                  labelEn: "Private By Design",
+                  labelAr: "خصوصية وسرية تامة",
+                  subEn: "Absolute discretion and confidentiality",
+                  subAr: "تعهد صارم بحماية خصوصيتك ومعلوماتك",
+                },
+                {
+                  metricEn: "1-on-1",
+                  metricAr: "فردي ومباشر",
+                  labelEn: "Dedicated Advisor Matching",
+                  labelAr: "مواءمة دقيقة مع المستشار",
+                  subEn: "Diagnostic session before any programme",
+                  subAr: "جلسة تشخيصية لتحديد الاحتياجات بدقة",
+                },
+                {
+                  metricEn: "Doha · Global",
+                  metricAr: "الدوحة · عالمياً",
+                  labelEn: "Virtual & In-Person Practice",
+                  labelAr: "حضورياً وعبر روابط افتراضية خاصة",
+                  subEn: "Serving clients in Qatar and internationally",
+                  subAr: "خدمة العملاء في قطر وجميع أنحاء العالم",
+                },
+              ].map((item, i) => (
+                <Reveal key={i} delay={i * 0.08}>
+                  <div
+                    style={{
+                      background: "var(--brand-cream-warm)",
+                      border: "1px solid var(--brand-border-subtle)",
+                      padding: "28px 18px",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: fontHead,
+                        fontSize: "1.9rem",
+                        color: "var(--brand-forest)",
+                        fontWeight: 600,
+                        fontStyle: isAr ? "normal" : "italic",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {isAr ? item.metricAr : item.metricEn}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: fontBody,
+                        fontSize: isAr ? "0.92rem" : "0.75rem",
+                        letterSpacing: isAr ? 0 : "0.15em",
+                        textTransform: isAr ? "none" : "uppercase",
+                        color: "var(--brand-gold-dark)",
+                        fontWeight: 600,
+                        marginBottom: "6px",
+                      }}
+                    >
+                      {isAr ? item.labelAr : item.labelEn}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: fontBody,
+                        fontSize: isAr ? "0.85rem" : "0.75rem",
+                        color: "var(--brand-forest-mid)",
+                        lineHeight: 1.5,
+                        margin: 0,
+                      }}
+                    >
+                      {isAr ? item.subAr : item.subEn}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* TESTIMONIALS: Hidden until real client quotes are confirmed by owner. Remove {false &&} to show. */}
         {false && (
         <section
@@ -1591,6 +1700,34 @@ export function HomePage() {
                   </div>
                 </Reveal>
               ))}
+            </div>
+
+            {/* Concise Medical Disclaimer Banner */}
+            <div
+              style={{
+                marginTop: 48,
+                padding: "16px 20px",
+                background: "rgba(201,168,76,0.08)",
+                border: "1px solid rgba(201,168,76,0.25)",
+                borderRadius: 4,
+                textAlign: "center",
+                direction: isAr ? "rtl" : "ltr",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: fontBody,
+                  fontSize: isAr ? "0.85rem" : "0.78rem",
+                  color: "var(--brand-sage-pale)",
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}
+              >
+                {t(
+                  "ℹ️ Medical Disclaimer: Awakened provides lifestyle advisory, holistic coaching, and transformational wellbeing programmes. We do not provide medical diagnosis, clinical treatment, or psychological therapy. In emergencies, please call 999.",
+                  "ℹ️ إخلاء مسؤولية طبي: تقدم أوايكند برامج التوجيه المتكامل والاستشارات ونمط الحياة والعافية. خدماتنا ليست بديلاً عن الرعاية الطبية أو التشخيص السريري أو العلاج النفسي. في حالات الطوارئ يرجى الاتصال بالرقم 999.",
+                )}
+              </p>
             </div>
           </div>
         </section>
