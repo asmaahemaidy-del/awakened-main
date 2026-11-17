@@ -506,12 +506,12 @@ const pages = {
         ar: "تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
       },
       body: {
-        en: "Every coaching journey begins with a dedicated one-on-one paid consultation (QAR 1,747 / ~$480 USD). In this session, we deeply understand what you need from coaching, evaluate your goals, and match you directly with the best-fit advisor from the Awakened circle. Please note: this is strictly a coaching evaluation and advisor alignment session — it is not a medical or clinical diagnosis.",
-        ar: "تبدأ كل رحلة تدريبية بجلسة استشارية فردية مخصصة ومدفوعة (١٬٧٤٧ ر.ق / ~$480 دولار). نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونفهم أهدافكم ونقوم بمواءمتكم واختيار المستشار أو الموجه الأنسب لكم من دائرة أوايكند. يُرجى ملاحظة أن هذه الجلسة مخصصة لتقييم الاحتياجات التدريبية والتوافق الاستشاري وليست تشخيصاً طبياً أو علاجياً.",
+        en: "Every coaching journey begins with a dedicated one-on-one paid consultation (QAR 1,747 / ~$480 USD). In this session, we deeply understand what you need from coaching, evaluate your goals, and match you directly with the best-fit advisor from the Awakened circle. This session is included in every advisory package. Please note: this is strictly a coaching evaluation and advisor alignment session — it is not a medical or clinical diagnosis.",
+        ar: "تبدأ كل رحلة تدريبية بجلسة استشارية فردية مخصصة ومدفوعة (١٬٧٤٧ ر.ق / ~$480 دولار). نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونفهم أهدافكم ونقوم بمواءمتكم واختيار المستشار أو الموجه الأنسب لكم من دائرة أوايكند. هذه الجلسة مشمولة في جميع الباقات الاستشارية. يُرجى ملاحظة أن هذه الجلسة مخصصة لتقييم الاحتياجات التدريبية والتوافق الاستشاري وليست تشخيصاً طبياً أو علاجياً.",
       },
       note: {
-        en: "Paid 1:1 session · 60 minutes · Virtual worldwide or in-person in Doha. Full fee is credited toward any multi-session package if you choose to enrol.",
-        ar: "جلسة فردية مدفوعة · ٦٠ دقيقة · عبر رابط مرئي حول العالم أو حضورياً في الدوحة. يُحتسب كامل المبلغ كرصيد يُخصم عند اشتراككم في أي من الباقات متعددة الجلسات.",
+        en: "Paid 1:1 session · 60 minutes · Virtual worldwide or in-person in Doha. This session is included in every advisory package — the full fee is credited if you enrol.",
+        ar: "جلسة فردية مدفوعة · ٦٠ دقيقة · عبر رابط مرئي حول العالم أو حضورياً في الدوحة. الجلسة مشمولة في جميع الباقات — يُحتسب كامل المبلغ كرصيد عند اشتراككم في أي باقة.",
       },
       cta: {
         en: "Book Primary Session (QAR 1,747)",

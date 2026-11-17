@@ -52,25 +52,29 @@ const packages = [
     sessionsAr: "٣ جلسات",
     price: 494700,
     descEn:
-      "An initial deep-dive advisory session followed by two focused follow-up sessions. The ideal starting point for those beginning their wellbeing journey with Awakened.",
+      "Includes one coaching needs assessment & advisor matching session, followed by two personalised coaching sessions. The ideal starting point for those beginning their wellbeing journey with Awakened.",
     descAr:
-      "تقييم أولي معمّق يتبعه جلستا متابعة مركّزتان. نقطة البداية المثالية لمن يشرع في رحلة العافية مع أوايكند",
+      "يتضمن جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار، تليها جلستا تدريب مخصصتان. نقطة البداية المثالية لمن يشرع في رحلة العافية مع أوايكند",
     features: [
       {
-        en: "Comprehensive initial wellbeing assessment",
-        ar: "تقييم شامل للعافية في البداية",
+        en: "1 coaching needs assessment & advisor matching session (included)",
+        ar: "جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار (مشمولة)",
       },
       {
-        en: "2 personalised follow-up sessions",
-        ar: "جلستا متابعة مخصصتان",
+        en: "2 personalised coaching sessions",
+        ar: "جلستا تدريب مخصصتان",
       },
       {
         en: "Personalised wellness recommendations",
         ar: "توصيات عافية مصممة خصيصاً لك",
       },
+      {
+        en: "Optional meal plan add-on available",
+        ar: "خطة وجبات اختيارية متاحة",
+      },
     ],
     highlight: false,
-    mealPlan: false,
+    mealPlan: true,
   },
   {
     skuId: "019dce10-cd64-7799-ae81-3b479a68c7b4",
@@ -80,16 +84,16 @@ const packages = [
     sessionsAr: "٦ جلسات",
     price: 969700,
     descEn:
-      "Our primary advisory programme. A comprehensive lifestyle assessment, six one-on-one sessions, and a personalised wellbeing roadmap.",
-    descAr: "برنامجنا الاستشاري الأساسي. تقييم شامل وست جلسات فردية وخارطة طريق تحول مخصصة لك",
+      "Our primary advisory programme. Includes one coaching needs assessment & advisor matching session, plus five personalised coaching sessions and a transformation roadmap.",
+    descAr: "برنامجنا الاستشاري الأساسي. يتضمن جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار، بالإضافة إلى خمس جلسات تدريب مخصصة وخارطة طريق تحول",
     features: [
       {
-        en: "Full-spectrum wellbeing assessment",
-        ar: "تقييم شامل للعافية",
+        en: "1 coaching needs assessment & advisor matching session (included)",
+        ar: "جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار (مشمولة)",
       },
       {
-        en: "6 one-on-one personalised sessions",
-        ar: "٦ جلسات فردية مخصصة",
+        en: "5 personalised coaching sessions",
+        ar: "٥ جلسات تدريب مخصصة",
       },
       {
         en: "Personalised transformation roadmap",
@@ -111,13 +115,17 @@ const packages = [
     sessionsAr: "١٢ جلسة",
     price: 1879700,
     descEn:
-      "Our most comprehensive advisory offering. Twelve sessions over three months, a full-spectrum lifestyle roadmap, priority access, and ongoing accountability support.",
+      "Our most comprehensive advisory offering. Includes one coaching needs assessment & advisor matching session, plus eleven personalised coaching sessions over three months, a full-spectrum lifestyle roadmap, priority access, and ongoing accountability support.",
     descAr:
-      "عرضنا الأكثر شمولاً. اثنتا عشرة جلسة على مدى ثلاثة أشهر، وخارطة طريق شاملة للعافية، وأولوية الوصول، ودعم مستمر للمتابعة",
+      "عرضنا الأكثر شمولاً. يتضمن جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار، بالإضافة إلى إحدى عشرة جلسة تدريب مخصصة على مدى ثلاثة أشهر، وخارطة طريق شاملة للعافية، وأولوية الوصول، ودعم مستمر للمتابعة",
     features: [
       {
-        en: "12 sessions over 3 months",
-        ar: "١٢ جلسة على مدى ٣ أشهر",
+        en: "1 coaching needs assessment & advisor matching session (included)",
+        ar: "جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار (مشمولة)",
+      },
+      {
+        en: "11 personalised coaching sessions over 3 months",
+        ar: "١١ جلسة تدريب مخصصة على مدى ٣ أشهر",
       },
       {
         en: "Full-spectrum transformation roadmap",
@@ -1132,8 +1140,8 @@ export function BookPage() {
               }}
             >
               {t(
-                "This is a paid consultation (not a medical diagnosis, and not a free call). Conducted virtually worldwide or in-person in Doha. If you later enrol in a Core or Immersive programme, the cost is credited toward your package.",
-                "هذه جلسة استشارية فردية مدفوعة لتحديد الاحتياجات والمواءمة (وليست تشخيصاً طبياً أو مكالمة مجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في الباقات الاستشارية لاحقاً.",
+                "This is a paid consultation (not a medical diagnosis, and not a free call). Conducted virtually worldwide or in-person in Doha. The Primary Session is included in every advisory package — if you enrol, the cost is credited toward your package.",
+                "هذه جلسة استشارية فردية مدفوعة لتحديد الاحتياجات والمواءمة (وليست تشخيصاً طبياً أو مكالمة مجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. الجلسة الأولى مشمولة في جميع الباقات الاستشارية — يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في أي باقة.",
               )}
             </p>
           </div>
