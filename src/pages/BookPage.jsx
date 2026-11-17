@@ -253,8 +253,8 @@ const events = [
     ar: "فن الراحة",
     typeEn: "Masterclass",
     typeAr: "درس رئيسي",
-    date: "October 2026",
-    dateAr: "أكتوبر ٢٠٢٦",
+    date: "December 2026",
+    dateAr: "ديسمبر ٢٠٢٦",
     price: 85e3,
     descEn:
       "A deep dive into the science and practice of restorative rest — sleep, recovery, and the art of doing nothing well.",
@@ -268,8 +268,8 @@ const events = [
     ar: "السكون في الحركة",
     typeEn: "Weekend Retreat",
     typeAr: "رحلة نهاية الأسبوع للعافية والرفاهية",
-    date: "November 2026",
-    dateAr: "نوفمبر ٢٠٢٦",
+    date: "22–23 January 2027",
+    dateAr: "٢٢–٢٣ يناير ٢٠٢٧",
     price: 22e4,
     descEn:
       "Movement, breathwork, and mindful presence. A two-day experience limited to 8 participants.",
@@ -283,8 +283,8 @@ const events = [
     ar: "القيادة وطول العمر",
     typeEn: "Workshop",
     typeAr: "ورشة عمل",
-    date: "December 2026",
-    dateAr: "ديسمبر ٢٠٢٦",
+    date: "February 2027",
+    dateAr: "فبراير ٢٠٢٧",
     price: 12e4,
     descEn:
       "Sustainable performance for senior leaders. A half-day workshop on energy management and long-term vitality.",

@@ -373,42 +373,42 @@ const EVENT_SLIDES = [
     en: {
       name: '"The Art of Rest" Masterclass',
       location: "Doha",
-      date: "September 2026",
+      date: "December 2026",
       desc: "A practical masterclass on the science and practice of genuine rest — not just sleep.",
     },
     ar: {
       name: 'ماستركلاس "فن الراحة"',
       location: "الدوحة",
-      date: "سبتمبر 2026",
+      date: "ديسمبر 2026",
       desc: "ماستركلاس عملي حول علم وممارسة الراحة الحقيقية — لا مجرد النوم.",
     },
   },
   {
     en: {
-      name: "Inner Compass Workshop",
-      location: "Doha",
-      date: "October 2026",
-      desc: "Reconnect with your values and what actually matters to you.",
+      name: '"Stillness in Motion" Weekend Retreat',
+      location: "Qatar (Luxury Venue)",
+      date: "22–23 January 2027",
+      desc: "A private 2-day immersive retreat in movement, breathwork, and mindful presence. Limited to 8 participants.",
     },
     ar: {
-      name: "ورشة البوصلة الداخلية",
-      location: "الدوحة",
-      date: "أكتوبر 2026",
-      desc: "أعد التواصل مع قيمك وما يهمك فعلًا.",
+      name: 'رحلة نهاية الأسبوع "السكون في الحركة"',
+      location: "قطر (منتجع راقٍ)",
+      date: "٢٢–٢٣ يناير ٢٠٢٧",
+      desc: "رحلة عافية ورفاهية خاصة لمدة يومين تركز على الحركة والتنفس الواعي. محددة لـ ٨ مشاركين فقط.",
     },
   },
   {
     en: {
-      name: "Leadership & Longevity",
+      name: "Leadership & Longevity Workshop",
       location: "Doha",
-      date: "November 2026",
-      desc: "For leaders navigating high performance without burning out.",
+      date: "February 2027",
+      desc: "Sustainable vitality and high-performance energy management for senior leaders.",
     },
     ar: {
-      name: "القيادة والاستدامة",
+      name: "ورشة القيادة وطول العمر",
       location: "الدوحة",
-      date: "نوفمبر 2026",
-      desc: "للقادة الذين يسعون إلى الأداء العالي دون الإرهاق.",
+      date: "فبراير ٢٠٢٧",
+      desc: "الأداء المستدام وإدارة الطاقة والحيوية طويلة الأمد للقادة التنفيذيين.",
     },
   },
   {
@@ -626,7 +626,7 @@ export function HomePage() {
                 fontWeight: 400,
                 color: "#FFFFFF",
                 lineHeight: isAr ? 1.45 : 1.1,
-                marginBottom: 28,
+                marginBottom: 24,
                 whiteSpace: "pre-line",
               }}
             >
@@ -651,13 +651,13 @@ export function HomePage() {
                 fontSize: isAr ? "1.1rem" : "1.05rem",
                 color: "var(--brand-sage-pale)",
                 lineHeight: isAr ? 2 : 1.75,
-                maxWidth: 580,
+                maxWidth: 620,
                 margin: "0 auto 40px",
               }}
             >
               {t(
-                "Holistic consultancy, transformational coaching, wellness experiences, retreats, and corporate wellbeing — thoughtfully designed around the whole person.",
-                "استشارات شاملة، وتدريب تحويلي، وتجارب عافية، ورحلات العافية والرفاهية، والبرامج المؤسسية — مصمَّمة بعناية حول الإنسان بأكمله.",
+                "Whole-person coaching, retreats and corporate wellbeing. Confidential, unhurried, designed around you.",
+                "التوجيه المتكامل للإنسان، ورحلات العافية والرفاهية، والبرامج المؤسسية. سرية تامة، وتأنٍ مدروس، مصممة بالكامل حولكم.",
               )}
             </motion.p>
             <motion.div
@@ -699,7 +699,7 @@ export function HomePage() {
                 onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.88")}
                 onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
-                {t("Book Primary Session", "احجز الجلسة الأولى")}
+                {t("Book a Free Discovery Call", "احجز مكالمة اكتشاف مجانية")}
               </Link>
               <Link
                 to="/retreats"

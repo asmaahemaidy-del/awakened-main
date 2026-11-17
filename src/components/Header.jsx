@@ -501,6 +501,14 @@ export function Header() {
                   </div>
                 )}
               </div>
+              <Link to="/retreats" className="nav-link" style={flatLinkStyle(isActive("/retreats"))}>
+                <span style={labelStyle}>{t("Retreats", "الرحلات")}</span>
+                <span className="nav-underline" style={underlineStyle(isActive("/retreats"))} />
+              </Link>
+              <Link to="/events" className="nav-link" style={flatLinkStyle(isActive("/events"))}>
+                <span style={labelStyle}>{t("Events", "الفعاليات")}</span>
+                <span className="nav-underline" style={underlineStyle(isActive("/events"))} />
+              </Link>
               <Link to="/contact" className="nav-link" style={flatLinkStyle(isActive("/contact"))}>
                 <span style={labelStyle}>{t("Contact", "تواصل معنا")}</span>
                 <span className="nav-underline" style={underlineStyle(isActive("/contact"))} />
