@@ -1006,199 +1006,6 @@ export function BookPage() {
             ))}
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-8 pb-20">
-          <div
-            className="max-w-2xl mx-auto px-8 md:px-12 py-10 text-center"
-            style={{
-              background: "#F0EBE3",
-              border: "1px solid #D8D0C4",
-            }}
-          >
-            <span
-              className="inline-block text-[10px] tracking-[0.25em] uppercase px-3 py-1 mb-3"
-              style={{
-                fontFamily: fontBody,
-                background: "rgba(61,92,66,0.12)",
-                color: "#2E4A32",
-                fontWeight: 600,
-              }}
-            >
-              {t("Paid 1:1 Consultation", "جلسة استشارية فردية مدفوعة")}
-            </span>
-            <h3
-              style={{
-                fontFamily: fontHead,
-                fontSize: "clamp(1.5rem, 2.5vw, 2.2rem)",
-                color: "#1A2B1C",
-                lineHeight: 1.25,
-                marginBottom: "0.75rem",
-              }}
-            >
-              {t(
-                "Primary Session: Coaching Needs & Advisor Matching",
-                "الجلسة الأولى: تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
-              )}
-            </h3>
-            <p
-              className="text-xs md:text-sm max-w-lg mx-auto leading-relaxed mb-6"
-              style={{
-                fontFamily: fontBody,
-                color: "#3D5C42",
-                lineHeight: isAr ? 2 : 1.8,
-              }}
-            >
-              {t(
-                "A dedicated one-on-one paid consultation to clarify your personal, executive, and wellbeing goals. In this session, we deeply understand what you need from coaching and match you directly with the best-fit advisor from the Awakened circle for your journey.",
-                "جلسة استشارية فردية مدفوعة ومخصصة لتحديد أهدافكم وتطلعاتكم الشخصية والقيادية. نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونقوم بمواءمتكم واختيار الموجه أو المستشار الأنسب لكم من الدائرة الاستشارية لـ أوايكند.",
-              )}
-            </p>
-
-            {/* Key matching features */}
-            <div
-              className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6 text-left"
-              style={{
-                direction: isAr ? "rtl" : "ltr",
-              }}
-            >
-              {[
-                {
-                  en: "Comprehensive coaching needs assessment",
-                  ar: "تحديد شامل للاحتياجات والأهداف التدريبية",
-                },
-                {
-                  en: "Direct matching with your ideal specialist coach",
-                  ar: "المواءمة المباشرة واختيار الموجه الأنسب لك",
-                },
-                {
-                  en: "Clear roadmap guidance prior to package enrolment",
-                  ar: "إرشادات وخارطة طريق واضحة قبل الاشتراك في الباقات",
-                },
-              ].map((feat, fi) => (
-                <div
-                  key={fi}
-                  className="p-3 bg-white/70 border border-[#D8D0C4] flex items-start gap-2"
-                >
-                  <span style={{ color: "#3D5C42", fontWeight: 700, fontSize: "11px" }}>✓</span>
-                  <span
-                    className="text-[11px]"
-                    style={{
-                      fontFamily: fontBody,
-                      color: "#1A2B1C",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {t(feat.en, feat.ar)}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex items-baseline justify-center gap-2 mb-1">
-              <span
-                style={{
-                  fontFamily: fontHead,
-                  fontSize: "clamp(2rem, 3.5vw, 2.8rem)",
-                  color: "#1A2B1C",
-                  fontWeight: 600,
-                  lineHeight: 1,
-                }}
-              >
-                {"QAR "}
-                {(SINGLE_SESSION_PRICE / 100).toLocaleString("en-QA")}
-              </span>
-              <span
-                className="text-xs tracking-[0.1em]"
-                style={{
-                  fontFamily: fontBody,
-                  color: "#3D5C42",
-                }}
-              >
-                {t("/ session", "/ جلسة")}
-              </span>
-            </div>
-            <p
-              className="text-xs mt-0 mb-6"
-              style={{
-                fontFamily: fontBody,
-                color: "var(--brand-sage)",
-              }}
-            >
-              ~${SINGLE_SESSION_USD.toLocaleString("en-US")}
-              {" USD"}
-            </p>
-
-            <button
-              onClick={() => handleCheckout(PRIMARY_SESSION_SKU)}
-              disabled={loadingSkuId === PRIMARY_SESSION_SKU}
-              className="inline-flex items-center justify-center px-10 py-4 transition-all duration-500 disabled:opacity-60 disabled:cursor-not-allowed"
-              style={{
-                fontFamily: fontBody,
-                color: "#FFFFFF",
-                background: "#4A7A50",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "center",
-              }}
-              onMouseEnter={(e) => {
-                if (loadingSkuId !== PRIMARY_SESSION_SKU) {
-                  e.currentTarget.style.background = "#3A6040";
-                  e.currentTarget.style.boxShadow = "0 8px 30px rgba(74,122,80,0.3)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#4A7A50";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              <span className="text-xs tracking-[0.2em] uppercase font-semibold">
-                {loadingSkuId === PRIMARY_SESSION_SKU
-                  ? t("Preparing checkout…", "جارٍ التحضير…")
-                  : t("Book & Pay for Primary Session", "حجز ودفع قيمة الجلسة الأولى")}
-              </span>
-            </button>
-
-            <p
-              className="text-[11px] mt-4 mb-0 text-center"
-              style={{
-                fontFamily: fontBody,
-                color: "#5A7E5E",
-                fontStyle: "italic",
-              }}
-            >
-              {t(
-                "This is a paid consultation (not a medical diagnosis, and not a free call). Conducted virtually worldwide or in-person in Doha. The Primary Session is included in every advisory package — if you enrol, the cost is credited toward your package.",
-                "هذه جلسة استشارية فردية مدفوعة لتحديد الاحتياجات والمواءمة (وليست تشخيصاً طبياً أو مكالمة مجانية). تُعقد الجلسة عبر رابط مرئي خاص أو حضورياً في الدوحة. الجلسة الأولى مشمولة في جميع الباقات الاستشارية — يُحتسب المبلغ كاملاً كرصيد يُخصم عند اشتراككم في أي باقة.",
-              )}
-            </p>
-
-            <div className="mt-6 pt-5 border-t border-[#D8D0C4]">
-              <p
-                className="text-xs"
-                style={{
-                  fontFamily: fontBody,
-                  color: "#3D5C42",
-                }}
-              >
-                {t(
-                  "Not sure if this is the right starting point?",
-                  "هل لست متأكداً إن كانت هذه نقطة البداية المناسبة؟",
-                )}
-                {" "}
-                <Link
-                  to="/contact?interest=discovery"
-                  style={{
-                    color: "#1A2B1C",
-                    fontWeight: 600,
-                    textDecoration: "underline",
-                    textUnderlineOffset: "3px",
-                  }}
-                >
-                  {t("Book a Free Discovery Call", "احجز مكالمة استكشافية مجانية")}
-                </Link>
-              </p>
-            </div>
-          </div>
-        </div>
       </section>
       <section
         id="corporate"
@@ -1655,16 +1462,29 @@ export function BookPage() {
                   borderLeft: "2px solid #3D5C42",
                 }}
               >
-                <p
-                  className="text-xs tracking-[0.2em] uppercase mb-3"
-                  style={{
-                    fontFamily: fontBody,
-                    color: "#2E4A32",
-                  }}
-                >
-                  {t("Group Retreats", "رحلات العافية والرفاهية الجماعية")}
-                </p>
-                <p
+                <div className="flex items-center justify-between mb-3">
+                  <p
+                    className="text-xs tracking-[0.2em] uppercase"
+                    style={{
+                      fontFamily: fontBody,
+                      color: "#2E4A32",
+                      margin: 0,
+                    }}
+                  >
+                    {t("Group Retreats", "رحلات العافية والرفاهية الجماعية")}
+                  </p>
+                  <Link
+                    to="/refund-policy"
+                    className="text-[11px] underline"
+                    style={{
+                      fontFamily: fontBody,
+                      color: "var(--brand-forest)",
+                    }}
+                  >
+                    {t("View Full Refund Policy →", "عرض سياسة الاسترداد الكاملة ←")}
+                  </Link>
+                </div>
+                <div
                   className="text-sm leading-relaxed"
                   style={{
                     fontFamily: fontBody,
@@ -1672,11 +1492,21 @@ export function BookPage() {
                     lineHeight: 1.85,
                   }}
                 >
-                  {t(
-                    "A full 100% refund will be issued for group retreat bookings cancelled no less than 40 days prior to the retreat start date. Cancellations received after this period are non-refundable",
-                    "يحق للمشاركين في رحلات العافية والرفاهية الجماعية الحصول على استرداد كامل بنسبة 100% في حال الإلغاء قبل 40 يوماً على الأقل من تاريخ بدء البرنامج. لا يحق الاسترداد في حالات الإلغاء بعد هذه المدة.",
-                  )}
-                </p>
+                  <ul className="list-disc pl-5 pr-5 space-y-1 my-2">
+                    <li>
+                      <strong>{t("More than 60 days before start:", "قبل بدء البرنامج بأكثر من 60 يوماً:")}</strong>{" "}
+                      {t("Full refund (minus 20% non-refundable deposit).", "استرداد كامل (بعد خصم 20% عربون غير قابل للاسترداد).")}
+                    </li>
+                    <li>
+                      <strong>{t("30–60 days before start:", "بين 30–60 يوماً قبل البدء:")}</strong>{" "}
+                      {t("50% refund.", "استرداد بنسبة 50%.")}
+                    </li>
+                    <li>
+                      <strong>{t("Fewer than 30 days before start:", "أقل من 30 يوماً قبل البدء:")}</strong>{" "}
+                      {t("Non-refundable; place may be transferred to another person with 7 days' notice.", "غير قابل للاسترداد؛ يمكن تحويل المقعد لشخص آخر بإشعار مدته 7 أيام.")}
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div
                 className="p-6"
