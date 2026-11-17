@@ -10,39 +10,41 @@ export function TermsPage() {
   const h2Style = {
     fontFamily: fontHead,
     fontStyle: isAr ? "normal" : "italic",
-    fontSize: "1.4rem",
+    fontSize: "1.35rem",
     color: "var(--brand-forest)",
-    marginTop: 40,
+    marginTop: 36,
     marginBottom: 12,
   };
 
   const pStyle = {
     fontFamily: fontBody,
-    fontSize: isAr ? "0.9rem" : "0.88rem",
+    fontSize: isAr ? "0.92rem" : "0.9rem",
     color: "#2E4A32",
     lineHeight: isAr ? 2 : 1.75,
     marginBottom: 16,
   };
 
-  const TODO = ({ en }) => (
+  const TODO = ({ en, ar }) => (
     <mark
       style={{
-        background: "rgba(201,168,76,0.25)",
+        background: "rgba(201,168,76,0.3)",
+        color: "#5C4108",
         padding: "2px 6px",
-        borderRadius: 2,
+        borderRadius: 3,
         fontSize: "0.82rem",
+        fontWeight: "bold",
       }}
     >
-      TODO: OWNER TO CONFIRM — {en}
+      [{isAr ? (ar || en) : en}]
     </mark>
   );
 
   return (
     <>
       <Seo
-        title="Terms & Conditions"
-        titleAr="الشروط والأحكام"
-        description="Terms and conditions governing the use of Awakened's website and services."
+        title="Terms of Service"
+        titleAr="شروط الخدمة"
+        description="Terms of service governing coaching, wellbeing advisory, retreats, and payments for Awakened for Consultations."
       />
       <section
         style={{
@@ -54,7 +56,7 @@ export function TermsPage() {
       >
         <div
           style={{
-            maxWidth: 820,
+            maxWidth: 860,
             margin: "0 auto",
             padding: "0 24px",
             direction: isAr ? "rtl" : "ltr",
@@ -64,194 +66,188 @@ export function TermsPage() {
           <div
             style={{
               border: "2px solid var(--brand-gold)",
-              background: "rgba(201,168,76,0.1)",
+              background: "rgba(201,168,76,0.12)",
               padding: 16,
               marginBottom: 32,
-              borderRadius: 4,
-              fontSize: "0.85rem",
+              borderRadius: 6,
+              fontSize: "0.88rem",
               color: "#7A5C1E",
               fontFamily: fontBody,
+              lineHeight: 1.7,
             }}
           >
             {t(
-              "⚠ DRAFT — These terms are not yet in effect. Certain details are pending owner confirmation and are marked below.",
-              "⚠ مسودة — هذه الشروط لم تدخل حيز التنفيذ بعد. بعض التفاصيل تنتظر تأكيد المالك وهي موضحة أدناه."
+              "⚠️ WORKING DRAFT v1.0 — These Terms of Service are prepared for legal review under Qatari law. Highlighted brackets mark owner/legal confirmation items before final publication.",
+              "⚠️ مسودة أولية الإصدار 1.0 — شروط الخدمة هذه مسودة أولية مخصصة للمراجعة القانونية بموجب القوانين القطرية. البنود المظللة بين أقواس تتطلب مراجعة واعتماد نهائي من المحامي وإدارة أوايكند."
             )}
           </div>
 
-          {/* PAGE TITLE */}
+          {/* PAGE TITLE & META */}
           <h1
             style={{
               fontFamily: fontHead,
               fontStyle: isAr ? "normal" : "italic",
-              fontSize: "2rem",
+              fontSize: "2.1rem",
               color: "var(--brand-forest)",
               marginBottom: 8,
             }}
           >
-            {t("Terms & Conditions", "الشروط والأحكام")}
+            {t("Terms of Service", "شروط الخدمة")}
           </h1>
-          <p style={{ ...pStyle, fontSize: "0.8rem", color: "#7A5C1E", marginBottom: 32 }}>
+          <p style={{ ...pStyle, fontSize: "0.82rem", color: "#7A5C1E", marginBottom: 32 }}>
             {t(
-              <>Effective Date: <TODO en="insert effective date" /></>,
-              <>تاريخ السريان: <TODO en="أدخل تاريخ السريان" /></>
+              "Effective date: 18 November 2026 · Version: 1.0",
+              "تاريخ السريان: 18 نوفمبر 2026 · الإصدار: 1.0"
             )}
           </p>
 
-          {/* 1. INTRODUCTION */}
-          <h2 style={h2Style}>{t("1. Introduction", "١. المقدمة")}</h2>
+          {/* 1 */}
+          <h2 style={h2Style}>{t("1. Who Provides the Services", "١. الجهة المقدِّمة للخدمات")}</h2>
           <p style={pStyle}>
             {t(
-              <>
-                These Terms &amp; Conditions (&ldquo;Terms&rdquo;) govern your access to and use of the website https://www.gotawakened.com and all coaching and wellness services offered by <TODO en="exact legal name on CR 241070" /> (&ldquo;Awakened&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;), a company registered in Qatar under Commercial Registration No. 241070.
-              </>,
-              <>
-                تحكم هذه الشروط والأحكام (&ldquo;الشروط&rdquo;) وصولك إلى الموقع الإلكتروني https://www.gotawakened.com واستخدامه، وجميع خدمات التدريب والعافية التي تقدمها <TODO en="exact legal name on CR 241070" /> (&ldquo;أوايكند&rdquo;)، شركة مسجلة في قطر بموجب السجل التجاري رقم 241070.
-              </>
-            )}
-          </p>
-          <p style={pStyle}>
-            {t(
-              "By accessing our website or booking any service, you agree to be bound by these Terms. If you do not agree, please do not use our website or services.",
-              "بوصولك إلى موقعنا أو حجز أي خدمة، فإنك توافق على الالتزام بهذه الشروط. إذا كنت لا توافق، يرجى عدم استخدام موقعنا أو خدماتنا."
+              "Awakened for Consultation W.L.L., trading as Awakened for Consultations, CR 241070, Doha, Qatar.",
+              "شركة أوايكند للاستشارات ذ.م.م، وتعمل تحت الاسم التجاري أوايكند للاستشارات، سجل تجاري 241070، الدوحة، قطر."
             )}
           </p>
 
-          {/* 2. SERVICES */}
-          <h2 style={h2Style}>{t("2. Our Services", "٢. خدماتنا")}</h2>
+          {/* 2 */}
+          <h2 style={h2Style}>{t("2. What We Provide — Non-Medical Disclaimer", "٢. ما نقدّمه — إخلاء مسؤولية غير طبي")}</h2>
           <p style={pStyle}>
             {t(
-              "Awakened provides coaching and wellness programmes including, but not limited to, group retreats, private sessions, advisory sessions, session packages, corporate programmes, community memberships, events, and meal plan add-ons.",
-              "يقدم أوايكند برامج تدريب وعافية تشمل، على سبيل المثال لا الحصر، الخلوات الجماعية، الجلسات الخاصة، الجلسات الاستشارية، الحزم، البرامج المؤسسية، عضويات المجتمع، الفعاليات، وخيارات وجبات إضافية."
-            )}
-          </p>
-          <p style={pStyle}>
-            {t(
-              "Our services are intended for personal growth, wellness, and development purposes only. Nothing provided through our programmes, website, or any communication from Awakened constitutes medical advice, diagnosis, or treatment. Coaching and wellness services are not a substitute for professional medical, psychological, or psychiatric care.",
-              "خدماتنا مخصصة لأغراض النمو الشخصي والعافية والتطوير فقط. لا يُشكّل أي شيء مقدَّم عبر برامجنا أو موقعنا الإلكتروني أو أي تواصل من أوايكند نصيحةً طبية أو تشخيصاً أو علاجاً. خدمات التدريب والعافية ليست بديلاً عن الرعاية الطبية أو النفسية أو النفسية التخصصية."
+              "Coaching, wellbeing advisory, retreats, and corporate programmes aimed at personal development and lifestyle goals. We are not a medical, psychological, or psychiatric service and do not diagnose or treat conditions. Please keep seeing your doctor and do not stop or change medical treatment because of a session. In an emergency, please call 999.",
+              "التدريب والإرشاد في مجال العافية، والخلوات، والبرامج المؤسسية، بهدف التطوير الشخصي وتحقيق أهداف نمط الحياة. لسنا جهة تقدّم خدمات طبية أو علاجًا نفسيًا أو طبًّا نفسيًا، ولا نشخّص الحالات ولا نعالجها. يرجى مواصلة استشارة طبيبكم وعدم إيقاف العلاج الطبي أو تغييره بسبب أي جلسة. وفي حالات الطوارئ اتصلوا على 999."
             )}
           </p>
 
-          {/* 3. ELIGIBILITY */}
+          {/* 3 */}
           <h2 style={h2Style}>{t("3. Eligibility", "٣. الأهلية")}</h2>
           <p style={pStyle}>
             {t(
-              "Our services are available to individuals who are 18 years of age or older. By booking or participating in any programme, you confirm that you meet this age requirement. Participation by minors requires the written consent of a parent or legal guardian and is subject to our sole discretion.",
-              "خدماتنا متاحة للأفراد الذين يبلغون من العمر 18 عاماً أو أكثر. بحجزك أو مشاركتك في أي برنامج، فإنك تؤكد استيفاءك لهذا الشرط. تشترط مشاركة القاصرين الحصول على موافقة خطية من ولي الأمر وتخضع لتقديرنا المطلق."
+              "You must be 18 years of age or older to purchase or use our services.",
+              "يجب أن يبلغ عمركم 18 عامًا أو أكثر للاستفادة من خدماتنا أو شرائها."
             )}
           </p>
 
-          {/* 4. BOOKINGS & PAYMENTS */}
-          <h2 style={h2Style}>{t("4. Bookings & Payments", "٤. الحجوزات والمدفوعات")}</h2>
+          {/* 4 */}
+          <h2 style={h2Style}>{t("4. How It Works", "٤. كيف تعمل الخدمة")}</h2>
           <p style={pStyle}>
             {t(
-              "A booking is confirmed only upon receipt of full payment unless otherwise agreed in writing. Prices are quoted in Qatari Riyals (QAR) and are inclusive of applicable taxes unless stated otherwise.",
-              "لا يُعدّ الحجز مؤكداً إلا عند استلام الدفع الكامل ما لم يُتفق على خلاف ذلك كتابيًا. الأسعار مقومة بالريال القطري (QAR) وتشمل الضرائب المعمول بها ما لم يُذكر غير ذلك."
+              "A free 15-minute call, then a paid needs assessment, then matching with advisors, followed by individual sessions or packages. Advisors are matched on your stated priorities and preferences. We cannot guarantee a particular advisor or any specific individual outcome.",
+              "مكالمة مجانية مدتها 15 دقيقة، ثم جلسة تقييم احتياجات مدفوعة، ثم المطابقة مع المستشارين، ثم الجلسات أو الباقات. تتم مطابقة المستشارين وفق أولوياتكم وتفضيلاتكم المعلنة. ولا يمكننا ضمان مستشار بعينه أو نتيجة بعينها."
             )}
           </p>
+
+          {/* 5 */}
+          <h2 style={h2Style}>{t("5. Consent & Session Recordings", "٥. الموافقة وتسجيل الجلسات")}</h2>
+          <p style={pStyle}>
+            {t(
+              "Before the assessment, you must accept our consent terms, including session recording as outlined in our Privacy Policy. Optional consents (research and marketing) do not affect your access to services.",
+              "قبل التقييم يجب أن تقبلوا موافقتنا، بما في ذلك تسجيل الجلسات الموضح في سياسة الخصوصية. ولا تؤثر الموافقات الاختيارية (البحث والتسويق) في خدمتكم الأساسية."
+            )}
+          </p>
+
+          {/* 6 */}
+          <h2 style={h2Style}>{t("6. Prices & Payment", "٦. الأسعار والدفع")}</h2>
+          <p style={pStyle}>
+            {t(
+              "Prices are shown in Qatari Riyals (QAR) before payment. Payment is required in advance via our secure payment provider SkipCash. Cancellations and refunds strictly follow our Refund Policy (Part B).",
+              "تُعرض الأسعار بالريال القطري (QAR) قبل الدفع. الدفع مطلوب مقدمًا عبر مزود الدفع الآمن سكيب كاش (SkipCash). وتسري على الإلغاء والاسترداد أحكام سياسة الاسترداد (الجزء ب)."
+            )}
+          </p>
+
+          {/* 7 */}
+          <h2 style={h2Style}>{t("7. Your Responsibilities", "٧. مسؤولياتكم")}</h2>
+          <p style={pStyle}>
+            {t(
+              "You agree to provide accurate information, attend scheduled sessions on time, treat advisors respectfully, and refrain from recording, copying, or sharing sessions or materials without our explicit prior written permission.",
+              "تقديم معلومات دقيقة، والحضور في الموعد المحدد، ومعاملة المستشارين باحترام، وعدم تسجيل الجلسات أو نسخ المواد أو مشاركتها دون إذن كتابي مسبق منا."
+            )}
+          </p>
+
+          {/* 8 */}
+          <h2 style={h2Style}>{t("8. Confidentiality", "٨. السرية")}</h2>
+          <p style={pStyle}>
+            {t(
+              "We keep what you share confidential, except as described in the Privacy Policy and where disclosure is required by law or where there is a serious, imminent risk to life or safety.",
+              "نحافظ على سرية ما تشاركونه، إلا بالقدر المبيَّن في سياسة الخصوصية وحيث يقتضي القانون الإفصاح أو يوجد خطر جسيم وداهم على الحياة أو السلامة."
+            )}
+          </p>
+
+          {/* 9 */}
+          <h2 style={h2Style}>{t("9. Intellectual Property", "٩. الملكية الفكرية")}</h2>
+          <p style={pStyle}>
+            {t(
+              "Awakened’s methodology, assessments, materials, guides, and brand belong exclusively to us. You receive a personal, non-transferable right to use materials solely for your own personal development.",
+              "منهجية أوايكند وتقييمها ومواردها وعلامتها التجارية ملك حصري لنا. وتحصلون على حق شخصي غير قابل للتحويل في استخدام المواد لتطويركم الذاتي فقط."
+            )}
+          </p>
+
+          {/* 10 */}
+          <h2 style={h2Style}>{t("10. Limitation of Liability", "١٠. تحديد المسؤولية")}</h2>
           <p style={pStyle}>
             {t(
               <>
-                Full payment details, accepted methods, and the payment gateway will be communicated once our payment integration is live.{" "}
-                <TODO en="confirm accepted payment methods and payment gateway provider" />
+                To the fullest extent permitted by Qatari law, Awakened is not liable for indirect or consequential loss, loss of profit, or for outcomes that depend on your own choices and actions. Our total liability for any claim relating to a service is limited to the amount you paid for that specific service. Nothing here excludes or limits liability that cannot lawfully be excluded under Qatar law, including liability for fraud, gross negligence, or wilful misconduct. <TODO en="Clause to be finalized by counsel" ar="البند يخضع للمراجعة النهائية للمحامي" />
               </>,
               <>
-                ستُوضَّح تفاصيل الدفع الكاملة والطرق المقبولة وبوابة الدفع بمجرد تفعيل التكامل.{" "}
-                <TODO en="تأكيد طرق الدفع المقبولة ومزود بوابة الدفع" />
-              </>
-            )}
-          </p>
-          <p style={pStyle}>
-            {t(
-              "For refund and cancellation terms, please refer to our Refund Policy.",
-              "للاطلاع على شروط الاسترداد والإلغاء، يرجى الرجوع إلى سياسة الاسترداد الخاصة بنا."
-            )}
-          </p>
-
-          {/* 5. DISCLAIMER */}
-          <h2 style={h2Style}>{t("5. Disclaimer", "٥. إخلاء المسؤولية")}</h2>
-          <p style={pStyle}>
-            {t(
-              "Awakened's coaching and wellness programmes are designed to support your personal development and wellbeing. They are not a substitute for professional medical, psychiatric, or therapeutic services. If you have or suspect you have any medical or mental health condition, please consult a qualified healthcare provider before participating in our programmes. By participating, you acknowledge and accept that results may vary and that Awakened makes no guarantee of specific outcomes.",
-              "برامج أوايكند للتدريب والعافية مصممة لدعم تطورك الشخصي ورفاهيتك. وهي ليست بديلاً عن الخدمات الطبية أو النفسية أو العلاجية المتخصصة. إذا كنت تعاني أو تشك في وجود حالة طبية أو نفسية، يرجى استشارة مقدم رعاية صحية مؤهل قبل المشاركة في برامجنا. بالمشاركة، فإنك تُقرّ بأن النتائج قد تتفاوت وأن أوايكند لا تضمن نتائج محددة."
-            )}
-          </p>
-
-          {/* 6. LIMITATION OF LIABILITY */}
-          <h2 style={h2Style}>{t("6. Limitation of Liability", "٦. تحديد المسؤولية")}</h2>
-          <p style={pStyle}>
-            <TODO en="specify limitation of liability cap (e.g. total fees paid for the relevant service) and any exclusions — confirm with legal counsel" />
-          </p>
-          <p style={pStyle}>
-            {t(
-              "To the maximum extent permitted by applicable Qatar law, Awakened shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use our services.",
-              "إلى الحد الأقصى المسموح به بموجب القانون القطري المعمول به، لن يكون أوايكند مسؤولاً عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية تنشأ عن استخدامك لخدماتنا أو عدم قدرتك على استخدامها."
-            )}
-          </p>
-
-          {/* 7. INTELLECTUAL PROPERTY */}
-          <h2 style={h2Style}>{t("7. Intellectual Property", "٧. الملكية الفكرية")}</h2>
-          <p style={pStyle}>
-            {t(
-              "All content on the Awakened website and in our programmes — including text, images, videos, graphics, logos, programme materials, and methodologies — is the exclusive property of Awakened or its licensors and is protected by applicable intellectual property laws. You may not reproduce, distribute, modify, or create derivative works without our prior written consent.",
-              "جميع محتويات موقع أوايكند وبرامجنا — بما في ذلك النصوص والصور ومقاطع الفيديو والرسومات والشعارات والمواد البرامجية والمنهجيات — هي الملكية الحصرية لأوايكند أو جهة الترخيص المعنية، وهي محمية بموجب قوانين الملكية الفكرية المعمول بها. لا يجوز لك إعادة إنتاجها أو توزيعها أو تعديلها أو إنشاء أعمال مشتقة منها دون موافقتنا الخطية المسبقة."
-            )}
-          </p>
-
-          {/* 8. GOVERNING LAW */}
-          <h2 style={h2Style}>{t("8. Governing Law", "٨. القانون الحاكم")}</h2>
-          <p style={pStyle}>
-            {t(
-              "These Terms are governed by and construed in accordance with the laws of the State of Qatar. Any dispute arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts of Qatar.",
-              "تخضع هذه الشروط وتُفسَّر وفقاً لقوانين دولة قطر. أي نزاع ينشأ بموجب هذه الشروط أو فيما يتعلق بها يخضع للاختصاص القضائي الحصري لمحاكم قطر."
-            )}
-          </p>
-
-          {/* 9. DISPUTE RESOLUTION */}
-          <h2 style={h2Style}>{t("9. Dispute Resolution", "٩. تسوية النزاعات")}</h2>
-          <p style={pStyle}>
-            {t(
-              <>
-                We encourage you to contact us first at info@gotawakened.com to resolve any concern informally. Formal dispute resolution procedures:{" "}
-                <TODO en="confirm dispute resolution mechanism — e.g. mediation through Qatar Chamber of Commerce, or litigation in Qatar courts" />
-              </>,
-              <>
-                نشجعك على التواصل معنا أولاً على info@gotawakened.com لحل أي مخاوف بشكل ودي. إجراءات تسوية النزاعات الرسمية:{" "}
-                <TODO en="تأكيد آلية تسوية النزاعات — مثلاً الوساطة عبر غرفة تجارة قطر، أو التقاضي أمام محاكم قطر" />
+                إلى أقصى حد يسمح به القانون، لا تتحمل أوايكند المسؤولية عن الخسائر غير المباشرة أو التبعية أو خسارة الأرباح، ولا عن النتائج التي تتوقف على اختياراتكم وأفعالكم، وتقتصر مسؤوليتنا الإجمالية عن أي مطالبة تتعلق بخدمة ما على المبلغ الذي دفعتموه مقابل تلك الخدمة تحديداً. ولا يستثني أي شيء هنا ولا يحدّ من المسؤولية التي لا يجوز قانونًا استثناؤها، بما في ذلك المسؤولية عن الاحتيال أو الإهمال الجسيم أو سوء السلوك المتعمد. <TODO en="Clause to be finalized by counsel" ar="البند يخضع للمراجعة النهائية للمحامي" />
               </>
             )}
           </p>
 
-          {/* 10. CONTACT */}
-          <h2 style={h2Style}>{t("10. Contact Us", "١٠. تواصل معنا")}</h2>
+          {/* 11 */}
+          <h2 style={h2Style}>{t("11. Changes to Services or Terms", "١١. تعديل الخدمات أو الشروط")}</h2>
           <p style={pStyle}>
             {t(
-              "If you have any questions about these Terms, please contact us:",
-              "إذا كانت لديك أي أسئلة حول هذه الشروط، يرجى التواصل معنا:"
+              "We may update these terms from time to time. The version in force at the time of purchase applies to that purchase.",
+              "يجوز لنا تحديث هذه الشروط. وتسري على كل عملية شراء النسخة السارية وقت الشراء."
             )}
           </p>
+
+          {/* 12 */}
+          <h2 style={h2Style}>{t("12. Force Majeure", "١٢. القوة القاهرة")}</h2>
           <p style={pStyle}>
-            <strong>{t("Awakened", "أوايكند")}</strong>
+            {t(
+              "Neither party is liable for delays or failure to perform caused by events beyond reasonable control (such as extreme weather, natural disasters, or government restrictions), and we will reschedule or refund according to our Refund Policy.",
+              "لا يتحمل أي من الطرفين المسؤولية عن التأخير أو عدم التنفيذ الناتج عن أحداث خارجة عن السيطرة المعقولة (كالظروف الجوية القاهرة أو القيود الحكومية)، وسنعيد الجدولة أو نسترد وفق سياسة الاسترداد."
+            )}
+          </p>
+
+          {/* 13 */}
+          <h2 style={h2Style}>{t("13. Governing Law & Dispute Resolution", "١٣. القانون الواجب التطبيق وتسوية النزاعات")}</h2>
+          <p style={pStyle}>
+            {t(
+              <>
+                The laws of the State of Qatar apply to these terms and the competent courts of Doha have exclusive jurisdiction (<TODO en="counsel to confirm jurisdiction & dispute route" ar="يؤكد المحامي الاختصاص القضائي وآلية النزاع" />).
+              </>,
+              <>
+                تسري قوانين دولة قطر، وتختص المحاكم المختصة في الدوحة بنظر أي نزاع ناشئ عنها (<TODO en="يؤكد المحامي الاختصاص القضائي وآلية النزاع" ar="يؤكد المحامي" />).
+              </>
+            )}
+          </p>
+
+          {/* 14 */}
+          <h2 style={h2Style}>{t("14. Contact", "١٤. للتواصل")}</h2>
+          <p style={pStyle}>
+            <strong>{t("Awakened for Consultations", "شركة أوايكند للاستشارات ذ.م.م")}</strong>
+            <br />
+            {t(
+              "Commercial Registration No. 241070",
+              "سجل تجاري رقم 241070"
+            )}
             <br />
             {t(
               "Zone 53, Street 627, Building 23, 2nd Floor, Office 1, Doha, Qatar",
-              "المنطقة 53، شارع 627، مبنى 23، الطابق الثاني، مكتب 1، الدوحة، قطر"
+              "المنطقة 53، الشارع 627، المبنى 23، الطابق الثاني، المكتب 1، الدوحة، قطر"
             )}
             <br />
-            <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)" }}>
+            <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>
               info@gotawakened.com
             </a>
             <br />
-            <a href="tel:+97477106177" style={{ color: "var(--brand-forest)" }}>
+            <a href="tel:+97477106177" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>
               +974 7710 6177
             </a>
-          </p>
-
-          <p style={{ ...pStyle, marginTop: 40, fontSize: "0.78rem", color: "#7A5C1E" }}>
-            {t(
-              <>Effective Date: <TODO en="insert effective date" /></>,
-              <>تاريخ السريان: <TODO en="أدخل تاريخ السريان" /></>
-            )}
           </p>
         </div>
       </section>

@@ -10,39 +10,62 @@ export function RefundPolicyPage() {
   const h2Style = {
     fontFamily: fontHead,
     fontStyle: isAr ? "normal" : "italic",
-    fontSize: "1.4rem",
+    fontSize: "1.35rem",
     color: "var(--brand-forest)",
     marginTop: 40,
-    marginBottom: 12,
+    marginBottom: 14,
   };
 
   const pStyle = {
     fontFamily: fontBody,
-    fontSize: isAr ? "0.9rem" : "0.88rem",
+    fontSize: isAr ? "0.92rem" : "0.9rem",
     color: "#2E4A32",
     lineHeight: isAr ? 2 : 1.75,
     marginBottom: 16,
   };
 
-  const TODO = ({ en }) => (
+  const tableHeaderStyle = {
+    background: "rgba(35, 62, 49, 0.08)",
+    color: "var(--brand-forest)",
+    fontFamily: fontHead,
+    fontWeight: "bold",
+    padding: "10px 14px",
+    borderBottom: "1px solid rgba(35, 62, 49, 0.15)",
+    textAlign: isAr ? "right" : "left",
+    fontSize: isAr ? "0.9rem" : "0.85rem",
+  };
+
+  const tableCellStyle = {
+    padding: "10px 14px",
+    borderBottom: "1px solid rgba(35, 62, 49, 0.08)",
+    fontFamily: fontBody,
+    fontSize: isAr ? "0.88rem" : "0.85rem",
+    color: "#2E4A32",
+    verticalAlign: "top",
+    lineHeight: 1.6,
+  };
+
+  const TODO = ({ en, ar }) => (
     <mark
       style={{
-        background: "rgba(201,168,76,0.25)",
+        background: "rgba(201,168,76,0.3)",
+        color: "#5C4108",
         padding: "2px 6px",
-        borderRadius: 2,
+        borderRadius: 3,
         fontSize: "0.82rem",
+        fontWeight: "bold",
       }}
     >
-      TODO: OWNER TO CONFIRM — {en}
+      [{isAr ? (ar || en) : en}]
     </mark>
   );
 
   return (
     <>
       <Seo
-        title="Refund Policy"
-        titleAr="سياسة الاسترداد"
-        description="Cancellation and refund policies for Awakened retreats, sessions, and programmes."
+        title="Refund & Cancellation Policy"
+        titleAr="سياسة الاسترداد والإلغاء"
+        description="Refund and cancellation policies for Awakened retreats, sessions, and packages under Qatar Consumer Protection Law No. 8 of 2008."
       />
       <section
         style={{
@@ -54,7 +77,7 @@ export function RefundPolicyPage() {
       >
         <div
           style={{
-            maxWidth: 820,
+            maxWidth: 860,
             margin: "0 auto",
             padding: "0 24px",
             direction: isAr ? "rtl" : "ltr",
@@ -64,205 +87,256 @@ export function RefundPolicyPage() {
           <div
             style={{
               border: "2px solid var(--brand-gold)",
-              background: "rgba(201,168,76,0.1)",
+              background: "rgba(201,168,76,0.12)",
               padding: 16,
               marginBottom: 32,
-              borderRadius: 4,
-              fontSize: "0.85rem",
+              borderRadius: 6,
+              fontSize: "0.88rem",
               color: "#7A5C1E",
               fontFamily: fontBody,
+              lineHeight: 1.7,
             }}
           >
             {t(
-              "⚠ DRAFT — This refund policy is not yet final. Certain service-specific policies are pending owner confirmation and are marked below. Confirmed terms are marked accordingly.",
-              "⚠ مسودة — سياسة الاسترداد هذه ليست نهائية بعد. بعض السياسات الخاصة بالخدمات تنتظر تأكيد المالك وهي موضحة أدناه. البنود المؤكدة محددة وفقاً لذلك."
+              "⚠️ WORKING DRAFT v1.0 — This refund policy is prepared for legal and payment gateway approval. Highlighted brackets mark owner business terms subject to confirmation before final publication.",
+              "⚠️ مسودة أولية الإصدار 1.0 — هذه مسودة أولية لسياسة الاسترداد والإلغاء وليست استشارة قانونية. يجب أن يراجعها محامٍ مؤهل في دولة قطر. البنود المظللة بين أقواس تتطلب تحديداً وتأكيداً نهائياً من إدارة أوايكند."
             )}
           </div>
 
-          {/* PAGE TITLE */}
+          {/* PAGE TITLE & META */}
           <h1
             style={{
               fontFamily: fontHead,
               fontStyle: isAr ? "normal" : "italic",
-              fontSize: "2rem",
+              fontSize: "2.1rem",
               color: "var(--brand-forest)",
               marginBottom: 8,
             }}
           >
-            {t("Refund & Cancellation Policy", "سياسة الاسترداد والإلغاء")}
+            {t("Refund and Cancellation Policy", "سياسة الاسترداد والإلغاء")}
           </h1>
-          <p style={{ ...pStyle, fontSize: "0.8rem", color: "#7A5C1E", marginBottom: 32 }}>
+          <p style={{ ...pStyle, fontSize: "0.82rem", color: "#7A5C1E", marginBottom: 24 }}>
             {t(
-              <>Effective Date: <TODO en="insert effective date" /></>,
-              <>تاريخ السريان: <TODO en="أدخل تاريخ السريان" /></>
+              "Effective date: 18 November 2026 · Version: 1.0",
+              "تاريخ السريان: 18 نوفمبر 2026 · الإصدار: 1.0"
             )}
           </p>
 
-          {/* 1. HOW TO REQUEST */}
-          <h2 style={h2Style}>{t("1. How to Request a Refund or Cancellation", "١. كيفية طلب استرداد أو إلغاء")}</h2>
           <p style={pStyle}>
             {t(
-              "All refund and cancellation requests must be submitted in writing via email to info@gotawakened.com. Your request must include your full name, booking reference number, contact details, and the reason for your cancellation. Requests sent through other channels (social media, direct messages, phone calls) are not considered formal requests until confirmed via email.",
-              "يجب تقديم جميع طلبات الاسترداد والإلغاء خطياً عبر البريد الإلكتروني إلى info@gotawakened.com. يجب أن يتضمن طلبك اسمك الكامل، ورقم مرجع الحجز، وتفاصيل الاتصال، وسبب الإلغاء. لا تُعتبر الطلبات المرسلة عبر قنوات أخرى (وسائل التواصل الاجتماعي، الرسائل المباشرة، المكالمات الهاتفية) طلبات رسمية حتى يتم تأكيدها عبر البريد الإلكتروني."
-            )}
-          </p>
-          <p style={pStyle}>
-            {t(
-              "Refund processing times are typically 7 to 14 business days from the date of written approval, credited back to the original method of payment.",
-              "تستغرق معالجة المبالغ المستردة عادةً من 7 إلى 14 يوم عمل من تاريخ الموافقة الخطية، وتُعاد إلى طريقة الدفع الأصلية."
+              "Prices are in Qatari riyals (QAR) and shown before you pay. Payments are processed by SkipCash. Refunds go back to the original payment method. Decisions in brackets are for the business owner to confirm. Nothing here limits your rights under Qatar’s Consumer Protection Law (Law No. 8 of 2008) and its executive regulations.",
+              "الأسعار بالريال القطري (QAR) وتُعرض قبل الدفع. تُعالَج المدفوعات عبر سكيب كاش (SkipCash)، وتُعاد المبالغ المستردة إلى وسيلة الدفع الأصلية. القرارات الواردة بين أقواس مربعة متروكة لتأكيد المالك. ولا يقيّد أي شيء هنا حقوقكم بموجب قانون حماية المستهلك القطري (القانون رقم 8 لسنة 2008) ولائحته التنفيذية."
             )}
           </p>
 
-          {/* 2. GROUP RETREATS */}
-          <h2 style={h2Style}>
-            {t("2. Group Retreats (Confirmed Policy)", "٢. الخلوات الجماعية (سياسة مؤكدة)")}
-          </h2>
-          <div
-            style={{
-              borderLeft: isAr ? "none" : "3px solid var(--brand-forest)",
-              borderRight: isAr ? "3px solid var(--brand-forest)" : "none",
-              paddingInlineStart: 16,
-              background: "rgba(20,31,21,0.03)",
-              paddingTop: 12,
-              paddingBottom: 12,
-              marginBottom: 20,
-            }}
-          >
-            <p style={{ ...pStyle, marginBottom: 8, fontWeight: "bold" }}>
-              {t(
-                "✓ CONFIRMED CANCELLATION SCHEDULE FOR GROUP RETREATS:",
-                "✓ جدول الإلغاء المؤكد للخلوات الجماعية:"
-              )}
-            </p>
-            <ul style={{ ...pStyle, paddingInlineStart: 20, marginBottom: 0 }}>
-              <li style={{ marginBottom: 8 }}>
-                <strong>{t("40 or more days before retreat start date:", "قبل 40 يوماً أو أكثر من تاريخ بدء الخلوة:")}</strong>{" "}
-                {t(
-                  "Fully refundable (100% refund of fees paid, less any non-recoverable third-party banking/transaction fees).",
-                  "قابل للاسترداد بالكامل (استرداد 100% من الرسوم المدفوعة، مخصوماً منها أي رسوم معاملات بنكية خارجية غير قابلة للاسترداد)."
-                )}
-              </li>
-              <li style={{ marginBottom: 0 }}>
-                <strong>{t("Fewer than 40 days before retreat start date:", "أقل من 40 يوماً قبل تاريخ بدء الخلوة:")}</strong>{" "}
-                {t(
-                  "Non-refundable. Because venue, accommodation, catering, and facilitator commitments are finalized well in advance, cancellations within 40 days of the start date cannot be refunded.",
-                  "غير قابل للاسترداد. نظراً لأن التزامات المكان والإقامة والإعاشة والمدربين يتم تأكيدها مسبقاً، لا يمكن استرداد المبالغ عند الإلغاء خلال 40 يوماً من تاريخ البدء."
-                )}
-              </li>
-            </ul>
-          </div>
-
-          {/* 3. SINGLE ADVISORY SESSIONS */}
-          <h2 style={h2Style}>{t("3. Single Advisory Sessions", "٣. الجلسات الاستشارية الفردية")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm cancellation policy for single advisory sessions — e.g. 24h or 48h notice required for reschedule/refund; late cancellations forfeit session fee" />
-          </p>
-
-          {/* 4. SESSION PACKAGES */}
-          <h2 style={h2Style}>{t("4. Session Packages & Bundles", "٤. باقات وحزم الجلسات")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm policy for multi-session packages — e.g. validity period (e.g. 6 months), non-refundable once first session has commenced, or pro-rated refunds under special circumstances" />
-          </p>
-
-          {/* 5. CORPORATE DEPOSITS */}
-          <h2 style={h2Style}>{t("5. Corporate Deposits", "٥. الودائع المؤسسية")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm corporate deposit terms — e.g. non-refundable deposit percentage, milestone-based cancellation schedule" />
-          </p>
-
-          {/* 6. PRIVATE RETREATS */}
-          <h2 style={h2Style}>{t("6. Private Retreats", "٦. الخلوات الخاصة")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm cancellation schedule for bespoke / private retreats — e.g. deposit terms and cutoff notice period" />
-          </p>
-
-          {/* 7. CORPORATE RETREATS */}
-          <h2 style={h2Style}>{t("7. Corporate Retreats & Workshops", "٧. الخلوات والورش المؤسسية")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm corporate retreat terms — e.g. written notice requirements, deposit retention, rescheduling options" />
-          </p>
-
-          {/* 8. EVENTS */}
-          <h2 style={h2Style}>{t("8. Events & Masterclasses", "٨. الفعاليات وورش العمل العامة")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm policy for ticketed events and masterclasses — e.g. transferable ticket, cancellation deadline (e.g. 7 days prior)" />
-          </p>
-
-          {/* 9. COMMUNITY MEMBERSHIPS */}
-          <h2 style={h2Style}>{t("9. Community Memberships", "٩. عضويات المجتمع")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm membership billing cycles, cancellation notice (e.g. cancel before next billing cycle), and whether partial months are refunded" />
-          </p>
-
-          {/* 10. MEAL PLAN ADD-ONS */}
-          <h2 style={h2Style}>{t("10. Meal Plan Add-ons", "١٠. باقات الوجبات الإضافية")}</h2>
-          <p style={pStyle}>
-            <TODO en="confirm refund policy on meal planning / nutrition add-ons — e.g. non-refundable once prep has begun or tied to retreat cancellation terms" />
-          </p>
-
-          {/* 11. AWAKENED-INITIATED CANCELLATIONS */}
-          <h2 style={h2Style}>
-            {t("11. Cancellations Initiated by Awakened", "١١. الإلغاءات بمبادرة من أوايكند")}
-          </h2>
+          {/* B1 */}
+          <h2 style={h2Style}>{t("B1. Free Discovery Call", "ب1. المكالمة التعريفية المجانية")}</h2>
           <p style={pStyle}>
             {t(
-              "In the rare event that Awakened must cancel or reschedule a retreat, session, or event due to unforeseen circumstances, illness, facilitator unavailability, insufficient registrations, or force majeure (including extreme weather, acts of authorities, or public health emergencies):",
-              "في الحالة النادرة التي تضطر فيها أوايكند إلى إلغاء أو إعادة جدولة خلوة أو جلسة أو فعالية لأسباب طارئة، أو مرض، أو عدم توفر الميسر، أو عدم اكتمال الحد الأدنى للمشاركين، أو القوة القاهرة (بما في ذلك الظروف الجوية القاسية، أو قرارات السلطات، أو طوارئ الصحة العامة):"
+              "The 15-minute discovery call is free of charge. There is nothing to refund.",
+              "المكالمة التعريفية (15 دقيقة) مجانية بالكامل. ولا يوجد ما يُسترد."
             )}
           </p>
-          <ul style={{ ...pStyle, paddingInlineStart: 20 }}>
+
+          {/* B2 */}
+          <h2 style={h2Style}>{t("B2. Needs Assessment (Paid First Session)", "ب2. جلسة تقييم الاحتياجات (الجلسة الأولى المدفوعة)")}</h2>
+          <ul style={{ ...pStyle, paddingLeft: isAr ? 0 : 20, paddingRight: isAr ? 20 : 0 }}>
             <li style={{ marginBottom: 10 }}>
-              <strong>{t("Full Refund:", "استرداد كامل:")}</strong>{" "}
               {t(
-                "You will be offered a 100% full refund of all amounts paid directly to Awakened for the cancelled service.",
-                "سيُعرض عليك استرداد كامل بنسبة 100% لجميع المبالغ المدفوعة مباشرة إلى أوايكند مقابل الخدمة الملغاة."
+                <><strong>Reschedule or cancel at least <TODO en="24" ar="24" /> hours before:</strong> free rescheduling, or a full refund.</>,
+                <><strong>إعادة الجدولة أو الإلغاء قبل <TODO en="24" ar="24" /> ساعة على الأقل:</strong> إعادة جدولة مجانية، أو استرداد كامل للمبلغ.</>
               )}
             </li>
             <li style={{ marginBottom: 10 }}>
-              <strong>{t("Credit / Rescheduling Alternative:", "بديل الرصيد / إعادة الجدولة:")}</strong>{" "}
               {t(
-                "Alternatively, you may choose to apply the full credit toward a rescheduled date or a future Awakened programme of equal value.",
-                "كبديل، يمكنك اختيار تحويل كامل المبلغ كرصيد لتاريخ بديل أو لبرنامج مستقبلي من أوايكند بالقيمة نفسها."
+                <><strong>Less than <TODO en="24" ar="24" /> hours, or no-show:</strong> 50% refunded if you cancel more than 4 hours before the session. If you cancel less than 4 hours before, or do not attend, the fee is not refunded.</>,
+                <><strong>أقل من <TODO en="24" ar="24" /> ساعة، أو عدم الحضور:</strong> يُسترد 50% إذا ألغيتم قبل موعد الجلسة بأكثر من 4 ساعات. وإذا ألغيتم قبل الموعد بأقل من 4 ساعات، أو لم تحضروا، فلا يُسترد الرسم.</>
               )}
             </li>
             <li style={{ marginBottom: 10 }}>
-              <strong>{t("Exclusion of Ancillary Expenses:", "استبعاد النفقات الإضافية:")}</strong>{" "}
               {t(
-                "Awakened is not liable for any secondary or personal expenses incurred by participants, including but not limited to flights, travel insurance, visa fees, or outside accommodation. We strongly recommend comprehensive travel insurance for retreat attendees.",
-                "أوايكند ليست مسؤولة عن أي نفقات ثانوية أو شخصية يتكبدها المشاركون، بما في ذلك على سبيل المثال لا الحصر رحلات الطيران، أو تأمين السفر، أو رسوم التأشيرة، أو الإقامة الخارجية. نوصي بشدة بالحصول على تأمين سفر شامل للمشاركين في الخلوات."
+                "If Awakened cancels or reschedules: you choose a new time or a full refund.",
+                "إذا ألغت أوايكند الجلسة أو أعادت جدولتها: تختارون موعدًا جديدًا أو استردادًا كاملًا."
+              )}
+            </li>
+            <li style={{ marginBottom: 10 }}>
+              {t(
+                "After the assessment has taken place: the fee is not refundable, because the assessment and matching work has been delivered. If you are not satisfied with your matches, we will re-match you once at no charge.",
+                "بعد إجراء التقييم: لا يُسترد الرسم، لأن عمل التقييم والمطابقة قد قُدِّم بالفعل. وإذا لم ترضوا عن المطابقات المقترحة، فسنعيد مطابقتكم مرة واحدة دون رسوم إضافية."
               )}
             </li>
           </ul>
 
-          {/* CONTACT INFO */}
-          <h2 style={h2Style}>{t("12. Contact for Inquiries", "١٢. التواصل للاستفسارات")}</h2>
+          {/* B3 */}
+          <h2 style={h2Style}>{t("B3. Single Sessions", "ب3. الجلسات الفردية")}</h2>
           <p style={pStyle}>
             {t(
-              "For questions regarding this policy or to submit a cancellation request:",
-              "للأسئلة المتعلقة بهذه السياسة أو لتقديم طلب إلغاء:"
+              <>
+                The same rules as B2 apply: notice of at least <TODO en="24" ar="24" /> hours is required to reschedule or cancel; late cancellations and no-shows are charged as described above; and sessions cancelled by Awakened are rescheduled or refunded in full.
+              </>,
+              <>
+                تسري القواعد نفسها الواردة في ب2: إشعار قبل <TODO en="24" ar="24" /> ساعة على الأقل لإعادة الجدولة أو الإلغاء؛ وتُحتسب الرسوم عند الإلغاء المتأخر أو عدم الحضور؛ والجلسات التي تلغيها أوايكند تُعاد جدولتها أو يُسترد ثمنها بالكامل.
+              </>
             )}
-          </p>
-          <p style={pStyle}>
-            <strong>{t("Awakened", "أوايكند")}</strong>
-            <br />
-            {t(
-              "Zone 53, Street 627, Building 23, 2nd Floor, Office 1, Doha, Qatar",
-              "المنطقة 53، شارع 627، مبنى 23، الطابق الثاني، مكتب 1، الدوحة، قطر"
-            )}
-            <br />
-            <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)" }}>
-              info@gotawakened.com
-            </a>
-            <br />
-            <a href="tel:+97477106177" style={{ color: "var(--brand-forest)" }}>
-              +974 7710 6177
-            </a>
           </p>
 
-          <p style={{ ...pStyle, marginTop: 40, fontSize: "0.78rem", color: "#7A5C1E" }}>
+          {/* B4 */}
+          <h2 style={h2Style}>{t("B4. Packages", "ب4. الباقات")}</h2>
+          <ul style={{ ...pStyle, paddingLeft: isAr ? 0 : 20, paddingRight: isAr ? 20 : 0 }}>
+            <li style={{ marginBottom: 10 }}>
+              {t("Packages are valid for 4 months from purchase.", "الباقات صالحة لمدة 4 أشهر من تاريخ الشراء.")}
+            </li>
+            <li style={{ marginBottom: 10 }}>
+              {t(
+                <>Within <TODO en="14" ar="14" /> days of purchase, if no session has been used: full refund.</>,
+                <>خلال <TODO en="14" ar="14" /> يومًا من الشراء، إذا لم تُستخدم أي جلسة: استرداد كامل.</>
+              )}
+            </li>
+            <li style={{ marginBottom: 10 }}>
+              {t(
+                "After your first session: you may ask for a refund of unused sessions. We calculate it as the price paid minus the used sessions at the standard single-session price, so the package discount applies only to sessions you actually received.",
+                "بعد جلستكم الأولى: يمكنكم طلب استرداد الجلسات غير المستخدمة. نحسبه بخصم الجلسات المستخدمة بسعر الجلسة الفردية المعتاد من المبلغ المدفوع، بحيث يسري خصم الباقة على الجلسات التي حصلتم عليها فقط."
+              )}
+            </li>
+            <li style={{ marginBottom: 10 }}>
+              {t(
+                "Expired sessions are not refundable. If we cancel a session and cannot reschedule before expiry, the package is extended or refunded.",
+                "الجلسات المنتهية الصلاحية غير قابلة للاسترداد. وإذا ألغينا جلسة ولم نتمكن من إعادة جدولتها قبل انتهاء الصلاحية، تُمدَّد الباقة أو يُسترد ثمنها."
+              )}
+            </li>
+            <li style={{ marginBottom: 10 }}>
+              {t(
+                "You may switch advisor once at no charge, and keep your remaining sessions.",
+                "يمكنكم تغيير المستشار مرة واحدة دون رسوم، مع الاحتفاظ بجلساتكم المتبقية."
+              )}
+            </li>
+          </ul>
+
+          {/* B5 */}
+          <h2 style={h2Style}>{t("B5. Retreats and Events", "ب5. الخلوات والفعاليات")}</h2>
+          <div style={{ overflowX: "auto", marginBottom: 20 }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid rgba(35, 62, 49, 0.12)", borderRadius: 4 }}>
+              <thead>
+                <tr>
+                  <th style={tableHeaderStyle}>{t("When You Cancel", "عند الإلغاء")}</th>
+                  <th style={tableHeaderStyle}>{t("Refund Amount", "الاسترداد")}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={tableCellStyle}>
+                    {t(
+                      <>More than <TODO en="60" ar="60" /> days before the start</>,
+                      <>قبل بدء الخلوة بأكثر من <TODO en="60" ar="60" /> يومًا</>
+                    )}
+                  </td>
+                  <td style={tableCellStyle}>
+                    {t(
+                      <>Full refund, minus a <TODO en="deposit%" ar="العربون%" /> non-refundable deposit</>,
+                      <>استرداد كامل، بعد خصم عربون غير قابل للاسترداد بنسبة <TODO en="deposit%" ar="العربون%" /></>
+                    )}
+                  </td>
+                </tr>
+                <tr>
+                  <td style={tableCellStyle}>
+                    {t(
+                      <>Between <TODO en="30–60" ar="30–60" /> days before start</>,
+                      <>قبل موعد الخلوة بـ <TODO en="30–60" ar="30–60" /> يومًا</>
+                    )}
+                  </td>
+                  <td style={tableCellStyle}>
+                    {t(
+                      <><TODO en="50%" ar="50%" /> refund</>,
+                      <><TODO en="50%" ar="50%" /> استرداد</>
+                    )}
+                  </td>
+                </tr>
+                <tr>
+                  <td style={tableCellStyle}>
+                    {t(
+                      <>Fewer than <TODO en="30" ar="30" /> days before start, or no-show</>,
+                      <>قبل أقل من <TODO en="30" ar="30" /> يومًا، أو عدم الحضور</>
+                    )}
+                  </td>
+                  <td style={tableCellStyle}>
+                    {t(
+                      <>No refund; you may transfer your place to another person with <TODO en="7" ar="7" /> days’ notice</>,
+                      <>لا استرداد؛ ويمكنكم نقل مقعدكم إلى شخص آخر بإشعار قبل <TODO en="7" ar="7" /> أيام</>
+                    )}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style={pStyle}>
             {t(
-              <>Effective Date: <TODO en="insert effective date" /></>,
-              <>تاريخ السريان: <TODO en="أدخل تاريخ السريان" /></>
+              <>
+                If Awakened cancels or changes the date, you may transfer to the new date or receive a full refund. If an event cannot go ahead for reasons outside our control (for example weather or authority restrictions), we offer a transfer or credit, or a refund of what you paid less costs already paid to third parties (<TODO en="counsel to confirm" ar="يؤكد المحامي" />). Leaving a retreat early does not entitle you to a refund.
+              </>,
+              <>
+                إذا ألغت أوايكند الفعالية أو غيّرت موعدها، يمكنكم الانتقال إلى الموعد الجديد أو استرداد كامل المبلغ. وإذا تعذّرت إقامة فعالية لأسباب خارجة عن إرادتنا (مثل الطقس أو قيود الجهات المختصة)، فنعرض نقل الحجز أو رصيدًا، أو استرداد ما دفعتموه بعد خصم التكاليف التي دُفعت بالفعل لأطراف ثالثة (<TODO en="counsel to confirm" ar="يؤكد المحامي" />). ومغادرة الخلوة مبكرًا لا تمنح الحق في الاسترداد.
+              </>
+            )}
+          </p>
+
+          {/* B6 */}
+          <h2 style={h2Style}>{t("B6. Memberships and Recurring Payments [If Offered]", "ب6. العضويات والمدفوعات المتكررة [إن وُجدت فقط]")}</h2>
+          <p style={pStyle}>
+            {t(
+              <>
+                Membership payments recur through SkipCash on the date shown at checkout. You may cancel any time, effective from the next billing date, with <TODO en="number" ar="عدد" /> days’ notice. We do not refund a billing period already started. If a payment fails, we will contact you and may pause access.
+              </>,
+              <>
+                تتكرر مدفوعات العضوية عبر سكيب كاش في التاريخ المعروض عند الدفع. يمكنكم الإلغاء في أي وقت، ويسري الإلغاء من تاريخ الفوترة التالي، بإشعار قبل <TODO en="number" ar="عدد" /> أيام. ولا نسترد فترة فوترة بدأت بالفعل. وإذا فشلت عملية دفع، فسنتواصل معكم وقد نوقف الوصول مؤقتًا.
+              </>
+            )}
+          </p>
+
+          {/* B7 */}
+          <h2 style={h2Style}>{t("B7. Corporate Programmes", "ب7. البرامج المؤسسية")}</h2>
+          <p style={pStyle}>
+            {t(
+              "Corporate programmes follow the written agreement with the organisation. If it is silent, B5 applies to retreats and B3 to sessions.",
+              "تخضع البرامج المؤسسية للاتفاقية المكتوبة مع المؤسسة. وإذا خلت الاتفاقية من حكم خاص، تسري أحكام ب5 على الخلوات وأحكام ب3 على الجلسات."
+            )}
+          </p>
+
+          {/* B8 */}
+          <h2 style={h2Style}>{t("B8. Mistakes and Duplicate Charges", "ب8. الأخطاء والرسوم المكررة")}</h2>
+          <p style={pStyle}>
+            {t(
+              <>
+                If you are charged twice, charged the wrong amount, or we fail to deliver what you paid for, we will refund the difference in full within <TODO en="5" ar="5" /> business days of confirming it.
+              </>,
+              <>
+                إذا خُصم منكم مبلغ مرتين، أو خُصم مبلغ خاطئ، أو أخفقنا في تقديم ما دفعتم ثمنه، فسنرد الفرق كاملًا خلال <TODO en="5" ar="5" /> أيام عمل من تأكيد ذلك.
+              </>
+            )}
+          </p>
+
+          {/* B9 */}
+          <h2 style={h2Style}>{t("B9. How to Request a Refund", "ب9. كيفية طلب الاسترداد")}</h2>
+          <p style={pStyle}>
+            {t(
+              <>
+                Email <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> with your name (or your client code), the date of payment, and the details of your request. We reply within <TODO en="5" ar="5" /> business days. Approved refunds are issued through SkipCash and appear within <TODO en="number" ar="عدد" /> business days, depending on your bank. Partial refunds are possible.
+              </>,
+              <>
+                راسلونا على <a href="mailto:info@gotawakened.com" style={{ color: "var(--brand-forest)", fontWeight: "bold" }}>info@gotawakened.com</a> مع ذكر اسمكم (أو رمز العميل الخاص بكم) وتاريخ الدفع وتفاصيل طلبكم. نرد خلال <TODO en="5" ar="5" /> أيام عمل. تُصرف المبالغ المستردة المعتمدة عبر سكيب كاش وتظهر خلال <TODO en="number" ar="عدد" /> أيام عمل، حسب البنك الخاص بكم. والاسترداد الجزئي ممكن.
+              </>
+            )}
+          </p>
+
+          {/* B10 */}
+          <h2 style={h2Style}>{t("B10. Dispute Resolution", "ب10. في حال الخلاف")}</h2>
+          <p style={pStyle}>
+            {t(
+              <>
+                Please contact us first so we can resolve any issue amicably. If we cannot reach an agreement, you may contact the Ministry of Commerce and Industry’s Consumer Protection Department or the competent courts (<TODO en="counsel to confirm the route" ar="يؤكد المحامي" />).
+              </>,
+              <>
+                يرجى التواصل معنا أولًا لنحل الأمر وديًا. وإذا تعذّر ذلك، يمكنكم التواصل مع إدارة حماية المستهلك في وزارة التجارة والصناعة أو مع المحاكم المختصة (<TODO en="يؤكد المحامي" ar="يؤكد المحامي" />).
+              </>
             )}
           </p>
         </div>
