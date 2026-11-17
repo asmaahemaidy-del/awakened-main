@@ -19,6 +19,9 @@ const PartnersPage = page(() => import("./pages/PartnersPage"), "PartnersPage");
 const ExpertsPage = page(() => import("./pages/ExpertsPage"), "ExpertsPage");
 const CheckoutSuccessPage = page(() => import("./pages/CheckoutSuccessPage"), "CheckoutSuccessPage");
 const CheckoutCancelPage = page(() => import("./pages/CheckoutCancelPage"), "CheckoutCancelPage");
+const PrivacyPolicyPage = page(() => import("./pages/PrivacyPolicyPage"), "PrivacyPolicyPage");
+const TermsPage = page(() => import("./pages/TermsPage"), "TermsPage");
+const RefundPolicyPage = page(() => import("./pages/RefundPolicyPage"), "RefundPolicyPage");
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 export const routes = [
@@ -45,6 +48,9 @@ export const routes = [
       { path: "experts", element: <ExpertsPage /> },
       { path: "checkout/success", element: <CheckoutSuccessPage /> },
       { path: "checkout/cancel", element: <CheckoutCancelPage /> },
+      { path: "privacy", element: <PrivacyPolicyPage /> },
+      { path: "terms", element: <TermsPage /> },
+      { path: "refund-policy", element: <RefundPolicyPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
@@ -64,4 +70,7 @@ export const PRERENDER_PAGES = [
   { path: "/community", priority: "0.6", changefreq: "monthly" },
   { path: "/partners", priority: "0.6", changefreq: "monthly" },
   { path: "/contact", priority: "0.7", changefreq: "yearly" },
+  { path: "/privacy", priority: "0.3", changefreq: "yearly" },
+  { path: "/terms", priority: "0.3", changefreq: "yearly" },
+  { path: "/refund-policy", priority: "0.3", changefreq: "yearly" },
 ];

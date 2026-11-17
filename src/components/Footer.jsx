@@ -308,6 +308,46 @@ export function Footer() {
         </p>
       </div>
 
+      {/* ── Policy links ──────────────────────────────────────────────────────── */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 20,
+          padding: "14px 32px",
+          textAlign: "center",
+        }}
+      >
+        <Link
+          to="/privacy"
+          style={{ fontFamily: fBody, fontSize: "0.72rem", color: "rgba(184,208,188,0.6)", textDecoration: "none" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.9)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.6)")}
+        >
+          {t("Privacy Policy", "سياسة الخصوصية")}
+        </Link>
+        <span style={{ color: "rgba(184,208,188,0.3)" }}>·</span>
+        <Link
+          to="/terms"
+          style={{ fontFamily: fBody, fontSize: "0.72rem", color: "rgba(184,208,188,0.6)", textDecoration: "none" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.9)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.6)")}
+        >
+          {t("Terms & Conditions", "الشروط والأحكام")}
+        </Link>
+        <span style={{ color: "rgba(184,208,188,0.3)" }}>·</span>
+        <Link
+          to="/refund-policy"
+          style={{ fontFamily: fBody, fontSize: "0.72rem", color: "rgba(184,208,188,0.6)", textDecoration: "none" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.9)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.6)")}
+        >
+          {t("Refund Policy", "سياسة الاسترداد")}
+        </Link>
+      </div>
+
       <hr style={dividerStyle} />
 
       {/* ── Bottom bar ──────────────────────────────────────────────────────── */}
