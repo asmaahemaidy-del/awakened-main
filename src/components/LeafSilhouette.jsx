@@ -1,12 +1,12 @@
 export function LeafSilhouette({
-  variant = "ginkgo",
   size = 28,
   color,
   className = "",
   style = {},
 }) {
+  /* Authentic ginkgo biloba leaf — wide fan, central V-notch, tapered stem */
   const pathD =
-    "M 49 95 C 49 84 49.5 77 50 72 C 40 64 22 54 12 40 C 6 30 11 18 24 13 C 34 9 44 14 50 24 C 56 14 66 9 76 13 C 89 18 94 30 88 40 C 78 54 60 64 50 72 C 50.5 77 51 84 51 95 Z";
+    "M 50 97 C 49.5 90 49 82 48 74 C 38 58 16 42 6 30 C 0 22 2 12 12 7 C 22 2 36 3 46 10 C 49 13 50 18 50 24 C 50 18 51 13 54 10 C 64 3 78 2 88 7 C 98 12 100 22 94 30 C 84 42 62 58 52 74 C 51 82 50.5 90 50 97 Z";
 
   const fillColor = color || "currentColor";
 

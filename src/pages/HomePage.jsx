@@ -293,6 +293,7 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
               />
               <input
                 required
+                aria-label={t("Full name", "الاسم الكامل")}
                 placeholder={t("Full name", "الاسم الكامل")}
                 value={form.name}
                 onChange={(e) => set("name")(e.target.value)}
@@ -313,6 +314,7 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
               <input
                 required
                 type="email"
+                aria-label={t("Email address", "البريد الإلكتروني")}
                 placeholder={t("Email address", "البريد الإلكتروني")}
                 value={form.email}
                 onChange={(e) => set("email")(e.target.value)}
@@ -331,6 +333,7 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
                 }}
               />
               <input
+                aria-label={t("Phone / WhatsApp", "الهاتف / واتساب")}
                 placeholder={t("Phone / WhatsApp", "الهاتف / واتساب")}
                 value={form.phone}
                 onChange={(e) => set("phone")(e.target.value)}
@@ -349,6 +352,7 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
                 }}
               />
               <input
+                aria-label={t("Preferred dates (if known)", "التواريخ المفضلة (إن عُرفت)")}
                 placeholder={t("Preferred dates (if known)", "التواريخ المفضلة (إن عُرفت)")}
                 value={form.dates}
                 onChange={(e) => set("dates")(e.target.value)}
@@ -368,6 +372,7 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
               />
               <textarea
                 rows={3}
+                aria-label={t("Additional notes", "ملاحظات إضافية")}
                 placeholder={t("Anything else we should know?", "أي شيء آخر يجب أن نعرفه؟")}
                 value={form.message}
                 onChange={(e) => set("message")(e.target.value)}
