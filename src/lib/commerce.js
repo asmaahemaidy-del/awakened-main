@@ -151,6 +151,22 @@ export async function startOneTimeCommerceCheckout(params) {
 
 async function createCheckoutSession(params) {
   try {
+    // 1. Primary: SkipCash Qatar payment gateway endpoint
+    const skipCashRes = await fetch("/api/payment/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(params),
+    });
+    const skipCashData = await skipCashRes.json().catch(() => ({}));
+    if (skipCashRes.ok && skipCashData.checkoutUrl) {
+      return {
+        success: true,
+        checkoutUrl: skipCashData.checkoutUrl,
+        transactionId: skipCashData.transactionId,
+      };
+    }
+
+    // 2. Fallback to /api/commerce if SkipCash keys are pending configuration
     const response = await fetch("/api/commerce/create-checkout-session", {
       method: "POST",
       headers: {
@@ -162,7 +178,10 @@ async function createCheckoutSession(params) {
       const errorData = await response.json().catch(() => ({}));
       return {
         success: false,
-        error: errorData.error || `HTTP error: ${response.status} ${response.statusText}`,
+        error:
+          skipCashData.error ||
+          errorData.error ||
+          `HTTP error: ${response.status} ${response.statusText}`,
       };
     }
     const data = await response.json();
