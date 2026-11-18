@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
+import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -295,6 +296,7 @@ const partnerTypes = [
 
 function PartnerCard({ number, en, ar, descEn, descAr, qualities, delay = 0 }) {
   const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
   const fontBody = lang === "ar" ? "var(--font-arabic)" : "var(--font-sans)";
   const fontHead = lang === "ar" ? "var(--font-arabic)" : "var(--font-heading)";
   return (
@@ -375,6 +377,7 @@ export function PartnersPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const { t, lang } = useLanguage();
+  const isAr = lang === "ar";
   const fontBody = lang === "ar" ? "var(--font-arabic)" : "var(--font-sans)";
   const set = (key) => (v) =>
     setForm((f) => ({
@@ -447,22 +450,24 @@ export function PartnersPage() {
         }}
       >
         <motion.div
-          className="absolute rounded-full pointer-events-none w-[600px] h-[600px] -top-32 -right-32 opacity-[0.12]"
+          className="absolute pointer-events-none opacity-[0.08]"
           style={{
-            background:
-              "radial-gradient(circle at 40% 40%, #A8C5A0 0%, #6B9970 50%, transparent 70%)",
-            filter: "blur(90px)",
+            top: "-50px",
+            right: isAr ? "auto" : "-30px",
+            left: isAr ? "-30px" : "auto",
           }}
           animate={{
-            scale: [1, 1.06, 1],
-            opacity: [0.12, 0.18, 0.12],
+            y: [0, -18, 0],
+            rotate: [0, 5, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 18,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        >
+          <LeafSilhouette variant="ginkgo" size={380} color="#6B9970" />
+        </motion.div>
         <div className="max-w-4xl mx-auto px-8 relative flex flex-col items-center text-center">
           <motion.div
             initial={{

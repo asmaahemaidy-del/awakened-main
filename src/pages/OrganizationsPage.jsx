@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { organizations } from "../content/pages";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
+import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -333,13 +334,10 @@ export function OrganizationsPage() {
                     >
                       <div
                         style={{
-                          fontFamily: fontHead,
-                          fontSize: "1.6rem",
-                          color: "var(--brand-sage)",
                           marginBottom: 16,
                         }}
                       >
-                        {o.icon}
+                        <LeafSilhouette variant={i} size={28} color="var(--brand-sage)" />
                       </div>
                       <h3
                         style={{
