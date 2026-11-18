@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { individuals } from "../content/pages";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
+import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -268,13 +269,10 @@ export function IndividualsPage() {
                     >
                       <div
                         style={{
-                          fontFamily: fontHead,
-                          fontSize: "1.6rem",
-                          color: "var(--brand-sage)",
                           marginBottom: 16,
                         }}
                       >
-                        {p.icon}
+                        <LeafSilhouette size={26} variant={(i % 3) + 1} />
                       </div>
                       <h3
                         style={{

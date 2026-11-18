@@ -3,6 +3,7 @@ import { useCallback, useRef, useState } from "react";
 import { Link } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
+import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -615,22 +616,23 @@ export function RetreatsPage() {
         }}
       >
         <motion.div
-          className="absolute rounded-full pointer-events-none w-[700px] h-[700px] -top-40 -right-40 opacity-[0.16]"
+          className="absolute pointer-events-none opacity-[0.14]"
           style={{
-            background:
-              "radial-gradient(circle at 40% 40%, #A8C5A0 0%, #6B9970 50%, transparent 70%)",
-            filter: "blur(90px)",
+            top: "-80px",
+            right: "-40px",
           }}
           animate={{
-            y: [0, -24, 0],
-            x: [0, 10, 0],
+            y: [0, -20, 0],
+            rotate: [0, 4, 0],
           }}
           transition={{
             duration: 16,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        >
+          <LeafSilhouette size={450} variant={1} />
+        </motion.div>
         <div className="relative z-10 max-w-7xl mx-auto px-8">
           <Reveal>
             <BiLabel en="Wellness Retreats" ar="رحلات العافية والرفاهية" />
@@ -839,20 +841,23 @@ export function RetreatsPage() {
         }}
       >
         <motion.div
-          className="absolute rounded-full pointer-events-none w-[500px] h-[500px] -bottom-32 -left-32 opacity-[0.12]"
+          className="absolute pointer-events-none opacity-[0.10]"
           style={{
-            background: "radial-gradient(circle, #6B9970 0%, transparent 70%)",
-            filter: "blur(80px)",
+            bottom: "-60px",
+            left: "-40px",
           }}
           animate={{
-            scale: [1, 1.1, 1],
+            y: [0, 16, 0],
+            rotate: [0, -4, 0],
           }}
           transition={{
-            duration: 12,
+            duration: 14,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        >
+          <LeafSilhouette size={380} variant={3} />
+        </motion.div>
         <div className="relative z-10 max-w-4xl mx-auto px-8 flex flex-col items-center text-center">
           <Reveal>
             <div className="flex flex-col items-center gap-1 mb-6">

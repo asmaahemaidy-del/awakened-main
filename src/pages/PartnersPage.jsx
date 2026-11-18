@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
+import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -410,22 +411,23 @@ export function PartnersPage() {
         }}
       >
         <motion.div
-          className="absolute rounded-full pointer-events-none w-[600px] h-[600px] -top-32 -right-32 opacity-[0.12]"
+          className="absolute pointer-events-none opacity-[0.12]"
           style={{
-            background:
-              "radial-gradient(circle at 40% 40%, #A8C5A0 0%, #6B9970 50%, transparent 70%)",
-            filter: "blur(90px)",
+            top: "-60px",
+            right: "-40px",
           }}
           animate={{
-            scale: [1, 1.06, 1],
-            opacity: [0.12, 0.18, 0.12],
+            y: [0, -18, 0],
+            rotate: [0, 4, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 14,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-        />
+        >
+          <LeafSilhouette size={420} variant={2} />
+        </motion.div>
         <div className="max-w-4xl mx-auto px-8 relative flex flex-col items-center text-center">
           <motion.div
             initial={{

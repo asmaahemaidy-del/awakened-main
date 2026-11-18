@@ -5,6 +5,7 @@ import { about, home } from "../content/pages";
 import { Seo } from "../components/Seo";
 import { LOGO_URL, OG_IMAGE, SITE_URL } from "../lib/site";
 import { useLanguage } from "../i18n/LanguageContext";
+import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function AmbientOrb({ className, style, duration = 14, delay = 0 }) {
   return (
@@ -518,25 +519,43 @@ export function HomePage() {
             overflow: "hidden",
           }}
         >
-          <AmbientOrb
-            className="w-96 h-96 opacity-[0.07]"
+          <motion.div
+            className="absolute pointer-events-none opacity-[0.08]"
             style={{
-              background: "var(--brand-forest-orb-a)",
-              top: "-10%",
-              left: "60%",
-            }}
-            duration={18}
-          />
-          <AmbientOrb
-            className="w-72 h-72 opacity-[0.05]"
-            style={{
-              background: "var(--brand-forest-orb-b)",
-              bottom: "10%",
+              top: "-5%",
               right: "5%",
             }}
-            duration={22}
-            delay={3}
-          />
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 4, 0],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <LeafSilhouette size={380} variant={1} />
+          </motion.div>
+          <motion.div
+            className="absolute pointer-events-none opacity-[0.06]"
+            style={{
+              bottom: "5%",
+              left: "5%",
+            }}
+            animate={{
+              y: [0, 18, 0],
+              rotate: [0, -5, 0],
+            }}
+            transition={{
+              duration: 22,
+              delay: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <LeafSilhouette size={300} variant={2} />
+          </motion.div>
           <div
             style={{
               maxWidth: 900,
@@ -1380,13 +1399,10 @@ export function HomePage() {
                       >
                         <div
                           style={{
-                            fontFamily: fontHead,
-                            fontSize: "1.8rem",
-                            color: "var(--brand-sage-light)",
                             marginBottom: 16,
                           }}
                         >
-                          {card.icon}
+                          <LeafSilhouette size={26} variant={(i % 3) + 1} />
                         </div>
                         <p
                           style={{
