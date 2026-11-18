@@ -10,7 +10,7 @@ const SINGLE_SESSION_PRICE = 174700;
 const SINGLE_SESSION_USD = 480;
 
 function toUSD(qar) {
-  return `~$${Math.round(qar / 100 / 3.64).toLocaleString("en-US")}`;
+  return `$${Math.round(qar / 100 / 3.64).toLocaleString("en-US")}`;
 }
 
 const MEAL_PLANS = [
@@ -429,7 +429,7 @@ function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, h
           className="text-xs leading-relaxed cursor-pointer select-none"
           style={{
             fontFamily: fontBody,
-            color: dark ? "#D6E5D3" : "#3D5C42",
+            color: dark ? "#E2ECE0" : "#1D3822",
           }}
         >
           {isAr ? (
@@ -440,7 +440,7 @@ function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, h
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline font-semibold"
-                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+                style={{ color: dark ? "#F0D58A" : "#141F15" }}
               >
                 الشروط والأحكام
               </Link>{" "}
@@ -450,7 +450,7 @@ function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, h
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline font-semibold"
-                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+                style={{ color: dark ? "#F0D58A" : "#141F15" }}
               >
                 سياسة الاسترداد والإلغاء
               </Link>
@@ -463,7 +463,7 @@ function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, h
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline font-semibold"
-                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+                style={{ color: dark ? "#F0D58A" : "#141F15" }}
               >
                 Terms & Conditions
               </Link>{" "}
@@ -473,7 +473,7 @@ function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, h
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline font-semibold"
-                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+                style={{ color: dark ? "#F0D58A" : "#141F15" }}
               >
                 Refund Policy
               </Link>
@@ -612,7 +612,7 @@ export function BookPage() {
                 {" & "}
                 <span
                   style={{
-                    color: "#A8C5A0",
+                    color: "#CBE2C6",
                     fontStyle: "italic",
                   }}
                 >
@@ -623,7 +623,7 @@ export function BookPage() {
                 <span>الحجز</span>{" "}
                 <span
                   style={{
-                    color: "#A8C5A0",
+                    color: "#CBE2C6",
                   }}
                 >
                   والاستفسار
@@ -670,17 +670,19 @@ export function BookPage() {
                 className="px-5 py-2 text-[10px] tracking-[0.2em] uppercase transition-all duration-300"
                 style={{
                   fontFamily: fontBody,
-                  border: "1px solid rgba(168,197,160,0.35)",
-                  color: "#A8C5A0",
+                  border: "1px solid rgba(203,226,198,0.45)",
+                  color: "#D4E7CF",
                   textDecoration: "none",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(168,197,160,0.1)";
-                  e.currentTarget.style.borderColor = "#A8C5A0";
+                  e.currentTarget.style.background = "rgba(168,197,160,0.15)";
+                  e.currentTarget.style.borderColor = "#CBE2C6";
+                  e.currentTarget.style.color = "#FFFFFF";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(168,197,160,0.35)";
+                  e.currentTarget.style.borderColor = "rgba(203,226,198,0.45)";
+                  e.currentTarget.style.color = "#D4E7CF";
                 }}
               >
                 {t(a.en, a.ar)}
@@ -718,7 +720,8 @@ export function BookPage() {
               fontSize: isAr ? "0.82rem" : "0.65rem",
               letterSpacing: isAr ? 0 : "0.22em",
               textTransform: isAr ? "none" : "uppercase",
-              color: "var(--brand-sage)",
+              color: "#284D2D",
+              fontWeight: 600,
               marginBottom: 16,
             }}
           >
@@ -752,7 +755,7 @@ export function BookPage() {
             style={{
               fontFamily: fontBody,
               fontSize: isAr ? "0.88rem" : "0.82rem",
-              color: "var(--brand-sage-mid)",
+              color: "#2E4A32",
               fontStyle: isAr ? "normal" : "italic",
               marginBottom: 32,
             }}
@@ -794,15 +797,15 @@ export function BookPage() {
             >
               {loadingSkuId === PRIMARY_SESSION_SKU
                 ? t("Preparing checkout…", "جارٍ التحضير…")
-                : t("Book Primary Session — QAR 1,747", "حجز الجلسة الأولى — ١٬٧٤٧ ر.ق")}
+                : t("Book Primary Session — QAR 1,747 ($480 USD)", "حجز الجلسة الأولى — ١٬٧٤٧ ر.ق ($480 دولار)")}
             </button>
             <a
               href="#sessions"
-              className="inline-flex items-center justify-center px-6 py-3.5 transition-all duration-300 text-xs uppercase tracking-wider"
+              className="inline-flex items-center justify-center px-6 py-3.5 transition-all duration-300 text-xs uppercase tracking-wider font-medium"
               style={{
                 fontFamily: fontBody,
                 color: "var(--brand-forest)",
-                border: "1px solid rgba(46,74,50,0.3)",
+                border: "1.5px solid #2E4A32",
                 textDecoration: "none",
               }}
             >
@@ -838,8 +841,8 @@ export function BookPage() {
           <p
             style={{
               fontFamily: fontBody,
-              fontSize: isAr ? "0.82rem" : "0.72rem",
-              color: "var(--brand-sage-mid)",
+              fontSize: isAr ? "0.82rem" : "0.75rem",
+              color: "#2E4A32",
               marginTop: 16,
             }}
           >
@@ -910,20 +913,20 @@ export function BookPage() {
                 <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-6">
                     <span
-                      className="text-xs tracking-[0.2em] uppercase px-3 py-1"
+                      className="text-xs tracking-[0.2em] uppercase px-3 py-1 font-medium"
                       style={{
                         fontFamily: fontBody,
-                        background: pkg.highlight ? "rgba(107,153,112,0.2)" : "#F0EBE3",
-                        color: pkg.highlight ? "#A8C5A0" : "#6B9970",
+                        background: pkg.highlight ? "rgba(201,168,76,0.2)" : "#E6EFE5",
+                        color: pkg.highlight ? "#F0D58A" : "#1B4221",
                       }}
                     >
                       {t(pkg.tier, pkg.tierAr)}
                     </span>
                     <span
-                      className="text-sm"
+                      className="text-sm font-medium"
                       style={{
                         fontFamily: fontBody,
-                        color: pkg.highlight ? "#A8C5A0" : "#9B8E7E",
+                        color: pkg.highlight ? "#D4E7CF" : "#2E4A32",
                       }}
                     >
                       {t(pkg.sessions, pkg.sessionsAr)}
@@ -941,23 +944,24 @@ export function BookPage() {
                       {(pkg.price / 100).toLocaleString("en-QA")}
                     </p>
                     <p
-                      className="text-sm mt-1"
+                      className="text-sm mt-1 font-medium"
                       style={{
                         fontFamily: fontBody,
-                        color: pkg.highlight ? "var(--brand-sage-pale)" : "#3D5C42",
+                        color: pkg.highlight ? "#D4E7CF" : "#244528",
                       }}
                     >
                       {toUSD(pkg.price)}
                       {" USD"}
                     </p>
                   </div>
-                  <ul className="flex flex-col gap-2 mb-8 flex-1">
+                  <ul className="flex flex-col gap-2.5 mb-8 flex-1">
                     {pkg.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span
                           style={{
-                            color: pkg.highlight ? "var(--brand-sage-pale)" : "#3D5C42",
+                            color: pkg.highlight ? "#C9A84C" : "#244528",
                             marginTop: 2,
+                            fontWeight: "bold",
                           }}
                         >
                           —
@@ -966,7 +970,8 @@ export function BookPage() {
                           className="text-xs"
                           style={{
                             fontFamily: fontBody,
-                            color: pkg.highlight ? "#C8D8C4" : "#3D5C42",
+                            color: pkg.highlight ? "#F0F5EE" : "#1B3320",
+                            lineHeight: 1.6,
                           }}
                         >
                           {t(f.en, f.ar)}
@@ -979,16 +984,16 @@ export function BookPage() {
                       className="mb-6"
                       style={{
                         borderTop: pkg.highlight
-                          ? "1px solid rgba(168,197,160,0.2)"
-                          : "1px solid #E0D9CE",
+                          ? "1px solid rgba(168,197,160,0.25)"
+                          : "1px solid #D6CFC4",
                         paddingTop: 20,
                       }}
                     >
                       <p
-                        className="text-xs mb-3"
+                        className="text-xs mb-3 font-semibold"
                         style={{
                           fontFamily: fontBody,
-                          color: pkg.highlight ? "#A8C5A0" : "#9B8E7E",
+                          color: pkg.highlight ? "#F0D58A" : "#2E4A32",
                           letterSpacing: isAr ? 0 : "0.12em",
                           textTransform: isAr ? "none" : "uppercase",
                         }}
@@ -1015,16 +1020,16 @@ export function BookPage() {
                                 padding: "10px 12px",
                                 background: isSelected
                                   ? pkg.highlight
-                                    ? "rgba(107,153,112,0.25)"
-                                    : "#EEF5EE"
+                                    ? "rgba(107,153,112,0.3)"
+                                    : "#E5EFE5"
                                   : pkg.highlight
-                                    ? "rgba(255,255,255,0.04)"
+                                    ? "rgba(255,255,255,0.06)"
                                     : "#F9F6F1",
                                 border: isSelected
-                                  ? "1px solid #6B9970"
+                                  ? "1px solid #4D8B57"
                                   : pkg.highlight
-                                    ? "1px solid rgba(168,197,160,0.15)"
-                                    : "1px solid #E0D9CE",
+                                    ? "1px solid rgba(168,197,160,0.25)"
+                                    : "1px solid #D6CFC4",
                                 cursor: "pointer",
                                 textAlign: isAr ? "right" : "left",
                                 flexDirection: isAr ? "row-reverse" : "row",
@@ -1037,14 +1042,14 @@ export function BookPage() {
                                 }}
                               >
                                 <span
-                                  className="block text-xs font-medium"
+                                  className="block text-xs font-semibold"
                                   style={{
                                     fontFamily: fontBody,
                                     color: isSelected
-                                      ? "#3D5C42"
+                                      ? (pkg.highlight ? "#FFFFFF" : "#141F15")
                                       : pkg.highlight
-                                        ? "#D8E8D4"
-                                        : "#1A2B1C",
+                                        ? "#FFFFFF"
+                                        : "#141F15",
                                   }}
                                 >
                                   {t(plan.labelEn, plan.labelAr)}
@@ -1053,21 +1058,21 @@ export function BookPage() {
                                   className="block text-xs mt-0.5"
                                   style={{
                                     fontFamily: fontBody,
-                                    color: pkg.highlight ? "#A8C5A0" : "#9B8E7E",
+                                    color: pkg.highlight ? "#D4E7CF" : "#2E4A32",
                                   }}
                                 >
                                   {t(plan.descEn, plan.descAr)}
                                 </span>
                               </div>
                               <span
-                                className="text-xs font-medium shrink-0"
+                                className="text-xs font-bold shrink-0"
                                 style={{
                                   fontFamily: fontBody,
                                   color: isSelected
-                                    ? "#3D5C42"
+                                    ? (pkg.highlight ? "#F0D58A" : "#1B4221")
                                     : pkg.highlight
-                                      ? "#A8C5A0"
-                                      : "#6B9970",
+                                      ? "#D4E7CF"
+                                      : "#1B4221",
                                   marginTop: 1,
                                 }}
                               >
@@ -1079,11 +1084,11 @@ export function BookPage() {
                       </div>
                       {selectedMealPlan[pkg.skuId] && (
                         <p
-                          className="text-xs mt-3"
+                          className="text-xs mt-3 font-medium"
                           style={{
                             fontFamily: fontBody,
-                            color: pkg.highlight ? "#A8C5A0" : "#9B8E7E",
-                            fontStyle: "italic",
+                            color: pkg.highlight ? "#D4E7CF" : "#2E4A32",
+                            fontStyle: isAr ? "normal" : "italic",
                           }}
                         >
                           {t(
@@ -1103,17 +1108,20 @@ export function BookPage() {
                     }}
                     isAr={isAr}
                     fontBody={fontBody}
+                    dark={pkg.highlight}
                     hasError={termsError}
                     t={t}
                   />
                   <button
                     onClick={() => handleCheckout(pkg.skuId)}
                     disabled={loadingSkuId === pkg.skuId}
-                    className="w-full py-3 text-sm tracking-[0.1em] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
                       fontFamily: fontBody,
-                      background: pkg.highlight ? "#6B9970" : "#1A2B1C",
-                      color: "#FAF7F2",
+                      background: pkg.highlight ? "#C9A84C" : "#141F15",
+                      color: pkg.highlight ? "#141F15" : "#FFFFFF",
+                      border: "none",
+                      cursor: "pointer",
                     }}
                   >
                     {loadingSkuId === pkg.skuId
@@ -1173,7 +1181,7 @@ export function BookPage() {
             style={{
               fontFamily: fontBody,
               fontSize: "0.95rem",
-              color: "#A8C5A0",
+              color: "#D6E8D2",
               lineHeight: 1.85,
             }}
           >
@@ -1190,8 +1198,8 @@ export function BookPage() {
                 key={tier.skuId + tier.sizeEn}
                 className="relative flex flex-col overflow-hidden"
                 style={{
-                  background: tier.highlight ? "#243D26" : "rgba(255,255,255,0.04)",
-                  border: tier.highlight ? "none" : "1px solid rgba(168,197,160,0.18)",
+                  background: tier.highlight ? "#243D26" : "rgba(255,255,255,0.06)",
+                  border: tier.highlight ? "1px solid #C9A84C" : "1px solid rgba(168,197,160,0.3)",
                   boxShadow: tier.highlight ? "0 8px 40px rgba(0,0,0,0.3)" : "none",
                 }}
               >
@@ -1206,32 +1214,32 @@ export function BookPage() {
                 <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-6">
                     <span
-                      className="text-xs tracking-[0.2em] uppercase px-3 py-1"
+                      className="text-xs tracking-[0.2em] uppercase px-3 py-1 font-semibold"
                       style={{
                         fontFamily: fontBody,
                         background: tier.highlight
-                          ? "rgba(201,168,76,0.15)"
-                          : "rgba(168,197,160,0.1)",
-                        color: tier.highlight ? "#C9A84C" : "#A8C5A0",
+                          ? "rgba(201,168,76,0.2)"
+                          : "rgba(168,197,160,0.18)",
+                        color: tier.highlight ? "#F0D58A" : "#D4E7CF",
                       }}
                     >
                       {t(tier.sizeEn, tier.sizeAr)}
                     </span>
                     <span
-                      className="text-xs"
+                      className="text-xs font-medium"
                       style={{
                         fontFamily: fontBody,
-                        color: "var(--brand-sage-pale)",
+                        color: "#DDF0D8",
                       }}
                     >
                       {t(tier.rangeEn, tier.rangeAr)}
                     </span>
                   </div>
                   <p
-                    className="text-xs mb-1"
+                    className="text-xs mb-1 font-medium"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-pale)",
+                      color: "#DDF0D8",
                     }}
                   >
                     {t("Planning deposit from", "وديعة التخطيط من")}
@@ -1240,17 +1248,17 @@ export function BookPage() {
                     className="text-3xl font-light mb-0.5"
                     style={{
                       fontFamily: fontHead,
-                      color: "var(--brand-cream-mid)",
+                      color: "#FFFFFF",
                     }}
                   >
                     {"QAR "}
                     {(tier.deposit / 100).toLocaleString()}
                   </p>
                   <p
-                    className="text-sm mb-1"
+                    className="text-sm mb-1 font-medium"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-pale)",
+                      color: "#E2F0DE",
                     }}
                   >
                     {toUSD(tier.deposit)}
@@ -1260,7 +1268,7 @@ export function BookPage() {
                     className="text-xs mb-6"
                     style={{
                       fontFamily: fontBody,
-                      color: "var(--brand-sage-pale)",
+                      color: "#C8D8C4",
                     }}
                   >
                     {t(
@@ -1272,20 +1280,21 @@ export function BookPage() {
                     className="text-sm mb-6 flex-1"
                     style={{
                       fontFamily: fontBody,
-                      color: "#A8C5A0",
+                      color: "#EDF5EC",
                       lineHeight: 1.85,
                     }}
                   >
                     {t(tier.descEn, tier.descAr)}
                   </p>
-                  <ul className="flex flex-col gap-2 mb-8">
+                  <ul className="flex flex-col gap-2.5 mb-8">
                     {tier.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <span
                           style={{
-                            color: "var(--brand-sage-pale)",
+                            color: "#C9A84C",
                             marginTop: 2,
                             flexShrink: 0,
+                            fontWeight: "bold",
                           }}
                         >
                           —
@@ -1294,7 +1303,7 @@ export function BookPage() {
                           className="text-xs"
                           style={{
                             fontFamily: fontBody,
-                            color: "#8AB08E",
+                            color: "#E6EFE4",
                             lineHeight: 1.7,
                           }}
                         >
@@ -1319,15 +1328,17 @@ export function BookPage() {
                   <button
                     onClick={() => handleCheckout(tier.skuId)}
                     disabled={loadingSkuId === tier.skuId}
-                    className="w-full py-3 text-xs tracking-[0.15em] uppercase transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
                       fontFamily: fontBody,
-                      background: tier.highlight ? "#C9A84C" : "#4A7A50",
-                      color: tier.highlight ? "#1A2B1C" : "#FAF7F2",
+                      background: tier.highlight ? "#C9A84C" : "#2E5E35",
+                      color: tier.highlight ? "#141F15" : "#FFFFFF",
+                      border: "none",
+                      cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {
                       if (loadingSkuId !== tier.skuId) {
-                        e.currentTarget.style.opacity = "0.85";
+                        e.currentTarget.style.opacity = "0.9";
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -1349,7 +1360,7 @@ export function BookPage() {
               className="text-xs leading-relaxed"
               style={{
                 fontFamily: fontBody,
-                color: "#5A7E5E",
+                color: "#D2E5D0",
                 lineHeight: 1.85,
               }}
             >
@@ -1427,17 +1438,17 @@ export function BookPage() {
                         className="text-xs tracking-[0.2em]"
                         style={{
                           fontFamily: fontBody,
-                          color: retreat.dark ? "#A8C5A0" : "#3D5C42",
+                          color: retreat.dark ? "#D4E7CF" : "#1E3F23",
                         }}
                       >
                         {retreat.number}
                       </span>
                       <span
-                        className="text-xs tracking-[0.15em] uppercase px-3 py-1"
+                        className="text-xs tracking-[0.15em] uppercase px-3 py-1 font-semibold"
                         style={{
                           fontFamily: fontBody,
-                          background: retreat.dark ? "rgba(107,153,112,0.2)" : "#F0EBE3",
-                          color: retreat.dark ? "#A8C5A0" : "#2E4A32",
+                          background: retreat.dark ? "rgba(201,168,76,0.2)" : "#E6EFE5",
+                          color: retreat.dark ? "#F0D58A" : "#18381D",
                         }}
                       >
                         {t(retreat.tagEn, retreat.tagAr)}
@@ -1452,13 +1463,14 @@ export function BookPage() {
                     >
                       {t(retreat.en, retreat.ar)}
                     </h3>
-                    <ul className="flex flex-col gap-2">
+                    <ul className="flex flex-col gap-2.5">
                       {retreat.features.map((f, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span
                             style={{
-                              color: retreat.dark ? "#A8C5A0" : "#3D5C42",
+                              color: retreat.dark ? "#C9A84C" : "#244528",
                               marginTop: 2,
+                              fontWeight: "bold",
                             }}
                           >
                             —
@@ -1467,7 +1479,8 @@ export function BookPage() {
                             className="text-xs"
                             style={{
                               fontFamily: fontBody,
-                              color: retreat.dark ? "#C8D8C4" : "#3D5C42",
+                              color: retreat.dark ? "#F0F5EE" : "#1B3320",
+                              lineHeight: 1.6,
                             }}
                           >
                             {t(f.en, f.ar)}
@@ -1479,10 +1492,10 @@ export function BookPage() {
                   <div className="flex flex-col justify-between">
                     <div>
                       <p
-                        className="text-xs mb-1"
+                        className="text-xs mb-1 font-medium"
                         style={{
                           fontFamily: fontBody,
-                          color: retreat.dark ? "#A8C5A0" : "#9B8E7E",
+                          color: retreat.dark ? "#D4E7CF" : "#2E4A32",
                         }}
                       >
                         {t("Deposit from", "الوديعة من")}
@@ -1498,20 +1511,20 @@ export function BookPage() {
                         {(retreat.price / 100).toLocaleString()}
                       </p>
                       <p
-                        className="text-sm mb-1"
+                        className="text-sm mb-1 font-medium"
                         style={{
                           fontFamily: fontBody,
-                          color: retreat.dark ? "#A8C5A0" : "#3D5C42",
+                          color: retreat.dark ? "#D4E7CF" : "#244528",
                         }}
                       >
                         {toUSD(retreat.price)}
                         {" USD"}
                       </p>
                       <p
-                        className="text-xs leading-relaxed mb-6"
+                        className="text-xs leading-relaxed mb-6 font-medium"
                         style={{
                           fontFamily: fontBody,
-                          color: retreat.dark ? "#A8C5A0" : "#3D5C42",
+                          color: retreat.dark ? "#D4E7CF" : "#243E28",
                         }}
                       >
                         {t(retreat.depositNote, retreat.depositNoteAr)}
@@ -1533,11 +1546,13 @@ export function BookPage() {
                     <button
                       onClick={() => handleCheckout(retreat.skuId)}
                       disabled={loadingSkuId === retreat.skuId}
-                      className="w-full py-3 text-sm tracking-[0.1em] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                       style={{
                         fontFamily: fontBody,
-                        background: retreat.dark ? "#6B9970" : "#1A2B1C",
-                        color: "#FAF7F2",
+                        background: retreat.dark ? "#C9A84C" : "#141F15",
+                        color: retreat.dark ? "#141F15" : "#FFFFFF",
+                        border: "none",
+                        cursor: "pointer",
                       }}
                     >
                       {loadingSkuId === retreat.skuId
@@ -1554,7 +1569,8 @@ export function BookPage() {
               className="text-xs leading-relaxed"
               style={{
                 fontFamily: fontBody,
-                color: "#3D5C42",
+                color: "#1E3B24",
+                lineHeight: 1.85,
               }}
             >
               {t(
@@ -1575,11 +1591,11 @@ export function BookPage() {
             <div
               className="w-8 h-px mb-6"
               style={{
-                background: "#3D5C42",
+                background: "#2E4A32",
               }}
             />
             <p
-              className="text-xs tracking-[0.3em] uppercase mb-3"
+              className="text-xs tracking-[0.3em] uppercase mb-3 font-semibold"
               style={{
                 fontFamily: fontBody,
                 color: "#2E4A32",
@@ -1604,12 +1620,12 @@ export function BookPage() {
                 className="p-6"
                 style={{
                   background: "#FAF7F2",
-                  borderLeft: "2px solid #3D5C42",
+                  borderLeft: "2px solid #2E4A32",
                 }}
               >
                 <div className="flex items-center justify-between mb-3">
                   <p
-                    className="text-xs tracking-[0.2em] uppercase"
+                    className="text-xs tracking-[0.2em] uppercase font-semibold"
                     style={{
                       fontFamily: fontBody,
                       color: "#2E4A32",
@@ -1620,7 +1636,7 @@ export function BookPage() {
                   </p>
                   <Link
                     to="/refund-policy"
-                    className="text-[11px] underline"
+                    className="text-[11px] underline font-medium"
                     style={{
                       fontFamily: fontBody,
                       color: "var(--brand-forest)",
@@ -1633,7 +1649,7 @@ export function BookPage() {
                   className="text-sm leading-relaxed"
                   style={{
                     fontFamily: fontBody,
-                    color: "#2E4A32",
+                    color: "#1D3320",
                     lineHeight: 1.85,
                   }}
                 >
@@ -1657,11 +1673,11 @@ export function BookPage() {
                 className="p-6"
                 style={{
                   background: "#FAF7F2",
-                  borderLeft: "2px solid #3D5C42",
+                  borderLeft: "2px solid #2E4A32",
                 }}
               >
                 <p
-                  className="text-xs tracking-[0.2em] uppercase mb-3"
+                  className="text-xs tracking-[0.2em] uppercase mb-3 font-semibold"
                   style={{
                     fontFamily: fontBody,
                     color: "#2E4A32",
@@ -1673,7 +1689,7 @@ export function BookPage() {
                   className="text-sm leading-relaxed"
                   style={{
                     fontFamily: fontBody,
-                    color: "#2E4A32",
+                    color: "#1D3320",
                     lineHeight: 1.85,
                   }}
                 >
@@ -1687,13 +1703,14 @@ export function BookPage() {
                 className="p-4"
                 style={{
                   border: "1px solid #D6CFC4",
+                  background: "#FAF7F2",
                 }}
               >
                 <p
-                  className="text-xs leading-relaxed"
+                  className="text-xs leading-relaxed font-medium"
                   style={{
                     fontFamily: fontBody,
-                    color: "#6B7E6C",
+                    color: "#1E3823",
                     lineHeight: 1.8,
                   }}
                 >
@@ -1765,20 +1782,20 @@ export function BookPage() {
                 <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-4">
                     <span
-                      className="text-xs tracking-[0.15em] uppercase px-3 py-1"
+                      className="text-xs tracking-[0.15em] uppercase px-3 py-1 font-semibold"
                       style={{
                         fontFamily: fontBody,
-                        background: "rgba(168,197,160,0.18)",
-                        color: "#4A7A50",
+                        background: "rgba(30,64,36,0.12)",
+                        color: "#18381D",
                       }}
                     >
                       {t(ev.typeEn, ev.typeAr)}
                     </span>
                     <span
-                      className="text-xs"
+                      className="text-xs font-medium"
                       style={{
                         fontFamily: fontBody,
-                        color: "#3D5C42",
+                        color: "#1E3B24",
                       }}
                     >
                       {t(ev.date, ev.dateAr)}
@@ -1796,12 +1813,12 @@ export function BookPage() {
                   </h3>
                   <div className="flex items-center gap-2 mb-6">
                     <svg
-                      width="11"
-                      height="11"
+                      width="12"
+                      height="12"
                       viewBox="0 0 24 24"
                       fill="none"
-                      stroke="#3D5C42"
-                      strokeWidth="1.5"
+                      stroke="#1E3B24"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
@@ -1809,10 +1826,10 @@ export function BookPage() {
                       <circle cx="12" cy="10" r="3" />
                     </svg>
                     <span
-                      className="text-xs"
+                      className="text-xs font-medium"
                       style={{
                         fontFamily: fontBody,
-                        color: "#3D5C42",
+                        color: "#1E3B24",
                       }}
                     >
                       {t(ev.location, ev.locationAr)}
@@ -1830,20 +1847,20 @@ export function BookPage() {
                       {(ev.price / 100).toLocaleString()}
                     </span>
                     <span
-                      className="text-xs"
+                      className="text-xs font-medium"
                       style={{
                         fontFamily: fontBody,
-                        color: "#3D5C42",
+                        color: "#2E4A32",
                       }}
                     >
                       {t("per person", "للشخص")}
                     </span>
                   </div>
                   <p
-                    className="text-xs mb-5"
+                    className="text-xs mb-5 font-medium"
                     style={{
                       fontFamily: fontBody,
-                      color: "#3D5C42",
+                      color: "#244528",
                     }}
                   >
                     {toUSD(ev.price)}
@@ -1864,17 +1881,19 @@ export function BookPage() {
                   <button
                     onClick={() => handleCheckout(ev.skuId)}
                     disabled={loadingSkuId === ev.skuId}
-                    className="w-full py-3 text-xs tracking-[0.15em] uppercase transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
                       fontFamily: fontBody,
-                      background: "#1A2B1C",
-                      color: "#FAF7F2",
+                      background: "#141F15",
+                      color: "#FFFFFF",
+                      border: "none",
+                      cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {
                       if (loadingSkuId !== ev.skuId) e.currentTarget.style.background = "#2E4A32";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "#1A2B1C";
+                      e.currentTarget.style.background = "#141F15";
                     }}
                   >
                     {loadingSkuId === ev.skuId
@@ -1887,10 +1906,10 @@ export function BookPage() {
           </div>
           <div className="mt-10 text-center">
             <p
-              className="text-xs mb-4"
+              className="text-xs mb-4 font-medium"
               style={{
                 fontFamily: fontBody,
-                color: "#3D5C42",
+                color: "#1E3B24",
               }}
             >
               {t(
@@ -1900,20 +1919,20 @@ export function BookPage() {
             </p>
             <Link
               to="/events#top"
-              className="inline-flex items-center gap-2 px-6 py-3 text-xs tracking-[0.18em] uppercase transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 text-xs tracking-[0.18em] uppercase font-semibold transition-all duration-300"
               style={{
                 fontFamily: fontBody,
-                border: "1px solid #4A7A50",
-                color: "#4A7A50",
+                border: "1.5px solid #141F15",
+                color: "#141F15",
                 textDecoration: "none",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#4A7A50";
+                e.currentTarget.style.background = "#141F15";
                 e.currentTarget.style.color = "#FFFFFF";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#4A7A50";
+                e.currentTarget.style.color = "#141F15";
               }}
             >
               {t("View Full Events Page →", "عرض صفحة الفعاليات الكاملة →")}
@@ -2022,8 +2041,9 @@ export function BookPage() {
                       fontSize: isAr ? "0.78rem" : "0.62rem",
                       letterSpacing: isAr ? 0 : "0.22em",
                       textTransform: isAr ? "none" : "uppercase",
-                      color: tier.highlight ? "var(--brand-gold)" : "var(--brand-sage-light)",
+                      color: tier.highlight ? "var(--brand-gold)" : "#CBE2C6",
                       marginBottom: 12,
+                      fontWeight: 600,
                     }}
                   >
                     {t(tier.tier.en, tier.tier.ar)}
@@ -2044,7 +2064,7 @@ export function BookPage() {
                     style={{
                       fontFamily: fontBody,
                       fontSize: isAr ? "0.9rem" : "0.82rem",
-                      color: "var(--brand-sage-pale)",
+                      color: "#E2ECE0",
                       lineHeight: isAr ? 2 : 1.7,
                       marginBottom: 28,
                       flexGrow: 1,
@@ -2059,7 +2079,7 @@ export function BookPage() {
                       margin: "0 0 28px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: 10,
+                      gap: 12,
                     }}
                   >
                     {tier.features.map((feat, fi) => (
@@ -2077,6 +2097,7 @@ export function BookPage() {
                             color: "var(--brand-gold)",
                             marginTop: 2,
                             flexShrink: 0,
+                            fontWeight: "bold",
                           }}
                         >
                           ◦
@@ -2085,7 +2106,7 @@ export function BookPage() {
                           style={{
                             fontFamily: fontBody,
                             fontSize: isAr ? "0.88rem" : "0.8rem",
-                            color: "var(--brand-sage-pale)",
+                            color: "#EDF5EC",
                             lineHeight: isAr ? 1.9 : 1.6,
                           }}
                         >
@@ -2101,8 +2122,9 @@ export function BookPage() {
                         fontSize: isAr ? "0.75rem" : "0.62rem",
                         letterSpacing: isAr ? 0 : "0.18em",
                         textTransform: isAr ? "none" : "uppercase",
-                        color: "var(--brand-sage-pale)",
+                        color: "#D4E7CF",
                         marginBottom: 6,
+                        fontWeight: 500,
                       }}
                     >
                       {t(priceLabel.en, priceLabel.ar)}
@@ -2125,8 +2147,9 @@ export function BookPage() {
                       whiteSpace: "pre-line",
                       fontFamily: fontBody,
                       fontSize: "0.85rem",
-                      color: "var(--brand-sage-pale)",
+                      color: "#E2ECE0",
                       marginBottom: 24,
+                      fontWeight: 500,
                     }}
                   >
                     {tier.priceUSD}
@@ -2171,10 +2194,10 @@ export function BookPage() {
             })}
           </div>
           <p
-            className="text-center mt-10 text-xs"
+            className="text-center mt-10 text-xs font-medium"
             style={{
               fontFamily: fontBody,
-              color: "var(--brand-sage-pale)",
+              color: "#D4E7CF",
             }}
           >
             {t(book.membership.footnote.en, book.membership.footnote.ar)}

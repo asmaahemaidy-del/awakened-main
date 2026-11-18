@@ -506,8 +506,8 @@ const pages = {
         ar: "تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
       },
       body: {
-        en: "Every coaching journey begins with a dedicated one-on-one paid consultation (QAR 1,747 / ~$480 USD). In this session, we deeply understand what you need from coaching, evaluate your goals, and match you directly with the best-fit advisor from the Awakened circle. This session is included in every advisory package. Please note: this is strictly a coaching evaluation and advisor alignment session — it is not a medical or clinical diagnosis.",
-        ar: "تبدأ كل رحلة تدريبية بجلسة استشارية فردية مخصصة ومدفوعة (١٬٧٤٧ ر.ق / ~$480 دولار). نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونفهم أهدافكم ونقوم بمواءمتكم واختيار المستشار أو الموجه الأنسب لكم من دائرة أوايكند. هذه الجلسة مشمولة في جميع الباقات الاستشارية. يُرجى ملاحظة أن هذه الجلسة مخصصة لتقييم الاحتياجات التدريبية والتوافق الاستشاري وليست تشخيصاً طبياً أو علاجياً.",
+        en: "Every coaching journey begins with a dedicated one-on-one paid consultation (QAR 1,747 / $480 USD). In this session, we deeply understand what you need from coaching, evaluate your goals, and match you directly with the best-fit advisor from the Awakened circle. This session is included in every advisory package. Please note: this is strictly a coaching evaluation and advisor alignment session — it is not a medical or clinical diagnosis.",
+        ar: "تبدأ كل رحلة تدريبية بجلسة استشارية فردية مخصصة ومدفوعة (١٬٧٤٧ ر.ق / $480 دولار). نحدد من خلالها ما تحتاجونه بدقة من التوجيه التدريبي ونفهم أهدافكم ونقوم بمواءمتكم واختيار المستشار أو الموجه الأنسب لكم من دائرة أوايكند. هذه الجلسة مشمولة في جميع الباقات الاستشارية. يُرجى ملاحظة أن هذه الجلسة مخصصة لتقييم الاحتياجات التدريبية والتوافق الاستشاري وليست تشخيصاً طبياً أو علاجياً.",
       },
       note: {
         en: "Paid 1:1 session · 60 minutes · Virtual worldwide or in-person in Doha. This session is included in every advisory package — the full fee is credited if you enrol.",
@@ -581,7 +581,7 @@ const pages = {
             ar: "العضوية السنوية",
           },
           priceQAR: "QAR 2,400",
-          priceUSD: "~$660 USD",
+          priceUSD: "$660 USD",
           cta: {
             en: "Apply for Membership",
             ar: "التقدم للعضوية",
@@ -643,7 +643,7 @@ const pages = {
             ar: "العضوية السنوية",
           },
           priceQAR: "QAR 5,500",
-          priceUSD: "~$1,511 USD",
+          priceUSD: "$1,511 USD",
           cta: {
             en: "Apply for Membership",
             ar: "التقدم للعضوية",
@@ -696,7 +696,7 @@ const pages = {
             ar: "العضوية السنوية · محدودة بـ ٢٠",
           },
           priceQAR: "QAR 9,800",
-          priceUSD: "~$2,692 USD",
+          priceUSD: "$2,692 USD",
           cta: {
             en: "Enquire About Founding",
             ar: "الاستفسار عن العضوية التأسيسية",
@@ -791,7 +791,7 @@ const pages = {
             ar: "الحجز المبكر وأسعار الأعضاء على جميع الفعاليات وورش العمل والنشرة الشهرية والوصول إلى المكتبة الرقمية.",
           },
           priceQAR: "QAR 2,400",
-          priceUSD: "~$660 USD / year",
+          priceUSD: "$660 USD / year",
           cta: {
             en: "Apply for Membership",
             ar: "التقدم للعضوية",
@@ -817,7 +817,7 @@ const pages = {
             ar: "كل ما في الأساسية، بالإضافة إلى تجمعات ربع سنوية حصرية وجلسة استشارية مجانية ومتابعة شخصية منتصف العام والوصول المبكر لرحلات العافية والرفاهية وخدمة كونسيرج مخصصة.",
           },
           priceQAR: "QAR 5,500",
-          priceUSD: "~$1,511 USD / year",
+          priceUSD: "$1,511 USD / year",
           cta: {
             en: "Apply for Membership",
             ar: "التقدم للعضوية",
@@ -843,7 +843,7 @@ const pages = {
             ar: "سنوية · محدودة بـ ٢٠",
           },
           priceQAR: "QAR 9,800",
-          priceUSD: "~$2,692 USD / year",
+          priceUSD: "$2,692 USD / year",
           cta: {
             en: "Enquire About Founding",
             ar: "الاستفسار عن التأسيسية",
