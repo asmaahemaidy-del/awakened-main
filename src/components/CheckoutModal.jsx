@@ -100,10 +100,12 @@ export function CheckoutModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="checkout-modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6"
+      className="fixed inset-0 flex items-center justify-center p-3 sm:p-6"
       style={{
-        background: "rgba(20, 31, 21, 0.82)",
-        backdropFilter: "blur(8px)",
+        zIndex: 99999,
+        background: "rgba(14, 25, 16, 0.85)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
       }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
