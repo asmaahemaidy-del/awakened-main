@@ -413,9 +413,97 @@ const corporateTiers = [
   },
 ];
 
+function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, hasError = false, t }) {
+  return (
+    <div className="w-full my-3">
+      <div className="flex items-start gap-2.5 text-start">
+        <input
+          type="checkbox"
+          id={id}
+          checked={agreed}
+          onChange={(e) => onToggle(e.target.checked)}
+          className="mt-1 cursor-pointer accent-[#4A7A50] shrink-0"
+        />
+        <label
+          htmlFor={id}
+          className="text-xs leading-relaxed cursor-pointer select-none"
+          style={{
+            fontFamily: fontBody,
+            color: dark ? "#D6E5D3" : "#3D5C42",
+          }}
+        >
+          {isAr ? (
+            <>
+              أوافق على{" "}
+              <Link
+                to="/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                الشروط والأحكام
+              </Link>{" "}
+              و{" "}
+              <Link
+                to="/refund-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                سياسة الاسترداد والإلغاء
+              </Link>
+            </>
+          ) : (
+            <>
+              I agree to the{" "}
+              <Link
+                to="/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                Terms & Conditions
+              </Link>{" "}
+              and{" "}
+              <Link
+                to="/refund-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                Refund Policy
+              </Link>
+            </>
+          )}
+        </label>
+      </div>
+      {hasError && !agreed && (
+        <p
+          className="text-xs mt-1.5 font-medium"
+          style={{
+            fontFamily: fontBody,
+            color: dark ? "#FFA07A" : "#C0392B",
+          }}
+        >
+          {t(
+            "Please agree to the Terms & Conditions and Refund Policy to proceed.",
+            "يرجى الموافقة على الشروط والأحكام وسياسة الاسترداد للمتابعة.",
+          )}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function BookPage() {
   const [loadingSkuId, setLoadingSkuId] = useState(null);
   const [error, setError] = useState(null);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [termsError, setTermsError] = useState(false);
   const [selectedMealPlan, setSelectedMealPlan] = useState({});
   const { t, lang } = useLanguage();
   const isAr = lang === "ar";
@@ -439,6 +527,11 @@ export function BookPage() {
     }
   }, [location.hash]);
   const handleCheckout = async (skuId) => {
+    if (!agreedToTerms) {
+      setTermsError(true);
+      return;
+    }
+    setTermsError(false);
     setLoadingSkuId(skuId);
     setError(null);
     const result = await startOneTimeCommerceCheckout({
@@ -666,6 +759,20 @@ export function BookPage() {
           >
             {t(book.discovery.note.en, book.discovery.note.ar)}
           </p>
+          <div className="max-w-md mx-auto mb-4">
+            <PolicyAgreement
+              id="agree-primary"
+              agreed={agreedToTerms}
+              onToggle={(val) => {
+                setAgreedToTerms(val);
+                if (val) setTermsError(false);
+              }}
+              isAr={isAr}
+              fontBody={fontBody}
+              hasError={termsError}
+              t={t}
+            />
+          </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <button
               onClick={() => handleCheckout(PRIMARY_SESSION_SKU)}
@@ -987,6 +1094,18 @@ export function BookPage() {
                       )}
                     </div>
                   )}
+                  <PolicyAgreement
+                    id={`agree-pkg-${pkg.skuId}`}
+                    agreed={agreedToTerms}
+                    onToggle={(val) => {
+                      setAgreedToTerms(val);
+                      if (val) setTermsError(false);
+                    }}
+                    isAr={isAr}
+                    fontBody={fontBody}
+                    hasError={termsError}
+                    t={t}
+                  />
                   <button
                     onClick={() => handleCheckout(pkg.skuId)}
                     disabled={loadingSkuId === pkg.skuId}
@@ -1184,6 +1303,19 @@ export function BookPage() {
                       </li>
                     ))}
                   </ul>
+                  <PolicyAgreement
+                    id={`agree-corp-${tier.skuId}`}
+                    agreed={agreedToTerms}
+                    onToggle={(val) => {
+                      setAgreedToTerms(val);
+                      if (val) setTermsError(false);
+                    }}
+                    isAr={isAr}
+                    fontBody={fontBody}
+                    dark={true}
+                    hasError={termsError}
+                    t={t}
+                  />
                   <button
                     onClick={() => handleCheckout(tier.skuId)}
                     disabled={loadingSkuId === tier.skuId}
@@ -1385,6 +1517,19 @@ export function BookPage() {
                         {t(retreat.depositNote, retreat.depositNoteAr)}
                       </p>
                     </div>
+                    <PolicyAgreement
+                      id={`agree-retreat-${retreat.skuId}`}
+                      agreed={agreedToTerms}
+                      onToggle={(val) => {
+                        setAgreedToTerms(val);
+                        if (val) setTermsError(false);
+                      }}
+                      isAr={isAr}
+                      fontBody={fontBody}
+                      dark={retreat.dark}
+                      hasError={termsError}
+                      t={t}
+                    />
                     <button
                       onClick={() => handleCheckout(retreat.skuId)}
                       disabled={loadingSkuId === retreat.skuId}
@@ -1704,6 +1849,18 @@ export function BookPage() {
                     {toUSD(ev.price)}
                     {" USD"}
                   </p>
+                  <PolicyAgreement
+                    id={`agree-event-${ev.skuId}`}
+                    agreed={agreedToTerms}
+                    onToggle={(val) => {
+                      setAgreedToTerms(val);
+                      if (val) setTermsError(false);
+                    }}
+                    isAr={isAr}
+                    fontBody={fontBody}
+                    hasError={termsError}
+                    t={t}
+                  />
                   <button
                     onClick={() => handleCheckout(ev.skuId)}
                     disabled={loadingSkuId === ev.skuId}

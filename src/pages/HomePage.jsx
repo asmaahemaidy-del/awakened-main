@@ -118,8 +118,43 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
     }));
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.website?.value) {
+      setSubmitted(true);
+      return;
+    }
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
+    try {
+      const adminApiBase =
+        import.meta.env.VITE_ADMIN_API_URL ||
+        "https://awakened-admin.vercel.app";
+      const messageContent = [
+        form.message,
+        form.dates ? `Preferred dates: ${form.dates}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+
+      const res = await fetch(`${adminApiBase}/api/inquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          inquiry_type: "general",
+          subject: "Home Enquiry Modal",
+          message: messageContent || undefined,
+          source_page: "/",
+          referrer: document.referrer || undefined,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.error || `Server error ${res.status}`);
+      }
+    } catch (err) {
+      console.error("[Awakened] Home inquiry submission error:", err);
+    }
     setSubmitting(false);
     setSubmitted(true);
   };
@@ -247,6 +282,15 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
                 gap: 16,
               }}
             >
+              {/* Honeypot — spam prevention */}
+              <input
+                type="text"
+                name="website"
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+              />
               <input
                 required
                 placeholder={t("Full name", "الاسم الكامل")}
@@ -342,6 +386,51 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
                   resize: "vertical",
                 }}
               />
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, textAlign: "start" }}>
+                <input
+                  type="checkbox"
+                  id="home-enquiry-consent"
+                  required
+                  style={{ marginTop: 4, accentColor: "var(--brand-sage)", flexShrink: 0, cursor: "pointer" }}
+                />
+                <label
+                  htmlFor="home-enquiry-consent"
+                  style={{
+                    fontFamily: fontBody,
+                    fontSize: isAr ? "0.8rem" : "0.74rem",
+                    color: "var(--brand-forest-mid)",
+                    lineHeight: 1.6,
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                >
+                  {isAr ? (
+                    <>
+                      لقد قرأت وأوافق على{" "}
+                      <Link to="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-forest)", textDecoration: "underline", fontWeight: 600 }}>
+                        سياسة الخصوصية
+                      </Link>{" "}
+                      و{" "}
+                      <Link to="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-forest)", textDecoration: "underline", fontWeight: 600 }}>
+                        الشروط والأحكام
+                      </Link>
+                      .
+                    </>
+                  ) : (
+                    <>
+                      I have read and agree to the{" "}
+                      <Link to="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-forest)", textDecoration: "underline", fontWeight: 600 }}>
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-forest)", textDecoration: "underline", fontWeight: 600 }}>
+                        Terms & Conditions
+                      </Link>
+                      .
+                    </>
+                  )}
+                </label>
+              </div>
               <button
                 type="submit"
                 disabled={submitting}

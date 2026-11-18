@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { Link } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
 import { LeafSilhouette } from "../components/LeafSilhouette";
@@ -383,8 +384,44 @@ export function PartnersPage() {
     }));
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.website?.value) {
+      setSubmitted(true);
+      return;
+    }
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
+    try {
+      const adminApiBase =
+        import.meta.env.VITE_ADMIN_API_URL ||
+        "https://awakened-admin.vercel.app";
+      const messageContent = [
+        form.message,
+        form.organisation ? `Organisation: ${form.organisation}` : null,
+        form.type ? `Category: ${form.type}` : null,
+      ]
+        .filter(Boolean)
+        .join("\n\n");
+
+      const res = await fetch(`${adminApiBase}/api/inquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          inquiry_type: "partnership",
+          subject: `Partnership Inquiry: ${form.organisation || form.type || "General"}`,
+          message: messageContent || undefined,
+          source_page: "/partners",
+          referrer: document.referrer || undefined,
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body?.error || `Server error ${res.status}`);
+      }
+    } catch (err) {
+      console.error("[Awakened] Partner inquiry submission error:", err);
+    }
     setSubmitting(false);
     setSubmitted(true);
   };
@@ -766,6 +803,15 @@ export function PartnersPage() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+                {/* Honeypot — spam prevention */}
+                <input
+                  type="text"
+                  name="website"
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+                />
                 <Reveal delay={0.05}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <Field
@@ -894,6 +940,48 @@ export function PartnersPage() {
                   </div>
                 </Reveal>
                 <Reveal delay={0.3}>
+                  <div className="flex items-start gap-2.5 my-2 text-start">
+                    <input
+                      type="checkbox"
+                      id="partner-consent"
+                      required
+                      className="mt-1 cursor-pointer accent-[#4A7A50] shrink-0"
+                    />
+                    <label
+                      htmlFor="partner-consent"
+                      className="text-xs leading-relaxed cursor-pointer select-none"
+                      style={{
+                        fontFamily: fontBody,
+                        color: "#3D5C42",
+                      }}
+                    >
+                      {lang === "ar" ? (
+                        <>
+                          لقد قرأت وأوافق على{" "}
+                          <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                            سياسة الخصوصية
+                          </Link>{" "}
+                          و{" "}
+                          <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                            الشروط والأحكام
+                          </Link>
+                          .
+                        </>
+                      ) : (
+                        <>
+                          I have read and agree to the{" "}
+                          <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                            Privacy Policy
+                          </Link>{" "}
+                          and{" "}
+                          <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                            Terms & Conditions
+                          </Link>
+                          .
+                        </>
+                      )}
+                    </label>
+                  </div>
                   <button
                     type="submit"
                     disabled={submitting}

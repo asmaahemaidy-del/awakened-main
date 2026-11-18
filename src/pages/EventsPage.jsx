@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Seo } from "../components/Seo";
 import { startOneTimeCommerceCheckout } from "../lib/commerce";
@@ -82,14 +83,107 @@ const events = [
   },
 ];
 
+function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, hasError = false, t }) {
+  return (
+    <div className="w-full my-3">
+      <div className="flex items-start gap-2.5 text-start">
+        <input
+          type="checkbox"
+          id={id}
+          checked={agreed}
+          onChange={(e) => onToggle(e.target.checked)}
+          className="mt-1 cursor-pointer accent-[#4A7A50] shrink-0"
+        />
+        <label
+          htmlFor={id}
+          className="text-xs leading-relaxed cursor-pointer select-none"
+          style={{
+            fontFamily: fontBody,
+            color: dark ? "#D6E5D3" : "#3D5C42",
+          }}
+        >
+          {isAr ? (
+            <>
+              أوافق على{" "}
+              <Link
+                to="/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                الشروط والأحكام
+              </Link>{" "}
+              و{" "}
+              <Link
+                to="/refund-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                سياسة الاسترداد والإلغاء
+              </Link>
+            </>
+          ) : (
+            <>
+              I agree to the{" "}
+              <Link
+                to="/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                Terms & Conditions
+              </Link>{" "}
+              and{" "}
+              <Link
+                to="/refund-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline font-semibold"
+                style={{ color: dark ? "#E4C56B" : "#1A2B1C" }}
+              >
+                Refund Policy
+              </Link>
+            </>
+          )}
+        </label>
+      </div>
+      {hasError && !agreed && (
+        <p
+          className="text-xs mt-1.5 font-medium"
+          style={{
+            fontFamily: fontBody,
+            color: dark ? "#FFA07A" : "#C0392B",
+          }}
+        >
+          {t(
+            "Please agree to the Terms & Conditions and Refund Policy to proceed.",
+            "يرجى الموافقة على الشروط والأحكام وسياسة الاسترداد للمتابعة.",
+          )}
+        </p>
+      )}
+    </div>
+  );
+}
+
 export function EventsPage() {
   const [loadingSkuId, setLoadingSkuId] = useState(null);
   const [error, setError] = useState(null);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [termsError, setTermsError] = useState(false);
   const { t, lang } = useLanguage();
   const isAr = lang === "ar";
   const fontBody = lang === "ar" ? "var(--font-arabic)" : "var(--font-sans)";
   const fontHead = lang === "ar" ? "var(--font-arabic)" : "var(--font-heading)";
   const handleCheckout = async (skuId) => {
+    if (!agreedToTerms) {
+      setTermsError(true);
+      return;
+    }
+    setTermsError(false);
     setLoadingSkuId(skuId);
     setError(null);
     const result = await startOneTimeCommerceCheckout({
@@ -437,6 +531,19 @@ export function EventsPage() {
                           {(event.price / 100).toLocaleString()}
                         </p>
                       </div>
+                      <PolicyAgreement
+                        id={`agree-event-page-${event.skuId}`}
+                        agreed={agreedToTerms}
+                        onToggle={(val) => {
+                          setAgreedToTerms(val);
+                          if (val) setTermsError(false);
+                        }}
+                        isAr={isAr}
+                        fontBody={fontBody}
+                        dark={dark}
+                        hasError={termsError}
+                        t={t}
+                      />
                       <button
                         onClick={() => handleCheckout(event.skuId)}
                         disabled={loadingSkuId === event.skuId}

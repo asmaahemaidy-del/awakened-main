@@ -250,6 +250,10 @@ function RetreatEnquiryModal({ retreat, onClose }) {
     }));
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.website?.value) {
+      setSubmitted(true);
+      return;
+    }
     setSubmitting(true);
     try {
       const adminApiBase =
@@ -421,6 +425,15 @@ function RetreatEnquiryModal({ retreat, onClose }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {/* Honeypot — spam prevention */}
+              <input
+                type="text"
+                name="website"
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1">
                   <label
@@ -559,6 +572,48 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                     "تُعالج جميع الاستفسارات بسرية تامة",
                   )}
                 </p>
+              </div>
+              <div className="flex items-start gap-2.5 my-1 text-start">
+                <input
+                  type="checkbox"
+                  id="retreat-enquiry-consent"
+                  required
+                  className="mt-1 cursor-pointer accent-[#4A7A50] shrink-0"
+                />
+                <label
+                  htmlFor="retreat-enquiry-consent"
+                  className="text-xs leading-relaxed cursor-pointer select-none"
+                  style={{
+                    fontFamily: fontBody,
+                    color: "#3D5C42",
+                  }}
+                >
+                  {lang === "ar" ? (
+                    <>
+                      لقد قرأت وأوافق على{" "}
+                      <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                        سياسة الخصوصية
+                      </Link>{" "}
+                      و{" "}
+                      <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                        الشروط والأحكام
+                      </Link>
+                      .
+                    </>
+                  ) : (
+                    <>
+                      I have read and agree to the{" "}
+                      <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline font-semibold" style={{ color: "#1A2B1C" }}>
+                        Terms & Conditions
+                      </Link>
+                      .
+                    </>
+                  )}
+                </label>
               </div>
               <button
                 type="submit"

@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { Link } from "react-router";
 import { community } from "../content/pages";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -50,18 +51,28 @@ function CommunityJoinSection({ fontBody, fontHead, isAr, t }) {
   const [status, setStatus] = useState("idle");
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.website?.value) {
+      setStatus("done");
+      return;
+    }
     setStatus("submitting");
     try {
-      const res = await fetch("/api/contact", {
+      const adminApiBase =
+        import.meta.env.VITE_ADMIN_API_URL ||
+        "https://awakened-admin.vercel.app";
+      const res = await fetch(`${adminApiBase}/api/inquiries`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: form.name,
+          full_name: form.name,
           email: form.email,
-          interest: "Community Membership",
+          inquiry_type: "community",
+          subject: "Community Membership Application",
           message: `Willingness to join: ${form.willingness}${form.notify ? "\n\nRequested: Notify me first for upcoming events and activities." : ""}`,
+          source_page: "/community",
+          referrer: document.referrer || undefined,
         }),
       });
       setStatus(res.ok ? "done" : "error");
@@ -164,6 +175,15 @@ function CommunityJoinSection({ fontBody, fontHead, isAr, t }) {
                 gap: 24,
               }}
             >
+              {/* Honeypot — spam prevention */}
+              <input
+                type="text"
+                name="website"
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+              />
               <div>
                 <label
                   style={{
@@ -358,6 +378,51 @@ function CommunityJoinSection({ fontBody, fontHead, isAr, t }) {
                   {t(community.join.notifyLabel.en, community.join.notifyLabel.ar)}
                 </span>
               </label>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10, textAlign: "start" }}>
+                <input
+                  type="checkbox"
+                  id="community-join-consent"
+                  required
+                  style={{ marginTop: 4, accentColor: "var(--brand-gold)", flexShrink: 0, cursor: "pointer" }}
+                />
+                <label
+                  htmlFor="community-join-consent"
+                  style={{
+                    fontFamily: fontBody,
+                    fontSize: isAr ? "0.8rem" : "0.74rem",
+                    color: "var(--brand-sage-pale)",
+                    lineHeight: 1.6,
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                >
+                  {isAr ? (
+                    <>
+                      لقد قرأت وأوافق على{" "}
+                      <Link to="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                        سياسة الخصوصية
+                      </Link>{" "}
+                      و{" "}
+                      <Link to="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                        الشروط والأحكام
+                      </Link>
+                      .
+                    </>
+                  ) : (
+                    <>
+                      I have read and agree to the{" "}
+                      <Link to="/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                        Privacy Policy
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/terms" target="_blank" rel="noopener noreferrer" style={{ color: "var(--brand-gold)", textDecoration: "underline" }}>
+                        Terms & Conditions
+                      </Link>
+                      .
+                    </>
+                  )}
+                </label>
+              </div>
               {status === "error" && (
                 <p
                   style={{
