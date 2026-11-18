@@ -28,6 +28,8 @@ export async function startOneTimeCommerceCheckout(params) {
         quantity,
       },
     ],
+    customer: params.customer,
+    consents: params.consents,
     returnUrl: `${previewUrl}/checkout/cancel`,
     successUrl: `${previewUrl}/checkout/success`,
   });

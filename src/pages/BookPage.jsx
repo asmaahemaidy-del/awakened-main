@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import { book } from "../content/pages";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Seo } from "../components/Seo";
+import { CheckoutModal } from "../components/CheckoutModal";
 import { startOneTimeCommerceCheckout } from "../lib/commerce";
 
 const SINGLE_SESSION_PRICE = 174700;
@@ -413,103 +414,17 @@ const corporateTiers = [
   },
 ];
 
-function PolicyAgreement({ id, agreed, onToggle, isAr, fontBody, dark = false, hasError = false, t }) {
-  return (
-    <div className="w-full my-3">
-      <div className="flex items-start gap-2.5 text-start">
-        <input
-          type="checkbox"
-          id={id}
-          checked={agreed}
-          onChange={(e) => onToggle(e.target.checked)}
-          className="mt-1 cursor-pointer accent-[#4A7A50] shrink-0"
-        />
-        <label
-          htmlFor={id}
-          className="text-xs leading-relaxed cursor-pointer select-none"
-          style={{
-            fontFamily: fontBody,
-            color: dark ? "#E2ECE0" : "#1D3822",
-          }}
-        >
-          {isAr ? (
-            <>
-              أوافق على{" "}
-              <Link
-                to="/terms"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold"
-                style={{ color: dark ? "#F0D58A" : "#141F15" }}
-              >
-                الشروط والأحكام
-              </Link>{" "}
-              و{" "}
-              <Link
-                to="/refund-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold"
-                style={{ color: dark ? "#F0D58A" : "#141F15" }}
-              >
-                سياسة الاسترداد والإلغاء
-              </Link>
-            </>
-          ) : (
-            <>
-              I agree to the{" "}
-              <Link
-                to="/terms"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold"
-                style={{ color: dark ? "#F0D58A" : "#141F15" }}
-              >
-                Terms & Conditions
-              </Link>{" "}
-              and{" "}
-              <Link
-                to="/refund-policy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline font-semibold"
-                style={{ color: dark ? "#F0D58A" : "#141F15" }}
-              >
-                Refund Policy
-              </Link>
-            </>
-          )}
-        </label>
-      </div>
-      {hasError && !agreed && (
-        <p
-          className="text-xs mt-1.5 font-medium"
-          style={{
-            fontFamily: fontBody,
-            color: dark ? "#FFA07A" : "#C0392B",
-          }}
-        >
-          {t(
-            "Please agree to the Terms & Conditions and Refund Policy to proceed.",
-            "يرجى الموافقة على الشروط والأحكام وسياسة الاسترداد للمتابعة.",
-          )}
-        </p>
-      )}
-    </div>
-  );
-}
-
 export function BookPage() {
-  const [loadingSkuId, setLoadingSkuId] = useState(null);
-  const [error, setError] = useState(null);
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [termsError, setTermsError] = useState(false);
   const [selectedMealPlan, setSelectedMealPlan] = useState({});
+  const [checkoutItem, setCheckoutItem] = useState(null);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
   const { t, lang } = useLanguage();
   const isAr = lang === "ar";
   const fontBody = lang === "ar" ? "var(--font-arabic)" : "var(--font-sans)";
-  const fontHead = lang === "ar" ? "var(--font-arabic)" : "var(--font-heading)";
+  const fontHead = lang === "ar" ? "var(--font-heading)" : "var(--font-heading)";
   const location = useLocation();
+
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace("#", "");
@@ -526,24 +441,40 @@ export function BookPage() {
       }
     }
   }, [location.hash]);
-  const handleCheckout = async (skuId) => {
-    if (!agreedToTerms) {
-      setTermsError(true);
-      return;
+
+  const handleProceed = async (checkoutData) => {
+    setCheckoutLoading(true);
+    setCheckoutError("");
+    try {
+      const result = await startOneTimeCommerceCheckout({
+        skuId: checkoutData.item.skuId,
+        quantity: 1,
+        customer: checkoutData.customer,
+        consents: checkoutData.consents,
+      });
+      if (result.success && result.checkoutUrl) {
+        window.location.href = result.checkoutUrl;
+        return;
+      }
+      setCheckoutError(
+        result.error ||
+          t(
+            "Unable to connect to payment gateway. Please verify your internet connection or contact info@gotawakened.com",
+            "تعذر الاتصال ببوابة الدفع. يرجى التحقق من الاتصال أو التواصل معنا عبر info@gotawakened.com",
+          ),
+      );
+    } catch (err) {
+      setCheckoutError(
+        err instanceof Error
+          ? err.message
+          : t(
+              "Checkout connection failed. Please try again.",
+              "فشلت عملية الدفع. يرجى المحاولة مرة أخرى.",
+            ),
+      );
+    } finally {
+      setCheckoutLoading(false);
     }
-    setTermsError(false);
-    setLoadingSkuId(skuId);
-    setError(null);
-    const result = await startOneTimeCommerceCheckout({
-      skuId,
-      quantity: 1,
-    });
-    if (result.success && result.checkoutUrl) {
-      window.location.href = result.checkoutUrl;
-      return;
-    }
-    setError(result.error || "Unable to start checkout. Please try again.");
-    setLoadingSkuId(null);
   };
   return (
     <div
@@ -762,25 +693,21 @@ export function BookPage() {
           >
             {t(book.discovery.note.en, book.discovery.note.ar)}
           </p>
-          <div className="max-w-md mx-auto mb-4">
-            <PolicyAgreement
-              id="agree-primary"
-              agreed={agreedToTerms}
-              onToggle={(val) => {
-                setAgreedToTerms(val);
-                if (val) setTermsError(false);
-              }}
-              isAr={isAr}
-              fontBody={fontBody}
-              hasError={termsError}
-              t={t}
-            />
-          </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <button
-              onClick={() => handleCheckout(PRIMARY_SESSION_SKU)}
-              disabled={loadingSkuId === PRIMARY_SESSION_SKU}
-              className="inline-flex items-center justify-center px-8 py-3.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={() =>
+                setCheckoutItem({
+                  skuId: PRIMARY_SESSION_SKU,
+                  titleEn: "Primary Coaching Needs Assessment & Matching",
+                  titleAr: "جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
+                  subtitleEn: "Paid 1:1 Consultation · 60 minutes · In-person or virtual",
+                  subtitleAr: "جلسة استشارية فردية مدفوعة · ٦٠ دقيقة · حضورياً أو عن بعد",
+                  priceQAR: "QAR 1,747",
+                  priceUSD: "$480 USD",
+                  amountQar: 1747,
+                })
+              }
+              className="inline-flex items-center justify-center px-8 py-3.5 transition-all duration-300"
               style={{
                 fontFamily: fontBody,
                 fontSize: isAr ? "0.9rem" : "0.75rem",
@@ -795,9 +722,7 @@ export function BookPage() {
               onMouseEnter={(e) => (e.currentTarget.style.background = "var(--brand-forest-mid)")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "var(--brand-forest)")}
             >
-              {loadingSkuId === PRIMARY_SESSION_SKU
-                ? t("Preparing checkout…", "جارٍ التحضير…")
-                : t("Book Primary Session — QAR 1,747 ($480 USD)", "حجز الجلسة الأولى — ١٬٧٤٧ ر.ق ($480 دولار)")}
+              {t("Book Primary Session — QAR 1,747 ($480 USD)", "حجز الجلسة الأولى — ١٬٧٤٧ ر.ق ($480 دولار)")}
             </button>
             <a
               href="#sessions"
@@ -1099,23 +1024,25 @@ export function BookPage() {
                       )}
                     </div>
                   )}
-                  <PolicyAgreement
-                    id={`agree-pkg-${pkg.skuId}`}
-                    agreed={agreedToTerms}
-                    onToggle={(val) => {
-                      setAgreedToTerms(val);
-                      if (val) setTermsError(false);
-                    }}
-                    isAr={isAr}
-                    fontBody={fontBody}
-                    dark={pkg.highlight}
-                    hasError={termsError}
-                    t={t}
-                  />
                   <button
-                    onClick={() => handleCheckout(pkg.skuId)}
-                    disabled={loadingSkuId === pkg.skuId}
-                    className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    onClick={() => {
+                      const chosenMealPlan =
+                        pkg.mealPlan && selectedMealPlan[pkg.skuId]
+                          ? MEAL_PLANS.find((p) => p.id === selectedMealPlan[pkg.skuId])
+                          : null;
+                      setCheckoutItem({
+                        skuId: pkg.skuId,
+                        titleEn: `${pkg.tier} Advisory Package (${pkg.sessions})`,
+                        titleAr: `باقة ${pkg.tierAr} (${pkg.sessionsAr})`,
+                        subtitleEn: "Includes Coaching Needs Assessment & Matching",
+                        subtitleAr: "تشمل جلسة تحديد الاحتياجات التدريبية والمواءمة",
+                        priceQAR: `QAR ${(pkg.price / 100).toLocaleString("en-QA")}`,
+                        priceUSD: `${toUSD(pkg.price)} USD`,
+                        mealPlan: chosenMealPlan,
+                        amountQar: pkg.price / 100,
+                      });
+                    }}
+                    className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300"
                     style={{
                       fontFamily: fontBody,
                       background: pkg.highlight ? "#C9A84C" : "#141F15",
@@ -1124,9 +1051,7 @@ export function BookPage() {
                       cursor: "pointer",
                     }}
                   >
-                    {loadingSkuId === pkg.skuId
-                      ? t("Preparing checkout…", "جارٍ التحضير…")
-                      : t("Reserve Your Spot", "احجز مكانك")}
+                    {t("Reserve Your Spot", "احجز مكانك")}
                   </button>
                 </div>
               </div>
@@ -1312,23 +1237,21 @@ export function BookPage() {
                       </li>
                     ))}
                   </ul>
-                  <PolicyAgreement
-                    id={`agree-corp-${tier.skuId}`}
-                    agreed={agreedToTerms}
-                    onToggle={(val) => {
-                      setAgreedToTerms(val);
-                      if (val) setTermsError(false);
-                    }}
-                    isAr={isAr}
-                    fontBody={fontBody}
-                    dark={true}
-                    hasError={termsError}
-                    t={t}
-                  />
                   <button
-                    onClick={() => handleCheckout(tier.skuId)}
-                    disabled={loadingSkuId === tier.skuId}
-                    className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    onClick={() =>
+                      setCheckoutItem({
+                        skuId: tier.skuId,
+                        titleEn: `Corporate Wellness — ${tier.sizeEn}`,
+                        titleAr: `العافية المؤسسية — ${tier.sizeAr}`,
+                        subtitleEn: `Planning Deposit (${tier.rangeEn})`,
+                        subtitleAr: `وديعة التخطيط (${tier.rangeAr})`,
+                        priceQAR: `QAR ${(tier.deposit / 100).toLocaleString()}`,
+                        priceUSD: `${toUSD(tier.deposit)} USD`,
+                        amountQar: tier.deposit / 100,
+                        isCorporate: true,
+                      })
+                    }
+                    className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                     style={{
                       fontFamily: fontBody,
                       background: tier.highlight ? "#C9A84C" : "#2E5E35",
@@ -1337,17 +1260,13 @@ export function BookPage() {
                       cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {
-                      if (loadingSkuId !== tier.skuId) {
-                        e.currentTarget.style.opacity = "0.9";
-                      }
+                      e.currentTarget.style.opacity = "0.9";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.opacity = "1";
                     }}
                   >
-                    {loadingSkuId === tier.skuId
-                      ? t("Preparing checkout…", "جارٍ التحضير…")
-                      : t("Pay Deposit & Reserve", "ادفع الوديعة واحجز")}
+                    {t("Pay Deposit & Reserve", "ادفع الوديعة واحجز")}
                   </button>
                 </div>
               </div>
@@ -1530,23 +1449,20 @@ export function BookPage() {
                         {t(retreat.depositNote, retreat.depositNoteAr)}
                       </p>
                     </div>
-                    <PolicyAgreement
-                      id={`agree-retreat-${retreat.skuId}`}
-                      agreed={agreedToTerms}
-                      onToggle={(val) => {
-                        setAgreedToTerms(val);
-                        if (val) setTermsError(false);
-                      }}
-                      isAr={isAr}
-                      fontBody={fontBody}
-                      dark={retreat.dark}
-                      hasError={termsError}
-                      t={t}
-                    />
                     <button
-                      onClick={() => handleCheckout(retreat.skuId)}
-                      disabled={loadingSkuId === retreat.skuId}
-                      className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                      onClick={() =>
+                        setCheckoutItem({
+                          skuId: retreat.skuId,
+                          titleEn: `Wellness Retreat Deposit — ${retreat.en}`,
+                          titleAr: `وديعة رحلة العافية — ${retreat.ar}`,
+                          subtitleEn: `${retreat.number} · ${retreat.tagEn}`,
+                          subtitleAr: `${retreat.number} · ${retreat.tagAr}`,
+                          priceQAR: `QAR ${(retreat.price / 100).toLocaleString()}`,
+                          priceUSD: `${toUSD(retreat.price)} USD`,
+                          amountQar: retreat.price / 100,
+                        })
+                      }
+                      className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300"
                       style={{
                         fontFamily: fontBody,
                         background: retreat.dark ? "#C9A84C" : "#141F15",
@@ -1555,9 +1471,7 @@ export function BookPage() {
                         cursor: "pointer",
                       }}
                     >
-                      {loadingSkuId === retreat.skuId
-                        ? t("Preparing checkout…", "جارٍ التحضير…")
-                        : t("Reserve Your Spot", "احجز مكانك")}
+                      {t("Reserve Your Spot", "احجز مكانك")}
                     </button>
                   </div>
                 </div>
@@ -1866,22 +1780,20 @@ export function BookPage() {
                     {toUSD(ev.price)}
                     {" USD"}
                   </p>
-                  <PolicyAgreement
-                    id={`agree-event-${ev.skuId}`}
-                    agreed={agreedToTerms}
-                    onToggle={(val) => {
-                      setAgreedToTerms(val);
-                      if (val) setTermsError(false);
-                    }}
-                    isAr={isAr}
-                    fontBody={fontBody}
-                    hasError={termsError}
-                    t={t}
-                  />
                   <button
-                    onClick={() => handleCheckout(ev.skuId)}
-                    disabled={loadingSkuId === ev.skuId}
-                    className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    onClick={() =>
+                      setCheckoutItem({
+                        skuId: ev.skuId,
+                        titleEn: ev.en,
+                        titleAr: ev.ar,
+                        subtitleEn: `${ev.typeEn} · ${ev.date} · ${ev.location}`,
+                        subtitleAr: `${ev.typeAr} · ${ev.dateAr} · ${ev.locationAr}`,
+                        priceQAR: `QAR ${(ev.price / 100).toLocaleString()}`,
+                        priceUSD: `${toUSD(ev.price)} USD`,
+                        amountQar: ev.price / 100,
+                      })
+                    }
+                    className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                     style={{
                       fontFamily: fontBody,
                       background: "#141F15",
@@ -1890,15 +1802,13 @@ export function BookPage() {
                       cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {
-                      if (loadingSkuId !== ev.skuId) e.currentTarget.style.background = "#2E4A32";
+                      e.currentTarget.style.background = "#2E4A32";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.background = "#141F15";
                     }}
                   >
-                    {loadingSkuId === ev.skuId
-                      ? t("Preparing checkout…", "جارٍ التحضير…")
-                      : t("Reserve Your Spot", "احجز مكانك")}
+                    {t("Reserve Your Spot", "احجز مكانك")}
                   </button>
                 </div>
               </div>
@@ -2204,19 +2114,17 @@ export function BookPage() {
           </p>
         </div>
       </section>
-      {error && (
-        <div
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3"
-          style={{
-            background: "#C0392B",
-            color: "#FFFFFF",
-            fontFamily: fontBody,
-            fontSize: "0.85rem",
-          }}
-        >
-          {error}
-        </div>
-      )}
+      <CheckoutModal
+        isOpen={!!checkoutItem}
+        onClose={() => {
+          setCheckoutItem(null);
+          setCheckoutError("");
+        }}
+        item={checkoutItem}
+        onProceed={handleProceed}
+        loading={checkoutLoading}
+        error={checkoutError}
+      />
     </div>
   );
 }
