@@ -1118,7 +1118,7 @@ export function BookPage() {
                   >
                     {loadingSkuId === pkg.skuId
                       ? t("Preparing checkout…", "جارٍ التحضير…")
-                      : t("Reserve Your Place", "احجز مكانك")}
+                      : t("Reserve Your Spot", "احجز مكانك")}
                   </button>
                 </div>
               </div>
