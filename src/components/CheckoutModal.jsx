@@ -22,10 +22,7 @@ export function CheckoutModal({
   });
 
   const [consents, setConsents] = useState({
-    terms: false,
-    nonMedical: false,
-    privacy: false,
-    corporateAuth: false,
+    allRequired: false,
     research: false,
     marketing: false,
   });
@@ -65,28 +62,10 @@ export function CheckoutModal({
         "اسم الشركة / المؤسسة مطلوب",
       );
     }
-    if (!consents.terms) {
-      errs.terms = t(
-        "You must accept the Terms of Service & Refund Policy",
-        "يجب الموافقة على شروط الخدمة وسياسة الاسترداد",
-      );
-    }
-    if (!consents.nonMedical) {
-      errs.nonMedical = t(
-        "You must acknowledge the non-medical disclaimer",
-        "يجب الإقرار بإخلاء المسؤولية غير الطبي",
-      );
-    }
-    if (!consents.privacy) {
-      errs.privacy = t(
-        "You must consent to Privacy Policy data processing",
-        "يجب الموافقة على معالجة البيانات وفق سياسة الخصوصية",
-      );
-    }
-    if (item.isCorporate && !consents.corporateAuth) {
-      errs.corporateAuth = t(
-        "You must confirm corporate authorization",
-        "يجب تأكيد تفويض المؤسسة",
+    if (!consents.allRequired) {
+      errs.allRequired = t(
+        "Please accept the terms, non-medical disclaimer, and privacy policy to continue",
+        "يرجى الموافقة على الشروط وسياسة الخصوصية وإخلاء المسؤولية للمتابعة",
       );
     }
     setErrors(errs);
@@ -98,7 +77,14 @@ export function CheckoutModal({
     if (validate()) {
       onProceed({
         customer: form,
-        consents,
+        consents: {
+          terms: consents.allRequired,
+          nonMedical: consents.allRequired,
+          privacy: consents.allRequired,
+          corporateAuth: item.isCorporate ? consents.allRequired : false,
+          research: consents.research,
+          marketing: consents.marketing,
+        },
         item,
       });
     }
@@ -422,186 +408,84 @@ export function CheckoutModal({
                 {t("Consent & Acknowledgements", "الموافقات والإقرارات")}
               </p>
 
-              {/* Required 1: Terms & Refund Policy */}
-              <div className="flex items-start gap-2.5">
-                <input
-                  type="checkbox"
-                  id="modal-consent-terms"
-                  checked={consents.terms}
-                  onChange={(e) =>
-                    setConsents((c) => ({ ...c, terms: e.target.checked }))
-                  }
-                  className="mt-1 cursor-pointer accent-[#2E4A32] shrink-0"
-                />
-                <label
-                  htmlFor="modal-consent-terms"
-                  className="text-xs cursor-pointer select-none leading-relaxed"
-                  style={{ color: "#141F15" }}
-                >
-                  <span className="font-semibold text-[#C0392B]">* </span>
-                  {isAr ? (
-                    <>
-                      أوافق على{" "}
-                      <Link
-                        to="/terms"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-bold text-[#18381D]"
-                      >
-                        شروط الخدمة
-                      </Link>{" "}
-                      و{" "}
-                      <Link
-                        to="/refund-policy"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-bold text-[#18381D]"
-                      >
-                        سياسة الاسترداد والإلغاء
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      I agree to the{" "}
-                      <Link
-                        to="/terms"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-bold text-[#18381D]"
-                      >
-                        Terms of Service
-                      </Link>{" "}
-                      and{" "}
-                      <Link
-                        to="/refund-policy"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-bold text-[#18381D]"
-                      >
-                        Refund Policy
-                      </Link>
-                    </>
-                  )}
-                </label>
-              </div>
-              {errors.terms && (
-                <p className="text-xs text-[#C0392B] ms-6 font-medium">
-                  {errors.terms}
-                </p>
-              )}
-
-              {/* Required 2: Non-Medical Disclaimer */}
-              <div className="flex items-start gap-2.5">
-                <input
-                  type="checkbox"
-                  id="modal-consent-medical"
-                  checked={consents.nonMedical}
-                  onChange={(e) =>
-                    setConsents((c) => ({ ...c, nonMedical: e.target.checked }))
-                  }
-                  className="mt-1 cursor-pointer accent-[#2E4A32] shrink-0"
-                />
-                <label
-                  htmlFor="modal-consent-medical"
-                  className="text-xs cursor-pointer select-none leading-relaxed"
-                  style={{ color: "#141F15" }}
-                >
-                  <span className="font-semibold text-[#C0392B]">* </span>
-                  {t(
-                    "I acknowledge that Awakened services provide coaching and personal development, and are strictly non-medical and not a medical or clinical diagnosis or treatment.",
-                    "أقر بأن خدمات أوايكند مخصصة للتطوير الشخصي والتدريب على العافية، وليست تشخيصًا أو علاجًا طبيًا أو نفسيًا أو سريريًا.",
-                  )}
-                </label>
-              </div>
-              {errors.nonMedical && (
-                <p className="text-xs text-[#C0392B] ms-6 font-medium">
-                  {errors.nonMedical}
-                </p>
-              )}
-
-              {/* Required 3: Privacy & Data Protection */}
-              <div className="flex items-start gap-2.5">
-                <input
-                  type="checkbox"
-                  id="modal-consent-privacy"
-                  checked={consents.privacy}
-                  onChange={(e) =>
-                    setConsents((c) => ({ ...c, privacy: e.target.checked }))
-                  }
-                  className="mt-1 cursor-pointer accent-[#2E4A32] shrink-0"
-                />
-                <label
-                  htmlFor="modal-consent-privacy"
-                  className="text-xs cursor-pointer select-none leading-relaxed"
-                  style={{ color: "#141F15" }}
-                >
-                  <span className="font-semibold text-[#C0392B]">* </span>
-                  {isAr ? (
-                    <>
-                      أوافق على معالجة بيانات الحجز والتواصل وفقًا لقانون حماية البيانات القطري رقم 13 لسنة 2016 و
-                      <Link
-                        to="/privacy"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-bold text-[#18381D]"
-                      >
-                        سياسة الخصوصية
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      I consent to the processing of my booking details under Qatar Data Protection Law No. 13 of 2016 and the{" "}
-                      <Link
-                        to="/privacy"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-bold text-[#18381D]"
-                      >
-                        Privacy Policy
-                      </Link>
-                    </>
-                  )}
-                </label>
-              </div>
-              {errors.privacy && (
-                <p className="text-xs text-[#C0392B] ms-6 font-medium">
-                  {errors.privacy}
-                </p>
-              )}
-
-              {/* Required Conditional: Corporate Authorization */}
-              {item.isCorporate && (
-                <div className="flex items-start gap-2.5">
+              {/* Single Unified Mandatory Consent Card */}
+              <div
+                className="p-3.5 rounded-xl border transition-all"
+                style={{
+                  background: errors.allRequired ? "rgba(192, 57, 43, 0.05)" : "#FFFFFF",
+                  borderColor: errors.allRequired ? "#C0392B" : "#D6CFC4",
+                }}
+              >
+                <div className="flex items-start gap-3">
                   <input
                     type="checkbox"
-                    id="modal-consent-corp"
-                    checked={consents.corporateAuth}
-                    onChange={(e) =>
-                      setConsents((c) => ({
-                        ...c,
-                        corporateAuth: e.target.checked,
-                      }))
-                    }
-                    className="mt-1 cursor-pointer accent-[#2E4A32] shrink-0"
+                    id="modal-consent-all-required"
+                    checked={consents.allRequired}
+                    onChange={(e) => {
+                      setConsents((c) => ({ ...c, allRequired: e.target.checked }));
+                      if (errors.allRequired) setErrors((errs) => ({ ...errs, allRequired: undefined }));
+                    }}
+                    className="mt-1 w-4 h-4 cursor-pointer accent-[#2E4A32] shrink-0"
                   />
                   <label
-                    htmlFor="modal-consent-corp"
+                    htmlFor="modal-consent-all-required"
                     className="text-xs cursor-pointer select-none leading-relaxed"
                     style={{ color: "#141F15" }}
                   >
-                    <span className="font-semibold text-[#C0392B]">* </span>
-                    {t(
-                      "I confirm that I am authorized to book on behalf of my organization and agree to the Corporate Statement of Work (SOW) terms and planning deposit provisions.",
-                      "أؤكد أنني مفوض بالحجز نيابة عن مؤسستي وأوافق على شروط وثيقة نطاق العمل (SOW) وأحكام وديعة التخطيط المؤسسية.",
-                    )}
+                    <span className="font-bold text-[#C0392B]">* </span>
+                    <span className="font-semibold text-[#18381D]">
+                      {t("I agree to all required booking terms & policies:", "أوافق على جميع شروط وسياسات الحجز الإلزامية:")}
+                    </span>
+                    <div className="mt-1.5 space-y-1 text-[11px] text-[#3D5C42]">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-[#C9A84C] font-bold">&#10003;</span>
+                        <span>
+                          {isAr ? "الموافقة على " : "Agreement to "}
+                          <Link to="/terms" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#18381D] hover:text-[#C9A84C]">
+                            {isAr ? "شروط الخدمة" : "Terms of Service"}
+                          </Link>{" "}
+                          {isAr ? "و" : "& "}{" "}
+                          <Link to="/refund-policy" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#18381D] hover:text-[#C9A84C]">
+                            {isAr ? "سياسة الاسترداد" : "Refund Policy"}
+                          </Link>
+                        </span>
+                      </div>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-[#C9A84C] font-bold">&#10003;</span>
+                        <span>
+                          {isAr
+                            ? "الإقرار بالطبيعة غير الطبية للخدمات (استشارات وتطوير شخصي)"
+                            : "Non-medical disclaimer acknowledgement (coaching & advisory only)"}
+                        </span>
+                      </div>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-[#C9A84C] font-bold">&#10003;</span>
+                        <span>
+                          {isAr ? "الموافقة على معالجة البيانات وفق القانون القطري رقم 13 لسنة 2016 و" : "Data processing under Qatar Law No. 13 of 2016 & "}
+                          <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#18381D] hover:text-[#C9A84C]">
+                            {isAr ? "سياسة الخصوصية" : "Privacy Policy"}
+                          </Link>
+                        </span>
+                      </div>
+                      {item.isCorporate && (
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-[#C9A84C] font-bold">&#10003;</span>
+                          <span>
+                            {isAr
+                              ? "تأكيد تفويض المؤسسة والموافقة على شروط وثيقة نطاق العمل (SOW) ووديعة التخطيط"
+                              : "Corporate booking authorization & SOW planning deposit provisions"}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </label>
                 </div>
-              )}
-              {errors.corporateAuth && (
-                <p className="text-xs text-[#C0392B] ms-6 font-medium">
-                  {errors.corporateAuth}
-                </p>
-              )}
+                {errors.allRequired && (
+                  <p className="text-xs text-[#C0392B] ms-7 mt-2 font-medium">
+                    {errors.allRequired}
+                  </p>
+                )}
+              </div>
 
               {/* Optional 1: Research Purpose (User Requested) */}
               <div
