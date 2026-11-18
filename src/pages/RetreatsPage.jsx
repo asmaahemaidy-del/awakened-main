@@ -913,7 +913,7 @@ export function RetreatsPage() {
             ease: "easeInOut",
           }}
         >
-          <LeafSilhouette variant="eucalyptus" size={360} color="#8DAF8A" />
+          <LeafSilhouette variant="ginkgo" size={360} color="#8DAF8A" />
         </motion.div>
         <div className="relative z-10 max-w-4xl mx-auto px-8 flex flex-col items-center text-center">
           <Reveal>

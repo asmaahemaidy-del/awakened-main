@@ -645,7 +645,7 @@ export function HomePage() {
               ease: "easeInOut",
             }}
           >
-            <LeafSilhouette variant="olive" size={300} color="var(--brand-sage-light)" />
+            <LeafSilhouette variant="ginkgo" size={300} color="var(--brand-sage-light)" />
           </motion.div>
           <div
             style={{
@@ -1493,7 +1493,7 @@ export function HomePage() {
                             marginBottom: 16,
                           }}
                         >
-                          <LeafSilhouette variant={i} size={28} color="var(--brand-sage-light)" />
+                          <LeafSilhouette variant="ginkgo" size={28} color="var(--brand-sage-light)" />
                         </div>
                         <p
                           style={{

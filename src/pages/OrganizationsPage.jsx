@@ -337,7 +337,7 @@ export function OrganizationsPage() {
                           marginBottom: 16,
                         }}
                       >
-                        <LeafSilhouette variant={i} size={28} color="var(--brand-sage)" />
+                        <LeafSilhouette variant="ginkgo" size={28} color="var(--brand-sage)" />
                       </div>
                       <h3
                         style={{
