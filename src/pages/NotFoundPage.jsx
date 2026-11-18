@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
-import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function NotFoundPage() {
   const { t, lang } = useLanguage();
@@ -18,21 +17,6 @@ function NotFoundPage() {
       }}
     >
       <Seo path="/404" noindex title={t("Page Not Found — Awakened", "الصفحة غير موجودة — أوايكند")} />
-
-      {/* Decorative leaf silhouette */}
-      <div
-        className="absolute pointer-events-none opacity-[0.06]"
-        style={{
-          top: "10%",
-          right: isAr ? "auto" : "8%",
-          left: isAr ? "8%" : "auto",
-          width: 320,
-          height: 320,
-          transform: isAr ? "scaleX(-1)" : "none",
-        }}
-      >
-        <LeafSilhouette variant={1} className="w-full h-full" />
-      </div>
 
       <div className="max-w-xl w-full text-center relative z-10">
         <div className="flex items-center justify-center gap-3 mb-6">

@@ -4,7 +4,6 @@ import { Link } from "react-router";
 import { community } from "../content/pages";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
-import { LeafSilhouette } from "../components/LeafSilhouette";
 
 function Reveal({ children, delay = 0 }) {
   const ref = useRef(null);
@@ -583,10 +582,13 @@ export function CommunityPage() {
                   >
                     <div
                       style={{
+                        fontFamily: fontHead,
+                        fontSize: "1.6rem",
+                        color: "var(--brand-sage)",
                         marginBottom: 16,
                       }}
                     >
-                      <LeafSilhouette size={26} variant={(i % 3) + 1} />
+                      {item.icon}
                     </div>
                     <h3
                       style={{
