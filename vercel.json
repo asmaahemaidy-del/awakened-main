@@ -8,7 +8,10 @@
   "redirects": [
     { "source": "/reserve", "destination": "/events", "permanent": true }
   ],
-  "rewrites": [{ "source": "/checkout/:path*", "destination": "/_app" }],
+  "rewrites": [
+    { "source": "/checkout/:path*", "destination": "/_app" },
+    { "source": "/invoice", "destination": "/_app" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

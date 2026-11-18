@@ -19,6 +19,7 @@ const PartnersPage = page(() => import("./pages/PartnersPage"), "PartnersPage");
 const ExpertsPage = page(() => import("./pages/ExpertsPage"), "ExpertsPage");
 const CheckoutSuccessPage = page(() => import("./pages/CheckoutSuccessPage"), "CheckoutSuccessPage");
 const CheckoutCancelPage = page(() => import("./pages/CheckoutCancelPage"), "CheckoutCancelPage");
+const InvoicePage = page(() => import("./pages/InvoicePage"), "InvoicePage");
 const PrivacyPolicyPage = page(() => import("./pages/PrivacyPolicyPage"), "PrivacyPolicyPage");
 const TermsPage = page(() => import("./pages/TermsPage"), "TermsPage");
 const RefundPolicyPage = page(() => import("./pages/RefundPolicyPage"), "RefundPolicyPage");
@@ -48,6 +49,7 @@ export const routes = [
       { path: "experts", element: <ExpertsPage /> },
       { path: "checkout/success", element: <CheckoutSuccessPage /> },
       { path: "checkout/cancel", element: <CheckoutCancelPage /> },
+      { path: "invoice", element: <InvoicePage /> },
       { path: "privacy", element: <PrivacyPolicyPage /> },
       { path: "terms", element: <TermsPage /> },
       { path: "refund-policy", element: <RefundPolicyPage /> },

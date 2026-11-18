@@ -1,25 +1,139 @@
-// Checkout for bookings and events. The /api/commerce endpoint is provided by the hosting
-// platform (GoDaddy Airo); it must exist wherever the site is deployed.
+// Checkout for bookings, packages, and corporate services.
+// Connects to hosting commerce endpoint and syncs customer details to Awakened Admin Panel.
 
 const STORE_ID = "6238e2d0-80fd-4a2e-92de-53cb0e3da426";
+
+export const ADMIN_API_URL =
+  (typeof import.meta !== "undefined" && import.meta.env?.VITE_ADMIN_API_URL) ||
+  "https://awakened-admin.vercel.app";
 
 function getPreviewUrl() {
   if (typeof window !== "undefined" && window.location?.origin) {
     return window.location.origin;
   }
-  return "https://placeholder.godaddy.com";
+  return "https://gotawakened.com";
+}
+
+/**
+ * Saves customer and checkout data to sessionStorage so CheckoutSuccessPage and InvoicePage can access it.
+ */
+export function persistPendingOrder(checkoutData) {
+  if (typeof window === "undefined" || !window.sessionStorage) return;
+  try {
+    const invoiceNumber = `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+    const record = {
+      ...checkoutData,
+      invoiceNumber,
+      createdAt: new Date().toISOString(),
+    };
+    window.sessionStorage.setItem("awakened_current_order", JSON.stringify(record));
+    return invoiceNumber;
+  } catch (e) {
+    console.warn("[Commerce] Could not persist pending order:", e);
+  }
+}
+
+/**
+ * Retrieves the latest stored checkout order.
+ */
+export function getStoredOrder() {
+  if (typeof window === "undefined" || !window.sessionStorage) return null;
+  try {
+    const raw = window.sessionStorage.getItem("awakened_current_order");
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
+ * Syncs the customer details, package, and consent choices directly to the Awakened Admin Panel
+ * so that administrators can view incoming bookings and customer contacts in real-time.
+ */
+export async function syncCustomerToAdmin(checkoutData) {
+  const customer = checkoutData.customer || {};
+  const item = checkoutData.item || {};
+  const consents = checkoutData.consents || {};
+
+  const invoiceNum = checkoutData.invoiceNumber || `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
+
+  const priceQar = item.price ? (item.price / 100).toLocaleString() : (item.priceQar ? item.priceQar.toLocaleString() : "—");
+  const priceUsd = item.priceUsd ? item.priceUsd.toLocaleString() : "—";
+
+  const messageLines = [
+    `═══════════════════════════════════════════`,
+    `AWAKENED CUSTOMER BOOKING & CHECKOUT RECORD`,
+    `═══════════════════════════════════════════`,
+    `• Invoice Reference: ${invoiceNum}`,
+    `• Customer Name: ${customer.name || "N/A"}`,
+    `• Email: ${customer.email || "N/A"}`,
+    `• Phone: ${customer.phone || "N/A"}`,
+    customer.organization ? `• Organization / Company: ${customer.organization}` : null,
+    ``,
+    `SERVICE & BILLING DETAILS:`,
+    `• Selected Service: ${item.title || item.tier || item.en || "Awakened Consultation"}`,
+    `• Tier / Scope: ${item.sessions || item.tagEn || "Direct Consultation"}`,
+    `• Amount (Fixed QAR): ${priceQar} QAR`,
+    `• Amount (Fixed USD): $${priceUsd} USD (Peg 1 USD = 3.64 QAR)`,
+    ``,
+    `LEGAL & PRIVACY CONSENTS RECORD:`,
+    `• Terms & Refund Policy: ${consents.terms ? "ACCEPTED [Yes]" : "NOT ACCEPTED"}`,
+    `• Non-Medical Wellness Disclaimer: ${consents.nonMedical ? "ACKNOWLEDGED [Yes]" : "NOT ACKNOWLEDGED"}`,
+    `• Qatar Law No. 13/2016 Privacy: ${consents.privacy ? "CONSENTED [Yes]" : "NOT CONSENTED"}`,
+    item.isCorporate ? `• Corporate Authorization: ${consents.corporateAuth ? "CONFIRMED [Yes]" : "NO"}` : null,
+    `• Wellbeing Research & Methodology Development: ${consents.research ? "OPTED IN [Yes]" : "DECLINED [No]"}`,
+    `• Marketing & Executive Updates: ${consents.marketing ? "SUBSCRIBED [Yes]" : "DECLINED [No]"}`,
+    ``,
+    `• Timestamp: ${new Date().toLocaleString("en-GB", { timeZone: "Asia/Qatar" })} AST`,
+    `• Source Page: /book`,
+  ].filter(Boolean);
+
+  const payload = {
+    full_name: customer.name || "Customer Booking",
+    email: customer.email || "client@gotawakened.com",
+    phone: customer.phone || undefined,
+    inquiry_type: item.isCorporate ? "corporate" : "consultation",
+    subject: `[Booking Checkout] ${item.title || item.tier || "Service"} — ${customer.name} (${priceQar} QAR)`,
+    message: messageLines.join("\n"),
+    source_page: "/book",
+    preferred_contact: "email",
+    referrer: typeof document !== "undefined" ? document.referrer || undefined : undefined,
+  };
+
+  try {
+    const res = await fetch(`${ADMIN_API_URL}/api/inquiries`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { success: res.ok, data };
+  } catch (err) {
+    console.warn("[Commerce] Admin panel sync warning:", err);
+    return { success: false, error: err.message };
+  }
 }
 
 export async function startOneTimeCommerceCheckout(params) {
   const previewUrl = getPreviewUrl();
   const quantity = params.quantity ?? 1;
   const storeId = params.storeId ?? STORE_ID;
+
+  // Persist order locally for instant invoice & confirmation rendering
+  persistPendingOrder(params);
+
+  // Sync to Admin panel immediately so administrators see the customer inquiry & booking
+  syncCustomerToAdmin(params).catch(() => {});
+
   if (!storeId || storeId === "REPLACE_WITH_STORE_ID") {
     return {
       success: false,
-      error: "Store ID is not configured. Update STORE_ID in src/lib/commerce/payment-flow.ts",
+      error: "Store ID is not configured. Update STORE_ID in src/lib/commerce.js",
     };
   }
+
   return createCheckoutSession({
     storeId,
     lineItems: [

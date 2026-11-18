@@ -451,6 +451,7 @@ export function BookPage() {
         quantity: 1,
         customer: checkoutData.customer,
         consents: checkoutData.consents,
+        item: checkoutData.item,
       });
       if (result.success && result.checkoutUrl) {
         window.location.href = result.checkoutUrl;
