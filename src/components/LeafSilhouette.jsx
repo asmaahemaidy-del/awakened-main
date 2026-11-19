@@ -13,7 +13,7 @@ export function LeafSilhouette({
     <svg
       width={size}
       height={size}
-      viewBox="0 0 110 140"
+      viewBox="-15 0 115 135"
       fill="none"
       className={className}
       style={{
@@ -24,45 +24,76 @@ export function LeafSilhouette({
       }}
       aria-hidden="true"
     >
-      {/* Delicate orbital geometric ring when shown as ambient backdrop (matching brand stationery artwork) */}
+      {/* Subtle ambient orbital curve (only on large ambient displays) */}
       {showRings && (
-        <g stroke={fillColor} fill="none" opacity="0.32" strokeWidth="0.8">
-          <ellipse cx="58" cy="68" rx="42" ry="46" transform="rotate(-15 58 68)" />
-          <ellipse cx="68" cy="52" rx="28" ry="32" transform="rotate(20 68 52)" opacity="0.6" />
+        <g stroke={fillColor} fill="none" opacity="0.28" strokeWidth="0.8">
+          <ellipse cx="48" cy="62" rx="40" ry="46" transform="rotate(-18 48 62)" />
         </g>
       )}
 
-      {/* Main Arching Botanical Stem */}
+      {/* ── Official Awakened Logo Stem ── */}
+      {/* Main graceful arching stem */}
       <path
-        d="M 28 132 C 34 112 43 82 56 52 C 63 36 71 22 78 10"
+        d="M 38 122 C 20 95 24 58 44 26 C 48 20 53 14 57 8"
         stroke={fillColor}
         strokeWidth="2.2"
         strokeLinecap="round"
       />
 
-      {/* Botanical Leaves along the stem (matching Awakened olive/laurel stem artwork) */}
-      <g fill={fillColor}>
-        {/* Apical / Terminal Leaf */}
-        <path d="M 78 10 C 83 5 88 2 93 1 C 89 8 85 14 79 17 C 77 15 77 12 78 10 Z" />
+      {/* Petioles (leaf stalks) branching from the main stem */}
+      <g stroke={fillColor} strokeWidth="1.3" strokeLinecap="round">
+        {/* Top petioles */}
+        <path d="M 52 15 L 43 14" />
+        <path d="M 50 20 L 59 19" />
+        <path d="M 45 28 L 33 24" />
+        <path d="M 42 34 L 52 33" />
 
-        {/* Pair 1 (Top) */}
-        <path d="M 72 22 C 81 18 91 19 97 18 C 92 25 83 28 73 25 Z" opacity="0.95" />
-        <path d="M 67 27 C 58 20 46 18 38 18 C 44 26 53 31 64 30 Z" opacity="0.95" />
+        {/* Upper-mid petioles */}
+        <path d="M 37 42 L 23 38" />
+        <path d="M 34 50 L 45 49" />
+        <path d="M 30 58 L 15 54" />
+        <path d="M 28 66 L 39 65" />
 
-        {/* Pair 2 (Upper-mid) */}
-        <path d="M 63 42 C 75 38 88 42 96 44 C 88 52 75 54 62 47 Z" opacity="0.92" />
-        <path d="M 57 48 C 45 38 31 36 21 38 C 29 48 41 53 54 52 Z" opacity="0.92" />
+        {/* Mid-lower petioles */}
+        <path d="M 26 76 L 11 73" />
+        <path d="M 26 84 L 37 83" />
+        <path d="M 28 94 L 14 93" />
+        <path d="M 30 102 L 41 102" />
 
-        {/* Pair 3 (Center) */}
-        <path d="M 52 66 C 67 62 82 68 90 72 C 80 80 65 80 50 72 Z" opacity="0.9" />
-        <path d="M 45 72 C 31 62 18 63 10 67 C 18 78 32 82 43 76 Z" opacity="0.9" />
+        {/* Lower petiole */}
+        <path d="M 34 112 L 22 113" />
+      </g>
 
-        {/* Pair 4 (Lower-mid) */}
-        <path d="M 41 90 C 55 88 68 94 76 100 C 66 106 53 104 39 96 Z" opacity="0.88" />
-        <path d="M 36 96 C 24 88 12 92 6 98 C 14 108 26 108 34 102 Z" opacity="0.88" />
+      {/* Teardrop leaves with pointed tips (matching the logo leaves) */}
+      <g fill={fillColor} stroke="none">
+        {/* Terminal double apex leaves at the tip */}
+        <path d="M 57 8 C 55 4 54 1 56 0 C 58 2 60 5 58 8 Z" />
+        <path d="M 58 8 C 61 5 64 2 66 1 C 65 4 63 7 59 9 Z" />
 
-        {/* Leaf 5 (Lowest Left) */}
-        <path d="M 31 114 C 20 108 10 114 4 122 C 13 130 25 128 31 120 Z" opacity="0.85" />
+        {/* Upper leaves */}
+        <path d="M 43 14 C 36 10 32 10 27 12 C 32 16 38 17 43 15 Z" />
+        <path d="M 59 19 C 66 16 71 17 76 20 C 70 23 64 23 58 20 Z" />
+        <path d="M 33 24 C 25 19 19 20 13 23 C 19 28 26 28 33 25 Z" />
+        <path d="M 52 33 C 60 30 67 32 73 36 C 66 38 59 37 51 34 Z" />
+
+        {/* Upper-mid leaves */}
+        <path d="M 23 38 C 14 32 7 34 0 38 C 7 44 15 44 23 39 Z" />
+        <path d="M 45 49 C 54 46 62 48 69 53 C 61 55 53 54 44 50 Z" />
+        <path d="M 15 54 C 6 48 -1 51 -7 56 C 1 61 9 61 16 55 Z" />
+        <path d="M 39 65 C 49 62 57 65 64 70 C 56 72 47 70 38 66 Z" />
+
+        {/* Mid-lower leaves */}
+        <path d="M 11 73 C 2 68 -5 72 -10 77 C -2 82 6 81 12 74 Z" />
+        <path d="M 37 83 C 47 81 55 84 61 90 C 53 91 44 89 36 84 Z" />
+        <path d="M 14 93 C 5 89 -1 94 -6 100 C 2 104 10 102 15 94 Z" />
+        <path d="M 41 102 C 50 102 57 106 62 112 C 54 112 47 109 40 103 Z" />
+
+        {/* Lower leaf */}
+        <path d="M 22 113 C 14 111 8 116 3 122 C 11 125 18 122 23 114 Z" />
+
+        {/* Two small floating / drifting leaves at the base (as seen in the logo) */}
+        <path d="M 46 122 C 49 119 53 119 56 121 C 53 124 50 124 46 123 Z" opacity="0.85" />
+        <path d="M 54 127 C 57 125 61 126 64 128 C 61 130 58 130 54 128 Z" opacity="0.8" />
       </g>
     </svg>
   );
