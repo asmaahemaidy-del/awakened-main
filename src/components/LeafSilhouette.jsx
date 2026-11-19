@@ -1,3 +1,9 @@
+/**
+ * LeafSilhouette — Exact ginkgo biloba leaf silhouette
+ * Traced from vecteezy_drawing-of-ginkgo-biloba-plant-black-silhouette_.jpg
+ * Fan-shaped bilobed leaf with radiating veins and curved petiole stem.
+ * Props: size, color, className, style, withRings
+ */
 export function LeafSilhouette({
   size = 28,
   color,
@@ -13,7 +19,7 @@ export function LeafSilhouette({
     <svg
       width={size}
       height={size}
-      viewBox="-15 0 115 135"
+      viewBox="0 0 200 240"
       fill="none"
       className={className}
       style={{
@@ -24,77 +30,90 @@ export function LeafSilhouette({
       }}
       aria-hidden="true"
     >
-      {/* Subtle ambient orbital curve (only on large ambient displays) */}
+      {/* Subtle ambient orbital ring (large ambient displays only) */}
       {showRings && (
-        <g stroke={fillColor} fill="none" opacity="0.28" strokeWidth="0.8">
-          <ellipse cx="48" cy="62" rx="40" ry="46" transform="rotate(-18 48 62)" />
-        </g>
+        <ellipse
+          cx="100"
+          cy="115"
+          rx="72"
+          ry="80"
+          transform="rotate(-12 100 115)"
+          stroke={fillColor}
+          strokeWidth="0.9"
+          fill="none"
+          opacity="0.22"
+        />
       )}
 
-      {/* ── Official Awakened Logo Stem ── */}
-      {/* Main graceful arching stem */}
+      {/* ── Ginkgo Biloba Leaf ── */}
+
+      {/* Outer fan silhouette — the two-lobed ginkgo leaf shape */}
       <path
-        d="M 38 122 C 20 95 24 58 44 26 C 48 20 53 14 57 8"
-        stroke={fillColor}
-        strokeWidth="2.2"
-        strokeLinecap="round"
+        d="
+          M 100 195
+          C 100 190 100 185 100 180
+          C 90 174 80 166 70 155
+          C 54 138 42 118 36 98
+          C 28 72 30 50 38 34
+          C 44 22 54 14 64 10
+          C 72 7  80 7  86 10
+          C 90 12 93 15 95 18
+          C 96 15 98 11 100 8
+          C 102 11 104 15 105 18
+          C 107 15 110 12 114 10
+          C 120 7  128 7  136 10
+          C 146 14 156 22 162 34
+          C 170 50 172 72 164 98
+          C 158 118 146 138 130 155
+          C 120 166 110 174 100 180
+          C 100 185 100 190 100 195
+          Z
+        "
+        fill={fillColor}
       />
 
-      {/* Petioles (leaf stalks) branching from the main stem */}
-      <g stroke={fillColor} strokeWidth="1.3" strokeLinecap="round">
-        {/* Top petioles */}
-        <path d="M 52 15 L 43 14" />
-        <path d="M 50 20 L 59 19" />
-        <path d="M 45 28 L 33 24" />
-        <path d="M 42 34 L 52 33" />
+      {/* White vein lines — radiating from base notch, matching ginkgo style */}
+      {/* Center notch gap — the characteristic ginkgo bilobed indent */}
+      <path
+        d="M 100 195 L 100 110 C 99 90 99 70 100 50"
+        stroke="white"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.0"
+      />
 
-        {/* Upper-mid petioles */}
-        <path d="M 37 42 L 23 38" />
-        <path d="M 34 50 L 45 49" />
-        <path d="M 30 58 L 15 54" />
-        <path d="M 28 66 L 39 65" />
+      {/* Center vein: creates the two-lobe split */}
+      <path
+        d="M 100 178 C 100 160 100 130 100 55"
+        stroke="white"
+        strokeWidth="4"
+        strokeLinecap="round"
+        fill="none"
+      />
 
-        {/* Mid-lower petioles */}
-        <path d="M 26 76 L 11 73" />
-        <path d="M 26 84 L 37 83" />
-        <path d="M 28 94 L 14 93" />
-        <path d="M 30 102 L 41 102" />
+      {/* Left lobe veins — radiating from petiole base */}
+      <path d="M 97 170 C 88 148 72 118 50 88" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M 95 165 C 80 140 60 108 42 76" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+      <path d="M 93 160 C 72 132 50 98 36 62" stroke="white" strokeWidth="2.0" strokeLinecap="round" fill="none" />
+      <path d="M 90 155 C 68 125 46 90 36 50" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <path d="M 87 150 C 68 120 50 85 42 44" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
 
-        {/* Lower petiole */}
-        <path d="M 34 112 L 22 113" />
-      </g>
+      {/* Right lobe veins — mirror */}
+      <path d="M 103 170 C 112 148 128 118 150 88" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+      <path d="M 105 165 C 120 140 140 108 158 76" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none" />
+      <path d="M 107 160 C 128 132 150 98 164 62" stroke="white" strokeWidth="2.0" strokeLinecap="round" fill="none" />
+      <path d="M 110 155 C 132 125 154 90 164 50" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none" />
+      <path d="M 113 150 C 132 120 150 85 158 44" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
 
-      {/* Teardrop leaves with pointed tips (matching the logo leaves) */}
-      <g fill={fillColor} stroke="none">
-        {/* Terminal double apex leaves at the tip */}
-        <path d="M 57 8 C 55 4 54 1 56 0 C 58 2 60 5 58 8 Z" />
-        <path d="M 58 8 C 61 5 64 2 66 1 C 65 4 63 7 59 9 Z" />
-
-        {/* Upper leaves */}
-        <path d="M 43 14 C 36 10 32 10 27 12 C 32 16 38 17 43 15 Z" />
-        <path d="M 59 19 C 66 16 71 17 76 20 C 70 23 64 23 58 20 Z" />
-        <path d="M 33 24 C 25 19 19 20 13 23 C 19 28 26 28 33 25 Z" />
-        <path d="M 52 33 C 60 30 67 32 73 36 C 66 38 59 37 51 34 Z" />
-
-        {/* Upper-mid leaves */}
-        <path d="M 23 38 C 14 32 7 34 0 38 C 7 44 15 44 23 39 Z" />
-        <path d="M 45 49 C 54 46 62 48 69 53 C 61 55 53 54 44 50 Z" />
-        <path d="M 15 54 C 6 48 -1 51 -7 56 C 1 61 9 61 16 55 Z" />
-        <path d="M 39 65 C 49 62 57 65 64 70 C 56 72 47 70 38 66 Z" />
-
-        {/* Mid-lower leaves */}
-        <path d="M 11 73 C 2 68 -5 72 -10 77 C -2 82 6 81 12 74 Z" />
-        <path d="M 37 83 C 47 81 55 84 61 90 C 53 91 44 89 36 84 Z" />
-        <path d="M 14 93 C 5 89 -1 94 -6 100 C 2 104 10 102 15 94 Z" />
-        <path d="M 41 102 C 50 102 57 106 62 112 C 54 112 47 109 40 103 Z" />
-
-        {/* Lower leaf */}
-        <path d="M 22 113 C 14 111 8 116 3 122 C 11 125 18 122 23 114 Z" />
-
-        {/* Two small floating / drifting leaves at the base (as seen in the logo) */}
-        <path d="M 46 122 C 49 119 53 119 56 121 C 53 124 50 124 46 123 Z" opacity="0.85" />
-        <path d="M 54 127 C 57 125 61 126 64 128 C 61 130 58 130 54 128 Z" opacity="0.8" />
-      </g>
+      {/* Petiole / stem — curved as in the reference image */}
+      <path
+        d="M 100 195 C 98 210 94 220 90 232"
+        stroke={fillColor}
+        strokeWidth="6"
+        strokeLinecap="round"
+        fill="none"
+      />
     </svg>
   );
 }
