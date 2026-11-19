@@ -453,7 +453,7 @@ export function InvoicePage() {
                 AWAKENED FOR CONSULTATIONS &bull; أوايكند للاستشارات
               </div>
               <div className="mt-1" style={{ color: "#8FB896" }}>
-                Doha, State of Qatar &bull; Concierge: concierge@gotawakened.com &bull; https://gotawakened.com
+                Doha, State of Qatar &bull; Contact: info@gotawakened.com &bull; https://gotawakened.com
               </div>
               <div className="mt-3 text-[10px]" style={{ color: "#6C7A6E" }}>
                 &copy; {new Date().getFullYear()} Awakened for Consultations LLC. All rights reserved under the laws of the State of Qatar.

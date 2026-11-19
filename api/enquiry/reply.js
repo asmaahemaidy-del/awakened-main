@@ -141,7 +141,7 @@ export default async function handler(req, res) {
               </table>
               <p style="margin:14px 0 0;font-size:12px;color:#7B857E;">
                 ${isArabic ? "أو تواصل معنا مباشرةً:" : "Or reach us directly:"}
-                <a href="mailto:concierge@gotawakened.com" style="color:#9E7E2E;text-decoration:none;font-weight:600;">concierge@gotawakened.com</a>
+                <a href="mailto:info@gotawakened.com" style="color:#9E7E2E;text-decoration:none;font-weight:600;">info@gotawakened.com</a>
               </p>
             </td>
           </tr>
@@ -164,7 +164,7 @@ export default async function handler(req, res) {
               </div>
               <div style="font-size:11px;color:#A8B5AA;margin-top:4px;">
                 Doha, State of Qatar &bull;
-                <a href="mailto:concierge@gotawakened.com" style="color:#DFC07A;text-decoration:none;">concierge@gotawakened.com</a>
+                <a href="mailto:info@gotawakened.com" style="color:#DFC07A;text-decoration:none;">info@gotawakened.com</a>
               </div>
               <div style="font-size:10px;color:#6C7A6E;margin-top:6px;">
                 &copy; ${year} Awakened for Consultations LLC. All rights reserved.
@@ -187,7 +187,7 @@ export default async function handler(req, res) {
       try {
         const fromEmail =
           process.env.RESEND_FROM_EMAIL ||
-          "Awakened for Consultations <concierge@gotawakened.com>";
+          "Awakened for Consultations <info@gotawakened.com>";
         const resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -197,8 +197,8 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             from: fromEmail,
             to: [email],
-            bcc: ["concierge@gotawakened.com"],
-            reply_to: "concierge@gotawakened.com",
+            bcc: ["info@gotawakened.com"],
+            reply_to: "info@gotawakened.com",
             subject: isArabic
               ? `شكراً لتواصلك — أوايكند للاستشارات`
               : `Thank You for Your Enquiry — Awakened for Consultations`,

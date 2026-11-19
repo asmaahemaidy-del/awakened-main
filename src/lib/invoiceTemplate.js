@@ -15,7 +15,7 @@ export const COMPANY_INFO = {
   taxCard: "TIN: 000109482100001",
   addressEn: "Doha, State of Qatar",
   addressAr: "الدوحة، دولة قطر",
-  email: "concierge@gotawakened.com",
+  email: "info@gotawakened.com",
   phone: "+974 4400 0000",
   website: "https://gotawakened.com",
   logoUrl: "https://gotawakened.com/images/awakened-gold-logo.png",

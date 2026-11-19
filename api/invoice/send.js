@@ -308,7 +308,7 @@ export default async function handler(req, res) {
                 AWAKENED FOR CONSULTATIONS &bull; أوايكند للاستشارات
               </div>
               <div style="font-size: 11px; color: #A8B5AA; margin-top: 4px;">
-                Doha, State of Qatar &bull; Concierge: <a href="mailto:concierge@gotawakened.com" style="color: #DFC07A; text-decoration: none;">concierge@gotawakened.com</a>
+                Doha, State of Qatar &bull; Concierge: <a href="mailto:info@gotawakened.com" style="color: #DFC07A; text-decoration: none;">info@gotawakened.com</a>
               </div>
               <div style="font-size: 10px; color: #6C7A6E; margin-top: 8px;">
                 &copy; ${new Date().getFullYear()} Awakened for Consultations LLC. All rights reserved.
@@ -329,7 +329,7 @@ export default async function handler(req, res) {
 
     if (resendApiKey) {
       try {
-        const fromEmail = process.env.RESEND_FROM_EMAIL || "Awakened for Consultations <concierge@gotawakened.com>";
+        const fromEmail = process.env.RESEND_FROM_EMAIL || "Awakened for Consultations <info@gotawakened.com>";
         const resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -339,7 +339,8 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             from: fromEmail,
             to: [customerEmail],
-            bcc: ["concierge@gotawakened.com"],
+            bcc: ["info@gotawakened.com"],
+            reply_to: "info@gotawakened.com",
             subject: `Official Invoice & Receipt #${invoiceNumber} — Awakened for Consultations`,
             html: emailHtml,
           }),
