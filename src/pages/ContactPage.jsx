@@ -210,7 +210,8 @@ export function ContactPage() {
       const adminApiBase =
         import.meta.env.VITE_ADMIN_API_URL ||
         "https://awakened-admin.vercel.app";
-      const res = await fetch(`${adminApiBase}/api/inquiries`, {
+      // Log to admin panel
+      await fetch(`${adminApiBase}/api/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -224,14 +225,22 @@ export function ContactPage() {
           source_page: "/contact",
           referrer: document.referrer || undefined,
         }),
-      });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.error || `Server error ${res.status}`);
-      }
+      }).catch((err) => console.warn("[Awakened] Admin log warning:", err));
+
+      // Send automated confirmation email to client
+      await fetch("/api/enquiry/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          interest: form.interest || undefined,
+          message: form.message || undefined,
+          language: form.language || "en",
+        }),
+      }).catch((err) => console.warn("[Awakened] Auto-reply warning:", err));
     } catch (err) {
-      // Silently succeed for the user — the inquiry will be retried or
-      // manually followed up via the admin panel. Log for debugging only.
       console.error("[Awakened] Inquiry submission error:", err);
     }
     setSubmitting(false);
