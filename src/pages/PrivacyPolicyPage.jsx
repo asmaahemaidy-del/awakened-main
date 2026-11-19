@@ -78,12 +78,12 @@ export function PrivacyPolicyPage() {
               marginBottom: 8,
             }}
           >
-            {t("Privacy and Data Protection Policy", "سياسة الخصوصية وحماية البيانات")}
+            {t("Privacy Policy", "سياسة الخصوصية وحماية البيانات")}
           </h1>
           <p style={{ ...pStyle, fontSize: "0.82rem", color: "#7A5C1E", marginBottom: 32 }}>
             {t(
-              "Effective date: 18 November 2026 · Version: 1.0 · Last updated: 18 November 2026",
-              "تاريخ السريان: 18 نوفمبر 2026 · الإصدار: 1.0 · آخر تحديث: 18 نوفمبر 2026"
+              "Effective date: 18 November 2026 · Version 1.0 (First Published Version)",
+              "تاريخ السريان: 18 نوفمبر 2026 · الإصدار 1.0 (النسخة الأولى المنشورة)"
             )}
           </p>
 

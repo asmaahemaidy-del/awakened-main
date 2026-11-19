@@ -69,8 +69,8 @@ export function TermsPage() {
           </h1>
           <p style={{ ...pStyle, fontSize: "0.82rem", color: "#7A5C1E", marginBottom: 32 }}>
             {t(
-              "Effective date: 18 November 2026 · Version: 2.0 (Covering Corporate Services & Fixed QAR/USD Pricing)",
-              "تاريخ السريان: 18 نوفمبر 2026 · الإصدار: 2.0 (شامل لخدمات الشركات وتثبيت الأسعار بالريال القطري والدولار الأمريكي)"
+              "Effective date: 18 November 2026 · Version 1.0 (First Published Version)",
+              "تاريخ السريان: 18 نوفمبر 2026 · الإصدار 1.0 (النسخة الأولى المنشورة)"
             )}
           </p>
 

@@ -373,7 +373,7 @@ export function Footer() {
           onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.9)")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(184,208,188,0.6)")}
         >
-          {t("Terms & Conditions", "الشروط والأحكام")}
+          {t("Terms of Service", "شروط الخدمة")}
         </Link>
         <span style={{ color: "rgba(184,208,188,0.3)" }}>·</span>
         <Link
