@@ -1,8 +1,7 @@
 /**
- * LeafSilhouette — Exact ginkgo biloba leaf silhouette
- * Traced from vecteezy_drawing-of-ginkgo-biloba-plant-black-silhouette_.jpg
- * Fan-shaped bilobed leaf with radiating veins and curved petiole stem.
- * Props: size, color, className, style, withRings
+ * LeafSilhouette — Ginkgo biloba leaf with brand gradient fill
+ * Fan-shaped bilobed leaf with radiating veins, filled with gold→sage gradient.
+ * Props: size, color, className, style, withRings, variant
  */
 export function LeafSilhouette({
   size = 28,
@@ -10,10 +9,15 @@ export function LeafSilhouette({
   className = "",
   style = {},
   withRings,
+  variant = 1,
 }) {
-  const fillColor = color || "currentColor";
+  // Use a unique gradient id per variant so multiple on the same page don't clash
+  const gradientId = `leaf-grad-${variant}-${Math.round(size)}`;
   const isAmbient = typeof size === "number" ? size >= 100 : false;
   const showRings = withRings !== undefined ? withRings : isAmbient;
+
+  // If a solid color is explicitly passed, use it; otherwise use the gradient
+  const fillValue = color ? color : `url(#${gradientId})`;
 
   return (
     <svg
@@ -30,6 +34,15 @@ export function LeafSilhouette({
       }}
       aria-hidden="true"
     >
+      <defs>
+        {/* Gold → Sage → Forest gradient — brand palette, no hardcoded overrides */}
+        <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stopColor="#C9A84C" stopOpacity="0.92" />
+          <stop offset="50%"  stopColor="#8DAF8A" stopOpacity="0.88" />
+          <stop offset="100%" stopColor="#3D5C42" stopOpacity="0.96" />
+        </linearGradient>
+      </defs>
+
       {/* Subtle ambient orbital ring (large ambient displays only) */}
       {showRings && (
         <ellipse
@@ -38,16 +51,15 @@ export function LeafSilhouette({
           rx="72"
           ry="80"
           transform="rotate(-12 100 115)"
-          stroke={fillColor}
+          stroke="#C9A84C"
           strokeWidth="0.9"
           fill="none"
           opacity="0.22"
         />
       )}
 
-      {/* ── Ginkgo Biloba Leaf ── */}
-
-      {/* Outer fan silhouette — the two-lobed ginkgo leaf shape */}
+      {/* ── Ginkgo Biloba Fan Leaf ── */}
+      {/* Outer fan silhouette — classic bilobed ginkgo shape */}
       <path
         d="
           M 100 195
@@ -69,50 +81,42 @@ export function LeafSilhouette({
           C 100 185 100 190 100 195
           Z
         "
-        fill={fillColor}
+        fill={fillValue}
       />
 
-      {/* White vein lines — radiating from base notch, matching ginkgo style */}
-      {/* Center notch gap — the characteristic ginkgo bilobed indent */}
-      <path
-        d="M 100 195 L 100 110 C 99 90 99 70 100 50"
-        stroke="white"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-        fill="none"
-        opacity="0.0"
-      />
-
+      {/* White vein lines — radiating from base, matching ginkgo style */}
       {/* Center vein: creates the two-lobe split */}
       <path
         d="M 100 178 C 100 160 100 130 100 55"
         stroke="white"
-        strokeWidth="4"
+        strokeWidth="3.5"
         strokeLinecap="round"
         fill="none"
+        opacity="0.7"
       />
 
-      {/* Left lobe veins — radiating from petiole base */}
-      <path d="M 97 170 C 88 148 72 118 50 88" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <path d="M 95 165 C 80 140 60 108 42 76" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-      <path d="M 93 160 C 72 132 50 98 36 62" stroke="white" strokeWidth="2.0" strokeLinecap="round" fill="none" />
-      <path d="M 90 155 C 68 125 46 90 36 50" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-      <path d="M 87 150 C 68 120 50 85 42 44" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      {/* Left lobe veins */}
+      <path d="M 97 170 C 88 148 72 118 50 88"  stroke="white" strokeWidth="2.3" strokeLinecap="round" fill="none" opacity="0.65" />
+      <path d="M 95 165 C 80 140 60 108 42 76"  stroke="white" strokeWidth="2.0" strokeLinecap="round" fill="none" opacity="0.6"  />
+      <path d="M 93 160 C 72 132 50 98  36 62"  stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.55" />
+      <path d="M 90 155 C 68 125 46 90  36 50"  stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5"  />
+      <path d="M 87 150 C 68 120 50 85  42 44"  stroke="white" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.4"  />
 
       {/* Right lobe veins — mirror */}
-      <path d="M 103 170 C 112 148 128 118 150 88" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-      <path d="M 105 165 C 120 140 140 108 158 76" stroke="white" strokeWidth="2.2" strokeLinecap="round" fill="none" />
-      <path d="M 107 160 C 128 132 150 98 164 62" stroke="white" strokeWidth="2.0" strokeLinecap="round" fill="none" />
-      <path d="M 110 155 C 132 125 154 90 164 50" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none" />
-      <path d="M 113 150 C 132 120 150 85 158 44" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+      <path d="M 103 170 C 112 148 128 118 150 88" stroke="white" strokeWidth="2.3" strokeLinecap="round" fill="none" opacity="0.65" />
+      <path d="M 105 165 C 120 140 140 108 158 76" stroke="white" strokeWidth="2.0" strokeLinecap="round" fill="none" opacity="0.6"  />
+      <path d="M 107 160 C 128 132 150 98  164 62" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.55" />
+      <path d="M 110 155 C 132 125 154 90  164 50" stroke="white" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.5"  />
+      <path d="M 113 150 C 132 120 150 85  158 44" stroke="white" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.4"  />
 
-      {/* Petiole / stem — curved as in the reference image */}
+      {/* Petiole / stem */}
       <path
         d="M 100 195 C 98 210 94 220 90 232"
-        stroke={fillColor}
+        stroke={color || "#8DAF8A"}
         strokeWidth="6"
         strokeLinecap="round"
         fill="none"
+        opacity="0.85"
       />
     </svg>
   );
