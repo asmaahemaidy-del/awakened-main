@@ -289,6 +289,18 @@ function RetreatEnquiryModal({ retreat, onClose }) {
     } catch (err) {
       console.error("[Awakened] Retreat inquiry submission error:", err);
     }
+    // Auto-reply confirmation email to client
+    fetch("/api/enquiry/reply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || undefined,
+        interest: `Retreat Inquiry: ${retreat ? (retreat.en || retreat.title || "Retreat") : "Retreat"}`,
+        message: form.message || undefined,
+      }),
+    }).catch(() => {});
     setSubmitting(false);
     setSubmitted(true);
   };

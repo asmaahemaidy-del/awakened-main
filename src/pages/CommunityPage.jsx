@@ -79,7 +79,21 @@ function CommunityJoinSection({ fontBody, fontHead, isAr, t }) {
     } catch {
       setStatus("error");
     }
+    // Auto-reply confirmation email to client
+    if (form.email) {
+      fetch("/api/enquiry/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          interest: "Community Membership Application",
+          message: form.willingness || undefined,
+        }),
+      }).catch(() => {});
+    }
   };
+
   return (
     <section
       style={{

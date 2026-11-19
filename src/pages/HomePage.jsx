@@ -148,13 +148,21 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
           referrer: document.referrer || undefined,
         }),
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body?.error || `Server error ${res.status}`);
-      }
     } catch (err) {
       console.error("[Awakened] Home inquiry submission error:", err);
     }
+    // Auto-reply confirmation email to client
+    fetch("/api/enquiry/reply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || undefined,
+        interest: "Home Page Enquiry",
+        message: form.message || undefined,
+      }),
+    }).catch(() => {});
     setSubmitting(false);
     setSubmitted(true);
   };

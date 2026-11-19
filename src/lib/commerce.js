@@ -109,6 +109,20 @@ export async function syncCustomerToAdmin(checkoutData) {
       body: JSON.stringify(payload),
     });
     const data = await res.json().catch(() => ({}));
+    // Auto-reply booking confirmation email to client
+    if (customer.email) {
+      fetch("/api/enquiry/reply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: customer.name || "Valued Client",
+          email: customer.email,
+          phone: customer.phone || undefined,
+          interest: `Booking: ${item.title || item.tier || "Awakened Consultation"}`,
+          message: `Your booking for ${item.title || item.tier || "Awakened Consultation"} has been received. Our concierge team will confirm your session details within 24 hours.`,
+        }),
+      }).catch(() => {});
+    }
     return { success: res.ok, data };
   } catch (err) {
     console.warn("[Commerce] Admin panel sync warning:", err);
