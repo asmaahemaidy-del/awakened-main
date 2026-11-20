@@ -181,13 +181,13 @@ export default async function handler(req, res) {
 
     // ── 1. Send auto-reply via Resend ──────────────────────────────────────────
     let emailResult = { sent: false, note: "RESEND_API_KEY not configured" };
-    const resendApiKey = process.env.RESEND_API_KEY;
+    const rawResendApiKey = process.env.RESEND_API_KEY;
+    const resendApiKey = rawResendApiKey ? rawResendApiKey.trim().replace(/^["']|["']$/g, "") : null;
 
     if (resendApiKey) {
       try {
         const fromEmail =
-          process.env.RESEND_FROM_EMAIL ||
-          "Awakened for Consultations <info@gotawakened.com>";
+          (process.env.RESEND_FROM_EMAIL || "Awakened for Consultations <info@gotawakened.com>").trim().replace(/^["']|["']$/g, "");
         const resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -206,7 +206,11 @@ export default async function handler(req, res) {
           }),
         });
         const data = await resendRes.json();
-        emailResult = { sent: resendRes.ok, data };
+        emailResult = {
+          sent: resendRes.ok,
+          keyHint: `${resendApiKey.slice(0, 4)}...${resendApiKey.slice(-3)} (${resendApiKey.length} chars)`,
+          data,
+        };
       } catch (err) {
         emailResult = { sent: false, error: err.message };
       }
