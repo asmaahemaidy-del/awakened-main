@@ -33,21 +33,21 @@ export function LibraryPage() {
     {
       id: "company-profile",
       title: t(
-        "Awakened for Consultations — Official Company Profile",
-        "شركة أوايكند للاستشارات — الملف التعريفي الشامل"
+        "Awakened — Whole-Person Coaching & Transformation",
+        "أوايكند — التوجيه الشامل والتحول الشخصي"
       ),
       subtitle: t(
-        "Corporate Overview, Advisory Pillars & Executive Frameworks",
-        "الرؤية المؤسسية، الركائز الاستشارية، ومسارات التوجيه التنفيذي"
+        "Official Company Profile 2026 • Qatar & Worldwide (CR: 241070)",
+        "الملف التعريفي الرسمي ٢٠٢٦ • قطر وحول العالم (س.ت: 241070)"
       ),
-      badge: t("Official Corporate Publication", "الإصدار التعريفي الرسمي"),
+      badge: t("Official Corporate Profile", "الملف التعريفي الرسمي"),
       description: t(
-        "Our strategic vision, advisory methodology, executive coaching pillars, and institutional wellness frameworks for individuals, families, and organizations in the State of Qatar.",
-        "رؤيتنا الاستراتيجية ومنهجيتنا الاستشارية، ركائز التوجيه التنفيذي، وأطر العافية المؤسسية للأفراد والأسر والمنظمات في دولة قطر."
+        "The comprehensive 2026 company profile detailing Awakened's whole-person coaching practice, individual wellbeing, private advisory, corporate & organizational programmes, retreats, our Four-Pillar Approach, and vetting standards.",
+        "الملف التعريفي الشامل لعام ٢٠٢٦؛ يوضح منهجية أوايكند للتوجيه المتكامل، ومسارات العافية الفردية، والاستشارات الخاصة، وبرامج العافية المؤسسية والتنفيذية، والملاذات، ونهج الركائز الأربع ومعايير الجودة والسرية."
       ),
       format: t(
-        "Official 9-Page Corporate Document • High-Resolution PDF",
-        "ملف تعريفي شامل من ٩ صفحات • صيغة PDF عالية الدقة"
+        "Official 9-Page Publication • High-Resolution Vector PDF",
+        "إصدار رسمي شامل من ٩ صفحات • صيغة PDF متجهية فائقة الدقة"
       ),
       url: "/documents/Awakened_Company_Profile.pdf",
       fileName: "Awakened_Company_Profile.pdf",
