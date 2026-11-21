@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router";
 import { useLanguage } from "../i18n/LanguageContext";
 import { Seo } from "../components/Seo";
@@ -7,7 +6,9 @@ import { LeafSilhouette } from "../components/LeafSilhouette";
 export function LibraryPage() {
   const { lang, t } = useLanguage();
   const isAr = lang === "ar";
-  const [activeTab, setActiveTab] = useState(1);
+
+  const pdfUrl = "/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf";
+  const companyProfileUrl = "/documents/Awakened_Company_Profile.pdf";
 
   return (
     <>
@@ -18,7 +19,7 @@ export function LibraryPage() {
           "المكتبة الرقمية والإصدارات التوعوية — أوايكند"
         )}
         description={t(
-          "Official parent guides, family digital safety agreements, and wellbeing publications from Awakened for Consultations in Qatar.",
+          "Official parent guides, family digital safety agreements, and publications from Awakened for Consultations in Qatar.",
           "أدلة توعوية رسمية للوالدين، اتفاقيات السلامة الرقمية للأسرة، وإصدارات استشارية من أوايكند للاستشارات في دولة قطر."
         )}
       />
@@ -37,13 +38,12 @@ export function LibraryPage() {
           style={{
             background: "linear-gradient(180deg, #141F15 0%, #1E2E20 100%)",
             color: "#FAF7F2",
-            padding: "160px 24px 90px",
+            padding: "160px 24px 85px",
             textAlign: "center",
             position: "relative",
             overflow: "hidden",
           }}
         >
-          {/* Subtle ambient botanical glow */}
           <div
             style={{
               position: "absolute",
@@ -78,7 +78,7 @@ export function LibraryPage() {
                 fontSize: "clamp(2.1rem, 4.2vw, 3.4rem)",
                 fontWeight: isAr ? 700 : 500,
                 lineHeight: 1.25,
-                margin: "0 0 20px",
+                margin: "0 0 18px",
                 color: "#FAF7F2",
               }}
             >
@@ -93,23 +93,22 @@ export function LibraryPage() {
                 fontSize: "clamp(0.98rem, 1.8vw, 1.15rem)",
                 color: "#D0DCD1",
                 maxWidth: "680px",
-                margin: "0 auto 32px",
+                margin: "0 auto 30px",
                 lineHeight: 1.7,
               }}
             >
               {t(
-                "Practical toolkits, parent guides, and evidence-informed publications crafted by Awakened for Consultations to empower individuals, families, and organizations across Qatar.",
-                "أدلة عملية ومطبوعات توعوية مُعدّة بعناية من أوايكند للاستشارات لتمكين الأسر والآباء والمؤسسات في دولة قطر نحو حياة رقمية ونفسية آمنة ومتوازنة."
+                "Official educational documents, parent guides, and publication series published by Awakened for Consultations for families, educators, and institutions in Qatar.",
+                "أدلة توعوية رسمية وإصدارات ومطبوعات أعدتها أوايكند للاستشارات لتمكين الأسر والمدارس والمؤسسات في دولة قطر نحو تنشئة آمنة وواعية."
               )}
             </p>
 
-            {/* Quick stats or badges */}
             <div
               style={{
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
-                gap: "14px",
+                gap: "12px",
                 fontSize: "0.82rem",
                 color: "#C9A84C",
               }}
@@ -142,13 +141,13 @@ export function LibraryPage() {
                   borderRadius: "20px",
                 }}
               >
-                {t("Free Public Access", "وصول مجاني ومتاح للجميع")}
+                {t("Free Public Download", "تحميل متاح ومجاني للجميع")}
               </span>
             </div>
           </div>
         </section>
 
-        {/* ── FEATURED PUBLICATION SHOWCASE ── */}
+        {/* ── FEATURED DOCUMENT SHOWCASE ── */}
         <section style={{ maxWidth: "1140px", margin: "-40px auto 60px", padding: "0 24px", position: "relative", zIndex: 10 }}>
           <div
             style={{
@@ -176,7 +175,7 @@ export function LibraryPage() {
                   alignItems: "center",
                 }}
               >
-                {/* Left / Info */}
+                {/* Document Information & Download */}
                 <div>
                   <div
                     style={{
@@ -217,40 +216,40 @@ export function LibraryPage() {
 
                   <p style={{ fontSize: "0.95rem", color: "#555E57", lineHeight: "1.7", margin: "0 0 20px" }}>
                     {t(
-                      "The complete 3-part leaflet folder published by Awakened for Consultations. Designed to give parents and educators clear, reassuring, and actionable guidance for navigating digital parenting in Qatar.",
-                      "السلسلة التوعوية الشاملة المكونة من ثلاثة كتيبات متكاملة أصدرتها شركة أوايكند للاستشارات، لتمكين الوالدين والمربين من أدوات عملية مطمئنة تعزز السلامة والأمان النفسي للأبناء."
+                      "The complete official 3-leaflet publication folder published by Awakened for Consultations. Features the full Parent Guide, Family Digital-Safety Checklist & Wellness Agreement, and the Cyberbullying & Grooming Response Guide.",
+                      "المجلد التوعوي الرسمي الكامل المكوّن من ثلاثة كتيبات متكاملة أصدرتها شركة أوايكند للاستشارات؛ يشمل دليل الوالدين، وقائمة التحقق من السلامة الرقمية واتفاق الأسرة، ودليل التعرّف على التنمّر والاستدراج وخطوات الاستجابة."
                     )}
                   </p>
 
-                  {/* Included leaflets summary list */}
+                  {/* Leaflets Summary */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
                     <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "0.9rem" }}>
                       <span style={{ color: "#C9A84C", fontWeight: 700, fontSize: "1.1rem", lineHeight: 1 }}>•</span>
                       <span>
-                        <strong>{t("Leaflet 1 — Parent Guide:", "الكتيب ١ — دليل الوالدين:")}</strong>{" "}
+                        <strong>{t("Leaflet 1:", "الكتيب ١:")}</strong>{" "}
                         {t(
-                          "5 core digital habits, healthy screen time check-ins, and conversation starters.",
-                          "القواعد الخمس لحماية الأبناء، وقت الشاشة الصحي، وأسئلة لبدء الحوار بفضول لا باتهام."
+                          "Parent Guide — 5 Core Principles & Healthy Screen Time Habits",
+                          "دليل الوالدين — القواعد الخمس الأساسية وعادات الشاشة الصحية"
                         )}
                       </span>
                     </div>
                     <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "0.9rem" }}>
                       <span style={{ color: "#C9A84C", fontWeight: 700, fontSize: "1.1rem", lineHeight: 1 }}>•</span>
                       <span>
-                        <strong>{t("Leaflet 2 — Checklist & Agreement:", "الكتيب ٢ — قائمة التحقق واتفاق الأسرة:")}</strong>{" "}
+                        <strong>{t("Leaflet 2:", "الكتيب ٢:")}</strong>{" "}
                         {t(
-                          "10 simple safety checks and a living family agreement template for screen-free boundaries.",
-                          "١٠ مراجعات أمان بسيطة ونموذج ميثاق الأسرة للرفاه الرقمي وأوقات خالية من الشاشات."
+                          "Family Digital-Safety Checklist & Wellness Agreement Template",
+                          "قائمة التحقق من السلامة الرقمية وميثاق الأسرة للرفاه الرقمي"
                         )}
                       </span>
                     </div>
                     <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", fontSize: "0.9rem" }}>
                       <span style={{ color: "#C9A84C", fontWeight: 700, fontSize: "1.1rem", lineHeight: 1 }}>•</span>
                       <span>
-                        <strong>{t("Leaflet 3 — Recognise, Respond & Support:", "الكتيب ٣ — التعرّف والاستجابة والدعم:")}</strong>{" "}
+                        <strong>{t("Leaflet 3:", "الكتيب ٣:")}</strong>{" "}
                         {t(
-                          "Cyberbullying, grooming detection, 5 steps to respond calmly, and official Qatar helplines.",
-                          "مؤشرات التنمر والاستدراج الإلكتروني، ٥ خطوات للاستجابة الهادئة، وأرقام الطوارئ الرسمية في قطر."
+                          "Recognise, Respond & Support — Cyberbullying, Grooming & Qatar Emergency Hotlines",
+                          "التعرّف والاستجابة والدعم — التنمّر والاستدراج وأرقام الطوارئ في قطر"
                         )}
                       </span>
                     </div>
@@ -259,7 +258,7 @@ export function LibraryPage() {
                   {/* Action Buttons */}
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
                     <a
-                      href="/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                      href={pdfUrl}
                       download="Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -276,7 +275,6 @@ export function LibraryPage() {
                         textDecoration: "none",
                         border: "1px solid #C9A84C",
                         boxShadow: "0 6px 18px rgba(20, 31, 21, 0.15)",
-                        transition: "transform 0.2s, background 0.2s",
                       }}
                     >
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -284,11 +282,11 @@ export function LibraryPage() {
                         <polyline points="7 10 12 15 17 10" />
                         <line x1="12" y1="15" x2="12" y2="3" />
                       </svg>
-                      {t("Download Folder (PDF 3.9 MB)", "تحميل المجلد التوعوي بالكامل (PDF ٣.٩ ميجابايت)")}
+                      {t("Download Folder (PDF 3.9 MB)", "تحميل المجلد كاملاً (PDF ٣.٩ ميجابايت)")}
                     </a>
 
                     <a
-                      href="/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                      href={pdfUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
@@ -309,27 +307,26 @@ export function LibraryPage() {
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                         <circle cx="12" cy="12" r="3" />
                       </svg>
-                      {t("Open / Print Brochure", "استعراض وطباعة المطبوعة")}
+                      {t("Open / View Document in Browser", "استعراض المستند في المتصفح")}
                     </a>
                   </div>
                 </div>
 
-                {/* Right / Visual Preview Card */}
+                {/* Right / Document Card Badge */}
                 <div
                   style={{
                     background: "linear-gradient(135deg, #FAF7F2 0%, #F3ECE1 100%)",
                     borderRadius: "12px",
                     border: "1px solid #D9CBBA",
-                    padding: "28px",
+                    padding: "32px 28px",
                     textAlign: "center",
-                    position: "relative",
                   }}
                 >
                   <div
                     style={{
                       border: "2px solid #C9A84C",
                       borderRadius: "8px",
-                      padding: "24px 20px",
+                      padding: "26px 20px",
                       background: "#FFFFFF",
                       boxShadow: "0 10px 25px rgba(20, 31, 21, 0.06)",
                     }}
@@ -398,494 +395,108 @@ export function LibraryPage() {
           </div>
         </section>
 
-        {/* ── INTERACTIVE LEAFLET EXPLORER (READ ONLINE) ── */}
-        <section style={{ maxWidth: "1140px", margin: "0 auto 80px", padding: "0 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: "36px" }}>
-            <span
-              style={{
-                fontSize: "0.75rem",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "#9E7E2E",
-                fontWeight: 700,
-                display: "block",
-                marginBottom: "8px",
-              }}
-            >
-              {t("ONLINE READING & INTERACTIVE TOOLKIT", "القراءة التفاعلية واستعراض المحتوى")}
-            </span>
-            <h2
-              style={{
-                fontFamily: isAr ? "var(--font-arabic)" : "'Georgia', serif",
-                fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
-                color: "#141F15",
-                margin: 0,
-                fontWeight: 600,
-              }}
-            >
-              {t("Explore the 3 Guides", "استكشف محاور الكتيبات الثلاثة")}
-            </h2>
-          </div>
-
-          {/* Navigation Tabs */}
+        {/* ── EMBEDDED DOCUMENT VIEWER ── */}
+        <section style={{ maxWidth: "1140px", margin: "0 auto 70px", padding: "0 24px" }}>
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "8px",
-              flexWrap: "wrap",
-              marginBottom: "32px",
+              backgroundColor: "#FFFFFF",
+              borderRadius: "14px",
+              border: "1px solid #D9CBBA",
+              boxShadow: "0 8px 30px rgba(20, 31, 21, 0.05)",
+              overflow: "hidden",
             }}
           >
-            {[
-              {
-                id: 1,
-                titleEn: "Leaflet 1: Parent Guide",
-                titleAr: "الكتيب ١: دليل الوالدين",
-              },
-              {
-                id: 2,
-                titleEn: "Leaflet 2: Checklist & Agreement",
-                titleAr: "الكتيب ٢: قائمة التحقق والاتفاق",
-              },
-              {
-                id: 3,
-                titleEn: "Leaflet 3: Recognise & Support",
-                titleAr: "الكتيب ٣: التعرّف والاستجابة",
-              },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                style={{
-                  background: activeTab === tab.id ? "#141F15" : "#FFFFFF",
-                  color: activeTab === tab.id ? "#FAF7F2" : "#141F15",
-                  border: activeTab === tab.id ? "1px solid #C9A84C" : "1px solid #D9CBBA",
-                  borderRadius: "8px",
-                  padding: "12px 24px",
-                  fontSize: "0.92rem",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  transition: "all 0.25s",
-                  boxShadow: activeTab === tab.id ? "0 4px 14px rgba(20, 31, 21, 0.12)" : "none",
-                }}
-              >
-                {t(tab.titleEn, tab.titleAr)}
-              </button>
-            ))}
-          </div>
-
-          {/* TAB 1 CONTENT: PARENT GUIDE */}
-          {activeTab === 1 && (
             <div
               style={{
-                background: "#FFFFFF",
-                borderRadius: "14px",
-                border: "1px solid #D9CBBA",
-                padding: "36px",
-                boxShadow: "0 8px 30px rgba(20, 31, 21, 0.05)",
+                padding: "20px 28px",
+                backgroundColor: "#FAF7F2",
+                borderBottom: "1px solid #EAE3D6",
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: "12px",
               }}
             >
-              <div style={{ maxWidth: "840px", margin: "0 auto" }}>
-                {/* Quote Box */}
-                <div
+              <div>
+                <span
                   style={{
-                    background: "#FAF7F2",
-                    borderLeft: isAr ? "none" : "4px solid #C9A84C",
-                    borderRight: isAr ? "4px solid #C9A84C" : "none",
-                    padding: "20px 24px",
+                    fontSize: "0.72rem",
+                    color: "#9E7E2E",
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    fontWeight: 700,
+                    display: "block",
+                  }}
+                >
+                  {t("DOCUMENT PREVIEW", "معاينة المستند")}
+                </span>
+                <h3
+                  style={{
+                    margin: "4px 0 0",
+                    fontFamily: isAr ? "var(--font-arabic)" : "'Georgia', serif",
+                    fontSize: "1.15rem",
+                    color: "#141F15",
+                    fontWeight: 600,
+                  }}
+                >
+                  {t("Awakened Parent Digital Safety Guide", "دليل أوايكند للوالدين حول السلامة الرقمية")}
+                </h3>
+              </div>
+
+              <div style={{ display: "flex", gap: "10px" }}>
+                <a
+                  href={pdfUrl}
+                  download="Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    background: "#141F15",
+                    color: "#FAF7F2",
+                    padding: "9px 18px",
                     borderRadius: "6px",
-                    marginBottom: "32px",
+                    fontSize: "0.82rem",
+                    fontWeight: 600,
+                    textDecoration: "none",
                   }}
                 >
-                  <h4 style={{ margin: "0 0 6px", fontSize: "0.85rem", textTransform: "uppercase", color: "#9E7E2E", letterSpacing: "0.1em" }}>
-                    {t("Why This Matters", "لماذا هذا مهم")}
-                  </h4>
-                  <p style={{ margin: 0, fontSize: "1.05rem", color: "#141F15", fontStyle: "italic", lineHeight: "1.7" }}>
-                    {t(
-                      "“Digital parenting is not about watching every click. It is about helping children build the knowledge, confidence and judgement to use technology safely—and making sure they know they can come to you when something feels wrong.”",
-                      "«التربية الرقمية لا تعني مراقبة كل نقرة، بل مساعدة الأطفال على اكتساب المعرفة والثقة وحسن التقدير لاستخدام التقنية بأمان، والتأكد من أنهم يعرفون أنهم يستطيعون اللجوء إليكم عندما يشعرون بأن شيئاً ما ليس على ما يرام.»"
-                    )}
-                  </p>
-                </div>
-
-                {/* 5 Core Principles Grid */}
-                <h3
+                  {t("Download PDF", "تحميل PDF")}
+                </a>
+                <a
+                  href={pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    fontFamily: isAr ? "var(--font-arabic)" : "'Georgia', serif",
-                    fontSize: "1.45rem",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    background: "#FFFFFF",
                     color: "#141F15",
-                    margin: "0 0 20px",
+                    border: "1px solid #D9CBBA",
+                    padding: "9px 16px",
+                    borderRadius: "6px",
+                    fontSize: "0.82rem",
+                    fontWeight: 600,
+                    textDecoration: "none",
                   }}
                 >
-                  {t("5 Core Principles for Families", "القواعد الخمس الأساسية لحماية الأبناء")}
-                </h3>
-
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px", marginBottom: "36px" }}>
-                  <div style={{ background: "#FAF7F2", padding: "20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <div style={{ fontWeight: 700, color: "#141F15", marginBottom: "8px", fontSize: "1rem" }}>
-                      1. {t("Protect personal information", "احموا المعلومات الشخصية")}
-                    </div>
-                    <p style={{ fontSize: "0.88rem", color: "#555E57", lineHeight: "1.6", margin: 0 }}>
-                      {t(
-                        "Help children keep private: full name, home address, school and uniform details, phone number, passwords, live location, ID documents and private photos. Anything shared can be copied or forwarded.",
-                        "علّموا الأطفال الحفاظ على سرية: الاسم الكامل، عنوان المنزل، تفاصيل المدرسة والزي المدرسي، رقم الهاتف، كلمات المرور، الموقع المباشر، وثائق الهوية، والصور الخاصة."
-                      )}
-                    </p>
-                  </div>
-
-                  <div style={{ background: "#FAF7F2", padding: "20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <div style={{ fontWeight: 700, color: "#141F15", marginBottom: "8px", fontSize: "1rem" }}>
-                      2. {t("Make accounts safer", "عززوا أمان الحسابات")}
-                    </div>
-                    <p style={{ fontSize: "0.88rem", color: "#555E57", lineHeight: "1.6", margin: 0 }}>
-                      {t(
-                        "Use strong, unique passwords and two-step verification (2FA). Set accounts to private, review who can message or tag your child, limit location sharing. Parental controls support conversation—they do not replace it.",
-                        "استخدموا كلمات مرور قوية ومختلفة وفعّلوا التحقق بخطوتين. اجعلوا الحسابات خاصة، وراجعوا من يستطيع مراسلة طفلكم، وقّللوا مشاركة الموقع. الرقابة الأبوية تدعم الحوار ولا تحل محله."
-                      )}
-                    </p>
-                  </div>
-
-                  <div style={{ background: "#FAF7F2", padding: "20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <div style={{ fontWeight: 700, color: "#141F15", marginBottom: "8px", fontSize: "1rem" }}>
-                      3. {t("Pause before clicking or sharing", "توقفوا قبل الضغط أو المشاركة")}
-                    </div>
-                    <p style={{ fontSize: "0.88rem", color: "#555E57", lineHeight: "1.6", margin: 0 }}>
-                      {t(
-                        "Teach children not to open unexpected links, files or giveaways, or answer messages asking for passwords, codes, money or personal details. Check with a trusted adult before downloading unfamiliar apps.",
-                        "علّموا الأطفال عدم فتح الروابط أو الملفات أو الهدايا المجانية غير المتوقعة، وعدم الرد على طلبات كلمات المرور أو الرموز أو المال، والرجوع لشخص بالغ موثوق قبل تنزيل تطبيق غير معروف."
-                      )}
-                    </p>
-                  </div>
-
-                  <div style={{ background: "#FAF7F2", padding: "20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <div style={{ fontWeight: 700, color: "#141F15", marginBottom: "8px", fontSize: "1rem" }}>
-                      4. {t("Keep communication open", "حافظوا على الحوار مفتوحاً")}
-                    </div>
-                    <p style={{ fontSize: "0.88rem", color: "#555E57", lineHeight: "1.6", margin: 0 }}>
-                      {t(
-                        "Talk regularly about online experiences without shaming or blaming. A child who feels safe telling you about small worries is far more likely to tell you about big ones.",
-                        "تحدثوا بانتظام عن التجارب الرقمية دون إحراج أو لوم. فالطفل الذي يشعر بالأمان عند إخباركم بالمخاوف الصغيرة يزداد احتمال أن يخبركم بالمخاوف الكبيرة."
-                      )}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Healthy Screen Time & 3-Question check-in */}
-                <div style={{ background: "#F4EDE2", border: "1px solid #D9CBBA", borderRadius: "10px", padding: "24px" }}>
-                  <h4 style={{ margin: "0 0 12px", fontFamily: "'Georgia', serif", fontSize: "1.2rem", color: "#141F15" }}>
-                    {t("3-Question Check-in for Screen Time", "مراجعة سريعة بثلاثة أسئلة لوقت الشاشة")}
-                  </h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px", fontSize: "0.92rem", color: "#333" }}>
-                    <div>
-                      <strong>1.</strong> {t("What is the screen replacing—sleep, movement, study, play or conversation?", "ما الذي تحل الشاشة محله: النوم أم الحركة أم الدراسة أم اللعب أم الحوار؟")}
-                    </div>
-                    <div>
-                      <strong>2.</strong> {t("How does my child seem during and after this activity?", "كيف يبدو طفلي أثناء هذا النشاط وبعده؟")}
-                    </div>
-                    <div>
-                      <strong>3.</strong> {t("Is the content age-appropriate, safe, useful or enjoyable?", "هل المحتوى مناسب لعمر الطفل وآمن ومفيد أو ممتع؟")}
-                    </div>
-                  </div>
-                </div>
+                  {t("Open Fullscreen", "فتح بملء الشاشة")} &rarr;
+                </a>
               </div>
             </div>
-          )}
 
-          {/* TAB 2 CONTENT: CHECKLIST & AGREEMENT */}
-          {activeTab === 2 && (
-            <div
-              style={{
-                background: "#FFFFFF",
-                borderRadius: "14px",
-                border: "1px solid #D9CBBA",
-                padding: "36px",
-                boxShadow: "0 8px 30px rgba(20, 31, 21, 0.05)",
-              }}
-            >
-              <div style={{ maxWidth: "840px", margin: "0 auto" }}>
-                <h3
-                  style={{
-                    fontFamily: isAr ? "var(--font-arabic)" : "'Georgia', serif",
-                    fontSize: "1.45rem",
-                    color: "#141F15",
-                    margin: "0 0 12px",
-                  }}
-                >
-                  {t("10 Simple Digital Safety Checks", "١٠ مراجعات بسيطة للسلامة الرقمية")}
-                </h3>
-                <p style={{ fontSize: "0.92rem", color: "#667068", margin: "0 0 24px" }}>
-                  {t(
-                    "Review together as a family and choose one or two actions to complete this week:",
-                    "راجعوا القائمة معاً واختاروا خطوة أو خطوتين لإنجازها هذا الأسبوع:"
-                  )}
-                </p>
-
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "12px", marginBottom: "36px" }}>
-                  {[
-                    {
-                      en: "We know which apps, games and platforms our child uses, and their age guidance.",
-                      ar: "نعرف التطبيقات والألعاب والمنصات التي يستخدمها طفلنا وإرشاداتها العمرية.",
-                    },
-                    {
-                      en: "Privacy settings are reviewed; profiles are set to private where appropriate.",
-                      ar: "راجعنا إعدادات الخصوصية، والملفات الشخصية خاصة حيثما كان ذلك مناسباً.",
-                    },
-                    {
-                      en: "We have limited who can contact, tag or add our child to groups.",
-                      ar: "حددنا من يمكنه التواصل مع طفلنا أو الإشارة إليه أو إضافته إلى المجموعات.",
-                    },
-                    {
-                      en: "Location sharing is off unless there is a clear, agreed reason.",
-                      ar: "مشاركة الموقع متوقفة ما لم يوجد سبب واضح ومتفق عليه.",
-                    },
-                    {
-                      en: "Passwords are strong and unique; two-step verification is turned on.",
-                      ar: "كلمات المرور قوية ومختلفة، والتحقق بخطوتين مفعّل.",
-                    },
-                    {
-                      en: "Our child never shares passwords, codes or private images.",
-                      ar: "لا يشارك طفلنا أبداً كلمات المرور أو الرموز أو الصور الخاصة.",
-                    },
-                    {
-                      en: "Devices and apps are updated; downloads and purchases require parent approval.",
-                      ar: "الأجهزة والتطبيقات محدثة، وتتطلب التنزيلات والمشتريات موافقة الوالدين.",
-                    },
-                    {
-                      en: "We have agreed screen-free times and where devices are kept at night.",
-                      ar: "اتفقنا على أوقات خالية من الشاشات وعلى مكان حفظ الأجهزة ليلاً.",
-                    },
-                    {
-                      en: "Our child knows how to block and report an account and tell a trusted adult.",
-                      ar: "يعرف طفلنا كيف يحظر الحساب ويبلغ عنه ويخبر شخصاً بالغاً موثوقاً.",
-                    },
-                    {
-                      en: "We talk regularly about online experiences without shaming or blaming.",
-                      ar: "نتحدث بانتظام عن التجارب الرقمية دون إحراج أو لوم.",
-                    },
-                  ].map((item, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: "12px",
-                        background: "#FAF7F2",
-                        padding: "14px 16px",
-                        borderRadius: "8px",
-                        border: "1px solid #EAE3D6",
-                        fontSize: "0.88rem",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: "22px",
-                          height: "22px",
-                          borderRadius: "4px",
-                          border: "1.5px solid #C9A84C",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                          fontSize: "12px",
-                          color: "#1F4225",
-                          fontWeight: 700,
-                        }}
-                      >
-                        &#10003;
-                      </span>
-                      <span>{t(item.en, item.ar)}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Practical Plan Box */}
-                <div
-                  style={{
-                    background: "#FAF7F2",
-                    border: "1px solid #C9A84C",
-                    borderRadius: "10px",
-                    padding: "26px",
-                  }}
-                >
-                  <h4 style={{ margin: "0 0 10px", fontFamily: "'Georgia', serif", fontSize: "1.2rem", color: "#141F15" }}>
-                    {t("Our Practical Family Plan", "خطتنا العملية وميثاق الأسرة")}
-                  </h4>
-                  <p style={{ fontSize: "0.88rem", color: "#667068", margin: "0 0 18px", lineHeight: "1.6" }}>
-                    {t(
-                      "This is a living agreement. Families can revisit it without shame whenever needs, technology, or circumstances change.",
-                      "هذا اتفاق حي قابل للمراجعة. يمكن للأسرة العودة إليه دون حرج عندما تتغير الاحتياجات أو التقنية أو ظروف الأسرة."
-                    )}
-                  </p>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "14px" }}>
-                    <div style={{ background: "#FFFFFF", padding: "14px", borderRadius: "6px", border: "1px solid #EAE3D6" }}>
-                      <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "#9E7E2E", fontWeight: 700 }}>
-                        {t("Screen-Free Times & Places", "أوقاتنا وأماكننا الخالية من الشاشات")}
-                      </span>
-                      <p style={{ margin: "6px 0 0", fontSize: "0.85rem", color: "#333" }}>
-                        {t("Meals, family gatherings, and bedrooms at night.", "وجبات الطعام، اللحظات العائلية، وغرف النوم ليلاً.")}
-                      </p>
-                    </div>
-
-                    <div style={{ background: "#FFFFFF", padding: "14px", borderRadius: "6px", border: "1px solid #EAE3D6" }}>
-                      <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "#9E7E2E", fontWeight: 700 }}>
-                        {t("Night Charging Station", "مكان شحن الأجهزة ليلاً")}
-                      </span>
-                      <p style={{ margin: "6px 0 0", fontSize: "0.85rem", color: "#333" }}>
-                        {t("Central family charging basket outside bedrooms.", "محطة شحن مركزية مشتركة خارج غرف النوم.")}
-                      </p>
-                    </div>
-
-                    <div style={{ background: "#FFFFFF", padding: "14px", borderRadius: "6px", border: "1px solid #EAE3D6" }}>
-                      <span style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "#9E7E2E", fontWeight: 700 }}>
-                        {t("Trusted Adults List", "البالغون الموثوقون")}
-                      </span>
-                      <p style={{ margin: "6px 0 0", fontSize: "0.85rem", color: "#333" }}>
-                        {t("Parents, family counselor, school safeguarding lead.", "الوالدان، المستشار الأسري، مسؤول الحماية في المدرسة.")}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Responsive PDF Viewer */}
+            <div style={{ width: "100%", height: "780px", backgroundColor: "#525659" }}>
+              <iframe
+                src={`${pdfUrl}#toolbar=1&navpanes=0`}
+                title="Awakened Parent Digital Safety Guide"
+                width="100%"
+                height="100%"
+                style={{ border: "none" }}
+              />
             </div>
-          )}
-
-          {/* TAB 3 CONTENT: RECOGNISE & SUPPORT */}
-          {activeTab === 3 && (
-            <div
-              style={{
-                background: "#FFFFFF",
-                borderRadius: "14px",
-                border: "1px solid #D9CBBA",
-                padding: "36px",
-                boxShadow: "0 8px 30px rgba(20, 31, 21, 0.05)",
-              }}
-            >
-              <div style={{ maxWidth: "840px", margin: "0 auto" }}>
-                <h3
-                  style={{
-                    fontFamily: isAr ? "var(--font-arabic)" : "'Georgia', serif",
-                    fontSize: "1.45rem",
-                    color: "#141F15",
-                    margin: "0 0 12px",
-                  }}
-                >
-                  {t(
-                    "Recognise the Signs: Cyberbullying, Grooming & Suspicious Contact",
-                    "التعرّف على المؤشرات: التنمّر الإلكتروني، الاستدراج، والتواصل المريب"
-                  )}
-                </h3>
-                <p style={{ fontSize: "0.92rem", color: "#667068", margin: "0 0 24px", lineHeight: "1.6" }}>
-                  {t(
-                    "One sign alone does not prove harm. Always respond with care, curiosity, and calm support.",
-                    "مؤشر واحد وحده لا يثبت بالضرورة وقوع أذى؛ استجيبوا دائماً باهتمام وهدوء وفضول دون استباق الأحكام."
-                  )}
-                </p>
-
-                {/* Warning Signs List */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "14px", marginBottom: "36px" }}>
-                  {[
-                    {
-                      en: "Secrecy or distress when using or leaving a device",
-                      ar: "السرية الزائدة أو الانزعاج عند استخدام الجهاز أو تركه",
-                    },
-                    {
-                      en: "Sudden fear of incoming messages, calls or alerts",
-                      ar: "خوف مفاجئ أو قلق عند استقبال الرسائل أو الإشعارات",
-                    },
-                    {
-                      en: "Pressure to keep an online relationship secret from family",
-                      ar: "ضغط خارجي لإبقاء علاقة عبر الإنترنت سراً عن الأسرة",
-                    },
-                    {
-                      en: "Requests for private photos or threats to expose details",
-                      ar: "طلب صور خاصة أو إرسال تهديدات بالتشهير أو الابتزاز",
-                    },
-                    {
-                      en: "Unexplained gifts, game credits, or money from online contacts",
-                      ar: "هدايا أو أموال أو رصيد ألعاب من شخص عبر الإنترنت",
-                    },
-                    {
-                      en: "An account attempting to move your child to an unmonitored private chat",
-                      ar: "حساب يحاول نقل طفلكم إلى تطبيق محادثة خاصة غير مراقبة",
-                    },
-                  ].map((sign, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        background: "#FFF9F9",
-                        border: "1px solid #FED7D7",
-                        borderRadius: "8px",
-                        padding: "14px",
-                        fontSize: "0.88rem",
-                        color: "#742A2A",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <span style={{ color: "#E53E3E", fontSize: "1.1rem" }}>⚠️</span>
-                      <span>{t(sign.en, sign.ar)}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* 5 Steps to Respond */}
-                <h3
-                  style={{
-                    fontFamily: isAr ? "var(--font-arabic)" : "'Georgia', serif",
-                    fontSize: "1.35rem",
-                    color: "#141F15",
-                    margin: "0 0 16px",
-                  }}
-                >
-                  {t(
-                    "If Your Child Tells You Something Worrying (5 Steps)",
-                    "إذا أخبركم طفلكم بأمر مقلق (خطوات الاستجابة الخمس)"
-                  )}
-                </h3>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "36px" }}>
-                  <div style={{ background: "#FAF7F2", padding: "16px 20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <strong>1. {t("Stay Calm & Thank Your Child:", "حافظوا على هدوئكم واشكروا طفلكم:")}</strong>{" "}
-                    {t(
-                      "Say: “You did the right thing by telling me. I am here to help you.”",
-                      "قولوا: «أحسنت حين أخبرتني، وأنا فخور بصراحتك وأنا هنا لمساعدتك دائماً»."
-                    )}
-                  </div>
-                  <div style={{ background: "#FAF7F2", padding: "16px 20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <strong>2. {t("Listen Without Blame:", "استمعوا دون لوم أو تحقيق:")}</strong>{" "}
-                    {t(
-                      "Don’t interrogate, shame, or threaten to confiscate every device at once.",
-                      "لا تستجوبوا الطفل ولا تحرجوه ولا تهددوه بحرمانه الفوري من جميع الأجهزة."
-                    )}
-                  </div>
-                  <div style={{ background: "#FAF7F2", padding: "16px 20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <strong>3. {t("Preserve Evidence Safely:", "احفظوا الأدلة بأمان:")}</strong>{" "}
-                    {t(
-                      "Capture screenshots, messages, usernames, links, and dates. Never edit, forward, or repost harmful material.",
-                      "احفظوا لقطات الشاشة والرسائل وأسماء المستخدمين والتواريخ، وتجنبوا تداول أو إعادة إرسال المحتوى المؤذي."
-                    )}
-                  </div>
-                  <div style={{ background: "#FAF7F2", padding: "16px 20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <strong>4. {t("Stop Contact & Secure Accounts:", "أوقفوا التواصل فوراً وحصّنوا الحسابات:")}</strong>{" "}
-                    {t(
-                      "Block and report the account. Review privacy settings and change passwords from a secure, clean device.",
-                      "احظروا الحساب وأبلغوا عنه، وراجعوا إعدادات الخصوصية وغيّروا كلمات المرور من جهاز آمن."
-                    )}
-                  </div>
-                  <div style={{ background: "#FAF7F2", padding: "16px 20px", borderRadius: "8px", border: "1px solid #EAE3D6" }}>
-                    <strong>5. {t("Engage Official Support:", "اطلبوا الدعم من الجهات المختصة:")}</strong>{" "}
-                    {t(
-                      "Inform the school safeguarding lead if peers are involved; reach out to Qatar child protection and cybercrime authorities.",
-                      "أبلغوا مسؤول الحماية في المدرسة إذا كان زملاء الدراسة معنيين، وتواصلوا مع الجهات الرسمية في قطر."
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          </div>
         </section>
 
         {/* ── OFFICIAL QATAR HELPLINES & LEGAL NOTICE ── */}
@@ -994,7 +605,7 @@ export function LibraryPage() {
                   66815757
                 </div>
                 <div style={{ fontWeight: 700, fontSize: "1.05rem", color: "#FAF7F2", marginBottom: "8px" }}>
-                  {t("MOI Cybercrime Combating Centre", "مركز مكافحة الجرائم الإلكترونية — وزارة الداخلية")}
+                  {t("MOI Cybercrime Combating Centre", "مركز مكافحة الجرائب الإلكترونية — وزارة الداخلية")}
                 </div>
                 <p style={{ fontSize: "0.85rem", color: "#A8B5AA", lineHeight: "1.6", margin: "0 0 10px" }}>
                   {t(
@@ -1005,7 +616,6 @@ export function LibraryPage() {
               </div>
             </div>
 
-            {/* Disclaimer note */}
             <div
               style={{
                 textAlign: "center",
@@ -1091,7 +701,7 @@ export function LibraryPage() {
               </div>
 
               <a
-                href="/documents/Awakened_Company_Profile.pdf"
+                href={companyProfileUrl}
                 download="Awakened_Company_Profile.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
