@@ -9,7 +9,9 @@
     { "source": "/reserve", "destination": "/events", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/checkout", "destination": "/_app" },
     { "source": "/checkout/:path*", "destination": "/_app" },
+    { "source": "/payment/:path*", "destination": "/_app" },
     { "source": "/invoice", "destination": "/_app" }
   ],
   "headers": [
@@ -30,7 +32,7 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://awakened-admin.vercel.app https://cloudflareinsights.com https://skipcash.app https://api.skipcash.app https://sandbox.skipcash.app; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://awakened-admin.vercel.app https://skipcash.app https://sandbox.skipcash.app;" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://awakened-admin.vercel.app https://cloudflareinsights.com https://skipcash.app https://api.skipcash.app https://sandbox.skipcash.app https://skipcashtest.azurewebsites.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://awakened-admin.vercel.app https://skipcash.app https://sandbox.skipcash.app https://skipcashtest.azurewebsites.net;" }
       ]
     }
   ]
