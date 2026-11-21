@@ -13,6 +13,7 @@ const RetreatsPage = page(() => import("./pages/RetreatsPage"), "RetreatsPage");
 const CommunityPage = page(() => import("./pages/CommunityPage"), "CommunityPage");
 const AboutPage = page(() => import("./pages/AboutPage"), "AboutPage");
 const ContactPage = page(() => import("./pages/ContactPage"), "ContactPage");
+const LibraryPage = page(() => import("./pages/LibraryPage"), "LibraryPage");
 const BookPage = page(() => import("./pages/BookPage"), "BookPage");
 const EventsPage = page(() => import("./pages/EventsPage"), "EventsPage");
 const PartnersPage = page(() => import("./pages/PartnersPage"), "PartnersPage");
@@ -43,6 +44,7 @@ export const routes = [
       { path: "retreats", element: <RetreatsPage /> },
       { path: "community", element: <CommunityPage /> },
       { path: "about", element: <AboutPage /> },
+      { path: "library", element: <LibraryPage /> },
       { path: "contact", element: <ContactPage /> },
       { path: "book", element: <BookPage /> },
       { path: "reserve", element: <Navigate to="/events" replace /> },
@@ -75,6 +77,7 @@ export const PRERENDER_PAGES = [
   { path: "/experts", priority: "0.7", changefreq: "monthly" },
   { path: "/community", priority: "0.6", changefreq: "monthly" },
   { path: "/partners", priority: "0.6", changefreq: "monthly" },
+  { path: "/library", priority: "0.8", changefreq: "weekly" },
   { path: "/contact", priority: "0.7", changefreq: "yearly" },
   { path: "/privacy", priority: "0.3", changefreq: "yearly" },
   { path: "/terms", priority: "0.3", changefreq: "yearly" },

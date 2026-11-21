@@ -147,6 +147,7 @@ export function Footer() {
     { to: "/retreats",       en: "Retreats",           ar: "رحلات العافية والرفاهية" },
     { to: "/events",         en: "Events",             ar: "الفعاليات" },
     { to: "/community",      en: "Community",          ar: "المجتمع" },
+    { to: "/library",        en: "Library & Publications", ar: "المكتبة والإصدارات" },
     { to: "/contact",        en: "Contact",            ar: "تواصل معنا" },
   ];
 
