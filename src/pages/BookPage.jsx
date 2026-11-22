@@ -14,36 +14,6 @@ function toUSD(qar) {
   return `$${Math.round(qar / 100 / 3.64).toLocaleString("en-US")}`;
 }
 
-const MEAL_PLANS = [
-  {
-    id: "meal-basic",
-    labelEn: "Essential Plan",
-    labelAr: "الخطة الأساسية",
-    descEn: "10 ready-made meals / week",
-    descAr: "١٠ وجبات جاهزة / أسبوع",
-    priceEn: "+ QAR 850 / week",
-    priceAr: "+ ٨٥٠ ريال / أسبوع",
-  },
-  {
-    id: "meal-full",
-    labelEn: "Full Nutrition Plan",
-    labelAr: "خطة التغذية الكاملة",
-    descEn: "21 meals / week — breakfast, lunch & dinner",
-    descAr: "٢١ وجبة / أسبوع — إفطار وغداء وعشاء",
-    priceEn: "+ QAR 1,600 / week",
-    priceAr: "+ ١٬٦٠٠ ريال / أسبوع",
-  },
-  {
-    id: "meal-premium",
-    labelEn: "Premium Wellness Meals",
-    labelAr: "وجبات العافية المميزة",
-    descEn: "21 chef-curated therapeutic meals / week",
-    descAr: "٢١ وجبة علاجية يُعدّها الشيف / أسبوع",
-    priceEn: "+ QAR 2,400 / week",
-    priceAr: "+ ٢٬٤٠٠ ريال / أسبوع",
-  },
-];
-
 const packages = [
   {
     skuId: "019dce10-c3f0-7669-ac04-e245507ba5c0",
@@ -69,13 +39,8 @@ const packages = [
         en: "Personalised wellness recommendations",
         ar: "توصيات عافية مصممة خصيصاً لك",
       },
-      {
-        en: "Optional meal plan add-on available",
-        ar: "خطة وجبات اختيارية متاحة",
-      },
     ],
     highlight: false,
-    mealPlan: true,
   },
   {
     skuId: "019dce10-cd64-7799-ae81-3b479a68c7b4",
@@ -100,13 +65,8 @@ const packages = [
         en: "Personalised transformation roadmap",
         ar: "خارطة طريق تحول مصممة لك",
       },
-      {
-        en: "Optional meal plan add-on available",
-        ar: "خطة وجبات اختيارية متاحة",
-      },
     ],
     highlight: true,
-    mealPlan: true,
   },
   {
     skuId: "019dce10-d42f-737d-bd6d-dce6efe7d464",
@@ -140,13 +100,8 @@ const packages = [
         en: "Ongoing accountability support",
         ar: "دعم مستمر للمتابعة والمساءلة",
       },
-      {
-        en: "Optional meal plan add-on available",
-        ar: "خطة وجبات اختيارية متاحة",
-      },
     ],
     highlight: false,
-    mealPlan: true,
   },
 ];
 
@@ -415,7 +370,6 @@ const corporateTiers = [
 ];
 
 export function BookPage() {
-  const [selectedMealPlan, setSelectedMealPlan] = useState({});
   const [checkoutItem, setCheckoutItem] = useState(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [checkoutError, setCheckoutError] = useState("");
@@ -905,132 +859,8 @@ export function BookPage() {
                       </li>
                     ))}
                   </ul>
-                  {pkg.mealPlan && (
-                    <div
-                      className="mb-6"
-                      style={{
-                        borderTop: pkg.highlight
-                          ? "1px solid rgba(168,197,160,0.25)"
-                          : "1px solid #D6CFC4",
-                        paddingTop: 20,
-                      }}
-                    >
-                      <p
-                        className="text-xs mb-3 font-semibold"
-                        style={{
-                          fontFamily: fontBody,
-                          color: pkg.highlight ? "#F0D58A" : "#2E4A32",
-                          letterSpacing: isAr ? 0 : "0.12em",
-                          textTransform: isAr ? "none" : "uppercase",
-                        }}
-                      >
-                        {t("Add a Meal Plan (optional)", "أضف خطة وجبات (اختياري)")}
-                      </p>
-                      <div className="flex flex-col gap-2">
-                        {MEAL_PLANS.map((plan) => {
-                          const isSelected = selectedMealPlan[pkg.skuId] === plan.id;
-                          return (
-                            <button
-                              key={plan.id}
-                              onClick={() =>
-                                setSelectedMealPlan((prev) => ({
-                                  ...prev,
-                                  [pkg.skuId]: isSelected ? null : plan.id,
-                                }))
-                              }
-                              style={{
-                                display: "flex",
-                                alignItems: "flex-start",
-                                justifyContent: "space-between",
-                                gap: 8,
-                                padding: "10px 12px",
-                                background: isSelected
-                                  ? pkg.highlight
-                                    ? "rgba(107,153,112,0.3)"
-                                    : "#E5EFE5"
-                                  : pkg.highlight
-                                    ? "rgba(255,255,255,0.06)"
-                                    : "#F9F6F1",
-                                border: isSelected
-                                  ? "1px solid #4D8B57"
-                                  : pkg.highlight
-                                    ? "1px solid rgba(168,197,160,0.25)"
-                                    : "1px solid #D6CFC4",
-                                cursor: "pointer",
-                                textAlign: isAr ? "right" : "left",
-                                flexDirection: isAr ? "row-reverse" : "row",
-                                transition: "all 0.2s",
-                              }}
-                            >
-                              <div
-                                style={{
-                                  flex: 1,
-                                }}
-                              >
-                                <span
-                                  className="block text-xs font-semibold"
-                                  style={{
-                                    fontFamily: fontBody,
-                                    color: isSelected
-                                      ? (pkg.highlight ? "#FFFFFF" : "#141F15")
-                                      : pkg.highlight
-                                        ? "#FFFFFF"
-                                        : "#141F15",
-                                  }}
-                                >
-                                  {t(plan.labelEn, plan.labelAr)}
-                                </span>
-                                <span
-                                  className="block text-xs mt-0.5"
-                                  style={{
-                                    fontFamily: fontBody,
-                                    color: pkg.highlight ? "#D4E7CF" : "#2E4A32",
-                                  }}
-                                >
-                                  {t(plan.descEn, plan.descAr)}
-                                </span>
-                              </div>
-                              <span
-                                className="text-xs font-bold shrink-0"
-                                style={{
-                                  fontFamily: fontBody,
-                                  color: isSelected
-                                    ? (pkg.highlight ? "#F0D58A" : "#1B4221")
-                                    : pkg.highlight
-                                      ? "#D4E7CF"
-                                      : "#1B4221",
-                                  marginTop: 1,
-                                }}
-                              >
-                                {t(plan.priceEn, plan.priceAr)}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                      {selectedMealPlan[pkg.skuId] && (
-                        <p
-                          className="text-xs mt-3 font-medium"
-                          style={{
-                            fontFamily: fontBody,
-                            color: pkg.highlight ? "#D4E7CF" : "#2E4A32",
-                            fontStyle: isAr ? "normal" : "italic",
-                          }}
-                        >
-                          {t(
-                            "Meal plan details will be confirmed after booking.",
-                            "سيتم تأكيد تفاصيل خطة الوجبات بعد الحجز.",
-                          )}
-                        </p>
-                      )}
-                    </div>
-                  )}
                   <button
                     onClick={() => {
-                      const chosenMealPlan =
-                        pkg.mealPlan && selectedMealPlan[pkg.skuId]
-                          ? MEAL_PLANS.find((p) => p.id === selectedMealPlan[pkg.skuId])
-                          : null;
                       setCheckoutItem({
                         skuId: pkg.skuId,
                         titleEn: `${pkg.tier} Advisory Package (${pkg.sessions})`,
@@ -1039,7 +869,6 @@ export function BookPage() {
                         subtitleAr: "تشمل جلسة تحديد الاحتياجات التدريبية والمواءمة",
                         priceQAR: `QAR ${(pkg.price / 100).toLocaleString("en-QA")}`,
                         priceUSD: `${toUSD(pkg.price)} USD`,
-                        mealPlan: chosenMealPlan,
                         amountQar: pkg.price / 100,
                       });
                     }}
