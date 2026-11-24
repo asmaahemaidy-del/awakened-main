@@ -292,7 +292,7 @@ export function CheckoutPage() {
                 }}
               />
               <span style={{ fontSize: "11px", color: "#7B857E", marginTop: "4px", display: "block" }}>
-                Default test amount is 1.00 QAR.
+                Payable amount in Qatari Riyals (QAR).
               </span>
             </div>
 
