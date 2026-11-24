@@ -224,7 +224,7 @@ export function InvoicePage() {
                 className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs"
                 style={{ color: "#7B857E" }}
               >
-                <span>CR No. 189422</span>
+                <span>CR No. 241070</span>
                 <span>&bull;</span>
                 <span>TIN: 000109482100001</span>
                 <span>&bull;</span>

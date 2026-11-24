@@ -103,7 +103,7 @@ export default async function handler(req, res) {
                       Awakened for Consultations LLC
                     </div>
                     <div style="font-family: 'Arial', sans-serif; font-size: 13px; color: #3D6B44; margin-top: 2px;">
-                      شركة أوايكند للاستشارات ذ.م.م &bull; CR No. 189422
+                      شركة أوايكند للاستشارات ذ.م.م &bull; CR No. 241070
                     </div>
                   </td>
                 </tr>

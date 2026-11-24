@@ -11,7 +11,7 @@
 export const COMPANY_INFO = {
   nameEn: "Awakened for Consultations LLC",
   nameAr: "شركة أوايكند للاستشارات ذ.م.م",
-  crNumber: "CR No. 189422",
+  crNumber: "CR No. 241070",
   taxCard: "TIN: 000109482100001",
   addressEn: "Doha, State of Qatar",
   addressAr: "الدوحة، دولة قطر",

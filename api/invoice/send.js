@@ -157,7 +157,7 @@ export default async function handler(req, res) {
                       شركة أوايكند للاستشارات ذ.م.م
                     </div>
                     <div style="font-family: 'Arial', sans-serif; font-size: 11px; color: #7B857E; margin-top: 4px; letter-spacing: 0.05em;">
-                      CR No. 189422 &bull; Doha, State of Qatar &bull; https://gotawakened.com
+                      CR No. 241070 &bull; Doha, State of Qatar &bull; https://gotawakened.com
                     </div>
                   </td>
                 </tr>
