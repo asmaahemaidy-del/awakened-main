@@ -46,7 +46,26 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Customer email is required for onboarding." });
     }
 
-    const emailSubject = `Welcome to Awakened — Your Onboarding & Next Steps (${itemTitle})`;
+    let emailSubject = `Welcome to Awakened — Your Onboarding & Next Steps (${itemTitle})`;
+
+    // Check if administrator customized the template in Awakened Admin Dashboard
+    try {
+      const adminBase = process.env.VITE_ADMIN_API_URL || "https://awakened-admin.vercel.app";
+      const tplRes = await fetch(`${adminBase}/api/templates?key=onboarding_executive`, {
+        headers: { "Content-Type": "application/json" },
+        signal: AbortSignal.timeout(3000),
+      });
+      if (tplRes.ok) {
+        const tplData = await tplRes.json();
+        if (tplData?.template?.subject) {
+          emailSubject = tplData.template.subject
+            .replace(/{{full_name}}/g, customerName)
+            .replace(/{{package_name}}/g, itemTitle);
+        }
+      }
+    } catch (tplErr) {
+      // Fallback silently to default subject
+    }
 
     // Luxury Responsive HTML Email
     const emailHtml = `<!DOCTYPE html>
