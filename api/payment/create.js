@@ -14,11 +14,11 @@ export default async function handler(req, res) {
 
     const keyId = (process.env.SKIPCASH_KEY_ID || "").trim();
     const keySecret = (process.env.SKIPCASH_KEY_SECRET || "").trim();
-    const isProd = process.env.SKIPCASH_ENV === "production";
+    const isSandbox = process.env.SKIPCASH_ENV === "sandbox" || process.env.SKIPCASH_ENV === "test";
     const baseUrl = (
       process.env.SKIPCASH_BASE_URL ||
       process.env.SKIPCASH_URL ||
-      (isProd ? "https://api.skipcash.app" : "https://skipcashtest.azurewebsites.net")
+      (isSandbox ? "https://skipcashtest.azurewebsites.net" : "https://api.skipcash.app")
     )
       .trim()
       .replace(/\/+$/, "");

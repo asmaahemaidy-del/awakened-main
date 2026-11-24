@@ -31,12 +31,19 @@ export default async function handler(req, res) {
       });
     }
 
-    const baseUrl = (process.env.SKIPCASH_BASE_URL || "").trim().replace(/\/+$/, "");
+    const isSandbox = process.env.SKIPCASH_ENV === "sandbox" || process.env.SKIPCASH_ENV === "test";
+    const baseUrl = (
+      process.env.SKIPCASH_BASE_URL ||
+      process.env.SKIPCASH_URL ||
+      (isSandbox ? "https://skipcashtest.azurewebsites.net" : "https://api.skipcash.app")
+    )
+      .trim()
+      .replace(/\/+$/, "");
     const keyId = (process.env.SKIPCASH_KEY_ID || "").trim();
     const keySecret = (process.env.SKIPCASH_KEY_SECRET || "").trim();
 
     if (!baseUrl || !keyId || !keySecret) {
-      console.error("[SkipCash] Missing required server environment variables (SKIPCASH_BASE_URL, SKIPCASH_KEY_ID, or SKIPCASH_KEY_SECRET).");
+      console.error("[SkipCash] Missing required server environment variables (SKIPCASH_KEY_ID or SKIPCASH_KEY_SECRET).");
       return res.status(500).json({ error: "SkipCash payment gateway is not configured on the server." });
     }
 
