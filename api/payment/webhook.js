@@ -122,6 +122,26 @@ export default async function handler(req, res) {
       console.error("[SkipCash Webhook] Error triggering invoice send:", sendErr);
     }
 
+    // Trigger automated client onboarding & session coordination email for advisory sessions
+    if (!isBooklet && email) {
+      try {
+        await fetch(`${origin}/api/onboarding/send`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            customer: { name, email, phone, organization },
+            itemTitle,
+            itemTitleAr,
+            transactionId,
+            invoiceNumber: invoiceNum,
+            totalQar,
+          }),
+        });
+      } catch (onboardErr) {
+        console.error("[SkipCash Webhook] Error triggering onboarding send:", onboardErr);
+      }
+    }
+
     // Also notify Awakened Admin panel
     const adminApiBase = process.env.VITE_ADMIN_API_URL || "https://awakened-admin.vercel.app";
     try {
