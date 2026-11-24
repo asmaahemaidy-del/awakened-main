@@ -86,6 +86,22 @@ export function CheckoutSuccessPage() {
           if (data?.success) setInvoiceSent(true);
         })
         .catch((err) => console.warn("[CheckoutSuccess] Invoice dispatch notice:", err));
+
+      // Trigger automated onboarding email if this is an advisory/consultation package
+      if (!isBooklet) {
+        fetch("/api/onboarding/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            customer: currentOrder.customer,
+            itemTitle: currentOrder.item?.title || currentOrder.item?.en || defaultTitleEn,
+            itemTitleAr: currentOrder.item?.titleAr || currentOrder.item?.ar || defaultTitleAr,
+            transactionId: orderId,
+            invoiceNumber: currentOrder.invoiceNumber || orderId,
+            totalQar: currentOrder.item?.priceQar || defaultPriceQar,
+          }),
+        }).catch((err) => console.warn("[CheckoutSuccess] Onboarding dispatch notice:", err));
+      }
     }
   }, [params]);
 

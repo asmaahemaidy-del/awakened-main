@@ -1,6 +1,26 @@
 // Serverless function deployed on Vercel to automatically generate and email
 // the official Awakened luxury tax invoice & receipt to the customer after successful payment.
 
+function sanitizeFromEmail(raw) {
+  if (!raw || typeof raw !== "string") {
+    return "Awakened for Consultations <info@gotawakened.com>";
+  }
+  let cleaned = raw.trim().replace(/^["']+|["']+$/g, "").trim();
+  if (!cleaned.includes("@")) {
+    return "Awakened for Consultations <info@gotawakened.com>";
+  }
+  if (!cleaned.includes("<") && cleaned.includes("@")) {
+    return `Awakened for Consultations <${cleaned}>`;
+  }
+  const match = cleaned.match(/^(.*?)\s*<([^>]+)>$/);
+  if (match) {
+    const name = match[1].replace(/["']/g, "").trim() || "Awakened for Consultations";
+    const email = match[2].trim();
+    return `${name} <${email}>`;
+  }
+  return cleaned;
+}
+
 export default async function handler(req, res) {
   // Allow POST
   if (req.method !== "POST") {
@@ -385,12 +405,12 @@ export default async function handler(req, res) {
 
     if (resendApiKey) {
       try {
-        const fromEmail = (process.env.RESEND_FROM_EMAIL || "Awakened for Consultations <info@gotawakened.com>").trim().replace(/^["']|["']$/g, "");
+        let fromEmail = sanitizeFromEmail(process.env.RESEND_FROM_EMAIL);
         const emailSubject = isBooklet
           ? `Official Invoice & Receipt #${invoiceNumber} — Awakened Publication Booklet (${totalQar} QAR)`
           : `Official Invoice & Receipt #${invoiceNumber} — Awakened for Consultations`;
 
-        const resendRes = await fetch("https://api.resend.com/emails", {
+        let resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Authorization": `Bearer ${resendApiKey}`,
@@ -405,7 +425,32 @@ export default async function handler(req, res) {
             html: emailHtml,
           }),
         });
-        const resendData = await resendRes.json();
+        let resendData = await resendRes.json();
+
+        // If primary sender failed due to domain verification or format, fallback gracefully
+        if (!resendRes.ok && (resendRes.status === 403 || resendRes.status === 422 || resendData?.name === "validation_error")) {
+          console.warn("[Invoice Send] Resend primary from rejected, attempting fallback sender:", resendData);
+          const fallbackFrom = "Awakened for Consultations <onboarding@resend.dev>";
+          const fallbackRes = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${resendApiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: fallbackFrom,
+              to: [customerEmail],
+              reply_to: "info@gotawakened.com",
+              subject: emailSubject,
+              html: emailHtml,
+            }),
+          });
+          if (fallbackRes.ok) {
+            resendRes = fallbackRes;
+            resendData = await fallbackRes.json();
+          }
+        }
+
         emailResult = {
           sent: resendRes.ok,
           keyHint: `${resendApiKey.slice(0, 4)}...${resendApiKey.slice(-3)} (${resendApiKey.length} chars)`,
@@ -445,10 +490,6 @@ export default async function handler(req, res) {
             `• Online Invoice: ${viewUrl}`,
           ].filter(Boolean).join("\n"),
           source_page: isBooklet ? "/library" : "/invoice",
-          preferred_contact: "email",
-        }),
-      });
-          source_page: "/invoice",
           preferred_contact: "email",
         }),
       });
