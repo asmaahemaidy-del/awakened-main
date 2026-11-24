@@ -362,15 +362,24 @@ export function LibraryPage() {
                       onClick={() =>
                         setCheckoutItem({
                           skuId: "doc-parent-digital-safety-1qar",
+                          title: doc.title,
                           titleEn: doc.title,
                           titleAr: doc.title,
+                          name: doc.title,
+                          nameEn: doc.title,
+                          nameAr: doc.title,
                           subtitleEn: "Official Publication Booklet • 1 QAR",
                           subtitleAr: "الكتيب التوعوي الرسمي • ١ ريال قطري",
+                          description: doc.description,
                           priceQAR: "1.00 QAR",
                           priceUSD: "$0.27 USD",
                           priceQar: 1.0,
                           amountQar: 1.0,
                           price: 100, // 100 cents = 1.00 QAR
+                          isBooklet: true,
+                          itemType: "publication",
+                          downloadUrl: "https://gotawakened.com/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf",
+                          fileName: "Awakened_Parent_Digital_Safety_Guide_Qatar.pdf",
                         })
                       }
                       style={{

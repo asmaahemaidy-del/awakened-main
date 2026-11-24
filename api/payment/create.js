@@ -55,13 +55,50 @@ export default async function handler(req, res) {
     const uid = crypto.randomUUID();
     const transactionId = `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
+    const isBooklet =
+      Boolean(item.isBooklet) ||
+      item.itemType === "publication" ||
+      item.skuId?.startsWith("doc-") ||
+      amountNumber <= 10;
+
+    const itemTitle =
+      item.title ||
+      item.name ||
+      item.titleEn ||
+      item.nameEn ||
+      item.tier ||
+      (isBooklet ? "Raising Safe, Aware and Resilient Children in a Digital World" : "Awakened Consultation");
+
+    const itemTitleAr =
+      item.titleAr ||
+      item.nameAr ||
+      item.tierAr ||
+      (isBooklet ? "تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي" : "جلسة استشارية أوايكند");
+
+    const itemDescription =
+      item.description ||
+      item.descEn ||
+      item.subtitleEn ||
+      (isBooklet ? "Official Publication Booklet • High-Resolution Vector PDF (3.9 MB)" : "Consultation Session");
+
+    const itemDescriptionAr =
+      item.descriptionAr ||
+      item.descAr ||
+      item.subtitleAr ||
+      (isBooklet ? "الكتيب التوعوي الرسمي • ملف فائق الدقة (٣.٩ ميجابايت)" : "جلسة استشارية");
+
     const custom1 = JSON.stringify({
       invoiceNumber: transactionId,
       name: customer.name,
       email: customer.email,
       phone: customer.phone,
       organization: customer.organization,
-      itemTitle: item.title || item.tier || "Awakened Consultation",
+      itemTitle,
+      itemTitleAr,
+      itemDescription,
+      itemDescriptionAr,
+      itemType: isBooklet ? "publication" : (item.itemType || "consultation"),
+      downloadUrl: isBooklet ? (item.downloadUrl || "https://gotawakened.com/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf") : undefined,
       priceQar: amountNumber,
     });
 

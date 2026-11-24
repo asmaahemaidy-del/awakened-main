@@ -15,14 +15,57 @@ export default async function handler(req, res) {
       date = new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }),
       time = new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" }),
       customer = {},
-      items = [],
-      subtotalQar = 1747,
-      subtotalUsd = 480,
-      taxQar = 0,
-      totalQar = 1747,
-      totalUsd = 480,
       paymentMethod = "SkipCash Qatar (Card / Apple Pay / NAPS)",
     } = body;
+
+    const totalQar = body.totalQar !== undefined ? Number(body.totalQar) : (body.subtotalQar !== undefined ? Number(body.subtotalQar) : (body.items?.[0]?.priceQar !== undefined ? Number(body.items[0].priceQar) : 1747));
+    const subtotalQar = body.subtotalQar !== undefined ? Number(body.subtotalQar) : totalQar;
+    const totalUsd = body.totalUsd !== undefined ? Number(body.totalUsd) : (totalQar <= 10 ? 1 : Math.round(totalQar / 3.64));
+    const subtotalUsd = body.subtotalUsd !== undefined ? Number(body.subtotalUsd) : totalUsd;
+    const taxQar = body.taxQar || 0;
+
+    const isBooklet =
+      body.itemType === "publication" ||
+      totalQar <= 10 ||
+      (body.items && body.items.some(it =>
+        (it.name && (it.name.includes("Children") || it.name.includes("Booklet") || it.name.includes("Parent") || it.name.includes("كتيب") || it.name.includes("أطفال")))
+      ));
+
+    const defaultItems = isBooklet
+      ? [
+          {
+            name: "Raising Safe, Aware and Resilient Children in a Digital World",
+            nameAr: "تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي",
+            description: "Official 3-leaflet publication folder • National Parent Conference on Digital Safety (PDF 3.9 MB)",
+            quantity: 1,
+            priceQar: totalQar,
+            priceUsd: totalUsd,
+          },
+        ]
+      : [
+          {
+            name: "Foundational Awakening Consultation",
+            nameAr: "جلسة استشارية تشخيصية استراتيجية (٩٠ دقيقة)",
+            description: "Comprehensive 90-minute whole-person diagnostic and wellness advisory.",
+            quantity: 1,
+            priceQar: totalQar,
+            priceUsd: totalUsd,
+          },
+        ];
+
+    const rawItems = (body.items && body.items.length > 0) ? body.items : defaultItems;
+    // Normalize items if it's booklet but had generic consultation name
+    const effectiveItems = rawItems.map(item => {
+      if (isBooklet && (!item.name || item.name.includes("Consultation"))) {
+        return {
+          ...item,
+          name: "Raising Safe, Aware and Resilient Children in a Digital World",
+          nameAr: item.nameAr || "تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي",
+          description: item.description || "Official 3-leaflet publication folder • National Parent Conference on Digital Safety (PDF 3.9 MB)",
+        };
+      }
+      return item;
+    });
 
     const customerEmail = customer.email;
     const customerName = customer.name || "Valued Client";
@@ -34,42 +77,26 @@ export default async function handler(req, res) {
     const viewUrl = `https://gotawakened.com/invoice?id=${encodeURIComponent(invoiceNumber)}`;
 
     // Build the items list HTML
-    const itemsHtml = items.length > 0
-      ? items.map(item => `
-        <tr style="border-bottom: 1px solid #EAE3D6;">
-          <td style="padding: 16px 12px; font-family: 'Georgia', serif; font-size: 14px; color: #141F15; vertical-align: top;">
-            <strong style="color: #141F15; font-size: 15px;">${item.name || "Wellness Consultation"}</strong>
-            ${item.nameAr ? `<div style="font-family: 'Arial', sans-serif; font-size: 13px; color: #5C8A62; margin-top: 3px;">${item.nameAr}</div>` : ""}
-            ${item.description ? `<div style="font-family: 'Arial', sans-serif; font-size: 12px; color: #667068; margin-top: 4px;">${item.description}</div>` : ""}
-          </td>
-          <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: center; vertical-align: top;">
-            ${item.quantity || 1}
-          </td>
-          <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: right; vertical-align: top; white-space: nowrap;">
-            <strong>${Number(item.priceQar || 0).toLocaleString()} QAR</strong>
-            <div style="font-size: 11px; color: #7B857E;">$${Number(item.priceUsd || 0).toLocaleString()} USD</div>
-          </td>
-          <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 14px; color: #141F15; text-align: right; vertical-align: top; white-space: nowrap;">
-            <strong style="color: #141F15;">${(Number(item.priceQar || 0) * (item.quantity || 1)).toLocaleString()} QAR</strong>
-            <div style="font-size: 11px; color: #7B857E;">$${(Number(item.priceUsd || 0) * (item.quantity || 1)).toLocaleString()} USD</div>
-          </td>
-        </tr>
-      `).join("")
-      : `
-        <tr style="border-bottom: 1px solid #EAE3D6;">
-          <td style="padding: 16px 12px; font-family: 'Georgia', serif; font-size: 14px; color: #141F15;">
-            <strong>Foundational Awakening Consultation</strong>
-            <div style="font-size: 12px; color: #5C8A62;">جلسة استشارية تشخيصية استراتيجية (٩٠ دقيقة)</div>
-          </td>
-          <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: center;">1</td>
-          <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: right;">
-            <strong>1,747 QAR</strong><div style="font-size: 11px; color: #7B857E;">$480 USD</div>
-          </td>
-          <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 14px; color: #141F15; text-align: right;">
-            <strong>1,747 QAR</strong><div style="font-size: 11px; color: #7B857E;">$480 USD</div>
-          </td>
-        </tr>
-      `;
+    const itemsHtml = effectiveItems.map(item => `
+      <tr style="border-bottom: 1px solid #EAE3D6;">
+        <td style="padding: 16px 12px; font-family: 'Georgia', serif; font-size: 14px; color: #141F15; vertical-align: top;">
+          <strong style="color: #141F15; font-size: 15px;">${item.name || (isBooklet ? "Digital Publication Booklet" : "Wellness Consultation")}</strong>
+          ${item.nameAr ? `<div style="font-family: 'Arial', sans-serif; font-size: 13px; color: #5C8A62; margin-top: 3px;">${item.nameAr}</div>` : ""}
+          ${item.description ? `<div style="font-family: 'Arial', sans-serif; font-size: 12px; color: #667068; margin-top: 4px;">${item.description}</div>` : ""}
+        </td>
+        <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: center; vertical-align: top;">
+          ${item.quantity || 1}
+        </td>
+        <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: right; vertical-align: top; white-space: nowrap;">
+          <strong>${Number(item.priceQar || 0).toLocaleString()} QAR</strong>
+          <div style="font-size: 11px; color: #7B857E;">$${Number(item.priceUsd || 0).toLocaleString()} USD</div>
+        </td>
+        <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 14px; color: #141F15; text-align: right; vertical-align: top; white-space: nowrap;">
+          <strong style="color: #141F15;">${(Number(item.priceQar || 0) * (item.quantity || 1)).toLocaleString()} QAR</strong>
+          <div style="font-size: 11px; color: #7B857E;">$${(Number(item.priceUsd || 0) * (item.quantity || 1)).toLocaleString()} USD</div>
+        </td>
+      </tr>
+    `).join("");
 
     // Full responsive luxury HTML template
     const emailHtml = `<!DOCTYPE html>
@@ -268,6 +295,25 @@ export default async function handler(req, res) {
             </td>
           </tr>
 
+          <!-- DIGITAL DELIVERY / DOWNLOAD BUTTON (FOR BOOKLET) -->
+          ${isBooklet ? `
+          <tr>
+            <td style="padding: 10px 32px 24px; background-color: #FFFFFF;">
+              <div style="background: linear-gradient(135deg, #141F15 0%, #1E2E20 100%); border-radius: 8px; border: 1px solid #C9A84C; padding: 22px 24px; text-align: center;">
+                <div style="color: #DFC07A; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; margin-bottom: 6px;">
+                  YOUR DIGITAL PUBLICATION IS READY &bull; مطبوعك الرقمي جاهز للتحميل
+                </div>
+                <div style="color: #FAF7F2; font-family: 'Georgia', serif; font-size: 16px; margin-bottom: 14px; font-weight: 600;">
+                  ${effectiveItems[0]?.name || "Raising Safe, Aware and Resilient Children in a Digital World"}
+                </div>
+                <a href="${body.downloadUrl || 'https://gotawakened.com/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf'}" download="Awakened_Parent_Digital_Safety_Guide_Qatar.pdf" target="_blank" style="display: inline-block; background-color: #C9A84C; color: #141F15; font-family: 'Arial', sans-serif; font-size: 13px; font-weight: 700; text-decoration: none; padding: 12px 28px; border-radius: 6px; letter-spacing: 0.05em; text-transform: uppercase;">
+                  &#11015; Download Publication (PDF 3.9 MB) &bull; تحميل الكتيب
+                </a>
+              </div>
+            </td>
+          </tr>
+          ` : ""}
+
           <!-- VIEW ONLINE / PRINT BUTTON -->
           <tr>
             <td align="center" style="padding: 10px 32px 30px; background-color: #FFFFFF;">
@@ -287,17 +333,26 @@ export default async function handler(req, res) {
           <tr>
             <td style="padding: 24px 32px; background-color: #FAF7F2; border-top: 1px solid #EAE3D6;">
               <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: #9E7E2E; font-weight: 700; margin-bottom: 6px;">
-                LEGAL & REGULATORY ACKNOWLEDGMENTS &bull; الإقرارات والشروط القانونية
+                ${isBooklet ? "PUBLICATION & INTELLECTUAL PROPERTY RIGHTS &bull; الحقوق الفكرية والتسليم الرقمي" : "LEGAL & REGULATORY ACKNOWLEDGMENTS &bull; الإقرارات والشروط القانونية"}
               </div>
               <p style="margin: 0 0 6px; font-size: 11px; color: #667068; line-height: 1.5;">
                 &bull; <strong>Qatar Law No. 13 of 2016:</strong> Personal data is processed in accordance with the Personal Data Protection Law of Qatar and will never be shared or sold.
               </p>
+              ${isBooklet ? `
+              <p style="margin: 0 0 6px; font-size: 11px; color: #667068; line-height: 1.5;">
+                &bull; <strong>Copyright & Rights:</strong> Official copyrighted publication of Awakened for Consultations LLC (Doha, Qatar). Licensed for personal and family use. Unauthorized redistribution or commercial duplication is prohibited.
+              </p>
+              <p style="margin: 0 0 6px; font-size: 11px; color: #667068; line-height: 1.5;">
+                &bull; <strong>Digital Delivery:</strong> Instant lifetime digital download access provided upon settlement.
+              </p>
+              ` : `
               <p style="margin: 0 0 6px; font-size: 11px; color: #667068; line-height: 1.5;">
                 &bull; <strong>Non-Medical Disclaimer:</strong> Services are wellness and strategic consulting sessions and do not substitute medical or psychiatric diagnostics.
               </p>
               <p style="margin: 0 0 6px; font-size: 11px; color: #667068; line-height: 1.5;">
                 &bull; <strong>Rescheduling:</strong> 72-hour notice required for private consultation changes. Corporate programs are subject to the executed Statement of Work (SOW).
               </p>
+              `}
             </td>
           </tr>
 
@@ -331,6 +386,10 @@ export default async function handler(req, res) {
     if (resendApiKey) {
       try {
         const fromEmail = (process.env.RESEND_FROM_EMAIL || "Awakened for Consultations <info@gotawakened.com>").trim().replace(/^["']|["']$/g, "");
+        const emailSubject = isBooklet
+          ? `Official Invoice & Receipt #${invoiceNumber} — Awakened Publication Booklet (${totalQar} QAR)`
+          : `Official Invoice & Receipt #${invoiceNumber} — Awakened for Consultations`;
+
         const resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -342,7 +401,7 @@ export default async function handler(req, res) {
             to: [customerEmail],
             bcc: ["info@gotawakened.com"],
             reply_to: "info@gotawakened.com",
-            subject: `Official Invoice & Receipt #${invoiceNumber} — Awakened for Consultations`,
+            subject: emailSubject,
             html: emailHtml,
           }),
         });
@@ -368,11 +427,13 @@ export default async function handler(req, res) {
           full_name: customerName,
           email: customerEmail,
           phone: customer.phone || undefined,
-          inquiry_type: "order",
+          inquiry_type: isBooklet ? "publication_purchase" : "order",
           subject: `[PAID] Invoice #${invoiceNumber} — ${customerName} (${totalQar} QAR)`,
           message: [
             `PAID INVOICE ISSUED & DISPATCHED:`,
             `• Invoice #: ${invoiceNumber}`,
+            `• Type: ${isBooklet ? "Digital Publication / Booklet" : "Consultation / Service"}`,
+            `• Item: ${effectiveItems[0]?.name || "Awakened Item"}`,
             `• Transaction Ref: ${transactionId}`,
             `• Customer: ${customerName} (${customerEmail})`,
             customer.phone ? `• Phone: ${customer.phone}` : null,
@@ -383,6 +444,10 @@ export default async function handler(req, res) {
             `• Email Dispatch Status: ${emailResult.sent ? "SENT" : "PENDING_KEY"}`,
             `• Online Invoice: ${viewUrl}`,
           ].filter(Boolean).join("\n"),
+          source_page: isBooklet ? "/library" : "/invoice",
+          preferred_contact: "email",
+        }),
+      });
           source_page: "/invoice",
           preferred_contact: "email",
         }),

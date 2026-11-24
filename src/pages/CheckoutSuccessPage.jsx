@@ -22,6 +22,23 @@ export function CheckoutSuccessPage() {
       stored?.invoiceNumber ||
       `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
+    const isBooklet =
+      Boolean(stored?.item?.isBooklet) ||
+      stored?.item?.itemType === "publication" ||
+      stored?.item?.skuId?.startsWith("doc-") ||
+      stored?.item?.priceQar === 1 ||
+      params.get("item")?.toLowerCase().includes("children") ||
+      params.get("title")?.toLowerCase().includes("children");
+
+    const defaultTitleEn = isBooklet
+      ? "Raising Safe, Aware and Resilient Children in a Digital World"
+      : "Awakened Consultation";
+    const defaultTitleAr = isBooklet
+      ? "تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي"
+      : "جلسة استشارية أوايكند";
+    const defaultPriceQar = isBooklet ? 1 : 1747;
+    const defaultPriceUsd = isBooklet ? 1 : 480;
+
     const currentOrder = stored || {
       invoiceNumber: orderId,
       customer: {
@@ -30,9 +47,11 @@ export function CheckoutSuccessPage() {
         phone: params.get("phone") || "",
       },
       item: {
-        title: "Awakened Consultation",
-        priceQar: 1747,
-        priceUsd: 480,
+        title: defaultTitleEn,
+        titleAr: defaultTitleAr,
+        priceQar: defaultPriceQar,
+        priceUsd: defaultPriceUsd,
+        isBooklet,
       },
     };
 
@@ -49,15 +68,17 @@ export function CheckoutSuccessPage() {
           customer: currentOrder.customer,
           items: [
             {
-              name: currentOrder.item?.title || currentOrder.item?.en || "Awakened Consultation",
-              nameAr: currentOrder.item?.titleAr || currentOrder.item?.ar || "جلسة استشارية أوايكند",
+              name: currentOrder.item?.title || currentOrder.item?.en || defaultTitleEn,
+              nameAr: currentOrder.item?.titleAr || currentOrder.item?.ar || defaultTitleAr,
               quantity: 1,
-              priceQar: currentOrder.item?.priceQar || 1747,
-              priceUsd: currentOrder.item?.priceUsd || 480,
+              priceQar: currentOrder.item?.priceQar || defaultPriceQar,
+              priceUsd: currentOrder.item?.priceUsd || defaultPriceUsd,
             },
           ],
-          totalQar: currentOrder.item?.priceQar || 1747,
-          totalUsd: currentOrder.item?.priceUsd || 480,
+          totalQar: currentOrder.item?.priceQar || defaultPriceQar,
+          totalUsd: currentOrder.item?.priceUsd || defaultPriceUsd,
+          itemType: isBooklet ? "publication" : "consultation",
+          downloadUrl: isBooklet ? "https://gotawakened.com/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf" : undefined,
         }),
       })
         .then((res) => res.json())
@@ -69,6 +90,7 @@ export function CheckoutSuccessPage() {
   }, [params]);
 
   const invoiceId = order?.invoiceNumber || params.get("orderId") || "";
+  const isBooklet = Boolean(order?.item?.isBooklet) || order?.item?.priceQar === 1;
 
   return (
     <>
@@ -124,7 +146,9 @@ export function CheckoutSuccessPage() {
               lineHeight: 1.15,
             }}
           >
-            {t("Your Place is Secured", "مكانك محجوز بنجاح")}
+            {isBooklet
+              ? t("Your Publication is Ready", "مطبوعك الرقمي جاهز للتحميل")
+              : t("Your Place is Secured", "مكانك محجوز بنجاح")}
           </h1>
 
           <p
@@ -134,10 +158,15 @@ export function CheckoutSuccessPage() {
               color: "#3D5C42",
             }}
           >
-            {t(
-              "Thank you for choosing Awakened. Your official tax invoice has been generated, and our executive concierge will be in touch within 24 hours to coordinate your schedule.",
-              "شكراً لاختيارك أوايكند. تم إصدار فاتورتك الضريبية وإرسالها إلى بريدك الإلكتروني، وسيتواصل معك فريق الاستقبال التنفيذي خلال ٢٤ ساعة لتنسيق المواعيد.",
-            )}
+            {isBooklet
+              ? t(
+                  "Thank you for your purchase. Your official tax invoice has been generated, and your digital booklet is ready for instant download below.",
+                  "شكراً لشرائك الكتيب. تم إصدار فاتورتك الضريبية الرسمية، ومطبوعك الرقمي جاهز للتحميل الفوري أدناه.",
+                )
+              : t(
+                  "Thank you for choosing Awakened. Your official tax invoice has been generated, and our executive concierge will be in touch within 24 hours to coordinate your schedule.",
+                  "شكراً لاختيارك أوايكند. تم إصدار فاتورتك الضريبية وإرسالها إلى بريدك الإلكتروني، وسيتواصل معك فريق الاستقبال التنفيذي خلال ٢٤ ساعة لتنسيق المواعيد.",
+                )}
           </p>
 
           {/* INVOICE & EMAIL NOTICE BOX */}
@@ -184,6 +213,28 @@ export function CheckoutSuccessPage() {
 
           {/* ACTION BUTTONS */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            {isBooklet && (
+              <a
+                href="/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                download="Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-8 py-3.5 rounded-xl text-xs sm:text-sm tracking-[0.08em] font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-md uppercase"
+                style={{
+                  fontFamily: fontBody,
+                  background: "#C9A84C",
+                  color: "#141F15",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                {t("Download Guide (PDF 3.9 MB)", "تحميل الكتيب (PDF)")}
+              </a>
+            )}
+
             {invoiceId && (
               <Link
                 to={`/invoice?id=${encodeURIComponent(invoiceId)}`}

@@ -25,13 +25,45 @@ export function InvoicePage() {
     const org = params.get("organization") || stored?.customer?.organization || "";
     const txn = params.get("txn") || params.get("transactionId") || `SC-${Math.floor(10000000 + Math.random() * 90000000)}`;
 
-    const itemNameEn = stored?.item?.title || stored?.item?.en || stored?.item?.tier || "Foundational Awakening Consultation";
-    const itemNameAr = stored?.item?.titleAr || stored?.item?.ar || stored?.item?.tierAr || "جلسة استشارية تشخيصية استراتيجية";
-    const itemDescEn = stored?.item?.descEn || stored?.item?.sessions || "90-minute executive diagnostic and wellbeing alignment session.";
-    const itemDescAr = stored?.item?.descAr || stored?.item?.sessionsAr || "جلسة تشخيصية تنفيذية لمدة ٩٠ دقيقة لمواءمة العافية والوضوح";
+    const paramAmount = params.get("amount") || params.get("total") || params.get("price");
+    const storedPriceQar = stored?.item?.price ? stored.item.price / 100 : stored?.item?.priceQar;
+    const priceQar = paramAmount ? Number(paramAmount) : (storedPriceQar !== undefined ? storedPriceQar : 1);
 
-    const priceQar = stored?.item?.price ? stored.item.price / 100 : (stored?.item?.priceQar || 1747);
-    const priceUsd = stored?.item?.priceUsd || Math.round(priceQar / 3.64);
+    const isBooklet =
+      Boolean(stored?.item?.isBooklet) ||
+      stored?.item?.itemType === "publication" ||
+      stored?.item?.skuId?.startsWith("doc-") ||
+      priceQar <= 10 ||
+      params.get("item")?.toLowerCase().includes("children") ||
+      params.get("title")?.toLowerCase().includes("children");
+
+    const defaultTitleEn = isBooklet
+      ? "Raising Safe, Aware and Resilient Children in a Digital World"
+      : "Foundational Awakening Consultation";
+    const defaultTitleAr = isBooklet
+      ? "تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي"
+      : "جلسة استشارية تشخيصية استراتيجية";
+    const defaultDescEn = isBooklet
+      ? "Official 3-leaflet publication folder • National Parent Conference on Digital Safety (PDF 3.9 MB)"
+      : "90-minute executive diagnostic and wellbeing alignment session.";
+    const defaultDescAr = isBooklet
+      ? "المجلد التوعوي الرسمي الصادر عن أوايكند للاستشارات؛ يشمل دليل الوالدين وقائمة التحقق (٣.٩ ميجابايت)"
+      : "جلسة تشخيصية تنفيذية لمدة ٩٠ دقيقة لمواءمة العافية والوضوح";
+
+    const itemNameEn = isBooklet
+      ? defaultTitleEn
+      : (stored?.item?.title || stored?.item?.en || stored?.item?.tier || defaultTitleEn);
+    const itemNameAr = isBooklet
+      ? defaultTitleAr
+      : (stored?.item?.titleAr || stored?.item?.ar || stored?.item?.tierAr || defaultTitleAr);
+    const itemDescEn = isBooklet
+      ? defaultDescEn
+      : (stored?.item?.descEn || stored?.item?.sessions || defaultDescEn);
+    const itemDescAr = isBooklet
+      ? defaultDescAr
+      : (stored?.item?.descAr || stored?.item?.sessionsAr || defaultDescAr);
+
+    const priceUsd = stored?.item?.priceUsd || (priceQar <= 10 ? 1 : Math.round(priceQar / 3.64));
 
     setInvoice({
       invoiceNumber: id,
@@ -39,6 +71,7 @@ export function InvoicePage() {
       time: new Date().toLocaleTimeString(isAr ? "ar-QA" : "en-GB", { hour: "2-digit", minute: "2-digit" }),
       transactionId: txn,
       paymentMethod: "SkipCash Qatar Gateway (Debit / Credit / Apple Pay)",
+      isBooklet,
       customer: {
         name,
         email,
@@ -425,23 +458,74 @@ export function InvoicePage() {
               </div>
             </div>
 
+            {/* INSTANT DOWNLOAD BANNER (FOR BOOKLET) */}
+            {invoice.isBooklet && (
+              <div
+                className="no-print mx-8 my-6 p-5 rounded-xl text-center border"
+                style={{
+                  background: "linear-gradient(135deg, #141F15 0%, #1E2E20 100%)",
+                  borderColor: "#C9A84C",
+                }}
+              >
+                <div
+                  className="text-xs uppercase tracking-widest font-bold mb-1.5"
+                  style={{ color: "#DFC07A" }}
+                >
+                  {t("Your Digital Publication is Ready for Instant Download", "مطبوعك الرقمي جاهز للتحميل الفوري")}
+                </div>
+                <div className="text-white font-serif text-sm sm:text-base mb-3 font-semibold">
+                  {invoice.items[0]?.name}
+                </div>
+                <a
+                  href="/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                  download="Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider shadow-md transition-all hover:opacity-95"
+                  style={{ background: "#C9A84C", color: "#141F15" }}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  {t("Download Purchased Guide (PDF 3.9 MB)", "تحميل الكتيب المعتمد (PDF ٣.٩ ميجابايت)")}
+                </a>
+              </div>
+            )}
+
             {/* LEGAL & REGULATORY ACKNOWLEDGMENTS */}
             <div
               className="px-8 py-6 border-t border-[#EAE3D6] text-xs leading-relaxed space-y-2"
               style={{ background: "#FAF7F2", color: "#667068" }}
             >
               <div className="font-bold uppercase tracking-wider text-[11px] mb-2" style={{ color: "#9E7E2E" }}>
-                {t("LEGAL TERMS & REGULATORY COMPLIANCE &bull; الشروط والامتثال القانوني", "الشروط والامتثال القانوني")}
+                {invoice.isBooklet
+                  ? t("PUBLICATION & INTELLECTUAL PROPERTY RIGHTS &bull; الحقوق الفكرية والتسليم الرقمي", "الحقوق الفكرية والتسليم الرقمي")
+                  : t("LEGAL TERMS & REGULATORY COMPLIANCE &bull; الشروط والامتثال القانوني", "الشروط والامتثال القانوني")}
               </div>
               <p>
                 &bull; <strong>{t("Data Protection:", "حماية البيانات الشخصية:")}</strong> {t("Processed strictly in compliance with Qatar Law No. 13 of 2016 Concerning Personal Data Protection. Client confidentiality is inviolable.", "تُعالج البيانات وفقاً لأحكام القانون رقم (١٣) لسنة ٢٠١٦ بشأن حماية خصوصية البيانات الشخصية في دولة قطر.")}
               </p>
-              <p>
-                &bull; <strong>{t("Non-Medical Disclaimer:", "إخلاء المسؤولية غير الطبي:")}</strong> {t("Awakened services are educational and wellbeing-focused consulting. They do not constitute clinical psychological or psychiatric diagnosis or healthcare.", "خدمات أوايكند هي استشارات رفاهية وعافية ووضوح، ولا تشكل علاجاً طبياً أو نفسياً سريرياً.")}
-              </p>
-              <p>
-                &bull; <strong>{t("Rescheduling Policy:", "سياسة إعادة الجدولة:")}</strong> {t("Private sessions require at least 72 hours prior notice to reschedule. Corporate programs are governed by the executed Statement of Work (SOW).", "تتطلب الجلسات الفردية إشعاراً مسبقاً قبل ٧٢ ساعة لإعادة الجدولة. البرامج المؤسسية تخضع لبيان العمل (SOW) الموقع.")}
-              </p>
+              {invoice.isBooklet ? (
+                <>
+                  <p>
+                    &bull; <strong>{t("Copyright & Rights:", "حقوق الملكية الفكرية:")}</strong> {t("Official copyrighted publication of Awakened for Consultations LLC (Doha, Qatar). Licensed for personal and family use. Unauthorized duplication or redistribution is prohibited.", "إصدار رسمي ومحمي بموجب حقوق النشر لشركة أوايكند للاستشارات ذ.م.م (الدوحة، قطر). مرخص للاستخدام الشخصي والأسري.")}
+                  </p>
+                  <p>
+                    &bull; <strong>{t("Digital Delivery:", "التسليم الرقمي:")}</strong> {t("Instant lifetime digital download access is granted upon settlement.", "تم توفير صلاحية التحميل الرقمي الفوري فور إتمام التسوية.")}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    &bull; <strong>{t("Non-Medical Disclaimer:", "إخلاء المسؤولية غير الطبي:")}</strong> {t("Awakened services are educational and wellbeing-focused consulting. They do not constitute clinical psychological or psychiatric diagnosis or healthcare.", "خدمات أوايكند هي استشارات رفاهية وعافية ووضوح، ولا تشكل علاجاً طبياً أو نفسياً سريرياً.")}
+                  </p>
+                  <p>
+                    &bull; <strong>{t("Rescheduling Policy:", "سياسة إعادة الجدولة:")}</strong> {t("Private sessions require at least 72 hours prior notice to reschedule. Corporate programs are governed by the executed Statement of Work (SOW).", "تتطلب الجلسات الفردية إشعاراً مسبقاً قبل ٧٢ ساعة لإعادة الجدولة. البرامج المؤسسية تخضع لبيان العمل (SOW) الموقع.")}
+                  </p>
+                </>
+              )}
             </div>
 
             {/* FOOTER */}

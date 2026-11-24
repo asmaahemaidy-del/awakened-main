@@ -448,10 +448,15 @@ export function CheckoutModal({
                     <div className="font-bold text-xs sm:text-sm text-[#141F15] flex items-center gap-1.5 mb-1">
                       <span className="text-[#C0392B]">*</span>
                       <span>
-                        {t(
-                          "I agree to all required booking terms & policies:",
-                          "أوافق على جميع شروط وسياسات الحجز الإلزامية:",
-                        )}
+                        {item.isBooklet || item.itemType === "publication"
+                          ? t(
+                              "I agree to the terms, privacy policy & publication purchase:",
+                              "أوافق على الشروط وسياسة الخصوصية وشراء الإصدار:",
+                            )
+                          : t(
+                              "I agree to all required booking terms & policies:",
+                              "أوافق على جميع شروط وسياسات الحجز الإلزامية:",
+                            )}
                       </span>
                     </div>
 
@@ -472,9 +477,13 @@ export function CheckoutModal({
                       <div className="flex items-baseline gap-1.5">
                         <span className="text-[#C9A84C] font-bold shrink-0">✓</span>
                         <span>
-                          {isAr
-                            ? "الإقرار بالطبيعة غير الطبية للخدمات (استشارات عافية وتطوير استراتيجي وليست علاجاً سريرياً)"
-                            : "Non-medical disclaimer (wellness consulting & personal advisory only)"}
+                          {item.isBooklet || item.itemType === "publication"
+                            ? (isAr
+                                ? "تحميل فوري للمطبوع الرقمي بصيغة PDF وحقوق النشر محفوظة لشركة أوايكند للاستشارات"
+                                : "Instant digital PDF download access & copyright reserved by Awakened")
+                            : (isAr
+                                ? "الإقرار بالطبيعة غير الطبية للخدمات (استشارات عافية وتطوير استراتيجي وليست علاجاً سريرياً)"
+                                : "Non-medical disclaimer (wellness consulting & personal advisory only)")}
                         </span>
                       </div>
                       <div className="flex items-baseline gap-1.5">

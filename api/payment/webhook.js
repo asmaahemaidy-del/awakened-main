@@ -57,11 +57,37 @@ export default async function handler(req, res) {
     const name = customerName || parsedCustom.name || body.name || "Valued Client";
     const phone = customerPhone || parsedCustom.phone || body.phone || "";
     const organization = parsedCustom.organization || "";
-    const itemTitle = parsedCustom.itemTitle || "Awakened Strategic Consultation";
-    const invoiceNum = parsedCustom.invoiceNumber || `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
-    const totalQar = amount ? Number(amount) : (parsedCustom.priceQar || 1747);
-    const totalUsd = Math.round(totalQar / 3.64);
+    const totalQar = amount !== undefined && amount !== null ? Number(amount) : (parsedCustom.priceQar !== undefined ? Number(parsedCustom.priceQar) : 1747);
+    const totalUsd = totalQar <= 10 ? 1 : Math.round(totalQar / 3.64);
+
+    const isBooklet =
+      parsedCustom.itemType === "publication" ||
+      totalQar <= 10 ||
+      (parsedCustom.itemTitle && (
+        parsedCustom.itemTitle.toLowerCase().includes("children") ||
+        parsedCustom.itemTitle.toLowerCase().includes("booklet") ||
+        parsedCustom.itemTitle.toLowerCase().includes("parent")
+      ));
+
+    const itemTitle =
+      parsedCustom.itemTitle && !parsedCustom.itemTitle.includes("Consultation")
+        ? parsedCustom.itemTitle
+        : (isBooklet ? "Raising Safe, Aware and Resilient Children in a Digital World" : (parsedCustom.itemTitle || "Awakened Strategic Consultation"));
+
+    const itemTitleAr =
+      parsedCustom.itemTitleAr ||
+      (isBooklet ? "تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي" : "جلسة استشارية أوايكند");
+
+    const itemDescription =
+      parsedCustom.itemDescription ||
+      (isBooklet ? "Official 3-leaflet publication folder • National Parent Conference on Digital Safety (PDF 3.9 MB)" : "Consultation Session");
+
+    const downloadUrl =
+      parsedCustom.downloadUrl ||
+      (isBooklet ? "https://gotawakened.com/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf" : undefined);
+
+    const invoiceNum = parsedCustom.invoiceNumber || `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
     // Call internal invoice sender to email client
     const origin = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://gotawakened.com";
@@ -76,6 +102,8 @@ export default async function handler(req, res) {
           items: [
             {
               name: itemTitle,
+              nameAr: itemTitleAr,
+              description: itemDescription,
               quantity: 1,
               priceQar: totalQar,
               priceUsd: totalUsd,
@@ -86,6 +114,8 @@ export default async function handler(req, res) {
           totalQar: totalQar,
           totalUsd: totalUsd,
           paymentMethod: "SkipCash Qatar Gateway",
+          itemType: isBooklet ? "publication" : "consultation",
+          downloadUrl: isBooklet ? downloadUrl : undefined,
         }),
       });
     } catch (sendErr) {
@@ -102,10 +132,12 @@ export default async function handler(req, res) {
           full_name: name,
           email: email || "unknown@client.com",
           phone: phone || undefined,
-          inquiry_type: "order",
+          inquiry_type: isBooklet ? "publication_purchase" : "order",
           subject: `[SkipCash PAID] ${itemTitle} — ${name} (${totalQar} QAR)`,
           message: [
             `SKIPCASH PAYMENT SETTLED IN FULL:`,
+            `• Type: ${isBooklet ? "Digital Publication / Booklet" : "Consultation / Service"}`,
+            `• Item: ${itemTitle}`,
             `• Transaction ID: ${transactionId}`,
             `• Invoice #: ${invoiceNum}`,
             `• Customer: ${name} (${email})`,
@@ -114,7 +146,7 @@ export default async function handler(req, res) {
             `• Amount: ${totalQar} QAR (Pegged $${totalUsd} USD)`,
             `• Status: SETTLED & INVOICE EMAILED`,
           ].filter(Boolean).join("\n"),
-          source_page: "/api/payment/webhook",
+          source_page: isBooklet ? "/library" : "/api/payment/webhook",
           preferred_contact: "email",
         }),
       });

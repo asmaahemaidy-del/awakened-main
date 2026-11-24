@@ -47,6 +47,11 @@ export function generateInvoiceEmailHtml(invoice) {
   const customerPhone = customer.phone || "—";
   const companyName = customer.company || "";
 
+  const isBooklet =
+    invoice.isBooklet ||
+    totalQar <= 10 ||
+    items.some((it) => it.name && (it.name.includes("Children") || it.name.includes("Booklet") || it.name.includes("Parent")));
+
   // Render items rows
   const itemsHtml = items.length > 0
     ? items.map((item, idx) => `
@@ -69,7 +74,23 @@ export function generateInvoiceEmailHtml(invoice) {
         </td>
       </tr>
     `).join("")
-    : `
+    : (isBooklet
+      ? `
+      <tr style="border-bottom: 1px solid #EAE3D6;">
+        <td style="padding: 16px 12px; font-family: 'Georgia', serif; font-size: 14px; color: #141F15;">
+          <strong>Raising Safe, Aware and Resilient Children in a Digital World</strong>
+          <div style="font-size: 12px; color: #5C8A62;">تنشئة أطفال آمنين وواعين وقادرين على التكيف في عالم رقمي</div>
+        </td>
+        <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: center;">1</td>
+        <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 13px; color: #141F15; text-align: right;">
+          <strong>${totalQar} QAR</strong><div style="font-size: 11px; color: #7B857E;">$${totalUsd} USD</div>
+        </td>
+        <td style="padding: 16px 12px; font-family: 'Arial', sans-serif; font-size: 14px; color: #141F15; text-align: right;">
+          <strong>${totalQar} QAR</strong><div style="font-size: 11px; color: #7B857E;">$${totalUsd} USD</div>
+        </td>
+      </tr>
+      `
+      : `
       <tr style="border-bottom: 1px solid #EAE3D6;">
         <td style="padding: 16px 12px; font-family: 'Georgia', serif; font-size: 14px; color: #141F15;">
           <strong>Foundational Awakening Consultation</strong>
@@ -83,7 +104,7 @@ export function generateInvoiceEmailHtml(invoice) {
           <strong>1,747 QAR</strong><div style="font-size: 11px; color: #7B857E;">$480 USD</div>
         </td>
       </tr>
-    `;
+    `);
 
   return `<!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

@@ -55,6 +55,30 @@ export async function syncCustomerToAdmin(checkoutData) {
   const item = checkoutData.item || {};
   const consents = checkoutData.consents || {};
 
+  const isPublication =
+    item.isBooklet ||
+    item.itemType === "publication" ||
+    item.skuId?.startsWith("doc-") ||
+    (item.priceQar !== undefined && Number(item.priceQar) <= 10) ||
+    (item.price !== undefined && Number(item.price) <= 1000);
+
+  const itemTitle =
+    item.title ||
+    item.titleEn ||
+    item.name ||
+    item.nameEn ||
+    item.tier ||
+    item.en ||
+    (isPublication
+      ? "Raising Safe, Aware and Resilient Children in a Digital World"
+      : "Awakened Consultation");
+
+  const itemScope =
+    item.subtitleEn ||
+    item.sessions ||
+    item.tagEn ||
+    (isPublication ? "Official Publication Booklet • 1 QAR" : "Direct Consultation");
+
   const invoiceNum = checkoutData.invoiceNumber || `INV-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`;
 
   const priceQar = item.price ? (item.price / 100).toLocaleString() : (item.priceQar ? item.priceQar.toLocaleString() : "—");
@@ -62,7 +86,7 @@ export async function syncCustomerToAdmin(checkoutData) {
 
   const messageLines = [
     `═══════════════════════════════════════════`,
-    `AWAKENED CUSTOMER BOOKING & CHECKOUT RECORD`,
+    isPublication ? `AWAKENED PUBLICATION ORDER RECORD` : `AWAKENED CUSTOMER BOOKING & CHECKOUT RECORD`,
     `═══════════════════════════════════════════`,
     `• Invoice Reference: ${invoiceNum}`,
     `• Customer Name: ${customer.name || "N/A"}`,
@@ -70,32 +94,32 @@ export async function syncCustomerToAdmin(checkoutData) {
     `• Phone: ${customer.phone || "N/A"}`,
     customer.organization ? `• Organization / Company: ${customer.organization}` : null,
     ``,
-    `SERVICE & BILLING DETAILS:`,
-    `• Selected Service: ${item.title || item.tier || item.en || "Awakened Consultation"}`,
-    `• Tier / Scope: ${item.sessions || item.tagEn || "Direct Consultation"}`,
+    `ITEM & BILLING DETAILS:`,
+    `• Item Name: ${itemTitle}`,
+    `• Scope: ${itemScope}`,
     `• Amount (Fixed QAR): ${priceQar} QAR`,
     `• Amount (Fixed USD): $${priceUsd} USD (Peg 1 USD = 3.64 QAR)`,
     ``,
     `LEGAL & PRIVACY CONSENTS RECORD:`,
     `• Terms & Refund Policy: ${consents.terms ? "ACCEPTED [Yes]" : "NOT ACCEPTED"}`,
-    `• Non-Medical Wellness Disclaimer: ${consents.nonMedical ? "ACKNOWLEDGED [Yes]" : "NOT ACKNOWLEDGED"}`,
+    `• Non-Medical / Digital Delivery Acknowledgment: ${consents.nonMedical ? "ACKNOWLEDGED [Yes]" : "NOT ACKNOWLEDGED"}`,
     `• Qatar Law No. 13/2016 Privacy: ${consents.privacy ? "CONSENTED [Yes]" : "NOT CONSENTED"}`,
     item.isCorporate ? `• Corporate Authorization: ${consents.corporateAuth ? "CONFIRMED [Yes]" : "NO"}` : null,
     `• Wellbeing Research & Methodology Development: ${consents.research ? "OPTED IN [Yes]" : "DECLINED [No]"}`,
     `• Marketing & Executive Updates: ${consents.marketing ? "SUBSCRIBED [Yes]" : "DECLINED [No]"}`,
     ``,
     `• Timestamp: ${new Date().toLocaleString("en-GB", { timeZone: "Asia/Qatar" })} AST`,
-    `• Source Page: /book`,
+    `• Source Page: ${isPublication ? "/library" : "/book"}`,
   ].filter(Boolean);
 
   const payload = {
-    full_name: customer.name || "Customer Booking",
+    full_name: customer.name || "Customer Order",
     email: customer.email || "client@gotawakened.com",
     phone: customer.phone || undefined,
-    inquiry_type: item.isCorporate ? "corporate" : "consultation",
-    subject: `[Booking Checkout] ${item.title || item.tier || "Service"} — ${customer.name} (${priceQar} QAR)`,
+    inquiry_type: isPublication ? "publication_purchase" : (item.isCorporate ? "corporate" : "consultation"),
+    subject: `[${isPublication ? "Publication Order" : "Booking Checkout"}] ${itemTitle} — ${customer.name} (${priceQar} QAR)`,
     message: messageLines.join("\n"),
-    source_page: "/book",
+    source_page: isPublication ? "/library" : "/book",
     preferred_contact: "email",
     referrer: typeof document !== "undefined" ? document.referrer || undefined : undefined,
   };
@@ -109,8 +133,8 @@ export async function syncCustomerToAdmin(checkoutData) {
       body: JSON.stringify(payload),
     });
     const data = await res.json().catch(() => ({}));
-    // Auto-reply booking confirmation email to client
-    if (customer.email) {
+    // Auto-reply booking confirmation email to client ONLY for advisory consultations, NOT publications
+    if (customer.email && !isPublication && !item.isCorporate) {
       fetch("/api/enquiry/reply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -118,8 +142,8 @@ export async function syncCustomerToAdmin(checkoutData) {
           name: customer.name || "Valued Client",
           email: customer.email,
           phone: customer.phone || undefined,
-          interest: `Booking: ${item.title || item.tier || "Awakened Consultation"}`,
-          message: `Your booking for ${item.title || item.tier || "Awakened Consultation"} has been received. Our concierge team will confirm your session details within 24 hours.`,
+          interest: `Booking: ${itemTitle}`,
+          message: `Your booking for ${itemTitle} has been received. Our concierge team will confirm your session details within 24 hours.`,
         }),
       }).catch(() => {});
     }
