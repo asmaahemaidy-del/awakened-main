@@ -259,7 +259,7 @@ const events = [
   },
 ];
 
-const PRIMARY_SESSION_SKU = "019dce10-c3f0-7669-ac04-e245507ba5c0";
+const PRIMARY_SESSION_SKU = "019dce10-primary-session-1747qar";
 
 const corporateTiers = [
   {
@@ -653,13 +653,19 @@ export function BookPage() {
               onClick={() =>
                 setCheckoutItem({
                   skuId: PRIMARY_SESSION_SKU,
+                  title: "Primary Coaching Needs Assessment & Matching",
                   titleEn: "Primary Coaching Needs Assessment & Matching",
                   titleAr: "جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
+                  name: "Primary Coaching Needs Assessment & Matching",
+                  nameEn: "Primary Coaching Needs Assessment & Matching",
+                  nameAr: "جلسة تحديد الاحتياجات التدريبية والمواءمة مع المستشار",
                   subtitleEn: "Paid 1:1 Consultation · 60 minutes · In-person or virtual",
                   subtitleAr: "جلسة استشارية فردية مدفوعة · ٦٠ دقيقة · حضورياً أو عن بعد",
                   priceQAR: "QAR 1,747",
                   priceUSD: "$480 USD",
+                  priceQar: 1747,
                   amountQar: 1747,
+                  price: 174700,
                 })
               }
               className="inline-flex items-center justify-center px-8 py-3.5 transition-all duration-300"
@@ -861,15 +867,26 @@ export function BookPage() {
                   </ul>
                   <button
                     onClick={() => {
+                      const amountQar = pkg.price / 100;
                       setCheckoutItem({
                         skuId: pkg.skuId,
+                        title: `${pkg.tier} Advisory Package (${pkg.sessions})`,
                         titleEn: `${pkg.tier} Advisory Package (${pkg.sessions})`,
                         titleAr: `باقة ${pkg.tierAr} (${pkg.sessionsAr})`,
+                        name: `${pkg.tier} Advisory Package (${pkg.sessions})`,
+                        nameEn: `${pkg.tier} Advisory Package (${pkg.sessions})`,
+                        nameAr: `باقة ${pkg.tierAr} (${pkg.sessionsAr})`,
                         subtitleEn: "Includes Coaching Needs Assessment & Matching",
                         subtitleAr: "تشمل جلسة تحديد الاحتياجات التدريبية والمواءمة",
-                        priceQAR: `QAR ${(pkg.price / 100).toLocaleString("en-QA")}`,
+                        priceQAR: `QAR ${amountQar.toLocaleString("en-QA")}`,
                         priceUSD: `${toUSD(pkg.price)} USD`,
-                        amountQar: pkg.price / 100,
+                        priceQar: amountQar,
+                        amountQar: amountQar,
+                        price: pkg.price,
+                        tier: pkg.tier,
+                        tierAr: pkg.tierAr,
+                        sessions: pkg.sessions,
+                        sessionsAr: pkg.sessionsAr,
                       });
                     }}
                     className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300"
@@ -1068,19 +1085,26 @@ export function BookPage() {
                     ))}
                   </ul>
                   <button
-                    onClick={() =>
+                    onClick={() => {
+                      const depositQar = tier.deposit / 100;
                       setCheckoutItem({
                         skuId: tier.skuId,
+                        title: `Corporate Wellness — ${tier.sizeEn}`,
                         titleEn: `Corporate Wellness — ${tier.sizeEn}`,
                         titleAr: `العافية المؤسسية — ${tier.sizeAr}`,
+                        name: `Corporate Wellness — ${tier.sizeEn}`,
+                        nameEn: `Corporate Wellness — ${tier.sizeEn}`,
+                        nameAr: `العافية المؤسسية — ${tier.sizeAr}`,
                         subtitleEn: `Planning Deposit (${tier.rangeEn})`,
                         subtitleAr: `وديعة التخطيط (${tier.rangeAr})`,
-                        priceQAR: `QAR ${(tier.deposit / 100).toLocaleString()}`,
+                        priceQAR: `QAR ${depositQar.toLocaleString()}`,
                         priceUSD: `${toUSD(tier.deposit)} USD`,
-                        amountQar: tier.deposit / 100,
+                        priceQar: depositQar,
+                        amountQar: depositQar,
+                        price: tier.deposit,
                         isCorporate: true,
-                      })
-                    }
+                      });
+                    }}
                     className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                     style={{
                       fontFamily: fontBody,
@@ -1280,18 +1304,25 @@ export function BookPage() {
                       </p>
                     </div>
                     <button
-                      onClick={() =>
+                      onClick={() => {
+                        const retreatQar = retreat.price / 100;
                         setCheckoutItem({
                           skuId: retreat.skuId,
+                          title: `Wellness Retreat Deposit — ${retreat.en}`,
                           titleEn: `Wellness Retreat Deposit — ${retreat.en}`,
                           titleAr: `وديعة رحلة العافية — ${retreat.ar}`,
+                          name: `Wellness Retreat Deposit — ${retreat.en}`,
+                          nameEn: `Wellness Retreat Deposit — ${retreat.en}`,
+                          nameAr: `وديعة رحلة العافية — ${retreat.ar}`,
                           subtitleEn: `${retreat.number} · ${retreat.tagEn}`,
                           subtitleAr: `${retreat.number} · ${retreat.tagAr}`,
-                          priceQAR: `QAR ${(retreat.price / 100).toLocaleString()}`,
+                          priceQAR: `QAR ${retreatQar.toLocaleString()}`,
                           priceUSD: `${toUSD(retreat.price)} USD`,
-                          amountQar: retreat.price / 100,
-                        })
-                      }
+                          priceQar: retreatQar,
+                          amountQar: retreatQar,
+                          price: retreat.price,
+                        });
+                      }}
                       className="w-full py-3.5 text-sm tracking-[0.1em] font-semibold transition-all duration-300"
                       style={{
                         fontFamily: fontBody,
@@ -1611,18 +1642,25 @@ export function BookPage() {
                     {" USD"}
                   </p>
                   <button
-                    onClick={() =>
+                    onClick={() => {
+                      const eventQar = ev.price / 100;
                       setCheckoutItem({
                         skuId: ev.skuId,
+                        title: ev.en,
                         titleEn: ev.en,
                         titleAr: ev.ar,
+                        name: ev.en,
+                        nameEn: ev.en,
+                        nameAr: ev.ar,
                         subtitleEn: `${ev.typeEn} · ${ev.date} · ${ev.location}`,
                         subtitleAr: `${ev.typeAr} · ${ev.dateAr} · ${ev.locationAr}`,
-                        priceQAR: `QAR ${(ev.price / 100).toLocaleString()}`,
+                        priceQAR: `QAR ${eventQar.toLocaleString()}`,
                         priceUSD: `${toUSD(ev.price)} USD`,
-                        amountQar: ev.price / 100,
-                      })
-                    }
+                        priceQar: eventQar,
+                        amountQar: eventQar,
+                        price: ev.price,
+                      });
+                    }}
                     className="w-full py-3.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300"
                     style={{
                       fontFamily: fontBody,

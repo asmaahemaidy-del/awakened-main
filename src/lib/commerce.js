@@ -174,6 +174,9 @@ export async function startOneTimeCommerceCheckout(params) {
 
   return createCheckoutSession({
     storeId,
+    item: params.item,
+    skuId: params.skuId,
+    amount: params.item?.priceQar ?? params.item?.amountQar,
     lineItems: [
       {
         skuId: params.skuId,

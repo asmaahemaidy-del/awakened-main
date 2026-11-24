@@ -10,7 +10,52 @@ export default async function handler(req, res) {
 
   try {
     const body = req.body || {};
-    const { customer = {}, item = {}, consents = {} } = body;
+    const customer = body.customer || {};
+    const consents = body.consents || {};
+    let item = body.item || {};
+
+    // SKU fallback lookup if item details were omitted
+    const sku = body.skuId || item.skuId || body.lineItems?.[0]?.skuId;
+    if (sku && (!item.priceQar && !item.price && !item.amountQar && !body.amount)) {
+      if (sku === "doc-parent-digital-safety-1qar") {
+        item = {
+          ...item,
+          skuId: sku,
+          title: "Raising Safe, Aware and Resilient Children in a Digital World",
+          priceQar: 1.0,
+          isBooklet: true,
+          itemType: "publication",
+        };
+      } else if (sku === "019dce10-c3f0-7669-ac04-e245507ba5c0" || sku === "sku-pkg-starter-4947qar") {
+        item = {
+          ...item,
+          skuId: sku,
+          title: "Starter Advisory Package (3 Sessions)",
+          priceQar: 4947,
+        };
+      } else if (sku === "019dce10-cd64-7799-ae81-3b479a68c7b4" || sku === "sku-pkg-core-9697qar") {
+        item = {
+          ...item,
+          skuId: sku,
+          title: "Core Advisory Package (6 Sessions)",
+          priceQar: 9697,
+        };
+      } else if (sku === "019dce10-d42f-737d-bd6d-dce6efe7d464" || sku === "sku-pkg-immersive-18797qar") {
+        item = {
+          ...item,
+          skuId: sku,
+          title: "Immersive Advisory Package (12 Sessions)",
+          priceQar: 18797,
+        };
+      } else if (sku === "019dce10-primary-session-1747qar" || sku === "sku-primary-session-1747qar") {
+        item = {
+          ...item,
+          skuId: sku,
+          title: "Primary Coaching Needs Assessment & Matching",
+          priceQar: 1747,
+        };
+      }
+    }
 
     const keyId = (process.env.SKIPCASH_KEY_ID || "").trim();
     const keySecret = (process.env.SKIPCASH_KEY_SECRET || "").trim();
@@ -34,14 +79,28 @@ export default async function handler(req, res) {
       ? `https://${process.env.VERCEL_URL}`
       : "https://gotawakened.com";
 
-    // Format Amount (e.g. 1.00 for testing or full package amount)
-    let amountNumber = 1747;
-    if (item.priceQar !== undefined && item.priceQar !== null) {
+    // Format Amount (respects item package price, body amount, or fallback)
+    let amountNumber = null;
+    if (item.priceQar !== undefined && item.priceQar !== null && !isNaN(Number(item.priceQar))) {
       amountNumber = Number(item.priceQar);
-    } else if (item.amountQar !== undefined && item.amountQar !== null) {
+    } else if (item.amountQar !== undefined && item.amountQar !== null && !isNaN(Number(item.amountQar))) {
       amountNumber = Number(item.amountQar);
-    } else if (item.price !== undefined && item.price !== null) {
-      amountNumber = item.price >= 100 ? item.price / 100 : item.price;
+    } else if (body.amount !== undefined && body.amount !== null && !isNaN(Number(body.amount))) {
+      amountNumber = Number(body.amount);
+    } else if (body.priceQar !== undefined && body.priceQar !== null && !isNaN(Number(body.priceQar))) {
+      amountNumber = Number(body.priceQar);
+    } else if (body.amountQar !== undefined && body.amountQar !== null && !isNaN(Number(body.amountQar))) {
+      amountNumber = Number(body.amountQar);
+    } else if (item.price !== undefined && item.price !== null && !isNaN(Number(item.price))) {
+      const num = Number(item.price);
+      amountNumber = num >= 100 ? num / 100 : num;
+    } else if (typeof item.priceQAR === "string") {
+      const parsed = parseFloat(item.priceQAR.replace(/[^0-9.]/g, ""));
+      if (!isNaN(parsed) && parsed > 0) amountNumber = parsed;
+    }
+
+    if (amountNumber === null || isNaN(amountNumber) || amountNumber <= 0) {
+      amountNumber = 1747;
     }
     const amountStr = Number(amountNumber).toFixed(2);
 
