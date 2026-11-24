@@ -12,10 +12,16 @@ export default async function handler(req, res) {
     const body = req.body || {};
     const { customer = {}, item = {}, consents = {} } = body;
 
-    const keyId = process.env.SKIPCASH_KEY_ID;
-    const keySecret = process.env.SKIPCASH_KEY_SECRET;
+    const keyId = (process.env.SKIPCASH_KEY_ID || "").trim();
+    const keySecret = (process.env.SKIPCASH_KEY_SECRET || "").trim();
     const isProd = process.env.SKIPCASH_ENV === "production";
-    const baseUrl = process.env.SKIPCASH_URL || (isProd ? "https://api.skipcash.app" : "https://skipcashtest.azurewebsites.net");
+    const baseUrl = (
+      process.env.SKIPCASH_BASE_URL ||
+      process.env.SKIPCASH_URL ||
+      (isProd ? "https://api.skipcash.app" : "https://skipcashtest.azurewebsites.net")
+    )
+      .trim()
+      .replace(/\/+$/, "");
 
     if (!keyId || !keySecret) {
       return res.status(400).json({
@@ -28,8 +34,15 @@ export default async function handler(req, res) {
       ? `https://${process.env.VERCEL_URL}`
       : "https://gotawakened.com";
 
-    // Format Amount (e.g. 1747.00)
-    let amountNumber = item.price ? item.price / 100 : (item.priceQar || 1747);
+    // Format Amount (e.g. 1.00 for testing or full package amount)
+    let amountNumber = 1747;
+    if (item.priceQar !== undefined && item.priceQar !== null) {
+      amountNumber = Number(item.priceQar);
+    } else if (item.amountQar !== undefined && item.amountQar !== null) {
+      amountNumber = Number(item.amountQar);
+    } else if (item.price !== undefined && item.price !== null) {
+      amountNumber = item.price >= 100 ? item.price / 100 : item.price;
+    }
     const amountStr = Number(amountNumber).toFixed(2);
 
     // Split customer name into first and last
@@ -54,6 +67,7 @@ export default async function handler(req, res) {
 
     // Exact required order for SkipCash HMAC signature:
     // Uid, KeyId, Amount, FirstName, LastName, Phone, Email, Street, City, State, Country, PostalCode, TransactionId, Custom1
+    // Note: State must be 2 characters or fewer (or empty). We leave State empty to prevent SkipCash validation errors.
     const orderedParams = [
       ["Uid", uid],
       ["KeyId", keyId],
@@ -64,7 +78,7 @@ export default async function handler(req, res) {
       ["Email", email],
       ["Street", ""],
       ["City", "Doha"],
-      ["State", "Doha"],
+      ["State", ""],
       ["Country", "QA"],
       ["PostalCode", ""],
       ["TransactionId", transactionId],
@@ -92,7 +106,6 @@ export default async function handler(req, res) {
       Phone: phone,
       Email: email,
       City: "Doha",
-      State: "Doha",
       Country: "QA",
       TransactionId: transactionId,
       Custom1: custom1,

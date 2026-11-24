@@ -178,26 +178,40 @@ export function PaymentResultPage() {
 
               {/* Actions */}
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                <Link
-                  to="/"
+                <a
+                  href="/documents/Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                  download="Awakened_Parent_Digital_Safety_Guide_Qatar.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    display: "block",
-                    padding: "13px 24px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    padding: "14px 24px",
                     backgroundColor: "#141F15",
                     color: "#FAF7F2",
                     borderRadius: "6px",
+                    border: "1px solid #C9A84C",
                     fontFamily: "'Georgia', serif",
                     fontSize: "14px",
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
                     textDecoration: "none",
                     fontWeight: 600,
+                    boxShadow: "0 4px 14px rgba(20, 31, 21, 0.15)",
                   }}
                 >
-                  Return to Homepage
-                </Link>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download Purchased Guide (PDF 3.9 MB)
+                </a>
+
                 <Link
-                  to="/book"
+                  to="/library"
                   style={{
                     display: "block",
                     padding: "12px 24px",
@@ -210,7 +224,21 @@ export function PaymentResultPage() {
                     fontWeight: 600,
                   }}
                 >
-                  View Bookings & Consultations
+                  Return to Library & Publications
+                </Link>
+
+                <Link
+                  to="/"
+                  style={{
+                    display: "block",
+                    padding: "10px 24px",
+                    backgroundColor: "transparent",
+                    color: "#667068",
+                    fontSize: "12px",
+                    textDecoration: "none",
+                  }}
+                >
+                  Return to Homepage
                 </Link>
               </div>
             </>

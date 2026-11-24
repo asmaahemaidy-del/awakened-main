@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { SkipCashCheckoutButton } from "../components/SkipCashCheckoutButton";
 
 export function CheckoutPage() {
+  const [searchParams] = useSearchParams();
+  const itemTitle =
+    searchParams.get("title") ||
+    searchParams.get("item") ||
+    "Raising Safe, Aware and Resilient Children in a Digital World";
+  const defaultAmount = searchParams.get("amount") || "1.00";
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("+974 ");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState("1.00");
+  const [amount, setAmount] = useState(defaultAmount);
   const [orderId] = useState(
     () => `ORD-${new Date().getFullYear()}-${Math.floor(10000 + Math.random() * 90000)}`
   );
@@ -82,6 +89,22 @@ export function CheckoutPage() {
               marginBottom: "24px",
             }}
           >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                gap: "12px",
+                marginBottom: "10px",
+              }}
+            >
+              <span style={{ fontSize: "12px", color: "#7B857E", textTransform: "uppercase" }}>
+                Publication / Item:
+              </span>
+              <span style={{ fontSize: "13px", fontWeight: 600, color: "#141F15", textAlign: "right", maxWidth: "65%" }}>
+                {itemTitle}
+              </span>
+            </div>
             <div
               style={{
                 display: "flex",
