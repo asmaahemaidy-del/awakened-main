@@ -6,7 +6,37 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/reserve", "destination": "/events", "permanent": true }
+    { "source": "/reserve", "destination": "/events", "permanent": true },
+    {
+      "source": "/whatsapp",
+      "destination": "https://wa.me/97477106177?text=Hello%20Awakened%2C%20I%20would%20like%20to%20know%20more",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp-ar",
+      "destination": "https://wa.me/97477106177?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D9%88%D8%A7%D9%8A%D9%83%D9%86%D8%AF%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%D9%83%D9%85",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp-book",
+      "destination": "https://wa.me/97477106177?text=Hello%20Awakened%2C%20I%20would%20like%20to%20book%20a%20session",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp-book-ar",
+      "destination": "https://wa.me/97477106177?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D9%88%D8%A7%D9%8A%D9%83%D9%86%D8%AF%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp-retreats",
+      "destination": "https://wa.me/97477106177?text=Hello%20Awakened%2C%20I%20am%20interested%20in%20your%20retreats",
+      "permanent": false
+    },
+    {
+      "source": "/whatsapp-retreats-ar",
+      "destination": "https://wa.me/97477106177?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A3%D9%88%D8%A7%D9%8A%D9%83%D9%86%D8%AF%D8%8C%20%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A7%D9%84%D8%AE%D9%84%D9%88%D8%A7%D8%AA",
+      "permanent": false
+    }
   ],
   "rewrites": [
     { "source": "/checkout", "destination": "/_app" },
