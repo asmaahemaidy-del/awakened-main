@@ -274,7 +274,7 @@ export function CheckoutModal({
                     setForm((f) => ({ ...f, name: e.target.value }));
                     if (errors.name) setErrors((errs) => ({ ...errs, name: undefined }));
                   }}
-                  placeholder={t("e.g. Sara Al-Thani", "مثال: سارة آل ثاني")}
+                  placeholder={t("Full name", "الاسم الكامل")}
                   className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg outline-none transition-colors"
                   style={{
                     fontFamily: fontBody,
@@ -343,7 +343,7 @@ export function CheckoutModal({
                     setForm((f) => ({ ...f, phone: val }));
                     if (errors.phone) setErrors((errs) => ({ ...errs, phone: undefined }));
                   }}
-                  placeholder={isAr ? "٥٥٥٥ ١٢٣٤" : "5555 1234"}
+                  placeholder={isAr ? "رقم الهاتف" : "Phone number"}
                   variant="light"
                   error={errors.phone}
                 />

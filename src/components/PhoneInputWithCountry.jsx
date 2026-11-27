@@ -222,7 +222,7 @@ export function PhoneInputWithCountry({
           required={required}
           value={localNumber}
           onChange={handleNumberChange}
-          placeholder={placeholder || (selectedCode === "+974" ? "7710 6177" : "1234 5678")}
+          placeholder={placeholder || (isAr ? "رقم الهاتف" : "Phone number")}
           className="w-full px-3 py-2.5 sm:py-3 text-xs sm:text-sm outline-none bg-transparent"
           style={{
             fontFamily: fontBody,

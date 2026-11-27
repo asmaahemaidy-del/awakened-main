@@ -157,7 +157,7 @@ export function CheckoutPage() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Fatima"
+                  placeholder="First name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   style={{
@@ -187,7 +187,7 @@ export function CheckoutPage() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Al-Kuwari"
+                  placeholder="Last name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   style={{
@@ -219,7 +219,7 @@ export function CheckoutPage() {
                 required
                 value={phone}
                 onChange={(val) => setPhone(val)}
-                placeholder="5500 0000"
+                placeholder="Phone number"
                 variant="light"
               />
             </div>
@@ -239,7 +239,7 @@ export function CheckoutPage() {
               <input
                 type="email"
                 required
-                placeholder="client@example.com"
+                placeholder="email@domain.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
