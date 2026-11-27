@@ -46,6 +46,101 @@ export default async function handler(req, res) {
     const isArabic = language === "ar";
     const year = new Date().getFullYear();
 
+    // ── Context-Aware Subject & Content Resolution ─────────────────────────────
+    const interestStr = (interest || "").toLowerCase();
+    const messageStr = (message || "").toLowerCase();
+    const combined = `${interestStr} ${messageStr}`;
+
+    let topicType = "general";
+    let emailHeadingEn = "Consultation & Guidance Inquiry";
+    let emailHeadingAr = "استفسار الاستشارات والتوجيه";
+    let nextStep1En = "Our advisory team reviews your enquiry and stated goals.";
+    let nextStep1Ar = "يراجع فريقنا الاستشاري تفاصيل استفساركم وتطلعاتكم بعناية.";
+    let nextStep2En = "A senior consultant connects via your preferred channel within 24 business hours.";
+    let nextStep2Ar = "يتواصل معكم أحد كبار المستشارين عبر وسيلتكم المفضلة خلال ٢٤ ساعة عمل.";
+    let nextStep3En = "We coordinate an introductory alignment call or private consultation.";
+    let nextStep3Ar = "ننسق معكم محادثة مواءمة تمهيدية أو جلسة استشارية خاصة.";
+    let ctaUrl = "https://gotawakened.com/book";
+    let ctaTextEn = "Explore Offerings";
+    let ctaTextAr = "استكشف الخدمات";
+
+    if (combined.includes("retreat") || combined.includes("خلوة") || combined.includes("sanctuary")) {
+      topicType = "retreat";
+      emailHeadingEn = "Signature Retreat & Sanctuary Application";
+      emailHeadingAr = "طلب المشاركة في رحلات العافية الخاصة";
+      nextStep1En = "Our Sanctuary Retreat Committee reviews your dates and wellness intentions.";
+      nextStep1Ar = "تقوم لجنة رحلات العافية بمراجعة التواريخ المفضلة وتطلعاتكم الصحية.";
+      nextStep2En = "Our concierge coordinates a brief 15-minute alignment conversation.";
+      nextStep2Ar = "يرتب منسق الرحلات مكالمة مواءمة موجزة لمدة ١٥ دقيقة للإجابة عن تطلعاتكم.";
+      nextStep3En = "You receive exclusive encrypted booking access and itinerary dossier.";
+      nextStep3Ar = "تستلمون رابط الحجز الخاص ودليل المسار والملاذ المعتمد.";
+      ctaUrl = "https://gotawakened.com/retreats";
+      ctaTextEn = "View Signature Retreats";
+      ctaTextAr = "استعراض رحلات العافية";
+    } else if (
+      combined.includes("corporate") ||
+      combined.includes("organisation") ||
+      combined.includes("organization") ||
+      combined.includes("مؤسس") ||
+      combined.includes("شركة")
+    ) {
+      topicType = "corporate";
+      emailHeadingEn = "Corporate & Institutional Leadership Advisory";
+      emailHeadingAr = "استفسار البرامج المؤسسية والقيادية";
+      nextStep1En = "Our Head of Institutional Practice conducts an executive needs review.";
+      nextStep1Ar = "يقوم رئيس قطاع البرامج المؤسسية بمراجعة احتياجات مؤسستكم.";
+      nextStep2En = "We schedule an exploratory discovery meeting and provide our institutional briefing.";
+      nextStep2Ar = "نرتب اجتماعاً استكشافياً موجزاً ونزودكم بملف القدرات المؤسسية.";
+      nextStep3En = "Mutual engagement framework, NDA, and tailored roadmap proposal.";
+      nextStep3Ar = "صياغة إطار العمل المشترك واتفاقية السرية والمقترح التنفيذي.";
+      ctaUrl = "https://gotawakened.com/organizations";
+      ctaTextEn = "Review Corporate Programs";
+      ctaTextAr = "استعراض البرامج المؤسسية";
+    } else if (combined.includes("membership") || combined.includes("community") || combined.includes("عضوية")) {
+      topicType = "membership";
+      emailHeadingEn = "Private Membership Circle Application";
+      emailHeadingAr = "طلب الانضمام إلى العضوية الخاصة";
+      nextStep1En = "Our Membership Admissions Council reviews your candidacy.";
+      nextStep1Ar = "يقوم مجلس قبول العضويات بمراجعة بياناتكم وتطلعاتكم الاستشارية.";
+      nextStep2En = "Our executive concierge arranges a private 20-minute alignment conversation.";
+      nextStep2Ar = "يتواصل معكم المنسق التنفيذي لترتيب مكالمة مواءمة مدتها ٢٠ دقيقة.";
+      nextStep3En = "Upon mutual alignment, you receive your membership prospectus and dossier.";
+      nextStep3Ar = "بعد استيفاء المواءمة، يتم إرسال ميثاق العضوية وملف التفعيل الخاص بكم.";
+      ctaUrl = "https://gotawakened.com/community";
+      ctaTextEn = "Discover Membership Circle";
+      ctaTextAr = "استكشف العضوية الخاصة";
+    } else if (combined.includes("partner") || combined.includes("alliance") || combined.includes("شراكة") || combined.includes("تعاون")) {
+      topicType = "partnership";
+      emailHeadingEn = "Strategic Alliance & Partnership Inquiry";
+      emailHeadingAr = "استفسار الشراكات والتعاون الاستراتيجي";
+      nextStep1En = "Our Strategic Partnerships Directorate evaluates institutional synergy.";
+      nextStep1Ar = "تقوم إدارة الشراكات بتقييم مقترح التعاون ومدى توافقه الاستراتيجي.";
+      nextStep2En = "We schedule an introductory video conference or in-person briefing in Doha.";
+      nextStep2Ar = "نرتب اجتماعاً استكشافياً عبر الفيديو أو حضورياً في الدوحة خلال ٤٨ ساعة.";
+      nextStep3En = "Mutual NDA execution and joint Letter of Intent (LOI) formulation.";
+      nextStep3Ar = "توقيع اتفاقية الحفاظ على السرية وصياغة مذكرة تفاهم مشتركة.";
+      ctaUrl = "https://gotawakened.com/partners";
+      ctaTextEn = "Explore Alliances";
+      ctaTextAr = "استعراض مجالات الشراكة";
+    } else if (combined.includes("session") || combined.includes("coaching") || combined.includes("استشارة") || combined.includes("جلسة")) {
+      topicType = "session";
+      emailHeadingEn = "Private Consultation & Mentorship Inquiry";
+      emailHeadingAr = "استفسار الجلسات والاستشارات الفردية";
+      nextStep1En = "A senior practitioner evaluates your schedule and focus areas.";
+      nextStep1Ar = "يراجع أحد كبار المستشارين تطلعاتكم ومواعيدكم المفضلة خلال ٢٤ ساعة عمل.";
+      nextStep2En = "Our concierge coordinates your session time (In-Person in Doha or Encrypted Virtual Video).";
+      nextStep2Ar = "ينسق مكتب الاستقبال موعدكم المناسب (حضورياً في الدوحة أو عبر الاتصال المرئي).";
+      nextStep3En = "You receive our foundational pre-session preparation guide.";
+      nextStep3Ar = "تستلمون دليل التحضير التمهيدي لضمان أقصى استفادة من جلستكم الأولى.";
+      ctaUrl = "https://gotawakened.com/book";
+      ctaTextEn = "Reserve Consultation Slot";
+      ctaTextAr = "حجز موعد الجلسة";
+    }
+
+    const emailSubject = isArabic
+      ? `${emailHeadingAr} · أوايكند للاستشارات`
+      : `${emailHeadingEn} · Awakened for Consultations`;
+
     // ── Auto-reply HTML email ──────────────────────────────────────────────────
     const emailHtml = `<!DOCTYPE html>
 <html lang="${isArabic ? "ar" : "en"}" dir="${isArabic ? "rtl" : "ltr"}">
@@ -84,15 +179,15 @@ export default async function handler(req, res) {
           <tr>
             <td style="padding:32px 36px 20px;background:#FFFFFF;">
               <p style="margin:0 0 6px;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:#9E7E2E;font-weight:700;">
-                ${isArabic ? "تأكيد الاستفسار" : "ENQUIRY RECEIVED"}
+                ${isArabic ? emailHeadingAr : emailHeadingEn}
               </p>
               <h1 style="margin:0 0 16px;font-family:'Georgia',serif;font-size:26px;color:#141F15;font-weight:normal;line-height:1.3;">
                 ${isArabic ? `مرحباً، ${name}` : `Dear ${name},`}
               </h1>
               <p style="margin:0 0 14px;font-size:15px;color:#3D3D3D;line-height:1.7;">
                 ${isArabic
-                  ? "شكراً لتواصلك مع <strong>أوايكند للاستشارات</strong>. لقد تلقّينا استفسارك بنجاح، وسيتواصل معك فريقنا خلال <strong>24 ساعة عمل</strong>."
-                  : "Thank you for reaching out to <strong>Awakened for Consultations</strong>. We have received your enquiry and a member of our concierge team will be in touch within <strong>24 business hours</strong>."}
+                  ? "نشكركم على تواصلكم مع <strong>أوايكند للاستشارات</strong>. لقد تلقّينا استفساركم باهتمام وسرية تامة، وسيتواصل معكم فريقنا الاستشاري خلال <strong>٢٤ ساعة عمل</strong>."
+                  : "Thank you for reaching out to <strong>Awakened for Consultations</strong>. We have received your inquiry with complete discretion, and our advisory circle will be in touch within <strong>24 business hours</strong>."}
               </p>
               ${interest ? `
               <div style="background:#FAF7F2;border-left:3px solid #C9A84C;border-radius:4px;padding:14px 18px;margin:18px 0;">
@@ -123,7 +218,7 @@ export default async function handler(req, res) {
                     <div style="width:22px;height:22px;background:#EBF3EC;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;color:#1F4225;">1</div>
                   </td>
                   <td style="padding:8px 0 8px 10px;font-size:13px;color:#3D3D3D;line-height:1.6;">
-                    ${isArabic ? "يراجع فريقنا استفساركم ويحدد المستشار الأنسب لاحتياجاتكم." : "Our team reviews your enquiry and identifies the right consultant for your needs."}
+                    ${isArabic ? nextStep1Ar : nextStep1En}
                   </td>
                 </tr>
                 <tr>
@@ -131,7 +226,7 @@ export default async function handler(req, res) {
                     <div style="width:22px;height:22px;background:#EBF3EC;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;color:#1F4225;">2</div>
                   </td>
                   <td style="padding:8px 0 8px 10px;font-size:13px;color:#3D3D3D;line-height:1.6;">
-                    ${isArabic ? "نتواصل معكم بالبريد الإلكتروني أو الهاتف لتحديد موعد الجلسة." : "We contact you by email or phone to schedule your session at a time that suits you."}
+                    ${isArabic ? nextStep2Ar : nextStep2En}
                   </td>
                 </tr>
                 <tr>
@@ -139,7 +234,7 @@ export default async function handler(req, res) {
                     <div style="width:22px;height:22px;background:#EBF3EC;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;color:#1F4225;">3</div>
                   </td>
                   <td style="padding:8px 0 8px 10px;font-size:13px;color:#3D3D3D;line-height:1.6;">
-                    ${isArabic ? "تبدأ رحلتك نحو التحول الحقيقي." : "Your transformation journey begins."}
+                    ${isArabic ? nextStep3Ar : nextStep3En}
                   </td>
                 </tr>
               </table>
@@ -152,9 +247,9 @@ export default async function handler(req, res) {
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="background:#141F15;border-radius:8px;">
-                    <a href="https://gotawakened.com/book" target="_blank"
+                    <a href="${ctaUrl}" target="_blank"
                       style="display:inline-block;padding:13px 30px;font-size:13px;font-weight:600;color:#FAF7F2;text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;">
-                      ${isArabic ? "احجز جلستك الآن" : "Book Your Session"} &rarr;
+                      ${isArabic ? ctaTextAr : ctaTextEn} &rarr;
                     </a>
                   </td>
                 </tr>
@@ -218,9 +313,7 @@ export default async function handler(req, res) {
             to: [email],
             bcc: ["info@gotawakened.com"],
             reply_to: "info@gotawakened.com",
-            subject: isArabic
-              ? `شكراً لتواصلك — أوايكند للاستشارات`
-              : `Thank You for Your Enquiry — Awakened for Consultations`,
+            subject: emailSubject,
             html: emailHtml,
           }),
         });
@@ -240,9 +333,7 @@ export default async function handler(req, res) {
               from: fallbackFrom,
               to: [email],
               reply_to: "info@gotawakened.com",
-              subject: isArabic
-                ? `شكراً لتواصلك — أوايكند للاستشارات`
-                : `Thank You for Your Enquiry — Awakened for Consultations`,
+              subject: emailSubject,
               html: emailHtml,
             }),
           });
@@ -273,10 +364,12 @@ export default async function handler(req, res) {
           full_name: name,
           email,
           phone: phone || undefined,
-          inquiry_type: "general",
-          subject: interest || "Website Enquiry",
+          inquiry_type: topicType,
+          subject: interest || emailHeadingEn,
           message: [
             `ENQUIRY RECEIVED — AUTO-REPLY ${emailResult.sent ? "SENT" : "PENDING_KEY"}`,
+            `• Topic: ${emailHeadingEn} / ${emailHeadingAr}`,
+            `• Language: ${language}`,
             `• Name: ${name}`,
             `• Email: ${email}`,
             phone ? `• Phone: ${phone}` : null,
@@ -286,7 +379,7 @@ export default async function handler(req, res) {
             .filter(Boolean)
             .join("\n"),
           source_page: "/contact",
-          preferred_contact: "email",
+          preferred_contact: language === "ar" ? "العربية" : "English",
         }),
       });
     } catch (adminErr) {

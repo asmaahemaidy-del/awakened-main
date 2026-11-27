@@ -193,11 +193,11 @@ export function ContactPage() {
     if (!interest) return "general";
     const i = interest.toLowerCase();
     if (i.includes("retreat")) return "retreat";
-    if (i.includes("session") || i.includes("coaching")) return "session";
-    if (i.includes("partner") || i.includes("speaking")) return "partnership";
-    if (i.includes("corporate") || i.includes("organisation") || i.includes("organizational"))
-      return "partnership";
-    if (i.includes("support") || i.includes("community")) return "support";
+    if (i.includes("session") || i.includes("coaching") || i.includes("discovery call") || i.includes("matching")) return "session";
+    if (i.includes("membership") || i.includes("community")) return "membership";
+    if (i.includes("corporate") || i.includes("organisation") || i.includes("organizational")) return "corporate";
+    if (i.includes("partner") || i.includes("speaking") || i.includes("alliance")) return "partnership";
+    if (i.includes("support")) return "support";
     return "general";
   };
   const handleSubmit = async (e) => {
