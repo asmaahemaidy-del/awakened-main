@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
+import { PhoneInputWithCountry } from "../components/PhoneInputWithCountry";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -743,15 +744,29 @@ export function ContactPage() {
                         {t("02 · How to Reach You", "٠٢ · كيفية التواصل")}
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <Field
-                          id="phone"
-                          label="Phone / WhatsApp"
-                          labelAr="الهاتف / واتساب"
-                          type="tel"
-                          value={form.phone}
-                          onChange={set("phone")}
-                          placeholder="+974 ···"
-                        />
+                        <div className="flex flex-col gap-2">
+                          <label
+                            htmlFor="phone"
+                            style={{
+                              fontFamily: fontBody,
+                              fontSize: isAr ? "0.82rem" : "0.7rem",
+                              letterSpacing: isAr ? "0.02em" : "0.15em",
+                              textTransform: isAr ? "none" : "uppercase",
+                              color: "#2E4A32",
+                              fontWeight: isAr ? 600 : 500,
+                              display: "block",
+                              textAlign: "start",
+                            }}
+                          >
+                            {t("Phone / WhatsApp", "الهاتف / واتساب")}
+                          </label>
+                          <PhoneInputWithCountry
+                            id="phone"
+                            value={form.phone}
+                            onChange={(val) => set("phone")(val)}
+                            variant="light"
+                          />
+                        </div>
                         <div className="flex flex-col gap-2">
                           <label
                             htmlFor="language"

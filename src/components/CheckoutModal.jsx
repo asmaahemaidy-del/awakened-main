@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { useLanguage } from "../i18n/LanguageContext";
+import { PhoneInputWithCountry } from "./PhoneInputWithCountry";
 
 export function CheckoutModal({
   isOpen,
@@ -334,31 +335,18 @@ export function CheckoutModal({
                 >
                   {t("Phone / WhatsApp *", "رقم الهاتف / واتساب *")}
                 </label>
-                <input
+                <PhoneInputWithCountry
                   id="checkout-phone"
-                  type="tel"
                   required
                   value={form.phone}
-                  onChange={(e) => {
-                    setForm((f) => ({ ...f, phone: e.target.value }));
+                  onChange={(val) => {
+                    setForm((f) => ({ ...f, phone: val }));
                     if (errors.phone) setErrors((errs) => ({ ...errs, phone: undefined }));
                   }}
-                  placeholder="+974 5555 1234"
-                  className="w-full px-3 py-2 text-xs sm:text-sm rounded-lg outline-none transition-colors"
-                  style={{
-                    fontFamily: fontBody,
-                    background: "#FFFFFF",
-                    border: errors.phone ? "1.5px solid #C0392B" : "1px solid #C8C0B4",
-                    color: "#141F15",
-                    direction: "ltr",
-                    textAlign: isAr ? "right" : "left",
-                  }}
+                  placeholder={isAr ? "٥٥٥٥ ١٢٣٤" : "5555 1234"}
+                  variant="light"
+                  error={errors.phone}
                 />
-                {errors.phone && (
-                  <p className="text-[11px] text-[#C0392B] mt-0.5 font-medium">
-                    {errors.phone}
-                  </p>
-                )}
               </div>
 
               {item.isCorporate && (

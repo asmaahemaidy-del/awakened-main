@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
 import { LeafSilhouette } from "../components/LeafSilhouette";
+import { PhoneInputWithCountry } from "../components/PhoneInputWithCountry";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -513,12 +514,11 @@ function RetreatEnquiryModal({ retreat, onClose }) {
                   >
                     {t("Phone / WhatsApp", "الهاتف / واتساب")}
                   </label>
-                  <input
-                    type="tel"
+                  <PhoneInputWithCountry
                     value={form.phone}
-                    onChange={set("phone")}
+                    onChange={(val) => set("phone")({ target: { value: val } })}
                     placeholder="+974 ···"
-                    style={inputStyle}
+                    variant="light"
                   />
                 </div>
                 <div className="flex flex-col gap-1">

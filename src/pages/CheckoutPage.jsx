@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { SkipCashCheckoutButton } from "../components/SkipCashCheckoutButton";
+import { PhoneInputWithCountry } from "../components/PhoneInputWithCountry";
 
 export function CheckoutPage() {
   const [searchParams] = useSearchParams();
@@ -214,21 +215,12 @@ export function CheckoutPage() {
               >
                 Phone Number *
               </label>
-              <input
-                type="tel"
+              <PhoneInputWithCountry
                 required
-                placeholder="+974 5500 0000"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                style={{
-                  width: "100%",
-                  padding: "10px 12px",
-                  border: "1px solid #C8C0B4",
-                  borderRadius: "6px",
-                  fontSize: "14px",
-                  outline: "none",
-                  boxSizing: "border-box",
-                }}
+                onChange={(val) => setPhone(val)}
+                placeholder="5500 0000"
+                variant="light"
               />
             </div>
 

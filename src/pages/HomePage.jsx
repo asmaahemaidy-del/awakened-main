@@ -6,6 +6,7 @@ import { Seo } from "../components/Seo";
 import { LOGO_URL, OG_IMAGE, SITE_URL } from "../lib/site";
 import { useLanguage } from "../i18n/LanguageContext";
 import { LeafSilhouette } from "../components/LeafSilhouette";
+import { PhoneInputWithCountry } from "../components/PhoneInputWithCountry";
 
 function AmbientOrb({ className, style, duration = 14, delay = 0 }) {
   return (
@@ -340,24 +341,11 @@ function RetreatEnquiryModal({ retreatEn, retreatAr, onClose }) {
                   direction: inputDir,
                 }}
               />
-              <input
-                aria-label={t("Phone / WhatsApp", "الهاتف / واتساب")}
-                placeholder={t("Phone / WhatsApp", "الهاتف / واتساب")}
+              <PhoneInputWithCountry
                 value={form.phone}
-                onChange={(e) => set("phone")(e.target.value)}
-                style={{
-                  fontFamily: fontBody,
-                  background: "var(--brand-cream)",
-                  color: "var(--brand-forest)",
-                  border: "1px solid var(--brand-cream-warm)",
-                  outline: "none",
-                  fontSize: "0.88rem",
-                  lineHeight: 1.6,
-                  width: "100%",
-                  padding: "0.75rem 0.9rem",
-                  borderRadius: 0,
-                  direction: inputDir,
-                }}
+                onChange={(val) => set("phone")(val)}
+                placeholder={t("Phone / WhatsApp", "الهاتف / واتساب")}
+                variant="cream"
               />
               <input
                 aria-label={t("Preferred dates (if known)", "التواريخ المفضلة (إن عُرفت)")}

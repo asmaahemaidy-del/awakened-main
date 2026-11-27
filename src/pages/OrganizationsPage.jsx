@@ -5,6 +5,7 @@ import { organizations } from "../content/pages";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
 import { LeafSilhouette } from "../components/LeafSilhouette";
+import { PhoneInputWithCountry } from "../components/PhoneInputWithCountry";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -53,6 +54,7 @@ export function OrganizationsPage() {
   const [enquiryForm, setEnquiryForm] = useState({
     name: "",
     email: "",
+    phone: "",
     organisation: "",
     message: "",
   });
@@ -750,6 +752,27 @@ export function OrganizationsPage() {
                       e.preventDefault();
                       setEnquirySending(true);
                       try {
+                        const adminApiBase =
+                          import.meta.env.VITE_ADMIN_API_URL ||
+                          "https://awakened-admin.vercel.app";
+                        // Log to admin panel
+                        await fetch(`${adminApiBase}/api/inquiries`, {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            full_name: enquiryForm.name,
+                            email: enquiryForm.email,
+                            phone: enquiryForm.phone || undefined,
+                            inquiry_type: "partnership",
+                            subject: "Corporate Programme Enquiry",
+                            message: [
+                              enquiryForm.message,
+                              enquiryForm.organisation ? `Organisation: ${enquiryForm.organisation}` : null,
+                            ].filter(Boolean).join("\n\n") || undefined,
+                            source_page: "/organizations",
+                          }),
+                        }).catch(() => {});
+
                         await fetch("/api/contact", {
                           method: "POST",
                           headers: {
@@ -783,6 +806,12 @@ export function OrganizationsPage() {
                         label: t("Email address", "البريد الإلكتروني"),
                         type: "email",
                         required: true,
+                      },
+                      {
+                        key: "phone",
+                        label: t("Phone / WhatsApp", "الهاتف / واتساب"),
+                        type: "tel",
+                        required: false,
                       },
                       {
                         key: "organisation",
@@ -820,36 +849,49 @@ export function OrganizationsPage() {
                             </span>
                           )}
                         </label>
-                        <input
-                          type={field.type}
-                          required={field.required}
-                          value={enquiryForm[field.key]}
-                          onChange={(e) =>
-                            setEnquiryForm((f) => ({
-                              ...f,
-                              [field.key]: e.target.value,
-                            }))
-                          }
-                          style={{
-                            background: "color-mix(in srgb, var(--brand-forest) 60%, transparent)",
-                            border:
-                              "1px solid color-mix(in srgb, var(--brand-gold) 25%, transparent)",
-                            padding: "10px 14px",
-                            fontFamily: fontBody,
-                            fontSize: "0.9rem",
-                            color: "var(--brand-cream)",
-                            outline: "none",
-                            transition: "border-color 0.3s",
-                          }}
-                          onFocus={(e) => {
-                            e.currentTarget.style.borderColor =
-                              "color-mix(in srgb, var(--brand-gold) 65%, transparent)";
-                          }}
-                          onBlur={(e) => {
-                            e.currentTarget.style.borderColor =
-                              "color-mix(in srgb, var(--brand-gold) 25%, transparent)";
-                          }}
-                        />
+                        {field.key === "phone" ? (
+                          <PhoneInputWithCountry
+                            value={enquiryForm.phone}
+                            onChange={(val) =>
+                              setEnquiryForm((f) => ({
+                                ...f,
+                                phone: val,
+                              }))
+                            }
+                            variant="dark"
+                          />
+                        ) : (
+                          <input
+                            type={field.type}
+                            required={field.required}
+                            value={enquiryForm[field.key]}
+                            onChange={(e) =>
+                              setEnquiryForm((f) => ({
+                                ...f,
+                                [field.key]: e.target.value,
+                              }))
+                            }
+                            style={{
+                              background: "color-mix(in srgb, var(--brand-forest) 60%, transparent)",
+                              border:
+                                "1px solid color-mix(in srgb, var(--brand-gold) 25%, transparent)",
+                              padding: "10px 14px",
+                              fontFamily: fontBody,
+                              fontSize: "0.9rem",
+                              color: "var(--brand-cream)",
+                              outline: "none",
+                              transition: "border-color 0.3s",
+                            }}
+                            onFocus={(e) => {
+                              e.currentTarget.style.borderColor =
+                                "color-mix(in srgb, var(--brand-gold) 65%, transparent)";
+                            }}
+                            onBlur={(e) => {
+                              e.currentTarget.style.borderColor =
+                                "color-mix(in srgb, var(--brand-gold) 25%, transparent)";
+                            }}
+                          />
+                        )}
                       </div>
                     ))}
                     <div

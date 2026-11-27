@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import { Seo } from "../components/Seo";
 import { useLanguage } from "../i18n/LanguageContext";
 import { LeafSilhouette } from "../components/LeafSilhouette";
+import { PhoneInputWithCountry } from "../components/PhoneInputWithCountry";
 
 function Reveal({ children, delay = 0, className }) {
   const ref = useRef(null);
@@ -861,15 +862,26 @@ export function PartnersPage() {
                       onChange={set("email")}
                       placeholder="your@email.com"
                     />
-                    <Field
-                      id="p-phone"
-                      label="Phone / WhatsApp"
-                      labelAr="الهاتف / واتساب"
-                      type="tel"
-                      value={form.phone}
-                      onChange={set("phone")}
-                      placeholder="+974 ···"
-                    />
+                    <div className="flex flex-col gap-1.5">
+                      <label
+                        htmlFor="p-phone"
+                        className="text-xs tracking-[0.15em] uppercase"
+                        style={{
+                          fontFamily: fontBody,
+                          color: "#2E4A32",
+                          letterSpacing: isAr ? 0 : "0.15em",
+                        }}
+                      >
+                        {isAr ? "الهاتف / واتساب" : "Phone / WhatsApp"}
+                      </label>
+                      <PhoneInputWithCountry
+                        id="p-phone"
+                        value={form.phone}
+                        onChange={(val) => set("phone")({ target: { value: val } })}
+                        placeholder="+974 ···"
+                        variant="light"
+                      />
+                    </div>
                   </div>
                 </Reveal>
                 <Reveal delay={0.15}>
