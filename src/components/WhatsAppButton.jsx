@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
+import { PhoneInputWithCountry } from "./PhoneInputWithCountry";
+import { getWhatsAppDirectUrl } from "../lib/whatsapp";
 
 export function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [topic, setTopic] = useState("Executive Consultation");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { lang, t } = useLanguage();
@@ -43,10 +46,10 @@ export function WhatsAppButton() {
         body: JSON.stringify({
           full_name: clientName,
           email: "whatsapp-chat@gotawakened.com",
-          phone: "+974 7710 6177",
+          phone: phone.trim() || undefined,
           inquiry_type: "consultation",
           subject: `WhatsApp Business Inquiry: ${selectedTopic}`,
-          message: `Visitor initiated WhatsApp Business chat from page: ${currentPath} | Topic: ${selectedTopic} | Name: ${clientName}`,
+          message: `Visitor initiated WhatsApp chat from page: ${currentPath} | Topic: ${selectedTopic} | Name: ${clientName} | Phone: ${phone.trim() || "Direct"}`,
           source_page: currentPath,
           preferred_contact: "whatsapp",
           referrer: typeof document !== "undefined" ? document.referrer || undefined : undefined,
@@ -57,9 +60,10 @@ export function WhatsAppButton() {
     }
 
     // 2. Open official WhatsApp Business chat (+974 7710 6177)
+    // Personalized automatic greeting including topic and visiting number
     const greeting = isAr
-      ? `مرحباً أوايكند للاستشارات، أود الاستفسار بخصوص: ${selectedTopic}${name.trim() ? ` (الاسم: ${name.trim()})` : ""}`
-      : `Hello Awakened for Consultations, I would like to inquire regarding: ${selectedTopic}${name.trim() ? ` (Name: ${name.trim()})` : ""}`;
+      ? `مرحباً أوايكند للاستشارات، أود الاستفسار بخصوص: ${selectedTopic}${name.trim() ? ` (الاسم: ${name.trim()})` : ""}${phone.trim() ? ` (الهاتف: ${phone.trim()})` : ""}`
+      : `Hello Awakened for Consultations, I would like to inquire regarding: ${selectedTopic}${name.trim() ? ` (Name: ${name.trim()})` : ""}${phone.trim() ? ` (Phone: ${phone.trim()})` : ""}`;
 
     const whatsappUrl = `https://wa.me/97477106177?text=${encodeURIComponent(greeting)}`;
 
@@ -278,8 +282,8 @@ export function WhatsAppButton() {
               })}
             </div>
 
-            {/* Optional name */}
-            <div style={{ marginBottom: 14 }}>
+            {/* Optional name & visiting phone */}
+            <div style={{ marginBottom: 10 }}>
               <input
                 type="text"
                 placeholder={t("Your Name (Optional)", "اسمكم الكريم (اختياري)")}
@@ -296,6 +300,15 @@ export function WhatsAppButton() {
                   color: "#FAF7F2",
                   outline: "none",
                 }}
+              />
+            </div>
+
+            <div style={{ marginBottom: 14 }}>
+              <PhoneInputWithCountry
+                value={phone}
+                onChange={(val) => setPhone(val)}
+                placeholder={t("Your Phone Number", "رقم هاتفكم الكريم")}
+                variant="dark"
               />
             </div>
 

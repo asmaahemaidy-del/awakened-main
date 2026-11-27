@@ -353,11 +353,12 @@ export default async function handler(req, res) {
       }
     }
 
-    // ── 2. Log to Admin Panel ─────────────────────────────────────────────────
+    // ── 2. Log to Admin Panel & Dispatch WhatsApp Automation ─────────────────
+    let whatsappResult = null;
     const adminBase =
       process.env.VITE_ADMIN_API_URL || "https://awakened-admin.vercel.app";
     try {
-      await fetch(`${adminBase}/api/inquiries`, {
+      const adminRes = await fetch(`${adminBase}/api/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -382,6 +383,11 @@ export default async function handler(req, res) {
           preferred_contact: language === "ar" ? "العربية" : "English",
         }),
       });
+
+      if (adminRes.ok) {
+        const adminData = await adminRes.json().catch(() => ({}));
+        whatsappResult = adminData?.whatsappResult || null;
+      }
     } catch (adminErr) {
       console.warn("[Enquiry Reply] Admin log warning:", adminErr);
     }
@@ -389,7 +395,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       emailResult,
-      message: "Enquiry received and auto-reply dispatched.",
+      whatsappResult,
+      message: "Enquiry received, email auto-reply dispatched, and WhatsApp automation engaged.",
     });
   } catch (error) {
     console.error("[Enquiry Reply Error]:", error);
